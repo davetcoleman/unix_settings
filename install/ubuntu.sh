@@ -301,6 +301,9 @@ if [ "$bashrc_answer" != "" ]; then
     rm ~/.bashrc
     echo "export BASHRC_ENV=$bashrc_answer && . ~/unix_settings/.my.bashrc" > ~/.bashrc
 
+    # Clone the private repo as well
+    git clone fabgatec@davetcoleman.com:~/src/unix_settings_private
+
     # Source the bashrc for the first time
     source ~/.bashrc
 

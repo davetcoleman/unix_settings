@@ -130,7 +130,7 @@ if [ $ROS_SEGMENT == "ros" ]; then
     source ~/unix_settings/scripts/ros.sh
 
     # all ip address are hidden for security reasons
-    source ~/unix_settings/ip_addresses.sh
+    source ~/unix_settings_private/ip_addresses.sh
 
     # shared settings
     BAXTER_MASTER=0 # to be over written
