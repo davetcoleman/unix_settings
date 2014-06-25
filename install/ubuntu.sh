@@ -306,7 +306,7 @@ if [ "$bashrc_answer" != "" ]; then
 
     # Create simulinks from /unix_settings folder in the home folder
     echo "Creating simulinks in home folder to custom scripts"
-    ln -s ~/unix_settings/.gitconfig ~/.gitconfig
+    ln -s ~/unix_settings_private/.gitconfig ~/.gitconfig
     ln -s ~/unix_settings/.hgrc ~/.hgrc
 
     ln -s ~/unix_settings/emacs ~/emacs
