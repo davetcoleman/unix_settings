@@ -196,3 +196,11 @@ to capture race conditions.
 
 ### Show all files in directory with no details
     ls -AF | grep -v /$
+
+### Rename all files in a folder with a certain extension
+
+(From file name *.m4b to *.m4a)
+Remove ``-vn`` to actually use (this is test mode)
+    
+    rename 's/.m4b$/.m4a/' *.m4b -vn
+
