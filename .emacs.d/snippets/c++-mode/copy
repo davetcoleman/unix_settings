@@ -1,0 +1,4 @@
+# name: print vector to screen using copy
+# key: copy
+# --
+std::copy(${1:list}.begin(), ${2:list}.end(), std::ostream_iterator<${3:double}>(std::cout, "\n"));

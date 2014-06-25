@@ -1,0 +1,4 @@
+# name: ROS fatal statement
+# key: FATAL
+# --
+ROS_FATAL_STREAM_NAMED("${1:}","${2:here}");

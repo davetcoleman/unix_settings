@@ -1,0 +1,7 @@
+# name: Insert the code necessary to build a package in debug mode
+# key: CMAKEDEBUG
+# --
+
+# Enable gdb to show line numbers
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g")
+set(CMAKE_BUILD_TYPE Debug)

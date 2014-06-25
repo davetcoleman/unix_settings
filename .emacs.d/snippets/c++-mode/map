@@ -1,0 +1,6 @@
+# name: print std::map to screen
+# key: map
+# --
+// Debug map
+for(std::map<${1:std::string},${2:std::string}>::const_iterator it = ${3:list}.begin(); it != ${4:list}.end(); ++it) 
+  std::cout << "  - " << it->first << " => " << it->second << std::endl;

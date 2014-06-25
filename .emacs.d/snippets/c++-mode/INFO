@@ -1,0 +1,4 @@
+# name: ROS info statement
+# key: INFO
+# --
+ROS_INFO_STREAM_NAMED("${1:temp}","${2:here}");

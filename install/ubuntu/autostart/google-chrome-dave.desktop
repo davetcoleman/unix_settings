@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=google-chrome
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Google Chrome Dave
+Name=chrome_dave
+Comment[en_US]=
+Comment=

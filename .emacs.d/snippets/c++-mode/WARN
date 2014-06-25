@@ -1,0 +1,4 @@
+# name: ROS warn statement
+# key: WARN
+# --
+ROS_WARN_STREAM_NAMED("${1:temp}","${2:here}");

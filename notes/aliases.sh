@@ -1,0 +1,12 @@
+#!/bin/bash
+alias gitnotes="e ~/unix_settings/notes/git.txt"
+alias hgnotes="e ~/unix_settings/notes/hg.txt"
+alias ubuntunotes="e ~/unix_settings/notes/ubuntu.txt"
+alias emacsnotes="e ~/unix_settings/notes/emacs.txt"
+alias brewnotes="e ~/unix_settings/notes/brew.txt"
+alias moveitnotes="e ~/unix_settings/notes/moveit.txt"
+alias gdbnotes="e ~/unix_settings/notes/gdb.txt"
+alias rosnotes="e ~/unix_settings/notes/ros.txt"
+alias baxternotes="e ~/unix_settings/notes/baxter.txt"
+alias macnotes="e ~/unix_settings/notes/mac.txt"
+#alias svnnotes="e ~/unix_settings/notes/svn.txt"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/udisks --mount /dev/sda2
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Mount Data Drive
+Name=terminator
+Comment[en_US]=
+Comment=

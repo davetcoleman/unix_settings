@@ -1,0 +1,4 @@
+# name: string
+# key: string
+# --
+static const std::string ${1:} = ${2:};

@@ -1,0 +1,4 @@
+# name: error statement for ompl components
+# key: OERROR
+# --
+OMPL_ERROR("${1:temp}");

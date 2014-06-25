@@ -1,0 +1,3 @@
+Indent Entire File:
+C-x h                             (M-x mark-whole-buffer)
+C-M-\                             (M-x indent-region)

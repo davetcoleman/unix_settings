@@ -1,0 +1,4 @@
+# name: debug statement for ompl components
+# key: ODEBUG
+# --
+OMPL_DEBUG("${1:temp}");

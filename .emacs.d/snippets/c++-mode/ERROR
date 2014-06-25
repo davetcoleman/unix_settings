@@ -1,0 +1,4 @@
+# name: ROS error statement
+# key: ERROR
+# --
+ROS_ERROR_STREAM_NAMED("${1:temp}","${2:here}");

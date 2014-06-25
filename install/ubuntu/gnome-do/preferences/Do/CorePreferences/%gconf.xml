@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="QuietStart" mtime="1390431097" type="bool" value="true"/>
+</gconf>

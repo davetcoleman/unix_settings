@@ -1,0 +1,4 @@
+# name: ROS debug statement
+# key: DEBUG
+# --
+ROS_DEBUG_STREAM_NAMED("${1:temp}","${2:here}");

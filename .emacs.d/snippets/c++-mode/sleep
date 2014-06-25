@@ -1,0 +1,4 @@
+# name: ROS Duration Sleep Statement
+# key: sleep
+# --
+ros::Duration(${1:5.0}).sleep();

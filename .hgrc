@@ -1,0 +1,20 @@
+[ui]
+username = Dave Coleman <davetcoleman@gmail.com>
+verbose = True
+merge = emacs
+
+[merge-tools]
+emacs.args = -q --eval "(ediff-merge-with-ancestor \""$local"\" \""$other"\" \""$base"\" nil \""$output"\")"
+
+[extensions]
+convert =
+pager =
+color = 
+mq = 
+purge = 
+transplant =
+
+[pager]
+pager=LESS='R' less
+
+hg = hg --debug

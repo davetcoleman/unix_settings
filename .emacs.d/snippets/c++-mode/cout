@@ -1,0 +1,4 @@
+# name: error output to screen
+# key: cout
+# --
+std::cout << "${1:debug} " << ${2:} << std::endl;

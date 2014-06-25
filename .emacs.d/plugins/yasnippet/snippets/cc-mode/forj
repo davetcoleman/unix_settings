@@ -1,0 +1,7 @@
+# name: for (...; ...; ...) { ... }
+# key: forj
+# --
+for (std::size_t j = 0; j < ${1:m}; ++j)
+{
+    $0
+}

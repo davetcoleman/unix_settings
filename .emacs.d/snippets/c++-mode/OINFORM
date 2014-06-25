@@ -1,0 +1,4 @@
+# name: inform statement for ompl components
+# key: OINFORM
+# --
+OMPL_INFORM("${1:temp}");

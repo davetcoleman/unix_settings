@@ -1,0 +1,9 @@
+# name: comments for describing a function
+# key: /**
+# --
+/**
+ * \brief ${1:}
+ * \param ${2:input} - ${3:description}
+ * \param ${2:input} - ${3:description}
+ * \return ${4:}
+ */

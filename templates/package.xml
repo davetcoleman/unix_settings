@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>PACKAGE_NAME</name>
+  <version>0.0.1</version>
+  <description>The PACKAGE_NAME package</description>
+
+  <maintainer email="davetcoleman@gmail.com">Dave Coleman</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">https://github.com/davetcoleman/PACKAGE_NAME</url>
+  <url type="butracker">https://github.com/davetcoleman/PACKAGE_NAME/issues</url>
+  <url type="repository">https://github.com/davetcoleman/PACKAGE_NAME/</url>
+
+  <author email="davetcoleman@gmail.com">Dave Coleman</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+
+  <run_depend>roscpp</run_depend>
+
+  <export>
+  </export>
+</package>

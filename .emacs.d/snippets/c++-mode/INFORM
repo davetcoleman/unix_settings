@@ -1,0 +1,4 @@
+# name: inform statement for non-ros components
+# key: INFORM
+# --
+logInform("${1:temp} %f", ${2:here});

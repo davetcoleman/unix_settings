@@ -1,0 +1,8 @@
+.bashrc
+.emacs.d/backups/
+.emacs.d/auto-save-list/
+.emacs.d/autosaves/
+
+# Compiled code
+.elc
+

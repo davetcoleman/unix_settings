@@ -1,0 +1,8 @@
+# name: comment block for function
+# key: /**
+# --
+/**
+ * \brief ${1:description}
+ * \param ${2:parameter} ${3:description}
+ * \return ${4:void}
+ */

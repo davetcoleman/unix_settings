@@ -1,0 +1,4 @@
+# name: package.xml build line
+# key: build
+# --
+  <build_depend>${1}</build_depend>

@@ -1,0 +1,4 @@
+# name: ROS debug statement
+# key: DEBUGTHROTTLE
+# --
+ROS_DEBUG_STREAM_THROTTLE_NAMED(1, "${1:temp}","${2:here}");

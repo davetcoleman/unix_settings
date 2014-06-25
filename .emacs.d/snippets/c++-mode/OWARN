@@ -1,0 +1,4 @@
+# name: warn statement for ompl components
+# key: OWARN
+# --
+OMPL_WARN("${1:temp}");
