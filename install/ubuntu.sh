@@ -24,6 +24,7 @@
   # 12.04 Customization
   function ubuntuinstall() {
       sudo apt-get install -y indicator-applet-complete gnome-panel gnome-sushi mesa-utils xclip gnome-do terminator synaptic || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y emacs-goodies-el
       # gives windows thicker border for resizing
       sudo cp ~/unix_settings/install/ubuntu/metacity-theme-1.xml /usr/share/themes/Ambiance/metacity-1/metacity-theme-1.xml 
       # manually:

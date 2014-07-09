@@ -232,6 +232,7 @@
 )
 (add-hook 'c-mode-common-hook 'ROS-c-mode-common-hook)
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.inl$" . c++-mode))
 
 ;;; C++ OMPL Style ----------------------------------------------------------------
 (defun OMPL-c-mode-common-hook()
@@ -357,7 +358,7 @@
   (set (make-local-variable 'compile-command) 
        (if (string-equal (file-name-directory (get-closest-pathname ".catkin_workspace")) default-directory)
 	 (format "cd %s && catkin build --install" (file-name-directory (get-closest-pathname ".catkin_workspace_install")))
-	 (format "cd %s && catkin build moveit_ros_planning --no-deps" (file-name-directory (get-closest-pathname ".catkin_workspace")))
+	 (format "cd %s && catkin build moveit_whole_body_ik --no-deps" (file-name-directory (get-closest-pathname ".catkin_workspace")))
        )
   )
 )

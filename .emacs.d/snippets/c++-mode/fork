@@ -1,0 +1,7 @@
+# name: fork (...; ...; ...) { ... }
+# key: fork
+# --
+for (std::size_t k = 0; k < ${1:o}; ++k)
+{
+    $0
+}

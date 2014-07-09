@@ -105,7 +105,7 @@ Stash current changes
 Recall stash
   git stash apply
 
-Working with Word Documents / Latex =========================================================
+Working with Documents / Latex =========================================================
 
 Make Diff word wrap for the whole repo:
   git config core.pager 'less -r' 
@@ -123,6 +123,15 @@ View the log with file modification info
 
 Combine commits from one branch and merge into current branch
   git merge squash --feature    
+
+Commit part of a file
+  git add -p filename 
+
+  y to stage that hunk, or
+  n to not stage that hunk, or
+  e to manually edit the hunk (useful when git can't split it automatically)
+  d to exit or go to the next file.
+  ? to get the whole list of available options.
 
 Create new branch and check it out
   git checkout -b feature

@@ -1,0 +1,4 @@
+# name: new line
+# key: endl
+# --
+std::cout << std::endl;

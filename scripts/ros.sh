@@ -10,6 +10,7 @@
     alias catclean="rm -rf build/ devel/ build_isolated/ devel_isolated/ install_isolated/"
     alias catcleanbuild="catclean && catbuild"
     alias catcleanbuilddebug="catclean && catbuilddebug"
+    alias catkin_wtf="p /home/dave/ros/catkin_wtf/scripts/catkin_wtf.py"
 
     alias rosreindex="rm ~/.ros/rospack_cache && rospack profile"
 
@@ -132,9 +133,9 @@
 	read -p "Merge with wstool?"
 	wstool merge -t src moveit.rosinstall
 	read -p "Wstool update?"
-	wstool update -t sr
+	wstool update -t src/
 	read -p "catkin_make_isolated?"
-	#./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release
+	catkin build --install
     }
 
     #Gazebo

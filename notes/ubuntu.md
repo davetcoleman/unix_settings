@@ -195,6 +195,7 @@ to capture race conditions.
     cat /proc/cpuinfo | grep processor | wc -l
 
 ### Show all files in directory with no details
+
     ls -AF | grep -v /$
 
 ### Rename all files in a folder with a certain extension
