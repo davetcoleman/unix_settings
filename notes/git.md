@@ -150,3 +150,9 @@ Interactive rebase
 
 See what I'm about to push to a remote repo:
   git diff --stat origin/master
+
+Graphical Interface
+  gitk
+
+Hub
+  https://github.com/github/hub

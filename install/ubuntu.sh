@@ -191,8 +191,21 @@
   #Install PR2 ROS:
   alias installrospr2="sudo apt-get install -y ros-indigo-pr2-desktop ros-indigo-pr2-apps"
 
-  #Setup Github:  (2hr psw caching)
-  alias githubsetup="git config --global user.name 'Dave Coleman' && git config --global user.email 'davetcoleman@gmail.com' && git config --global core.autoctrlf input && git config --global credential.helper cache && git config --global credential.helper 'cache --timeout=7200' && git config --global color.ui auto"
+  # Setup Github:
+  function githubsetup() {
+      git config --global user.name 'Dave Coleman' 
+      git config --global user.email 'davetcoleman@gmail.com' 
+      git config --global core.autoctrlf input 
+      git config --global credential.helper cache 
+      git config --global credential.helper 'cache --timeout=7200' 
+      git config --global color.ui auto
+      
+      # Setup Hub for Github
+      sagi rake
+      git clone git://github.com/github/hub.git
+      cd hub
+      sudo rake install
+  }
   
   # Matlab - Documentation: https://help.ubuntu.com/community/MATLAB
   function matlabinstall()

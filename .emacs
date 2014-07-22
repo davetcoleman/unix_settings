@@ -23,11 +23,11 @@
 ; disable menu bar
 (menu-bar-mode 0)
 ; goto line keyboard shortcut
-(global-set-key "\C-g" `goto-line)
-; compile faster using F5 key
+;(global-set-key "\C-g" `goto-line)
+; compile command using F5 key
 (global-set-key [f5] 'compile)
 ; use system copy and paste
-;(setq x-select-enable-clipboard t) ;disabled for mac osx
+;(setq x-select-enable-clipboard t) 
 ;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 ; kill emacs server
 (global-set-key [f7] 'save-buffers-kill-emacs)
@@ -217,9 +217,10 @@
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'innamespace 0)
 
-  (c-set-offset 'arglist-close 0)
-  (c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
-  (c-set-offset 'arglist-cont-nonempty 'c-lineup-math) ; for DBTNG fields and values
+  ;;Make multiline function arguments start to the left instead of with opening ( of function:
+  ;(c-set-offset 'arglist-close 0)
+  ;(c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
+  ;(c-set-offset 'arglist-cont-nonempty 'c-lineup-math) ; for DBTNG fields and values
 
   ; Added by Dave
   ;things i added after emacs indentation was broken after precise upgrade:
@@ -358,7 +359,8 @@
   (set (make-local-variable 'compile-command) 
        (if (string-equal (file-name-directory (get-closest-pathname ".catkin_workspace")) default-directory)
 	 (format "cd %s && catkin build --install" (file-name-directory (get-closest-pathname ".catkin_workspace_install")))
-	 (format "cd %s && catkin build moveit_whole_body_ik --no-deps" (file-name-directory (get-closest-pathname ".catkin_workspace")))
+;	 (format "cd %s && catkin build moveit_whole_body_ik --no-deps" (file-name-directory (get-closest-pathname ".catkin_workspace")))
+	 (format "cd %s && catkin build " (file-name-directory (get-closest-pathname ".catkin_workspace")))
        )
   )
 )

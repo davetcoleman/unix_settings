@@ -12,6 +12,9 @@
 ## Backtrace
    bt
 
+## Backtrace all threads
+   thread apply all bt
+
 ## Change frames
    frame FRAME_NUMBER
    f FRAME_NUMBER

@@ -7,10 +7,9 @@
 
     alias catbuild="catkin build"
     alias catbuilddebug="catkin build --cmake-args -DCMAKE_BUILD_TYPE=Debug"
-    alias catclean="rm -rf build/ devel/ build_isolated/ devel_isolated/ install_isolated/"
+    alias catclean="rm -rf build/ devel/ install/" #build_isolated/ devel_isolated/ install_isolated/"
     alias catcleanbuild="catclean && catbuild"
     alias catcleanbuilddebug="catclean && catbuilddebug"
-    alias catkin_wtf="p /home/dave/ros/catkin_wtf/scripts/catkin_wtf.py"
 
     alias rosreindex="rm ~/.ros/rospack_cache && rospack profile"
 
@@ -41,6 +40,9 @@
     # TF
     alias tfpdf='cd /var/tmp && rosrun tf view_frames && open frames.pdf &'
 
+    # MoveIt branch management shortcut
+    alias moveit_hydro_to_indigo="git pull-request -o -m \"Sync Hydro to Indigo Branch\" -b ros-planning:indigo-devel -h ros-planning:hydro-devel"
+
     # Bloom shortcuts
     alias bcgc="catkin_generate_changelog"
     alias bctc="catkin_tag_changelog --bump "
@@ -53,7 +55,7 @@
     alias indigo_brrt="bloom-release realtime_tools -t indigo -r indigo"
     alias indigo_brct="bloom-release control_toolbox -t indigo -r indigo"
     alias indigo_brmvt="bloom-release moveit_visual_tools -t indigo -r indigo"
-   alias indigo_brmsg="bloom-release moveit_simple_grasps -t indigo -r indigo"
+    alias indigo_brmsg="bloom-release moveit_simple_grasps -t indigo -r indigo"
     alias indigo_brgm="bloom-release graph_msgs -t indigo -r indigo"
 
     alias hydro_brgrp="bloom-release gazebo_ros_pkgs -t hydro -r hydro"
@@ -138,6 +140,30 @@
 	catkin build --install
     }
 
+    function ros_build_all_ws()
+    {
+	cd /home/dave/ros/ws_ros/
+	catbuild --install
+	cd /home/dave/ros/ws_ompl/
+	catbuild
+	cd /home/dave/ros/ws_ros_control/
+	catbuild
+	cd /home/dave/ros/ws_moveit/        
+	catbuild
+	cd /home/dave/ros/ws_moveit_other/        	
+	catbuild
+        cd /home/dave/ros/ws_baxter/
+	catbuild
+	cd /home/dave/ros/ws_clam/
+	catbuild
+	cd /home/dave/ros/ws_hrp2/
+	catbuild
+        cd /home/dave/ros/ws_nasa/
+	catbuild
+	cd /home/dave/ros/ws_jsk/
+	catbuild
+    }
+
     #Gazebo
     alias gazebocheck='sh ~/ros/gazebo/tools/code_check.sh'
 
@@ -173,4 +199,62 @@
 	sudo ntpdate pool.ntp.org
 	ntpdate -q 128.138.244.56
 	sudo service ntp start
+    }
+
+    function cleanWorkspaces()
+    {	
+	i="/home/dave/ros/ws_ros"
+	cd "$i"
+	echo "Cleaning $i"
+	catclean
+
+	for i in "${ROS_WORKSPACES[@]}"
+	do
+	    :
+	    echo "Cleaning $i"
+	    cd "$i"
+	    catclean
+	done    
+    }
+    
+    function buildWorkspaces()
+    {
+	buildWorkspace "/home/dave/ros/ws_ros" "catbuild --install" "install/setup.bash"
+	buildWorkspace "/home/dave/ros/ws_ompl" "catbuild" "install/setup.sh"
+	buildWorkspace "/home/dave/ros/ws_moveit" "catbuild" "install/setup.bash"
+	buildWorkspace "/home/dave/ros/ws_moveit_other" "catbuild" "install/setup.bash"
+
+	# REST OF WORKSPACES
+	#for i in "${ROS_WORKSPACES[@]}"
+	#do
+	#    :
+	#    buildWorkspace "$i" "catbuild" "devel/setup.bash"
+	#done
+    }
+
+    function buildWorkspace() #folder, buildCommand, sourceCommand
+    {
+	# parameters
+	folder=$1
+	buildCommand=$2
+	sourceCommand=$3
+
+	# Build
+	cd "$folder"
+	echo "BUILDING $buildCommand in folder $folder"
+	eval "$buildCommand"
+	if [ "$?" = "0" ]; then
+	    echo "Build succeeded."
+	else
+	    echo "Build failed!!!!!"
+	    return
+	fi	
+
+	# Source
+	setupFile="${folder}${sourceCommand}"
+	echo "SOURCING $setupFile =========================================================="
+	if [ ! -f "$setupFile" ]; then
+	    echo "File $setupFile not found!!!!!!!!!!"
+	fi
+	source "$setupFile"
     }

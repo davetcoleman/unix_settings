@@ -111,7 +111,15 @@
 
     -
 ### Delete all subdirecetories with folder name '.svn'
+
+First check what you will delete:
+    find . -name .svn -exec ls {} \;
+
+Then delete them:
     find . -name .svn -exec rm -rf {} \;
+
+Patterns work too:
+    find . -name "*.FILEEXTENSION" -exec ls {} \;
 
 
 ### Delete all files with contents CONTENTS but first put the rm command into a file for safety
@@ -176,10 +184,6 @@ to capture race conditions.
 
 ### Change keyboard layout
     sudo dpkg-reconfigure keyboard-configuration
-
-
-### Delete all files matching a pattern, recursively
-    find . -name "*.FILEEXTENSION" -exec ls {} \;
 
 
 ### Get folder sizes

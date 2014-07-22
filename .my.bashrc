@@ -328,70 +328,37 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
 fi
 
 if [ $BASHRC_ENV == "ros_jsk" ]; then
-    # Settings
-    USE_HYDRO=1
-    GAZEBO_SOURCE=0
 
-    #export CVSDIR=$HOME # add this line to .bashrc
-
-    # Hydro
-    if [ $USE_HYDRO == 1 ]; then 
-	# In-Use Workspaces
-	#source /home/dave/ros/ws_ros/install/setup.bash
-	#source /home/dave/ros/ws_ompl/devel/setup.bash
-	#source /home/dave/ros/ws_ros_control/devel/setup.bash
-	#source /home/dave/ros/ws_moveit/devel/setup.bash        
-	#source /home/dave/ros/ws_moveit_other/devel/setup.bash        	
-        #source /home/dave/ros/ws_baxter/devel/setup.bash
-	#source /home/dave/ros/ws_clam/devel/setup.bash
-	#source /home/dave/ros/ws_hrp2/devel/setup.bash
-	source /home/dave/ros/ws_nasa/devel/setup.bash
-	#source /home/dave/ros/ws_jsk/devel/setup.bash
-	
-	echo -ne "ROS: hydro | "
-    fi
-
+    # The workspaces being used on this computer
+    ROS_WORKSPACES=( "/home/dave/ros/ws_ompl/"
+#	"/home/dave/ros/ws_ros_control/"
+	"/home/dave/ros/ws_moveit/"
+	"/home/dave/ros/ws_moveit_other/")
+#        "/home/dave/ros/ws_baxter/" 
+#	"/home/dave/ros/ws_clam/"   
+#	"/home/dave/ros/ws_nasa/"   
+#	"/home/dave/ros/ws_jsk/" )
+    
+  	# In-Use Workspaces
+        #source /home/dave/ros/ws_ros/install/setup.sh
+	#source /home/dave/ros/ws_ompl/devel/setup.sh
+	#source /home/dave/ros/ws_ros_control/devel/setup.sh
+	#source /home/dave/ros/ws_moveit/devel/setup.sh        
+	source /home/dave/ros/ws_moveit_other/devel/setup.sh        	
+        #source /home/dave/ros/ws_baxter/devel/setup.sh
+	#source /home/dave/ros/ws_clam/devel/setup.sh
+	#source /home/dave/ros/ws_hrp2/devel/setup.sh
+        #source /home/dave/ros/ws_nasa/devel/setup.sh
+	#source /home/dave/ros/ws_jsk/devel/setup.sh
+    
+    echo -ne "ROS: hydro | "
+    
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
 
     #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
     #export ROS_PACKAGE_PATH=/home/dave/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
-    #export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:`rospack find hrpsys_gazebo_tutorials`/..
-    #export GAZEBO_PLUGIN_PATH=`rospack find hrpsys_gazebo_general`/plugins:$GAZEBO_PLUGIN_PATH
 
-    # Backup before changing
-    export PKG_CONFIG_PATH_ORIGINAL=$PKG_CONFIG_PATH
-    export LIBRARY_PATH_ORIGINAL=$LIBRARY_PATH
-    export LD_LIBRARY_PATH_ORIGINAL=$LD_LIBRARY_PATH
-    export PATH_ORIGINAL=$PATH
-
-    export CVSDIR=~/ros/ws_jsk/
-
-    # Gazebo from source
-    if [ $GAZEBO_SOURCE == 1 ]; then
-	# Set local path precendence 
-	export MY_LOCAL=$HOME/local
-	export PKG_CONFIG_PATH=$MY_LOCAL/lib/pkgconfig:$PKG_CONFIG_PATH
-	export LIBRARY_PATH=$LIBRARY_PATH:$MY_LOCAL/lib
- 	export LD_LIBRARY_PATH=$MY_LOCAL/lib:$LD_LIBRARY_PATH
-	export PATH=$MY_LOCAL/bin:$PATH
-
-	#source $MY_LOCAL/share/gazebo/setup.sh # for source installs
-
-	echo -ne "Gazebo: source | "
-
-    else # Gazebo debian
-
-	# Restore default behavior
-	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH_ORIGINAL
-	export LIBRARY_PATH=$LIBRARY_PATH_ORIGINAL
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_ORIGINAL
-	export PATH=$PATH_ORIGINAL
-
-        #source /usr/share/gazebo/setup.sh   # for debian installs
-
-	echo -ne "Gazebo: debians | "
-    fi
 
     # Exports
     #export ROS_IP=$ROS_JSK_IP
@@ -589,6 +556,9 @@ fi
 alias mybash="e ~/unix_settings/.my.bashrc && . ~/unix_settings/.my.bashrc"
 alias mybashr=". ~/unix_settings/.my.bashrc"
 
+# Quick edit ubuntu install file
+alias myinstall="e ~/unix_settings/install/ubuntu.sh"
+
 # Quick synaptic
 alias synap="sudo synaptic"
 alias esynap="se /etc/apt/sources.list" # manually edit sources
@@ -628,9 +598,9 @@ alias gdbrun='gdb --ex run --args '
 alias rosrungdb='gdb --ex run --args ' #/opt/ros/hydro/lib/rviz/rviz
 
 # git
+alias git=hub
 alias gitst='git status'
 alias gitlg='git log -p'
-alias gittravis='git commit -a -m "Updated Travis" && git push'
 alias gitall='git add -A && git commit -a && git push'
 alias gitreadme='git commit README.md -m "Updated README" && git push'
 alias gitb='git branch'
