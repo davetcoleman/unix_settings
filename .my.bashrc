@@ -344,7 +344,7 @@ if [ $BASHRC_ENV == "ros_jsk" ]; then
 	#source /home/dave/ros/ws_ompl/devel/setup.sh
 	#source /home/dave/ros/ws_ros_control/devel/setup.sh
 	#source /home/dave/ros/ws_moveit/devel/setup.sh        
-	source /home/dave/ros/ws_moveit_other/devel/setup.sh        	
+	#source /home/dave/ros/ws_moveit_other/devel/setup.sh        	
         #source /home/dave/ros/ws_baxter/devel/setup.sh
 	#source /home/dave/ros/ws_clam/devel/setup.sh
 	#source /home/dave/ros/ws_hrp2/devel/setup.sh

@@ -216,23 +216,29 @@
 	    catclean
 	done    
     }
-    
+
+    # ENTRY POINT
     function buildWorkspaces()
     {
-	buildWorkspace "/home/dave/ros/ws_ros" "catbuild --install" "install/setup.bash"
-	buildWorkspace "/home/dave/ros/ws_ompl" "catbuild" "install/setup.sh"
-	buildWorkspace "/home/dave/ros/ws_moveit" "catbuild" "install/setup.bash"
-	buildWorkspace "/home/dave/ros/ws_moveit_other" "catbuild" "install/setup.bash"
+	echo "Build multiple Catkin workspaces version 1.1"
+
+	unset CMAKE_PREFIX_PATH
+	unset ROS_PACKAGE_PATH
+
+	helper_buildWorkspace "/home/dave/ros/ws_ros"          "catbuild --install" "/install/setup.bash"
+	helper_buildWorkspace "/home/dave/ros/ws_ompl"         "catbuild"           "/devel/setup.bash"
+	helper_buildWorkspace "/home/dave/ros/ws_moveit"       "catbuild"           "/devel/setup.bash"
+	helper_buildWorkspace "/home/dave/ros/ws_moveit_other" "catbuild"           "/devel/setup.bash"
 
 	# REST OF WORKSPACES
 	#for i in "${ROS_WORKSPACES[@]}"
 	#do
 	#    :
-	#    buildWorkspace "$i" "catbuild" "devel/setup.bash"
+	#    helper_buildWorkspace "$i" "catbuild" "devel/setup.bash"
 	#done
     }
 
-    function buildWorkspace() #folder, buildCommand, sourceCommand
+    function helper_buildWorkspace() #folder, buildCommand, sourceCommand
     {
 	# parameters
 	folder=$1
@@ -241,7 +247,7 @@
 
 	# Build
 	cd "$folder"
-	echo "BUILDING $buildCommand in folder $folder"
+	echo "BUILDING $buildCommand in folder $folder ======================"
 	eval "$buildCommand"
 	if [ "$?" = "0" ]; then
 	    echo "Build succeeded."
