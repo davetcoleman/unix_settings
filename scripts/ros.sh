@@ -29,6 +29,7 @@
     alias roscdhrp2="cd ~/ros/ws_hrp2/src && ll"
     alias roscdompl="cd ~/ros/ws_ompl/src/ompl/src/ompl && ll"
     alias roscdompl_interface="cd ~/ros/ws_moveit/src/moveit_planners/ompl/ompl_interface && ll"
+    alias roscdh="cd /home/dave/ros/ws_moveit/src/moveit_hrp2/hrp2jsknt_moveit_demos && ll"
 
     alias moveitplanningscene="rosrun moveit_ros_planning moveit_print_planning_model_info"
     alias iscore="ps aux | grep roscore"
