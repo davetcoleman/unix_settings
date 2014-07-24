@@ -1,0 +1,19 @@
+# name: Getter and setter template
+# key: getset
+# --
+/**
+ * \brief Getter for NAMEIT
+ */ 
+TYPE getTHING()
+{
+  return VAR_;
+}
+
+/**
+ * \brief Setter for NAMEIT
+ */
+void setTHING(TYPE VAR)
+{
+  VAR_ = VAR;
+}
+

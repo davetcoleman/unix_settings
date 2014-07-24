@@ -4,6 +4,7 @@
 ; F2 - rename file and buffer
 ; F4 - refresh file
 ; F5 - auto compile
+; F6 - auto compile just current package
 ; F7 - kill emacs
 
 
@@ -26,6 +27,7 @@
 ;(global-set-key "\C-g" `goto-line)
 ; compile command using F5 key
 (global-set-key [f5] 'compile)
+(global-set-key [f6] `ros-pkg-compile-command)
 ; use system copy and paste
 ;(setq x-select-enable-clipboard t) 
 ;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
@@ -212,7 +214,7 @@
 
 ;;; C++ ROS Style ----------------------------------------------------------------
 (defun ROS-c-mode-common-hook()
-  (setq c-basic-offset 2)
+  (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'innamespace 0)
@@ -367,6 +369,20 @@
 (add-hook 'c-mode-common-hook 'ros-compile-command)
 (add-hook 'cmake-mode-hook 'ros-compile-command)
 
+;;; DEFAULT COMPILE COMMAND FOR ONE PACKAGE ------------------------------------------------------
+(defun ros-pkg-compile-command ()
+  "Only build Catkin pkg, not whole workspace"
+  (interactive)
+  (set (make-local-variable 'compile-command) 
+       (format "cd %s && catkin bo %s" 
+	       (file-name-directory (get-closest-pathname ".catkin_workspace"))
+	       (nth 0 (last (split-string (directory-file-name (file-name-directory (get-closest-pathname "package.xml"))) "/")))
+       )
+  )
+  ;(funcall 'compile)
+)
+
+;;; COMPILE NOTIFICATION WHEN DONE ------------------------------------------------------
 (defun notify-compilation-result(buffer msg)
   "Notify that the compilation is finished"
   (if (string-match "^finished" msg)
@@ -386,11 +402,7 @@
 ;    (Doxymacs-mode t)
 ;    (doxymacs-font-lock)))
 
-;;; Emacs Shortcuts I forget ----------------------------------------------------
-
-; Emacs bulk indent for Python
-;   C-c >   shifts region 4 spaces to the right
-;   C-c <   shifts region 4 spaces to the left
+;;; RENAME FILE -----------------------------------------------------
 
 (defun rename-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
@@ -429,6 +441,19 @@
 
 (require 'bash-completion)
 (bash-completion-setup)
+
+;;; Keyboard Shortcut Change offset command -----------------------------------------------
+
+(defun set-c-basic-offset-2-command ()
+  (interactive)
+  (setq c-basic-offset 2))
+
+(defun set-c-basic-offset-4-command ()
+  (interactive)
+  (setq c-basic-offset 4))
+
+(global-set-key (kbd "M-2") 'set-c-basic-offset-2-command)
+(global-set-key (kbd "M-4") 'set-c-basic-offset-4-command)
 
 ;;; EMACS Handling --------------------------------------------------------------
 
