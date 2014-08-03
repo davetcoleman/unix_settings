@@ -209,3 +209,46 @@ Remove ``-vn`` to actually use (this is test mode)
     
     rename 's/.m4b$/.m4a/' *.m4b -vn
 
+### Copy clipboard
+
+Current Working Directory
+pwd | xclip
+xclip -o
+nano
+File contents to clipboard
+xclip -sel clip < ~/.ssh/id_rsa.pub		
+
+
+### SCREEN
+
+Create screen		screen -S GLLCodes
+View screens		screen -ls
+Detact from screen 	C-a C-d
+Re-atach to screen 	screen -r GLLCodes
+Make new screen		C-a C-c
+Go to next screen	C-a C-n
+Go to prev screen	C-a C-p
+End screen		exit
+
+
+### X Server
+
+sudo /etc/init.d/gdm restart
+
+
+### Network Commands
+
+arp -n
+arp --verbose
+
+### DISABLE Firewall:
+
+sudo iptables -P INPUT ACCEPT
+sudo iptables -F
+
+### ENABLE Firewall:
+
+cd /etc/network/if-pre-up.d/
+sudo ./iptablesload
+sudo iptables -L -v
+
