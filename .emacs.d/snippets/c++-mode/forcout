@@ -1,0 +1,7 @@
+# name: forcout (...; ...; ...) { ... }
+# key: forcout
+# --
+for (std::size_t i = 0; i < ${1:n}.size(); ++i)
+{
+  std::cout << "${2:n}: " << ${3:n}[i].getName() << std::endl;
+}

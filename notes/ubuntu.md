@@ -105,11 +105,11 @@
     killall rosout 
     killall rosout -9
 
-    -
+
 ### See all processes with certain name
     ps -e | grep WORD
 
-    -
+
 ### Delete all subdirecetories with folder name '.svn'
 
 First check what you will delete:
@@ -120,7 +120,6 @@ Then delete them:
 
 Patterns work too:
     find . -name "*.FILEEXTENSION" -exec ls {} \;
-
 
 ### Delete all files with contents CONTENTS but first put the rm command into a file for safety
     find . | xargs grep CONTENTS | sed -e 's/:.*//g' | awk '{print "rm "$1}' > doit.sh
