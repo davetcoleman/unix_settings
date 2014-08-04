@@ -124,7 +124,7 @@ View the log with file modification info
 Combine commits from one branch and merge into current branch
   git merge squash --feature    
 
-Commit part of a file
+Commit part of a file / partial file
   git add -p filename 
 
   y to stage that hunk, or

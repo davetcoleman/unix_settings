@@ -5,8 +5,8 @@
 
     alias myrosconsole="e ~/unix_settings/.my.rosconsole"
 
-    alias catbuild="catkin build"
-    alias catbuilddebug="catkin build --cmake-args -DCMAKE_BUILD_TYPE=Debug"
+    alias catbuild="catkin b"
+    alias catbuilddebug="catkin b --cmake-args -DCMAKE_BUILD_TYPE=Debug"
     alias catclean="rm -rf build/ devel/ install/" #build_isolated/ devel_isolated/ install_isolated/"
     alias catcleanbuild="catclean && catbuild"
     alias catcleanbuilddebug="catclean && catbuilddebug"
@@ -264,4 +264,10 @@
 	    echo "File $setupFile not found!!!!!!!!!!"
 	fi
 	source "$setupFile"
+    }
+
+    function gitpr() # davetcoleman_branch_name
+    {
+        # requires 1 parameter
+	eval "git pull-request -b ros-planning:hydro-devel -h davetcoleman:$1 -o"
     }

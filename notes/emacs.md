@@ -11,6 +11,8 @@ Make buffer writeable
 
 Word wrap
   M-x visual-line-mode
+  or
+  toggle-truncate-lines
 
 Indent Region in C-Mode
   C-x TAB
