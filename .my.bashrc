@@ -482,9 +482,15 @@ if [ $ROS_SEGMENT == "ros" ]; then
 fi
 
 # Text Editor
-alias e="emacsclient -nw -t" #new_window, t does something for server/client
-alias se="sudo emacs -nw"
-export EDITOR='emacsclient -nw -t'
+if [[ $platform == "osx" ]]; then   #only mac
+    alias e="emacs"
+    alias se="sudo emacs -nw"
+    export EDITOR='emacs'
+else
+    alias e="emacsclient -nw -t" #new_window, t does something for server/client
+    alias se="sudo emacs -nw"
+    export EDITOR='emacsclient -nw -t'
+fi
 export ALTERNATE_EDITOR="" # this evokes emacs server/client stuff somehow
 
 # Python
@@ -599,7 +605,7 @@ alias gdbrun='gdb --ex run --args '
 alias rosrungdb='gdb --ex run --args ' #/opt/ros/hydro/lib/rviz/rviz
 
 # git
-if [[ $BASHRC_ENV != "dtc" && platform != "osx" ]]; then   #only for ubuntu
+if [[ $BASHRC_ENV != "dtc" && $platform != "osx" ]]; then   #only for ubuntu
     alias git=hub
 fi
 alias gitst='git status'
