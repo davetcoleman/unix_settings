@@ -1,8 +1,5 @@
-# name: BSD Disclaimer
-# key: disclaimer
-# --
 /*********************************************************************
- * Software License Agreement ("Modified BSD License")
+ * Software License Agreement (BSD License)
  *
  *  Copyright (c) 2014, University of Colorado, Boulder
  *  All rights reserved.
@@ -35,7 +32,6 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-/**
- * Author: Dave Coleman
- * Desc:   ${1:}
- */
+/* Author: Dave Coleman
+   Desc:   
+*/

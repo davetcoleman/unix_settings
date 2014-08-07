@@ -598,7 +598,9 @@ alias gdbrun='gdb --ex run --args '
 alias rosrungdb='gdb --ex run --args ' #/opt/ros/hydro/lib/rviz/rviz
 
 # git
-#alias git=hub
+if [[ $BASHRC_ENV != "dtc" && platform != "osx" ]]; then   #only for ubuntu
+    alias git=hub
+fi
 alias gitst='git status'
 alias gitlg='git log -p'
 alias gitall='git add -A && git commit -a && git push'

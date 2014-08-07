@@ -214,7 +214,7 @@
 
 ;;; C++ ROS Style ----------------------------------------------------------------
 (defun ROS-c-mode-common-hook()
-  (setq c-basic-offset 4)
+  (setq c-basic-offset 2)
   (setq indent-tabs-mode nil)
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'innamespace 0)

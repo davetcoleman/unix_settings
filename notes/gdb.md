@@ -27,3 +27,9 @@
 
 ## Print all global and static variables
    info variables
+
+## Step out of current function
+   fin
+
+## Step out of current loop
+   u (until)
