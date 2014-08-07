@@ -101,9 +101,17 @@ Stash =========================================================
 
 Stash current changes
   git stash
+  or
+  git stash save
 
 Recall stash
-  git stash apply
+  git stash pop
+
+See all stashes
+  git stash list
+
+Remove all old staets
+  git stash clear
 
 Working with Documents / Latex =========================================================
 

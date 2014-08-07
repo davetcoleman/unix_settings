@@ -344,11 +344,11 @@ if [ $BASHRC_ENV == "ros_jsk" ]; then
 	#source /home/dave/ros/ws_ompl/devel/setup.bash
 	#source /home/dave/ros/ws_ros_control/devel/setup.bash
 	#source /home/dave/ros/ws_moveit/devel/setup.bash        
-	source /home/dave/ros/ws_moveit_other/devel/setup.bash        	
+	#source /home/dave/ros/ws_moveit_other/devel/setup.bash        	
         #source /home/dave/ros/ws_baxter/devel/setup.bash
 	#source /home/dave/ros/ws_clam/devel/setup.bash
 	#source /home/dave/ros/ws_hrp2/devel/setup.bash
-        #source /home/dave/ros/ws_nasa/devel/setup.bash
+        source /home/dave/ros/ws_nasa/devel/setup.bash
 	#source /home/dave/ros/ws_jsk/devel/setup.bash
     
     echo -ne "ROS: hydro | "
@@ -489,6 +489,7 @@ export ALTERNATE_EDITOR="" # this evokes emacs server/client stuff somehow
 
 # Python
 alias p="python"
+alias pylab="ipython --pylab"
 
 # Ubuntu tricks
 alias myubuntu="more /etc/issue"
@@ -545,7 +546,7 @@ alias dotar='tar cvwf ' #file.tar folder/
 
 
 # Matlab
-alias matlab="matlab -nodesktop -nosplash -r "
+#alias matlab="matlab -nodesktop -nosplash -r "
 
 if [[ $platform != 'osx' ]]; then
   # Opening Files fast, more like mac
@@ -609,6 +610,10 @@ alias gitb='git branch'
 alias gitorigin='git remote show -n origin'
 alias gitdiff='GIT_PAGER="" git diff --color-words'  # adds word wrap
 alias gitremoteswich="git remote rename origin upstream"
+
+alias gitlogcompare="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative "
+alias gitlogcompare_hydro_indigo="gitlogcompare hydro-devel..indigo-devel"
+alias gitlogcompare_indigo_hydro="gitlogcompare indigo-devel..hydro-devel"
 
 # change git https to ssh
 function gitsshfix() {

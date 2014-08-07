@@ -229,7 +229,7 @@
       sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list" 
       wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
       sudo apt-get update
-      sudo apt-get install virtualbox-4.3 dkms
+      sudo apt-get install -y virtualbox-4.3 dkms
   }
 
   # Install Adobe Acrobat
@@ -244,6 +244,12 @@
     # set workrave to auto start
     mkdir -p ~/.config/autostart      
     cp ~/unix_settings/install/ubuntu/autostart/workrave.desktop ~/.config/autostart/workrave.desktop
+  }
+
+  # Install pythong tools
+  function pythoninstall() {
+      sudo apt-get install -y ipython python-numpy python-scipy python-matplotlib
+
   }
 
   # Setup SSH Access

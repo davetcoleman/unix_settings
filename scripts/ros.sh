@@ -25,7 +25,7 @@
     alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
     alias roscdmisc="cd ~/ros/ws_misc/src && ll"
     alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
-    alias roscdrosbuild="cd ~/ros/ws_rosbuild/src && ll"
+    alias roscdros="cd ~/ros/ws_ros/src && ll"
     alias roscdhrp2="cd ~/ros/ws_hrp2/src && ll"
     alias roscdompl="cd ~/ros/ws_ompl/src/ompl/src/ompl && ll"
     alias roscdompl_interface="cd ~/ros/ws_moveit/src/moveit_planners/ompl/ompl_interface && ll"
@@ -132,12 +132,12 @@
     function ros_add_dependency()
     {
 	#cd ~/ros/ws_ros_catkin/
-	rosinstall_generator "$1" --rosdistro hydro --deps --wet-only --tar >> moveit.rosinstall
+	rosinstall_generator "$1" --rosdistro hydro --deps --wet-only --tar >> new_packages.rosinstall
 	read -p "Merge with wstool?"
-	wstool merge -t src moveit.rosinstall
+	wstool merge -t src new_packages.rosinstall
 	read -p "Wstool update?"
 	wstool update -t src/
-	read -p "catkin_make_isolated?"
+	read -p "catkin build --install ?"
 	catkin build --install
     }
 
