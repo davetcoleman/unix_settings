@@ -8,7 +8,7 @@ ROS Bloom Release System Notes
 roscd PACKAGE
 bcgc --all  
 e CHANGELOG.rst
-git add -A && git commit -a -m "Created changelog" && git push
+bcclft
 bcpr patch
 # CREATE PACKAGE on github.com/davetcoleman named PACKAGE-release
 # COPY THE HTTPS URL

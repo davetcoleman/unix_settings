@@ -48,6 +48,7 @@
     alias bcgc="catkin_generate_changelog"
     alias bctc="catkin_tag_changelog --bump "
     alias bccl="git commit -a -m 'Updated changelogs'"
+    alias bcclft="git add -A && git commit -a -m 'Created CHANGELOG.rst' && git push"
     alias bcpr="catkin_prepare_release --bump "
 
     alias indigo_brgrp="bloom-release gazebo_ros_pkgs -t indigo -r indigo"

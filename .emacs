@@ -21,10 +21,10 @@
 (setq column-number-mode t)
 ; pretty print shortcut
 (global-set-key "\M-p" `indent-all)
+; goto line
+(global-set-key "\M-g" 'goto-line)
 ; disable menu bar
 (menu-bar-mode 0)
-; goto line keyboard shortcut
-;(global-set-key "\C-g" `goto-line)
 ; compile command using F5 key
 (global-set-key [f5] 'compile)
 (global-set-key [f6] `ros-pkg-compile-command)
@@ -377,9 +377,8 @@
        (format "cd %s && catkin bo %s" 
 	       (file-name-directory (get-closest-pathname ".catkin_workspace"))
 	       (nth 0 (last (split-string (directory-file-name (file-name-directory (get-closest-pathname "package.xml"))) "/")))
-       )
-  )
-  ;(funcall 'compile)
+       ))
+  (call-interactively 'compile)
 )
 
 ;;; COMPILE NOTIFICATION WHEN DONE ------------------------------------------------------
@@ -471,5 +470,6 @@
 
 ;; To reload snippets from yas with emacs still open: 
 ; M-x yas-reload-all
+
 
 
