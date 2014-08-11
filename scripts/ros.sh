@@ -59,6 +59,7 @@
     alias indigo_brmvt="bloom-release moveit_visual_tools -t indigo -r indigo"
     alias indigo_brmsg="bloom-release moveit_simple_grasps -t indigo -r indigo"
     alias indigo_brgm="bloom-release graph_msgs -t indigo -r indigo"
+    alias indigo_brovt="bloom-release ompl_visual_tools -t indigo -r indigo"
 
     alias hydro_brgrp="bloom-release gazebo_ros_pkgs -t hydro -r hydro"
     alias hydro_brrc="bloom-release ros_control -t hydro -r hydro"

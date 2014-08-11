@@ -1,0 +1,11 @@
+# name: ROS timeing
+# key: benchmark
+# --
+// Benchmark runtime
+ros::Time start_time;
+start_time = ros::Time::now();
+int problems = 1;
+
+// Benchmark runtime
+double duration = (ros::Time::now() - start_time).toSec();
+ROS_INFO_STREAM_NAMED("","Total time: " << duration << " seconds averaging " << duration/problems << " seconds per thing");

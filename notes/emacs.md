@@ -23,6 +23,11 @@ Indent Region in Any Mode
 Do command X times:
   C-u X
 
+Window Management --------------------------------------------------------
+
+Make three column windows equal size (equally size all windows)
+  C-x + 
+
 File Handling --------------------------------------------------------
 
 Revert unsaved changes to a file

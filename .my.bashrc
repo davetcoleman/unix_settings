@@ -422,7 +422,7 @@ if [ $BASHRC_ENV == "janus" ]; then
     use .hdf5-1.8.6
     use OpenMPI-1.4.3
     use CMake
-    use Git
+    #use G_DISABLED_it
     alias emacs='/home/daco5652/software/emacs/bin/emacs-23.4'
     export BOOST_ROOT=/projects/daco5652/software/boost/1.42.0/
     cd /lustre/janus_scratch/daco5652/scriptbots/
@@ -490,6 +490,9 @@ else
     alias e="emacsclient -nw -t" #new_window, t does something for server/client
     alias se="sudo emacs -nw"
     export EDITOR='emacsclient -nw -t'
+    function re() {
+	emacsclient -nw -t -e "(find-file-read-only \"$1\")"
+    }
 fi
 export ALTERNATE_EDITOR="" # this evokes emacs server/client stuff somehow
 

@@ -36,6 +36,7 @@ indigo_brmsg      bloom-release moveit_simple_grasps -t indigo -r indigo
 indigo_brrt       bloom-release realtime_tools -t indigo -r indigo
 indigo_brct       bloom-release control_toolbox -t indigo -r indigo
 indigo_brgm       bloom-release grasp_msgs -t indigo -r indigo
+indigo_brovt      bloom-release ompl_visual_tools -t indigo -r indigo
 
 hydro_brgrp      bloom-release gazebo_ros_pkgs -t hydro -r hydro
 hydro_brrc       bloom-release ros_control -t hydro -r hydro
