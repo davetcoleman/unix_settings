@@ -3,6 +3,10 @@ Emacs Notes
 
 Formatting --------------------------------------------------------
 
+Comment region
+  M-x comment-region
+      uncomment-region
+
 Delete trailing whitespace
   M-x delete-trailing-whitespace
 

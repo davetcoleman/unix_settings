@@ -33,3 +33,9 @@
 
 ## Step out of current loop
    u (until)
+
+## Step INTO function
+   s (step)
+
+## Step OVER subfunctions
+   n (next)

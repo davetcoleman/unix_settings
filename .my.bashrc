@@ -364,6 +364,9 @@ if [ $BASHRC_ENV == "ros_jsk" ]; then
     #export ROS_IP=$ROS_JSK_IP
     #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
 
+    # clean out the stupid logs
+    rosclean purge -y
+
     echo -ne "Computer: ros_jsk"
 fi
 
@@ -565,6 +568,7 @@ fi
 # Quick edit this file
 alias mybash="e ~/unix_settings/.my.bashrc && . ~/unix_settings/.my.bashrc"
 alias mybashr=". ~/unix_settings/.my.bashrc"
+alias myemacs="e ~/unix_settings/.emacs"
 
 # Quick edit ubuntu install file
 alias myinstall="e ~/unix_settings/install/ubuntu.sh"
@@ -613,7 +617,7 @@ if [[ $BASHRC_ENV != "dtc" && $platform != "osx" ]]; then   #only for ubuntu
 fi
 alias gitst='git status'
 alias gitlg='git log -p'
-alias gitall='git add -A && git commit -a && git push'
+alias gitall='git add -A && git commit -a && git push origin --all'
 alias gitreadme='git commit README.md -m "Updated README" && git push'
 alias gitb='git branch'
 alias gitorigin='git remote show -n origin'

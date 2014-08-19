@@ -1,5 +1,5 @@
 ;;;; EMACS CONFIGURATION FILE
-;;; Dave Coleman
+;;; Dave Coleman <dave@dav.ee>
 
 ; F2 - rename file and buffer
 ; F4 - refresh file
@@ -25,12 +25,13 @@
 (global-set-key "\M-g" 'goto-line)
 ; disable menu bar
 (menu-bar-mode 0)
+; Automatically update a file when it changes on disk (unless buffer has not been saved)
+(global-auto-revert-mode t)
+; Reload file
+(global-set-key [f4] 'refresh-file)
 ; compile command using F5 key
 (global-set-key [f5] 'compile)
 (global-set-key [f6] `ros-pkg-compile-command)
-; use system copy and paste
-;(setq x-select-enable-clipboard t) 
-;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 ; kill emacs server
 (global-set-key [f7] 'save-buffers-kill-emacs)
 ; make switch bufferer reversible with SHIFT key
@@ -38,11 +39,13 @@
 ; no word wrap
 ;(setq truncate-lines t)
 ;(set-default 'truncate-lines t)
+; use system copy and paste
+;(setq x-select-enable-clipboard t) 
+;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 ; highlight line
 ;(global-hl-line-mode 1)
 ;(set-face-background 'hl-line "#333333")
 ;(set-face-background hl-line-face "gray13")
-
 ;(require 'highlight-current-line)
 ;(highlight-current-line-on t) 
 ;(highlight-current-line-whole-line-on nil)
@@ -59,8 +62,7 @@
 (defun refresh-file ()
   (interactive)
   (revert-buffer t t t)
-  )
-(global-set-key [f4] 'refresh-file)
+)
 
 ;;; BACKUP AND AUTOSAVE ---------------------------------------------------------
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.

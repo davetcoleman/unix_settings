@@ -2,16 +2,17 @@
 
 ## High Level Software
 
+### Kill a program that is not responding
+
+    Ctrl-z 
+    kill %
+
 ### Command to mount disks at startup
 
     Add to Startup Applications:
     /usr/bin/udisks --mount /dev/sdb3
 
     Instructions: https://help.ubuntu.com/community/AutomaticallyMountPartitions
-
-
-### Convert owner to Dave's Mac user
-    sudo chown -R dave:staff FOLDER/
 
 
 ### Last Resort Shutdown
@@ -61,13 +62,13 @@
 
 ### Mount USB Drive while in Recovery Mode
 
-# See list of mountable names
+See list of mountable names
     sudo fdisk -l
 
-# Make the mount point
+Make the mount point
     mkdir /media/usb_drive
 
-# Mount it
+Mount it
     mount -t vfat /dev/sdc /media/usb_drive
 
 
@@ -193,7 +194,6 @@ to capture race conditions.
 
     for i in *.dae; do ext=$(echo ${i##*.} | tr '[:lower:]' '[:upper:]'); name=$(basename "$i" ".${i##*.}").$ext; cp $i ../$name; done
 
-
 ### Get number of cores on Ubuntu
     cat /proc/cpuinfo | grep processor | wc -l
 
@@ -208,3 +208,6 @@ Remove ``-vn`` to actually use (this is test mode)
     
     rename 's/.m4b$/.m4a/' *.m4b -vn
 
+### Make symbolic link
+
+ln -s source_file destination_file
