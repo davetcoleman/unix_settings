@@ -143,6 +143,9 @@
 
       # Check if dropbox is running:
       #sudo service dropbox status
+
+      # Manual changes
+      zenity --info --text 'Configure a secondary hard drive to auto mount by finding its name using "mount" then adding to startup applications: "/usr/bin/udisks --mount /dev/sdb3"'
   }
 
   # Install flux
@@ -163,7 +166,8 @@
       sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
       wget http://packages.ros.org/ros.key -O - | sudo apt-key add - 
       sudo apt-get update 
-      sudo apt-get install -y ros-hydro-desktop-full python-rosdep python-rosinstall ros-hydro-rqt python-wstool python-bloom python-pip python-rosinstall-generator build-essential python-catkin-lint rosemacs-el || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y ros-hydro-desktop-full python-rosdep python-rosinstall ros-hydro-rqt python-wstool python-bloom python-pip python-rosinstall-generator build-essential python-catkin-lint || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      # removed for 14.04: rosemacs-el
       sudo rosdep init
       rosdep update
   }
@@ -193,6 +197,8 @@
 
   # Setup Github:
   function githubsetup() {
+      unalias -a git  # git is an alias for hub in my config
+
       git config --global user.name 'Dave Coleman' 
       git config --global user.email 'davetcoleman@gmail.com' 
       git config --global core.autoctrlf input 
@@ -202,6 +208,7 @@
       
       # Setup Hub for Github
       sagi rake
+      cd ~/
       git clone git://github.com/github/hub.git
       cd hub
       sudo rake install
@@ -312,7 +319,9 @@
 export UBUNTU_VERSION=`lsb_release --codename | cut -f2`
 
 read -p "Press any key to setup settings for Ubuntu '$UBUNTU_VERSION', or CTRL-C to cancel"
+
 #set -x          # activate debugging from here
+unalias -a git  # git is an alias for hub in my config
 
 # Make new bashrc file
 echo "Name of this computer for the bashrc environment?"
@@ -373,7 +382,7 @@ read -p "Install latex? (y/n)" resp14
 read -p "Install truecrypt? (y/n)" resp15
 read -p "Install Matlab? (y/n)" resp21
 read -p "Install Wine? (y/n)" resp23
-read -p "Install Workrave reak reminder? (y/n)" resp25
+read -p "Install Workrave break reminder? (y/n)" resp25
 read -p "Install and run Benchmarking? (y/n)" resp24
 
 if [ "$resp1" = "y" ]; then
@@ -453,3 +462,6 @@ sudo apt-get dist-upgrade -y
 sudo apt-get clean
 
 set +x          # stop debugging from here
+
+# Rerun config
+. ~/.my.bashrc

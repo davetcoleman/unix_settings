@@ -33,6 +33,11 @@
 
 ### Command to mount disks at startup
 
+    Find the disk name:
+    ```
+    mount
+    ```
+
     Add to Startup Applications:
     /usr/bin/udisks --mount /dev/sdb3
 
