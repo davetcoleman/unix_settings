@@ -162,22 +162,17 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 #	"/home/dave/ros/ws_clam/"   
 #	"/home/dave/ros/ws_nasa/"   
 #	"/home/dave/ros/ws_jsk/" )
-    
-  	# In-Use Workspaces
-        #source /home/dave/ros/ws_ros/install/setup.bash
-	#source /home/dave/ros/ws_ompl/devel/setup.bash
-	#source /home/dave/ros/ws_ros_control/devel/setup.bash
-	#source /home/dave/ros/ws_moveit/devel/setup.bash        
-	#source /home/dave/ros/ws_moveit_other/devel/setup.bash        	
-        #source /home/dave/ros/ws_baxter/devel/setup.bash
-	#source /home/dave/ros/ws_clam/devel/setup.bash
-	#source /home/dave/ros/ws_hrp2/devel/setup.bash
- #       source /home/dave/ros/ws_nasa/devel/setup.bash
-	#source /home/dave/ros/ws_jsk/devel/setup.bash
 
     # In-Use Workspaces
-    source /opt/ros/indigo/setup.bash
-    source /home/dave/ros/ws_ompl/devel/setup.bash
+    #source /opt/ros/indigo/setup.bash
+    #ource /home/dave/ros/ws_ompl/devel/setup.bash
+    source /home/dave/ros/ws_moveit/devel/setup.bash        
+    #source /home/dave/ros/ws_moveit_other/devel/setup.bash        	
+    #source /home/dave/ros/ws_baxter/devel/setup.bash
+    #source /home/dave/ros/ws_clam/devel/setup.bash
+    #source /home/dave/ros/ws_hrp2/devel/setup.bash
+    #source /home/dave/ros/ws_nasa/devel/setup.bash
+    #source /home/dave/ros/ws_jsk/devel/setup.bash
 
     echo -ne "ROS: indigo | "
     

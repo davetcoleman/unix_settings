@@ -28,3 +28,5 @@ There is a clear button on the Rviz plugin
 ```
 rosrun moveit_ros_planning moveit_print_planning_model_info 
 ```
+
+## Indigo commits to not merge into Hydro

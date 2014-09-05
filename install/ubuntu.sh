@@ -189,6 +189,10 @@
       sudo apt-get install -y python-rosdep python-rosinstall ros-indigo-rqt python-wstool python-bloom python-pip python-catkin-lint rosemacs-el || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       sudo rosdep init
       rosdep update      
+
+      # setup catkin_tools config
+      cd ~
+      ln -s unix_settings/config/01-dave-aliases.yaml .config/catkin/verb_aliases/01-dave-aliases.yaml
   }
 
   #Install Gazebo for ubuntu 12.04 - FIRST INSTALL ROS
