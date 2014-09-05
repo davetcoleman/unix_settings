@@ -152,91 +152,50 @@ fi
 
 # Custom environements per computer --------------------------------------------------------
 if [ $BASHRC_ENV == "ros_monster" ]; then
-    # Settings
-    USE_HYDRO=1
-    GAZEBO_SOURCE=0
-    BAXTER_MASTER=0
 
-    # Hydro
-    if [ $USE_HYDRO == 1 ]; then  # qwerty
-	# New complete source build:
-	#source /home/dave/ros/ws_ros/install_isolated/setup.bash
-	#source /home/dave/ros/ws_moveit/devel/setup.bash
-	#source /home/dave/ros/ws_moveit_other/devel/setup.bash       
-	#source /home/dave/ros/ws_ros_control/devel/setup.bash		
-	source /home/dave/ros/ws_baxter/devel/setup.bash		
-
-	##### UNUSED
-	#source /home/dave/ros/ws_misc/devel/setup.bash
-	#source /home/dave/ros/ws_temp/devel/setup.bash
-	#source /home/dave/ros/ws_jsk/devel/setup.bash # note: this includes EVERYTHING except debians, e.g. moveit
-        #source /opt/ros/hydro/setup.bash
+    # The workspaces being used on this computer
+#    ROS_WORKSPACES=( "/home/dave/ros/ws_ompl/"
+#	"/home/dave/ros/ws_ros_control/"
+#	"/home/dave/ros/ws_moveit/"
+#	"/home/dave/ros/ws_moveit_other/")
+#        "/home/dave/ros/ws_baxter/" 
+#	"/home/dave/ros/ws_clam/"   
+#	"/home/dave/ros/ws_nasa/"   
+#	"/home/dave/ros/ws_jsk/" )
+    
+  	# In-Use Workspaces
+        #source /home/dave/ros/ws_ros/install/setup.bash
+	#source /home/dave/ros/ws_ompl/devel/setup.bash
+	#source /home/dave/ros/ws_ros_control/devel/setup.bash
+	#source /home/dave/ros/ws_moveit/devel/setup.bash        
+	#source /home/dave/ros/ws_moveit_other/devel/setup.bash        	
+        #source /home/dave/ros/ws_baxter/devel/setup.bash
 	#source /home/dave/ros/ws_clam/devel/setup.bash
-	####source /home/dave/ros/ws_orocos/install_isolated/setup.bash
+	#source /home/dave/ros/ws_hrp2/devel/setup.bash
+ #       source /home/dave/ros/ws_nasa/devel/setup.bash
+	#source /home/dave/ros/ws_jsk/devel/setup.bash
 
-	echo -ne "ROS: hydro | "
-    else # Groovy
+    # In-Use Workspaces
+    source /opt/ros/indigo/setup.bash
+    source /home/dave/ros/ws_ompl/devel/setup.bash
 
-	source /opt/ros/groovy/setup.bash
-	#source /home/dave/ros/ws_misc_groovy/devel/setup.bash
-	#source /home/dave/ros/ws_groovy_baxter/devel/setup.bash
-        source /usr/share/drcsim/setup.sh
-
-	echo -ne "ROS: groovy | "
-    fi
-
-    # Baxter scripts
-    source ~/unix_settings/scripts/baxter.sh
-
-    # Aliases
-    alias runmatlab="/usr/local/MATLAB/R2013b/bin/matlab"
-   
-    # Gazebo
-    #export GAZEBO_MODEL_PATH=/home/dave/ros/gazebo_models/
-    #export GAZEBO_MODEL_DATABASE_URI=http://gazebosim.org/models
-
-    # Backup before changing
-    export PKG_CONFIG_PATH_ORIGINAL=$PKG_CONFIG_PATH
-    export LIBRARY_PATH_ORIGINAL=$LIBRARY_PATH
-    export LD_LIBRARY_PATH_ORIGINAL=$LD_LIBRARY_PATH
-    export PATH_ORIGINAL=$PATH
-
-    # Gazebo from source
-    if [ $GAZEBO_SOURCE == 1 ]; then
-	# Set local path precendence 
-	export MY_LOCAL=$HOME/local
-	export PKG_CONFIG_PATH=$MY_LOCAL/lib/pkgconfig:$PKG_CONFIG_PATH
-	export LIBRARY_PATH=$LIBRARY_PATH:$MY_LOCAL/lib
- 	export LD_LIBRARY_PATH=$MY_LOCAL/lib:$LD_LIBRARY_PATH
-	export PATH=$MY_LOCAL/bin:$PATH
-
-	echo -ne "Gazebo: source | "
-
-    else # Gazebo debian
-
-	# Restore default behavior
-	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH_ORIGINAL
-	export LIBRARY_PATH=$LIBRARY_PATH_ORIGINAL
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_ORIGINAL
-	export PATH=$PATH_ORIGINAL
-
-	echo -ne "Gazebo: debians | "
-    fi
-
-    # Master URI -----------------------------------------------------------------------------
-
-    # Setup audio for Baxter PC
-    # scp ~/.pulse-cookie  $ROS_BAXTER_IP:~/
-
-    # Use external webcam
-    #export GSCAM_CONFIG="v4l2src device=/dev/video0 ! video/x-raw-rgb,framerate=30/1 ! ffmpegcolorspace"
+    echo -ne "ROS: indigo | "
     
+    # overwrite the one from ws_ros/install/setup.bash
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
+
+    #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
+    #export ROS_PACKAGE_PATH=/home/dave/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
+
+
     # Exports
-    export ROS_IP=`myip`
-    export ROS_HOSTNAME=$ROS_IP
+    #export ROS_IP=$ROS_JSK_IP
+    #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
 
-    echo -ne "Computer: ros_monster"
-    
+    # clean out the stupid logs
+    rosclean purge -y
+
+    echo -ne "Computer: ros_monster"   
 fi
 
 if [ $BASHRC_ENV == "ros_mac" ]; then

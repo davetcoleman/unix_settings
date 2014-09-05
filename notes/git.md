@@ -21,8 +21,8 @@ Removes staged and working directory changes.
 Removes the last commit
   git reset --hard  HEAD~1
 
-Delete all untracked files in a Git repo (careful!)
-  git clean -f
+Delete all untracked files in a Git repo (careful!) including directories
+  git clean -f -d
 
 Removes a commit from remote
   git push upstream +dd61ab32^:master

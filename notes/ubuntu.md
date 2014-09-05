@@ -39,8 +39,11 @@
     ```
 
     Add to Startup Applications:
-    /usr/bin/udisks --mount /dev/sdb3
+    udisksctl mount --block-device /dev/sdb3
+    Instructions: https://askubuntu.com/questions/299298/how-can-i-change-the-mount-point-path-while-using-udisks
 
+    OLD VERSION:
+    /usr/bin/udisks --mount /dev/sdb3
     Instructions: https://help.ubuntu.com/community/AutomaticallyMountPartitions
 
 

@@ -4,7 +4,7 @@
 ## INSTALLATION ON UBUNTU------------------------------------------------------------------------
   # Stuff I can use on any linux machine
   function coreinstall() {
-      sudo apt-get install -y emacs git-core mercurial colordiff tree || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y emacs git-core mercurial colordiff tree udisks || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       sudo apt-get install -y sox || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       # for use with emacs 'play' command for finishing compiling
 
@@ -70,6 +70,10 @@
   # 14.04 Customization
   function ubuntu14install() {
       sudo apt-get install -y xclip terminator synaptic || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+
+      # old gnome... should i stop using this?
+      sudo apt-get install -y indicator-applet-complete gnome-panel gnome-sushi mesa-utils gnome-do compizconfig-settings-manager compiz-plugins-extra || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+
       # gives windows thicker border for resizing
       sudo cp ~/unix_settings/install/ubuntu/metacity-theme-1.xml /usr/share/themes/Ambiance/metacity-1/metacity-theme-1.xml 
       # manually:
@@ -90,6 +94,11 @@
       #cp -R ~/unix_settings/install/ubuntu/gnome-do ~/.gconf/apps/
       # make terminator default
       gconftool --type string --set /desktop/gnome/applications/terminal/exec terminator
+
+      # Mount Data Drive (Secondary Drive), from https://help.ubuntu.com/community/AutomaticallyMountPartitions
+      # Add '/usr/bin/udisks --mount /dev/sda2' to Startup Applications
+      # To find what sda to mount, type 'mount'      
+      zenity --info --text 'If this computer has a secondary hard drive, be sure to add a mount command to Startup Applications'
   }
 
   # Install Wine
@@ -144,8 +153,6 @@
       # Check if dropbox is running:
       #sudo service dropbox status
 
-      # Manual changes
-      zenity --info --text 'Configure a secondary hard drive to auto mount by finding its name using "mount" then adding to startup applications: "/usr/bin/udisks --mount /dev/sdb3"'
   }
 
   # Install flux
