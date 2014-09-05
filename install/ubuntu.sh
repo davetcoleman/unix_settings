@@ -173,7 +173,7 @@
       sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
       wget http://packages.ros.org/ros.key -O - | sudo apt-key add - 
       sudo apt-get update 
-      sudo apt-get install -y ros-hydro-desktop-full python-rosdep python-rosinstall ros-hydro-rqt python-wstool python-bloom python-pip python-rosinstall-generator build-essential python-catkin-lint || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y ros-hydro-desktop-full python-rosdep python-rosinstall ros-hydro-rqt python-wstool python-bloom python-pip python-rosinstall-generator build-essential python-bloom python-catkin-lint || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       # removed for 14.04: rosemacs-el
       sudo rosdep init
       rosdep update
@@ -186,7 +186,7 @@
       sudo apt-get update 
       sudo apt-get install -y ros-indigo-desktop-full || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       # seperate incase the pkg is not available yet
-      sudo apt-get install -y python-rosdep python-rosinstall ros-indigo-rqt python-wstool python-bloom python-pip python-catkin-lint rosemacs-el || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y python-rosdep python-rosinstall python-bloom ros-indigo-rqt python-wstool python-bloom python-pip python-catkin-lint rosemacs-el || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       sudo rosdep init
       rosdep update      
 

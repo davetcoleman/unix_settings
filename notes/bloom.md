@@ -19,6 +19,7 @@ bloom-release --rosdistro hydro --track hydro PACKAGE --edit
 
 Catkin Steps:
 ```
+bloom_alias_load            # load our shortcuts for this process
 roscd PACKAGE
 bcgc			    # catkin_generate_changelog
 e CHANGELOG.rst             # Cleanup changelog
@@ -27,23 +28,5 @@ bcpr {major,minor,patch}    # catkin_prepare_release --bump {major,minor,patch}
 ```
 
 Bloom Steps:
-```
-indigo_brgrp      bloom-release gazebo_ros_pkgs -t indigo -r indigo
-indigo_brrc       bloom-release ros_control -t indigo -r indigo
-indigo_brrcl      bloom-release ros_controllers -t indigo -r indigo
-indigo_brmvt      bloom-release moveit_visual_tools -t indigo -r indigo
-indigo_brmsg      bloom-release moveit_simple_grasps -t indigo -r indigo
-indigo_brrt       bloom-release realtime_tools -t indigo -r indigo
-indigo_brct       bloom-release control_toolbox -t indigo -r indigo
-indigo_brgm       bloom-release grasp_msgs -t indigo -r indigo
-indigo_brovt      bloom-release ompl_visual_tools -t indigo -r indigo
 
-hydro_brgrp      bloom-release gazebo_ros_pkgs -t hydro -r hydro
-hydro_brrc       bloom-release ros_control -t hydro -r hydro
-hydro_brrcl      bloom-release ros_controllers -t hydro -r hydro
-hydro_brmvt      bloom-release moveit_visual_tools -t hydro -r hydro
-hydro_brmsg      bloom-release moveit_simple_grasps -t hydro -r hydro
-hydro_brrt       bloom-release realtime_tools -t hydro -r hydro
-hydro_brct       bloom-release control_toolbox -t hydro -r hydro
-hydro_brgm       bloom-release grasp_msgs -t hydro -r hydro
-```
+Call the associated alias from indigo or hydro as documented in unix_settings/scripts/bloom.sh
