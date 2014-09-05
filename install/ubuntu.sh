@@ -235,7 +235,11 @@
   }
   
   # TrueCrypt
-  alias truecryptinstall="chmod a+rx ~/unix_settings/install/truecrypt-install.sh && sudo ~/unix_settings/install/truecrypt-install.sh"
+  function truecryptinstall()
+  {
+      chmod a+rx ~/unix_settings/install/truecrypt-install-local.sh 
+      sudo ~/unix_settings/install/truecrypt-install-local.sh
+  }
 
   # VirtualBox 4.2 Install 
   function virtualboxinstall()
