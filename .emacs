@@ -37,8 +37,13 @@
 ; make switch bufferer reversible with SHIFT key
 (global-set-key (kbd "C-x O") 'previous-multiframe-window)
 ; no word wrap
-;(setq truncate-lines t)
-;(set-default 'truncate-lines t)
+(setq truncate-lines t)
+(set-default 'truncate-lines t)
+; word wrap for compilation buffer
+(defun my-compilation-mode-hook ()
+  (setq truncate-lines nil) ;; automatically becomes buffer local
+  (set (make-local-variable 'truncate-partial-width-windows) nil))
+(add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
 ; use system copy and paste
 ;(setq x-select-enable-clipboard t) 
 ;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
