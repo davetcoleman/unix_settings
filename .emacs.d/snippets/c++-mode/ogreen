@@ -1,0 +1,6 @@
+# name: ogreen
+# key: ogreen
+# --
+std::cout << std::endl << OMPL_CONSOLE_COLOR_GREEN;
+
+std::cout << std::endl << OMPL_CONSOLE_COLOR_RESET;

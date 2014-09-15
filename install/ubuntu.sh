@@ -163,7 +163,10 @@
   }
 
   #Install good video & image stuff, Adobe Reader, and PDF Printer
-  alias mediainstall="sudo apt-get install -y vlc vlc-plugin-pulse gimp acroread cups-pdf"
+  function mediainstall() {
+      #sudo apt-get install -y vlc vlc-plugin-pulse gimp cups-pdf
+      sudo apt-get install -y gimp
+  }
 
   #Recording desktop image
   alias recordinstall="sudo apt-get install -y gtk-recordMyDesktop"

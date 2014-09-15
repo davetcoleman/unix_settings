@@ -30,3 +30,16 @@ rosrun moveit_ros_planning moveit_print_planning_model_info
 ```
 
 ## Indigo commits to not merge into Hydro
+
+## OMPL Profiling
+
+    #include "ompl/tools/debug/Profiler.h"
+
+    ompl::tools::Profiler::Clear();
+    ompl::tools::Profiler::Start();
+
+    ompl::tools::Profiler::Begin("SPARStwo::getSimilarPaths::findGraphNeighbors start");
+    ...
+    ompl::tools::Profiler::End("SPARStwo::getSimilarPaths::findGraphNeighbors start");
+
+    ompl::tools::Profiler::ScopedBlock("SPARStwo::constructSolution");
