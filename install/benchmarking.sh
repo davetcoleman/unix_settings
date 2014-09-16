@@ -4,10 +4,10 @@ sudo apt-get install sysbench
 
 sysbench --test=cpu --cpu-max-prime=20000 run
 
-# Commen block:
+# Comment block:
 : <<'END'
 
-## Super Fast PC at JSK: 
+## Super Fast PC at JSK ----------------------------------
 Test execution summary:
     total time:                          20.9671s
     total number of events:              10000
@@ -21,6 +21,31 @@ Test execution summary:
 Threads fairness:
     events (avg/stddev):           10000.0000/0.00
     execution time (avg/stddev):   20.9662/0.00
+
+
+
+
+## ROS Monster old desktop at CU ------------------------
+
+Test execution summary:
+    total time:                          23.9578s
+    total number of events:              10000
+    total time taken by event execution: 23.9558
+    per-request statistics:
+         min:                                  2.20ms
+         avg:                                  2.40ms
+         max:                                  2.75ms
+         approx.  95 percentile:               2.53ms
+
+Threads fairness:
+    events (avg/stddev):           10000.0000/0.00
+    execution time (avg/stddev):   23.9558/0.00
+
+
+
+
+
+
 
 
 END
