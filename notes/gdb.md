@@ -1,41 +1,47 @@
 # GDB Notes
 
-## Output Backtrace of All Threads At Once
+//////////////////////////////////////////////////////////////
+## Basics
+
+### Output Backtrace of All Threads At Once
    thread apply all bt full
 
-## Print variable
+### Print variable
    p
 
-## See code
+### See code
    list
 
-## Backtrace
+### Backtrace
    bt
 
-## Backtrace all threads
+### Backtrace all threads
    thread apply all bt
 
-## Change frames
+### Change frames
    frame FRAME_NUMBER
    f FRAME_NUMBER
 
-## Change frames towards main
+### Change frames towards main
    up
 
-## Print all local variables
+### Print all local variables
    info locals
 
-## Print all global and static variables
+### Print all global and static variables
    info variables
 
-## Step out of current function
+//////////////////////////////////////////////////////////////
+## Navigation
+
+### Step out of current function
    fin
 
-## Step out of current loop
+### Step out of current loop
    u (until)
 
-## Step INTO function
+### Step INTO function
    s (step)
 
-## Step OVER subfunctions
+### Step OVER subfunctions
    n (next)

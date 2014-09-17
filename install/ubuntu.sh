@@ -347,6 +347,7 @@ else
 fi
 
 read -p "Install chrome? (y/n)" resp3
+read -p "Setup secondary hard drive and ROS workspace sync? (for Dropbox) (y/n)" resp27
 read -p "Install Flux? (y/n)" resp20
 read -p "Install spotify? (y/n)" resp4
 read -p "Install media stuff? (y/n)" resp6
@@ -354,7 +355,6 @@ read -p "Install media stuff? (y/n)" resp6
 read -p "Setup github? (y/n)" resp8
 read -p "Setup SSH & key? (y/n)" resp9
 read -p "Install VirtualBox? (y/n)" resp12
-read -p "Setup secondary hard drive and ROS workspace sync? (for Dropbox) (y/n)" resp27
 read -p "Install dropbox? (y/n)" resp5
 read -p "Install recording software? (y/n)" resp13
 read -p "Install latex? (y/n)" resp14
@@ -370,6 +370,9 @@ if [ "$resp1" = "y" ]; then
 fi
 if [ "$resp3" = "y" ]; then
     chromeinstall
+fi
+if [ "$resp27" = "y" ]; then
+    secondarydriveinstall
 fi
 if [ "$resp22" = "y" ]; then
     ubuntuinstall
@@ -431,10 +434,6 @@ fi
 if [ "$resp26" = "y" ]; then
     pythoninstall
 fi
-if [ "$resp27" = "y" ]; then
-    secondarydriveinstall
-fi
-
 
 # Now cleanup 
 sudo apt-get autoremove -y
