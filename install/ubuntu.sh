@@ -194,6 +194,7 @@
       rosdep update      
 
       # setup catkin_tools config
+      mkdir -p /home/dave/.config/catkin/verb_aliases
       ln -s ~/unix_settings/config/01-dave-aliases.yaml /home/dave/.config/catkin/verb_aliases/01-dave-aliases.yaml
   }
 
@@ -271,10 +272,19 @@
     cp ~/unix_settings/install/ubuntu/autostart/workrave.desktop ~/.config/autostart/workrave.desktop
   }
 
-  # Install pythong tools
+  # Install python tools
   function pythoninstall() {
       sudo apt-get install -y ipython python-numpy python-scipy python-matplotlib
+  }
 
+  # Setup secondary hard drive and ROS workspace sync? (for Dropbox)
+  function secondarydriveinstall() {
+      zenity --info --text 'Make sure the secondary drive is named "DataDrive" and is mounted'
+      ln -s /media/dave/DataDrive/Dropbox ~/Dropbox
+      ln -s /media/dave/DataDrive/Dropbox/Documents/2014 ~/2014
+      # crontab -e
+      # Add:
+      # */10 * * * * /home/dave/unix_settings/scripts/rsync/backup_cu2_local_ros.sh  #every 10 min
   }
 
   # Setup SSH Access
@@ -292,14 +302,7 @@
       google-chrome 'https://github.com/settings/ssh'
       google-chrome 'https://bitbucket.org/account/user/davetcoleman/ssh-keys/'
   }
-  # COPY KEY TO HOSTMONSTER and Githb
-  #   1. login to http://hostmonster.com/
-  #   2. Edit SSH key, import 
-  #   3. Copy id_rsa.pub to "Paste the Public Key in this box:"
-  #   4. Name the key
-  #   5. Import button
-  #   6. Click "Manage Authorization" next to key and "Authorize" button
-  #      
+
   # COPY KEY TO NEW COMPUTER: ssh-copy-id <username>@<host>
   # then disable password access on other computer using:
   #    se /etc/ssh/sshd_config
@@ -394,14 +397,16 @@ read -p "Install media stuff? (y/n)" resp6
 read -p "Setup github? (y/n)" resp8
 read -p "Setup SSH & key? (y/n)" resp9
 read -p "Install VirtualBox? (y/n)" resp12
+read -p "Setup secondary hard drive and ROS workspace sync? (for Dropbox) (y/n)" resp27
 read -p "Install dropbox? (y/n)" resp5
 read -p "Install recording software? (y/n)" resp13
 read -p "Install latex? (y/n)" resp14
 read -p "Install truecrypt? (y/n)" resp15
 read -p "Install Matlab? (y/n)" resp21
 read -p "Install Wine? (y/n)" resp23
-read -p "Install Workrave break reminder? (y/n)" resp25
 read -p "Install and run Benchmarking? (y/n)" resp24
+read -p "Install Workrave break reminder? (y/n)" resp25
+read -p "Install python tools? (y/n)" resp26
 
 if [ "$resp1" = "y" ]; then
     coreinstall
@@ -469,8 +474,14 @@ fi
 if [ "$resp24" = "y" ]; then
     benchmarkinstall
 fi
-if [ "$resp24" = "y" ]; then
+if [ "$resp25" = "y" ]; then
     workraveinstall
+fi
+if [ "$resp26" = "y" ]; then
+    pythoninstall
+fi
+if [ "$resp27" = "y" ]; then
+    secondarydriveinstall
 fi
 
 
@@ -483,3 +494,7 @@ set +x          # stop debugging from here
 
 # Rerun config
 . ~/unix_settings/.my.bashrc
+
+# Fix the unix_settings repo to use ssh
+cd ~/unix_settings
+gitsshfix

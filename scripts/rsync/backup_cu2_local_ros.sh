@@ -1,5 +1,8 @@
 echo "============= Backup started at " `date` >> /home/dave/cron_backup_log.txt
-rsync -avg --progress --delete --exclude 'devel' --exclude 'build' --exclude 'install' --exclude 'build_isolated' --exclude 'devel_isolated' --exclude 'install_isolated' --exclude 'large_data_files_not_backedup' --exclude 'archive'  ~/ros/ ~/Dropbox/cu2_ros/ >> /home/dave/cron_backup_log.txt
+rsync -avg --progress --delete --exclude 'devel' --exclude 'build' --exclude 'install' --exclude 'build_isolated' \
+ --exclude 'devel_isolated' --exclude 'install_isolated' --exclude 'large_data_files_not_backedup' --exclude 'archive' \
+ ~/ros/ ~/Dropbox/cu2_ros/ >> /home/dave/cron_backup_log.txt
+
 echo "============= Backup finished at " `date` >> /home/dave/cron_backup_log.txt
 
 # -v : verbose
