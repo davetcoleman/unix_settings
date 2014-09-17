@@ -1,6 +1,5 @@
 # GDB Notes
 
-//////////////////////////////////////////////////////////////
 ## Basics
 
 ### Output Backtrace of All Threads At Once
@@ -31,7 +30,6 @@
 ### Print all global and static variables
    info variables
 
-//////////////////////////////////////////////////////////////
 ## Navigation
 
 ### Step out of current function
