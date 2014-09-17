@@ -1,6 +1,5 @@
 #!/bin/bash
 # AUTO CONFIGURE SCRIPT FOR DAVE'S SETTINGS
-# This is for Ubuntu 14.04 only
 
 ## INSTALLATION ON UBUNTU------------------------------------------------------------------------
   # Stuff I can use on any linux machine
@@ -22,7 +21,54 @@
       python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'
   }
 
+  # 12.04 Customization
   function ubuntuinstall() {
+      sudo apt-get install -y indicator-applet-complete gnome-panel gnome-sushi mesa-utils xclip gnome-do terminator synaptic || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y emacs-goodies-el
+      # gives windows thicker border for resizing
+      sudo cp ~/unix_settings/install/ubuntu/metacity-theme-1.xml /usr/share/themes/Ambiance/metacity-1/metacity-theme-1.xml 
+      # manually:
+      # se /usr/share/themes/Ambiance/metacity-1/metacity-theme-1.xml
+      #      <distance name="left_width" value="3"/>
+      #      <distance name="right_width" value="3"/>
+      #      <distance name="bottom_height" value="3"/>
+
+      # makes nautilus always show the file path dialogue
+      #gsettings set org.gnome.nautilus.preferences always-use-location-entry true   
+
+      # customize terminator
+      mkdir -p ~/.config/terminator
+      cp ~/unix_settings/install/ubuntu/terminator.config ~/.config/terminator/config
+      
+      # setup terminator to autostart
+      mkdir -p ~/.config/autostart      
+      cp ~/unix_settings/install/ubuntu/autostart/terminator.desktop ~/.config/autostart/terminator.desktop
+      # customize gnome-do
+      cp -R ~/unix_settings/install/ubuntu/gnome-do ~/.gconf/apps/
+      # make terminator default
+      gconftool --type string --set /desktop/gnome/applications/terminal/exec terminator
+
+      # manual changes
+      zenity --info --text 'Add a centered clock at the top by pressing ALT, right click on top, "Add to Panel", choose "Clock", ALT right click "Move" to move to center.'
+      zenity --info --text 'Similarly, add Notificaitons Area panel to see dropbox, etc'
+
+      # Mount Data Drive (Secondary Drive), from https://help.ubuntu.com/community/AutomaticallyMountPartitions
+      # Add '/usr/bin/udisks --mount /dev/sda2' to Startup Applications
+      # To find what sda to mount, type 'mount'      
+      zenity --info --text 'If this computer has a secondary hard drive, be sure to add a mount command to Startup Applications'
+
+      # Use compiz to do screen moving left and right:
+      # still testing
+      # sudo apt-get install compizconfig-settings-manager compiz-fusion-plugins-extra
+      # TODO: copy my compiz settings over
+
+      # fix for gtk-warning: http://askubuntu.com/questions/342202/failed-to-load-module-canberra-gtk-module-but-already-installed
+      sudo apt-get install libcanberra-gtk-module:i386 libgtkmm-2.4-1c2a gtk2-engines-murrine:i386
+  }
+
+
+  # 14.04 Customization
+  function ubuntu14install() {
       sudo apt-get install -y xclip terminator synaptic || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
 
       # old gnome... should i stop using this?
@@ -48,6 +94,11 @@
       #cp -R ~/unix_settings/install/ubuntu/gnome-do ~/.gconf/apps/
       # make terminator default
       gconftool --type string --set /desktop/gnome/applications/terminal/exec terminator
+
+      # Mount Data Drive (Secondary Drive), from https://help.ubuntu.com/community/AutomaticallyMountPartitions
+      # Add '/usr/bin/udisks --mount /dev/sda2' to Startup Applications
+      # To find what sda to mount, type 'mount'      
+      zenity --info --text 'If this computer has a secondary hard drive, be sure to add a mount command to Startup Applications'
   }
 
   # Install Wine
@@ -120,8 +171,17 @@
   }
 
   #Recording desktop image
-  function recordinstall() {
-      sudo apt-get install -y gtk-recordMyDesktop
+  alias recordinstall="sudo apt-get install -y gtk-recordMyDesktop"
+
+  #Install ROS Hydro:
+  function installros_hydro() {
+      sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
+      wget http://packages.ros.org/ros.key -O - | sudo apt-key add - 
+      sudo apt-get update 
+      sudo apt-get install -y ros-hydro-desktop-full python-rosdep python-rosinstall ros-hydro-rqt python-wstool python-bloom python-pip python-rosinstall-generator build-essential python-bloom python-catkin-lint || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      # removed for 14.04: rosemacs-el
+      sudo rosdep init
+      rosdep update
   }
 
   #Install ROS Indigo:
@@ -221,34 +281,12 @@
 
   # Setup secondary hard drive and ROS workspace sync? (for Dropbox)
   function secondarydriveinstall() {
-      # Mount Data Drive (Secondary Drive), see notes/ubuntu.md
-      zenity --info --text 'Preparing to mount secondary hard drive - see terminal'
-      
-      read -p "Does the hard drive have the name 'DataDrive'? If not, rename now" mount_resp1
-      echo "\n\nWhat is the mount location of the secondary drive?"      
-      lsblk -o KNAME,TYPE,SIZE,MODEL
-      read -p "Name (e.g. /dev/sdb1):" ubuntuMountName
-
-      echo "Attempting to mount device now:"
-      udisksctl mount --block-device $ubuntuMountName
-
-      # setup mount to autostart
-      echo "Attempting to add as a startup application:"
-      mkdir -p ~/.config/autostart
-      cp ~/unix_settings/install/ubuntu/autostart/udisks.desktop ~/.config/autostart/udisks.desktop
-      sed -i "s,MOUNTPOINT,$ubuntuMountName,g" ~/.config/autostart/udisks.desktop
-
-      echo "Attempting to symblink Dropbox folders:"
+      zenity --info --text 'Make sure the secondary drive is named "DataDrive" and is mounted'
       ln -s /media/dave/DataDrive/Dropbox ~/Dropbox
       ln -s /media/dave/DataDrive/Dropbox/Documents/2014 ~/2014
-
-      mkdir -p ~/ros
-      echo "TODO: crontab for ros folder syncing"
       # crontab -e
       # Add:
       # */10 * * * * /home/dave/unix_settings/scripts/rsync/backup_cu2_local_ros.sh  #every 10 min
-
-      read -p "Done with secondary harddrive setup. Continue Ubuntu setup? (Ctrl-C to cancel)" mount_resp2
   }
 
   # Setup SSH Access
@@ -336,20 +374,27 @@ fi
 read -p "Install core terminal stuff? (y/n)" resp1
 
 # What version of ubuntu?
-if [ "$UBUNTU_VERSION" = "trusty" ]; then
-    # 14.04
-    read -p "Install Ubuntu 14.04 stuff? (y/n)" resp22
-    read -p "Install ros indigo? (y/n)" resp71
-    #read -p "Install Adobe Acrobat? (y/n)" resp19 # not available in trusty yet
+if [ "$UBUNTU_VERSION" = "precise" ]; then
+    # 12.04
+    read -p "Install Ubuntu 12.04 stuff? (y/n)" resp2
+    read -p "Install ros hydro? (y/n)" resp7
+    read -p "Install Adobe Acrobat? (y/n)" resp19 # not available in trusty yet
 else
-    echo "ERROR - unknown ubuntu version $UBUNTU_VERSION"
-    return
+    if [ "$UBUNTU_VERSION" = "trusty" ]; then
+	# 14.04
+	read -p "Install Ubuntu 14.04 stuff? (y/n)" resp22
+	read -p "Install ros indigo? (y/n)" resp71
+    else
+	echo "ERROR - unknown ubuntu version $UBUNTU_VERSION"
+	return
+    fi
 fi
 
 read -p "Install chrome? (y/n)" resp3
 read -p "Install Flux? (y/n)" resp20
 read -p "Install spotify? (y/n)" resp4
 read -p "Install media stuff? (y/n)" resp6
+#read -p "Install ros pr2? (y/n)" resp11
 #read -p "Install Gazebo? (y/n)" resp16
 read -p "Setup github? (y/n)" resp8
 read -p "Setup SSH & key? (y/n)" resp9
@@ -371,14 +416,20 @@ fi
 if [ "$resp3" = "y" ]; then
     chromeinstall
 fi
-if [ "$resp22" = "y" ]; then
+if [ "$resp2" = "y" ]; then
     ubuntuinstall
 fi
-if [ "$resp5" = "y" ]; then
-    dropboxinstall
+if [ "$resp7" = "y" ]; then
+    installros_hydro
 fi
 if [ "$resp19" = "y" ]; then
     acrobatinstall
+fi
+if [ "$resp22" = "y" ]; then
+    ubuntu14install
+fi
+if [ "$resp71" = "y" ]; then
+    installros_indigo
 fi
 if [ "$resp20" = "y" ]; then
     fluxinstall
@@ -401,8 +452,8 @@ fi
 if [ "$resp12" = "y" ]; then
     virtualboxinstall
 fi
-if [ "$resp71" = "y" ]; then
-    installros_indigo
+if [ "$resp5" = "y" ]; then
+    dropboxinstall
 fi
 if [ "$resp13" = "y" ]; then
     recordinstall
