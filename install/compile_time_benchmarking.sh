@@ -40,3 +40,6 @@ Old ros_monster Correll lab computer re-compile time:
 
 Runtime: 6 minutes and 41.1 seconds
 
+New ros_monster:
+
+Runtime: 4 minutes and 44.2 seconds

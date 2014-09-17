@@ -22,9 +22,6 @@ Threads fairness:
     events (avg/stddev):           10000.0000/0.00
     execution time (avg/stddev):   20.9662/0.00
 
-
-
-
 ## ROS Monster old desktop at CU ------------------------
 
 Test execution summary:
@@ -41,7 +38,21 @@ Threads fairness:
     events (avg/stddev):           10000.0000/0.00
     execution time (avg/stddev):   23.9558/0.00
 
+## ROS Monster new desktop at CU ------------------------
 
+Test execution summary:
+    total time:                          22.2772s
+    total number of events:              10000
+    total time taken by event execution: 22.2708
+    per-request statistics:
+         min:                                  2.15ms
+         avg:                                  2.23ms
+         max:                                  6.78ms
+         approx.  95 percentile:               2.26ms
+
+Threads fairness:
+    events (avg/stddev):           10000.0000/0.00
+    execution time (avg/stddev):   22.2708/0.00
 
 
 

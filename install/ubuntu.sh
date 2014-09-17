@@ -194,8 +194,7 @@
       rosdep update      
 
       # setup catkin_tools config
-      cd ~
-      ln -s unix_settings/config/01-dave-aliases.yaml .config/catkin/verb_aliases/01-dave-aliases.yaml
+      ln -s ~/unix_settings/config/01-dave-aliases.yaml /home/dave/.config/catkin/verb_aliases/01-dave-aliases.yaml
   }
 
   #Install Gazebo for ubuntu 12.04 - FIRST INSTALL ROS
@@ -211,7 +210,7 @@
 
   # Setup Github:
   function githubsetup() {
-      unalias -a git  # git is an alias for hub in my config
+      unalias git  # git is an alias for hub in my config
 
       git config --global user.name 'Dave Coleman' 
       git config --global user.email 'davetcoleman@gmail.com' 
@@ -244,6 +243,7 @@
   # TrueCrypt
   function truecryptinstall()
   {
+      zenity --info --text 'Is dropbox setup and 2014 files synced? Truecrypt will not install without those files'
       chmod a+rx ~/unix_settings/install/truecrypt-install-local.sh 
       sudo ~/unix_settings/install/truecrypt-install-local.sh
   }
@@ -406,6 +406,9 @@ read -p "Install and run Benchmarking? (y/n)" resp24
 if [ "$resp1" = "y" ]; then
     coreinstall
 fi
+if [ "$resp3" = "y" ]; then
+    chromeinstall
+fi
 if [ "$resp2" = "y" ]; then
     ubuntuinstall
 fi
@@ -420,9 +423,6 @@ if [ "$resp22" = "y" ]; then
 fi
 if [ "$resp71" = "y" ]; then
     installros_indigo
-fi
-if [ "$resp3" = "y" ]; then
-    chromeinstall
 fi
 if [ "$resp20" = "y" ]; then
     fluxinstall
@@ -482,4 +482,4 @@ sudo apt-get clean
 set +x          # stop debugging from here
 
 # Rerun config
-. ~/.my.bashrc
+. ~/unix_settings/.my.bashrc
