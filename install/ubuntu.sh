@@ -131,7 +131,8 @@
       sudo apt-get update 
       sudo apt-get install -y ros-indigo-desktop-full || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       # seperate incase the pkg is not available yet
-      sudo apt-get install -y python-rosdep python-rosinstall python-bloom ros-indigo-rqt python-wstool python-bloom python-pip python-catkin-lint rosemacs-el || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y python-rosdep python-rosinstall python-bloom ros-indigo-rqt python-wstool python-bloom python-pip python-catkin-lint  || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y rosemacs-el
       sudo rosdep init
       rosdep update      
 

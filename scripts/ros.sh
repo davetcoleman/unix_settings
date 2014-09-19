@@ -19,6 +19,9 @@
     alias rosdepinstall_hydro="rosdep install -y --from-paths src --ignore-src --rosdistro hydro"
     alias rosdepinstall_indigo="rosdep install -y --from-paths src --ignore-src --rosdistro indigo"
 
+    # Commit to MoveIt!
+    alias commitmoveit=". ~/unix_settings/scripts/commit_moveit.sh"
+
     # ROSCD
     alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
     alias roscdclam="cd ~/ros/ws_clam/src && ll"
@@ -27,7 +30,7 @@
     alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
     alias roscdros="cd ~/ros/ws_ros/src && ll"
     alias roscdhrp2="cd ~/ros/ws_hrp2/src && ll"
-    alias roscdompl="cd ~/ros/ws_ompl/src/ompl/src/ompl && ll"
+    alias roscdompl="cd ~/ros/ws_moveit/src/ompl/src/ompl && ll"
     alias roscdompl_interface="cd ~/ros/ws_moveit/src/moveit_planners/ompl/ompl_interface && ll"
     alias roscdh="cd /home/dave/ros/ws_moveit/src/moveit_hrp2/hrp2jsknt_moveit_demos && ll"
 

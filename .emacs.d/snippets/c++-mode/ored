@@ -1,0 +1,6 @@
+# name: ored
+# key: ored
+# --
+std::cout << OMPL_CONSOLE_COLOR_RED;
+
+std::cout << OMPL_CONSOLE_COLOR_RESET;

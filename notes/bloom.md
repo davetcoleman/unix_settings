@@ -1,8 +1,8 @@
-ROS Bloom Release System Notes
-------------
+# ROS Bloom Release System Notes
 
-**First time release to Bloom
-  Source: http://wiki.ros.org/bloom/Tutorials/FirstTimeRelease
+## First time release to Bloom
+
+Source: http://wiki.ros.org/bloom/Tutorials/FirstTimeRelease
 
 ```
 roscd PACKAGE
@@ -15,7 +15,8 @@ bcpr patch
 bloom-release --rosdistro hydro --track hydro PACKAGE --edit
 ```
 
-**Updating to Bloom
+
+## Updating to Bloom
 
 Catkin Steps:
 ```

@@ -13,7 +13,7 @@ log4j.logger.ros.rqt_gui_cpp.pluginlib.ClassLoader=INFO
 
 # CONSOLE BRIDGE
 log4j.logger.ros.rosconsole_bridge=DEBUG
-log4j.logger.ros.rosconsole_bridge.console_bridge=DEBUG
+log4j.logger.ros.rosconsole_bridge.console_bridge=INFO
 log4j.logger.ros.rosconsole_bridge.moveit_planners_ompl=DEBUG
 log4j.logger.ros.rosconsole_bridge.class_loader.class_loader_private=INFO
 log4j.logger.ros.rosconsole_bridge.urdfdom=INFO
