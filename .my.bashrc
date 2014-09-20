@@ -62,7 +62,7 @@ fi
 # Show what git or hg branch we are in
 function parse_vc_branch_and_add_brackets {
     gitbranch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'`
-    
+
     if [[ "$gitbranch" != '' ]]; then
 	echo $gitbranch
     else
@@ -158,15 +158,15 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 #	"/home/dave/ros/ws_ros_control/"
 #	"/home/dave/ros/ws_moveit/"
 #	"/home/dave/ros/ws_moveit_other/")
-#        "/home/dave/ros/ws_baxter/" 
-#	"/home/dave/ros/ws_clam/"   
-#	"/home/dave/ros/ws_nasa/"   
+#        "/home/dave/ros/ws_baxter/"
+#	"/home/dave/ros/ws_clam/"
+#	"/home/dave/ros/ws_nasa/"
 #	"/home/dave/ros/ws_jsk/" )
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
-    #source /home/dave/ros/ws_moveit/devel/setup.bash        
-    source /home/dave/ros/ws_moveit_other/devel/setup.bash        	
+    source /home/dave/ros/ws_moveit/devel/setup.bash
+    #source /home/dave/ros/ws_moveit_other/devel/setup.bash
     #source /home/dave/ros/ws_clam/devel/setup.bash
     #source /home/dave/ros/ws_baxter/devel/setup.bash
     #source /home/dave/ros/ws_hrp2/devel/setup.bash
@@ -177,7 +177,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     #source /home/dave/ros/ws_ompl/devel/setup.bash
 
     echo -ne "ROS: indigo | "
-    
+
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
 
@@ -189,10 +189,45 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     #export ROS_IP=$ROS_JSK_IP
     #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
 
+    echo -ne "Computer: ros_monster"
+
     # clean out the stupid logs
     rosclean purge -y
+fi
 
-    echo -ne "Computer: ros_monster"   
+if [ $BASHRC_ENV == "ros_baxter" ]; then
+
+    BAXTER_MASTER=1
+    source ~/unix_settings/scripts/baxter.sh
+
+    # In-Use Workspaces
+    #source /opt/ros/indigo/setup.bash
+    #source /home/dave/ros/ws_moveit/devel/setup.bash
+    #source /home/dave/ros/ws_moveit_other/devel/setup.bash
+    source /home/dave/ros/ws_baxter_new/devel/setup.bash
+
+    #source /home/dave/ros/ws_clam/devel/setup.bash
+    #source /home/dave/ros/ws_hrp2/devel/setup.bash
+    #source /home/dave/ros/ws_nasa/devel/setup.bash
+    #source /home/dave/ros/ws_jsk/devel/setup.bash
+
+    echo -ne "ROS: indigo | "
+
+    # overwrite the one from ws_ros/install/setup.bash
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
+
+    #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
+    #export ROS_PACKAGE_PATH=/home/dave/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
+
+
+    # Exports
+    export ROS_IP=$ROS_BAXTER_IP
+    #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
+
+    echo -ne "Computer: ros_baxter"
+
+    # clean out the stupid logs
+    rosclean purge -y
 fi
 
 if [ $BASHRC_ENV == "ros_mac" ]; then
@@ -200,9 +235,9 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
     USE_HYDRO=1
     GAZEBO_SOURCE=0
     BAXTER_MASTER=0
-    
+
     # Hydro
-    if [ $USE_HYDRO == 1 ]; then 
+    if [ $USE_HYDRO == 1 ]; then
 	# In-Use Workspaces
 	source /home/dave/ros/ws_ros_catkin/install_isolated/setup.bash
 	#source /home/dave/ros/ws_moveit/devel/setup.bash
@@ -216,9 +251,9 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
 	#source /home/dave/ros/ws_jsk/devel/setup.bash
 	#source /home/dave/ros/ws_core/devel/setup.bash
         #source /opt/ros/hydro/setup.bash
-	#source /home/dave/ros/ws_baxter/devel/setup.bash		
+	#source /home/dave/ros/ws_baxter/devel/setup.bash
 	#source /home/dave/ros/ws_misc/devel/setup.bash
-	#source /home/dave/ros/ws_atlas/devel/setup.bash	
+	#source /home/dave/ros/ws_atlas/devel/setup.bash
 
 	##### UNUSED
 	#source /home/dave/ros/ws_clam/devel/setup.bash
@@ -249,7 +284,7 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
 
     # Gazebo from source
     if [ $GAZEBO_SOURCE == 1 ]; then
-	# Set local path precendence 
+	# Set local path precendence
 	export MY_LOCAL=$HOME/local
 	export PKG_CONFIG_PATH=$MY_LOCAL/lib/pkgconfig:$PKG_CONFIG_PATH
 	export LIBRARY_PATH=$LIBRARY_PATH:$MY_LOCAL/lib
@@ -275,12 +310,12 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
 
     # Aliases
     alias runmatlab="/usr/local/MATLAB/R2013b/bin/matlab"
-   
+
     # Exports
     export ROS_IP=`myip`
     export ROS_HOSTNAME=$ROS_IP
 
-    echo -ne "Computer: ros_mac"    
+    echo -ne "Computer: ros_mac"
 fi
 
 if [ $BASHRC_ENV == "ros_jsk" ]; then
@@ -290,25 +325,25 @@ if [ $BASHRC_ENV == "ros_jsk" ]; then
 #	"/home/dave/ros/ws_ros_control/"
 	"/home/dave/ros/ws_moveit/"
 	"/home/dave/ros/ws_moveit_other/")
-#        "/home/dave/ros/ws_baxter/" 
-#	"/home/dave/ros/ws_clam/"   
-#	"/home/dave/ros/ws_nasa/"   
+#        "/home/dave/ros/ws_baxter/"
+#	"/home/dave/ros/ws_clam/"
+#	"/home/dave/ros/ws_nasa/"
 #	"/home/dave/ros/ws_jsk/" )
-    
+
   	# In-Use Workspaces
         #source /home/dave/ros/ws_ros/install/setup.bash
 	#source /home/dave/ros/ws_ompl/devel/setup.bash
 	#source /home/dave/ros/ws_ros_control/devel/setup.bash
-	#source /home/dave/ros/ws_moveit/devel/setup.bash        
-	#source /home/dave/ros/ws_moveit_other/devel/setup.bash        	
+	#source /home/dave/ros/ws_moveit/devel/setup.bash
+	#source /home/dave/ros/ws_moveit_other/devel/setup.bash
         #source /home/dave/ros/ws_baxter/devel/setup.bash
 	#source /home/dave/ros/ws_clam/devel/setup.bash
 	#source /home/dave/ros/ws_hrp2/devel/setup.bash
         source /home/dave/ros/ws_nasa/devel/setup.bash
 	#source /home/dave/ros/ws_jsk/devel/setup.bash
-    
+
     echo -ne "ROS: hydro | "
-    
+
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
 
@@ -333,8 +368,8 @@ if [ $BASHRC_ENV == "ros_gateway" ]; then
 
     #In-Use Workspaces
     #source /opt/ros/hydro/setup.bash
-    #source /home/dave/ros/ws_baxter/devel/setup.bash		
-    source /home/dave/ros/ws_baxter/devel/setup.bash		
+    #source /home/dave/ros/ws_baxter/devel/setup.bash
+    source /home/dave/ros/ws_baxter/devel/setup.bash
 
     source ~/unix_settings/scripts/baxter.sh
 
@@ -365,7 +400,7 @@ if [ $BASHRC_ENV == "ros_baxter_control" ]; then
 
     #In-Use Workspaces
     source /opt/ros/hydro/setup.bash
-    source /home/dave/ros/ws_baxter/devel/setup.bash		
+    source /home/dave/ros/ws_baxter/devel/setup.bash
 
     echo -ne "ROS: hydro | "
 
@@ -391,7 +426,7 @@ if [ $BASHRC_ENV == "mac" ]; then
 
     alias web='cd /Volumes/Dave/Web'
     alias brewwork='cd /usr/local/Library/Formula'
-    
+
     # For homebrew / ROS Mac
     export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/lib/python2.7/site-packages:$PATH
     export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
@@ -422,11 +457,11 @@ fi
 if [ $ROS_SEGMENT == "ros" ]; then
     if [ $BAXTER_MASTER == 1 ]; then  # NOTE: [ ] is false and [ 1 ] is true
 	export ROS_MASTER_URI=$BAXTER_IP
-	
+
 	echo -ne " | ROS Master: baxter"
 
     else # Local
-	export ROS_MASTER_URI=http://localhost:11311		
+	export ROS_MASTER_URI=http://localhost:11311
 
 	echo -ne " | ROS Master: localhost"
     fi
@@ -482,8 +517,8 @@ fi
 gre() { grep -l -I --ignore-case --recursive $1 . | xargs emacsclient -nw -t ;}
 
 # Find files with name in directory
-findfile() 
-{ 
+findfile()
+{
     if [[ $platform != 'osx' ]]; then
 	find -iname $1 2>/dev/null
     else
@@ -556,10 +591,10 @@ alias hacker='hexdump -C /dev/urandom | grep "fd b4"'
 alias listfiles="find . -maxdepth 1 -type f" # lists files in the current directory
 
 alias dave="echo '
-  ____    ___     _______ 
+  ____    ___     _______
  |  _ \  / \ \   / / ____|
- | | | |/ _ \ \ / /|  _|  
- | |_| / ___ \ V / | |___ 
+ | | | |/ _ \ \ / /|  _|
+ | |_| / ___ \ V / | |___
  |____/_/   \_\_/  |_____|
                            '";
 
@@ -587,36 +622,36 @@ alias gitlogcompare_indigo_hydro="gitlogcompare indigo-devel..hydro-devel"
 # change git https to ssh
 function gitsshfix() {
     #-- Script to automate https://help.github.com/articles/why-is-git-always-asking-for-my-password
-    
+
     REPO_URL=`git remote -v | grep -m1 '^origin' | sed -Ene's#.*(https://[^[:space:]]*).*#\1#p'`
     if [ -z "$REPO_URL" ]; then
 	echo "-- ERROR:  Could not identify Repo url."
 	echo "   It is possible this repo is already using SSH instead of HTTPS."
 	exit
     fi
-    
+
     USER=`echo $REPO_URL | sed -Ene's#https://github.com/([^/]*)/(.*).git#\1#p'`
     if [ -z "$USER" ]; then
 	echo "-- ERROR:  Could not identify User."
 	exit
     fi
-    
+
     REPO=`echo $REPO_URL | sed -Ene's#https://github.com/([^/]*)/(.*).git#\2#p'`
     if [ -z "$REPO" ]; then
 	echo "-- ERROR:  Could not identify Repo."
 	exit
     fi
-    
+
     NEW_URL="git@github.com:$USER/$REPO.git"
     echo "Changing repo url from "
     echo "  '$REPO_URL'"
     echo "      to "
     echo "  '$NEW_URL'"
     echo ""
-    
+
     CHANGE_CMD="git remote set-url origin $NEW_URL"
     `$CHANGE_CMD`
-    
+
     echo "Success"
 }
 
@@ -637,7 +672,7 @@ function gh() {
      echo "Not a git repository or no remote.origin.url set"
      return
   fi
- 
+
   giturl=${giturl/git\@github\.com\:/https://github.com/}
   giturl=${giturl/\.git/\/tree}
   branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
@@ -668,9 +703,9 @@ alias dnsrestart="sudo /etc/init.d/nscd restart"
 
 function selfdestruct()
 {
-    seconds=10; date1=$((`date +%s` + $seconds)); 
-    while [ "$date1" -ne `date +%s` ]; do 
-	echo -ne "Self Destruct In $(date -u --date @$(($date1 - `date +%s` )) +%H:%M:%S)\r"; 
+    seconds=10; date1=$((`date +%s` + $seconds));
+    while [ "$date1" -ne `date +%s` ]; do
+	echo -ne "Self Destruct In $(date -u --date @$(($date1 - `date +%s` )) +%H:%M:%S)\r";
     done
     echo ""
 }
