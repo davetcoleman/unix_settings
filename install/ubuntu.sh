@@ -184,6 +184,13 @@
       sudo apt-get install -y texlive-full lmodern texlive-fonts-recommended latex-beamer etoolbox kile
   }
   
+  # R
+  function rinstall(){
+      # ess = emacs mode for lots of stats languages
+      # r-cran-rcmdr = R Commander
+      sudo apt-get install -y r-base r-base-dev ess r-cran-rcmdr
+  }
+  
   # TrueCrypt
   function truecryptinstall()
   {
@@ -359,6 +366,7 @@ read -p "Install VirtualBox? (y/n)" resp12
 read -p "Install dropbox? (y/n)" resp5
 read -p "Install recording software? (y/n)" resp13
 read -p "Install latex? (y/n)" resp14
+read -p "Install R? (y/n)" resp28
 read -p "Install truecrypt? (y/n)" resp15
 read -p "Install Matlab? (y/n)" resp21
 read -p "Install Wine? (y/n)" resp23
@@ -413,6 +421,9 @@ if [ "$resp13" = "y" ]; then
 fi
 if [ "$resp14" = "y" ]; then
     latexinstall  
+fi
+if [ "$resp28" = "y" ]; then
+    rinstall  
 fi
 if [ "$resp15" = "y" ]; then
     truecryptinstall

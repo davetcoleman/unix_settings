@@ -7,6 +7,8 @@ function gitHasChanges() {
 	echo "Changed detected in git repo:"
 	pwd
 	git diff
+	read -p "Press enter to gitall" resp
+	gitall
 	read -p "Continue?" resp
     fi
 }

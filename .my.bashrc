@@ -525,6 +525,7 @@ fi
 alias mybash="e ~/unix_settings/.my.bashrc && . ~/unix_settings/.my.bashrc"
 alias mybashr=". ~/unix_settings/.my.bashrc"
 alias myemacs="e ~/unix_settings/.emacs"
+alias myubuntuinstall="e ~/unix_settings/install/ubuntu.sh"
 
 # Quick edit ubuntu install file
 alias myinstall="e ~/unix_settings/install/ubuntu.sh"
