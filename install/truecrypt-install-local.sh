@@ -94,7 +94,7 @@ then
 	if [ "$(uname -m)" == "x86_64" ]
 	then
 		#TC_DOWNLOADURL="http://www.truecrypt.org/download/truecrypt-${TC_VER}-linux-x64.tar.gz"
-		TC_DOWNLOADURL="/home/dave/Dropbox/2014/truecrypt/truecrypt-7.1a-linux-x64.tar.gz"
+		TC_DOWNLOADURL="/home/dave/Dropbox/Documents/2014/truecrypt/truecrypt-7.1a-linux-x64.tar.gz"
 	else
 	        echo "does not support x86"
 		exit

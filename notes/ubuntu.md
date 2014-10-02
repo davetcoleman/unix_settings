@@ -109,6 +109,7 @@ Mount it
 
 
 ### Boot with Safe Video Settings
+
     add these linux kernel boot options: nomodeset nointremap vga=0x361.
 
 
@@ -242,3 +243,9 @@ Remove ``-vn`` to actually use (this is test mode)
 ### Make symbolic link
 
 ln -s source_file destination_file
+
+## Apt-Get Commands
+
+### Fix broken system
+
+     sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
