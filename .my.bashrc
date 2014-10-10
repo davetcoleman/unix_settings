@@ -200,7 +200,7 @@ fi
 
 if [ $BASHRC_ENV == "ros_baxter" ]; then
 
-    BAXTER_MASTER=0
+    BAXTER_MASTER=1
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces

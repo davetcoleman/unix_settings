@@ -278,9 +278,9 @@
 
       # copy public key to various websites
       gedit ~/.ssh/id_rsa.pub
-      google-chrome 'https://my.hostmonster.com/web-hosting/cplogin' 
-      google-chrome 'https://github.com/settings/ssh'
-      google-chrome 'https://bitbucket.org/account/user/davetcoleman/ssh-keys/'
+      firefox 'https://my.hostmonster.com/web-hosting/cplogin' 
+      firefox 'https://github.com/settings/ssh'
+      firefox 'https://bitbucket.org/account/user/davetcoleman/ssh-keys/'
   }
 
   # COPY KEY TO NEW COMPUTER: ssh-copy-id <username>@<host>
@@ -362,7 +362,7 @@ else
     return
 fi
 
-read -p "Install chrome? (y/n)" resp3
+#read -p "Install chrome? (y/n)" resp3
 read -p "Setup secondary hard drive and ROS workspace sync? (for Dropbox) (y/n)" resp27
 read -p "Install Flux? (y/n)" resp20
 read -p "Install spotify? (y/n)" resp4
