@@ -5,9 +5,13 @@
 ## INSTALLATION ON UBUNTU------------------------------------------------------------------------
   # Stuff I can use on any linux machine
   function coreinstall() {
-      sudo apt-get install -y emacs git-core mercurial colordiff tree udisks || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
-      sudo apt-get install -y sox || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y git-core mercurial colordiff tree udisks || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      
+      # emacs
+      sudo apt-get install -y emacs emacs-goodies-el || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      
       # for use with emacs 'play' command for finishing compiling
+      sudo apt-get install -y sox || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
 
       # disable caps lock - works in xwindows
       echo "DISABLING CAPSLOCK"
@@ -121,7 +125,8 @@
 
   #Recording desktop image
   function recordinstall() {
-      sudo apt-get install -y gtk-recordMyDesktop
+      #sudo apt-get install -y gtk-recordMyDesktop
+      sudo apt-get install -y openshot kazam
   }
 
   #Install ROS Indigo:
@@ -184,12 +189,22 @@
       sudo apt-get install -y texlive-full lmodern texlive-fonts-recommended latex-beamer etoolbox kile
   }
   
+  # R
+  function rinstall(){
+      # ess = emacs mode for lots of stats languages
+      # r-cran-rcmdr = R Commander
+      sudo apt-get install -y r-base r-base-dev ess r-cran-rcmdr
+  }
+  
   # TrueCrypt
   function truecryptinstall()
   {
-      zenity --info --text 'Is dropbox setup and 2014 files synced? Truecrypt will not install without those files'
-      chmod a+rx ~/unix_settings/install/truecrypt-install-local.sh 
-      sudo ~/unix_settings/install/truecrypt-install-local.sh
+      if [ ! -f "/home/dave/Dropbox/Documents/2014/truecrypt/truecrypt-7.1a-linux-x64.tar.gz" ]; then
+	  zenity --info --text 'Is dropbox setup and 2014 files synced? Truecrypt will not install without those files and currently cannot find the tar.gz file. Skipping.'
+      else
+	  chmod a+rx ~/unix_settings/install/truecrypt-install-local.sh 
+	  sudo ~/unix_settings/install/truecrypt-install-local.sh
+      fi
   }
 
   # VirtualBox 4.2 Install 
@@ -359,6 +374,7 @@ read -p "Install VirtualBox? (y/n)" resp12
 read -p "Install dropbox? (y/n)" resp5
 read -p "Install recording software? (y/n)" resp13
 read -p "Install latex? (y/n)" resp14
+read -p "Install R? (y/n)" resp28
 read -p "Install truecrypt? (y/n)" resp15
 read -p "Install Matlab? (y/n)" resp21
 read -p "Install Wine? (y/n)" resp23
@@ -413,6 +429,9 @@ if [ "$resp13" = "y" ]; then
 fi
 if [ "$resp14" = "y" ]; then
     latexinstall  
+fi
+if [ "$resp28" = "y" ]; then
+    rinstall  
 fi
 if [ "$resp15" = "y" ]; then
     truecryptinstall
