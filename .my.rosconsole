@@ -57,10 +57,10 @@ log4j.logger.ros.baxter_experimental.actionlib=INFO
 log4j.logger.ros.gazebo_ros_control.pluginlib.ClassLoader=INFO
 
 # Controllers
-log4j.logger.ros.controller_manager=INFO
-log4j.logger.ros.controller_manager.pluginlib=INFO
-log4j.logger.ros.joint_trajectory_controller.actionlib=INFO
-log4j.logger.ros.control_toolbox.pid=INFO
+#log4j.logger.ros.controller_manager=INFO
+#log4j.logger.ros.controller_manager.pluginlib=INFO
+#log4j.logger.ros.joint_trajectory_controller.actionlib=INFO
+#log4j.logger.ros.control_toolbox.pid=INFO
 
 # Clam
 log4j.logger.ros.clam_ikfast_arm_plugin.ikfast=INFO

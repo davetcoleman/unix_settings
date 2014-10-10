@@ -5,9 +5,9 @@
 
     alias myrosconsole="e ~/unix_settings/.my.rosconsole"
 
-    alias catbuild="catkin b"
-    alias catbuilddebug="catkin b --cmake-args -DCMAKE_BUILD_TYPE=Debug"
-    alias catclean="rm -rf build/ devel/ install/" #build_isolated/ devel_isolated/ install_isolated/"
+    alias catbuild="catkin b" # catkin build
+    alias catbuilddebug="catkin bd" #catkin build cmake-args -DCMAKE_BUILD_TYPE=Debug
+    alias catclean="catkin clean -a"
     alias catcleanbuild="catclean && catbuild"
     alias catcleanbuilddebug="catclean && catbuilddebug"
 

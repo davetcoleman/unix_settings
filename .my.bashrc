@@ -86,10 +86,12 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
+# some more ls aliases for listing files and folders
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias listfolders='ls -AF | grep /'
+alias listfiles='ls -AF | grep -v /'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -165,10 +167,11 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
-    source /home/dave/ros/ws_moveit/devel/setup.bash
+    #source /home/dave/ros/ws_moveit/devel/setup.bash
     #source /home/dave/ros/ws_moveit_other/devel/setup.bash
+    source /home/dave/ros/ws_baxter2/devel/setup.bash
+
     #source /home/dave/ros/ws_clam/devel/setup.bash
-    #source /home/dave/ros/ws_baxter/devel/setup.bash
     #source /home/dave/ros/ws_hrp2/devel/setup.bash
     #source /home/dave/ros/ws_nasa/devel/setup.bash
     #source /home/dave/ros/ws_jsk/devel/setup.bash

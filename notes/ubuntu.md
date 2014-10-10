@@ -21,9 +21,6 @@
     7. Press the Save button and enter a new name name.avi.
 
 
-
-
-
 ## High Level Software
 
 ### Kill a program that is not responding
@@ -110,8 +107,9 @@ Mount it
 
 ### Boot with Safe Video Settings
 
-    add these linux kernel boot options: nomodeset nointremap vga=0x361.
+add these linux kernel boot options:
 
+    nomodeset nointremap vga=0x361.
 
 ### See Disk Free Space of Filesystem
 
@@ -171,11 +169,6 @@ Patterns work too:
     killall -s INT
 
 
-### Run gdb on a running process
-    ps aux | grep gzserver# get process id
-    sudo gdb -p 23845     # connect to that id
-
-
 ### Add a new nameserver to internet lookup
     se /etc/resolv.conf 
     add
@@ -199,28 +192,30 @@ Patterns work too:
     pkill -9 -f gazebo
 
 
-### Useful tools
-    strace 
+### Debugging Tool
 
 a useful diagnostic, instructional, and debugging tool.  System administrators, diagnosticians and trouble-shooters will find it invaluable for solving problems with programs for which  the  source  is  not  readily
 available  since they do not need to be recompiled in order to trace them.  Students, hackers and the overly-curious will find that a great deal can be learned about a system and its system calls by tracing even ordinary pro‐
 grams.  And programmers will find that since system calls and signals are events that happen at the user/kernel interface, a close examination of this boundary is very useful for bug isolation, sanity checking and  attempting
 to capture race conditions.
 
-### pgrep - search for proccesses. if you see a number it is running
+    strace 
 
+### search for proccesses. if you see a number it is running
 
+    pgrep
+	
 ### See all proccesses with certain name
+
     ps -e | grep ros
 
-
 ### Change keyboard layout
+
     sudo dpkg-reconfigure keyboard-configuration
 
-
 ### Get folder sizes
-    du
 
+    du
 
 ### Upper case all file extensions in a folder:
 
