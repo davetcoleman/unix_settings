@@ -197,11 +197,13 @@ fi
 
 if [ $BASHRC_ENV == "ros_baxter" ]; then
 
-    BAXTER_MASTER=1
+    BAXTER_MASTER=0
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
-    #source /opt/ros/indigo/setup.bash
+    source /opt/ros/indigo/setup.bash
+    #source /home/dave/ros/ws_baxter_readme/devel/setup.bash
+
     #source /home/dave/ros/ws_moveit/devel/setup.bash
     #source /home/dave/ros/ws_moveit_other/devel/setup.bash
     source /home/dave/ros/ws_baxter_new/devel/setup.bash
