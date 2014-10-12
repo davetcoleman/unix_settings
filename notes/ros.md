@@ -28,3 +28,6 @@ Before the build section (include_directories section) add:
 set(ROS_COMPILE_FLAGS "-W -Wall -Wno-unused-parameter -fno-strict-aliasing")
 ```
 
+## Convert URDF to PDF
+
+    urdf_to_graphiz

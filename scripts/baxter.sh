@@ -1,5 +1,14 @@
 #!/bin/bash
-# Baxter Aliases
+
+# Baxter Notes ---------------------------------
+
+## Check the offset of time of Baxter
+## ntpdate -q 128.138.244.56
+
+## Sync My Dev machine to Baxter's syncing server
+## sudo ntpdate pool.ntp.org
+
+# Baxter Aliases -------------------------------
 
     alias be="rostopic pub -1 /robot/set_super_enable std_msgs/Bool True"
     alias bd="rostopic pub -1 /robot/set_super_enable std_msgs/Bool False"
@@ -54,3 +63,9 @@
     alias blcamera="rosrun image_view image_view image:=/cameras/left_hand_camera/image"
     alias bacamera="rosrun image_view image_view image:=/camera/image_raw"
     alias bdepthcamera="rosrun image_view image_view image:=/camera/rgb/image_color"
+
+    # SSH Access to Baxter   -  http://sdk.rethinkrobotics.com/wiki/SSH
+    alias bstop="sudo rc-service fsm-rsdk stop"  # stop baxter software
+    alias bstart="sudo rc-service fsm-rsdk start"  # start baxter software
+    # sudo reboot # Reboot
+    # sudo shutdown -h now # Shutdown
