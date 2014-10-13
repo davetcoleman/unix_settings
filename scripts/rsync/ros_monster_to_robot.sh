@@ -1,5 +1,5 @@
-rsync -avg --progress --delete ~/ros/ dave@$ROS_BAXTER_IP:/home/dave/ros/
-#rsync -avg --progress --delete ~/unix_settings/ dave@$ROS_GATEWAY_IP:/home/dave/unix_settings/
+rsync -avg --progress --delete --exclude 'devel' --exclude 'build' --exclude 'build_isolated' --exclude 'devel_isolated' --exclude 'install_isolated' --exclude 'large_data_files' ~/ros/ws_baxter ruser@$BAXTER_IP_ADDRESS:/home/ruser/ros/
+
 
 # -v : verbose
 # -r : copies data recursively (but don’t preserve timestamps and permission while transferring data

@@ -221,7 +221,7 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     #rosclean purge -y
 fi
 
-if [ $BASHRC_ENV == "ros_baxter_dev" ]; then
+if [ $BASHRC_ENV == "ros_student" ]; then
 
     BAXTER_MASTER=1
     source ~/unix_settings/scripts/baxter.sh
@@ -247,10 +247,10 @@ if [ $BASHRC_ENV == "ros_baxter_dev" ]; then
 
 
     # Exports
-    export ROS_IP=$ROS_BAXTER_IP
+    export ROS_IP=$ROS_STUDENT_IP
     #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
 
-    echo -ne "Computer: ros_baxter"
+    echo -ne "Computer: ros_student"
 
     # clean out the stupid logs
     rosclean purge -y
