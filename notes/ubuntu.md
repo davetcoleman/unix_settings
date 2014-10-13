@@ -44,30 +44,6 @@
     Instructions: https://help.ubuntu.com/community/AutomaticallyMountPartitions
 
 
-### Last Resort Shutdown
-
-    First, we’ll try and kill all the process on your current terminal. To do this, hold down the following keys -
-    ALT + SysReq + k
-    What the heck is a SysReq key? Look for it on your PrtSc or Print Screen key. The k in this instance stands for Kill.
-    If that doesn’t work for you, it’s time to take drastic action. You’ll now enter a series of keystrokes that will tell your computer to do some housekeeping before shutting down.
-    ALT + SysReq + r
-    This stands for Raw keyboard mode.
-    ALT + SysReq + s
-    This syncs the disk.
-    ALT + SysReq + e
-    This terminates all processes
-    ALT + SysReq + i
-    Kill’s all processes that weren’t terminated nicely.
-    ALT + SysReq + u
-    Remounts all filesystems as read only.
-    ALT + SysReq + b
-    Reboots.
-    That’s a heck of a lot better than simply holding down the power button and hoping everything works out okay.
-    How will you ever remember all those keystrokes? There is a long held mnemonic that makes it a bit easier:
-    Raising Skinny Elephants Is Utterly Boring – RSEIUB
-    You should use this method only if other methods (mentioned above) fail.
-
-
 ### View Hardware
 
     lspci

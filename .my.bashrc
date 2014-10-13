@@ -154,7 +154,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     #source /opt/ros/indigo/setup.bash
     #source /home/dave/ros/ws_moveit/devel/setup.bash
     #source /home/dave/ros/ws_moveit_other/devel/setup.bash
-    source /home/dave/ros/ws_baxter2/devel/setup.bash
+    source /home/dave/ros/ws_baxter/devel/setup.bash
 
     #source /home/dave/ros/ws_clam/devel/setup.bash
     #source /home/dave/ros/ws_hrp2/devel/setup.bash
@@ -192,7 +192,7 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     #source /opt/ros/indigo/setup.bash
     #source /home/dave/ros/ws_moveit/devel/setup.bash
     #source /home/dave/ros/ws_moveit_other/devel/setup.bash
-    source /home/dave/ros/ws_baxter2/devel/setup.bash
+    source /home/dave/ros/ws_baxter/devel/setup.bash
 
     #source /home/dave/ros/ws_clam/devel/setup.bash
     #source /home/dave/ros/ws_hrp2/devel/setup.bash

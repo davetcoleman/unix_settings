@@ -2,12 +2,6 @@
 
 # Baxter Notes ---------------------------------
 
-## Check the offset of time of Baxter
-## ntpdate -q 128.138.244.56
-
-## Sync My Dev machine to Baxter's syncing server
-## sudo ntpdate pool.ntp.org
-
 # Baxter Aliases -------------------------------
 
     alias be="rostopic pub -1 /robot/set_super_enable std_msgs/Bool True"
@@ -32,40 +26,55 @@
     alias brcalibrate="rosrun baxter_tools calibrate_arm.py -l right"
     alias blcalibrate="rosrun baxter_tools calibrate_arm.py -l left"
 
-    # Turn of MoveIt's access to depth data
+## Turn of MoveIt's access to depth data
+
     alias bdisablesensors="rosparam delete /move_group/sensors"
 
-    # Get Baxter's time offset from my compter
-    alias btimeoffset="ntpdate -q 128.138.244.56"
+## Right Gripper
 
-    # Right Gripper
     alias brgripperstate="rostopic echo -c /robot/end_effector/right_gripper/state"
     alias brgrippercal="rostopic pub -1 /robot/end_effector/right_gripper/command baxter_core_msgs/EndEffectorCommand '{command: calibrate, id: 65664, sender: user}'"
     alias brgripperres="rostopic pub -1 /robot/end_effector/right_gripper/command baxter_core_msgs/EndEffectorCommand '{command: reset, id: 65664, sender: user}'"
     alias brgripperopen="rostopic pub -1 /robot/end_effector/right_gripper/command baxter_core_msgs/EndEffectorCommand '{command: release, id: 65664, sender: user}'"
     alias brgripperclose="rostopic pub -1 /robot/end_effector/right_gripper/command baxter_core_msgs/EndEffectorCommand '{command: grip, id: 65664, sender: user}'"
     
-    # Left Gripper
+## Left Gripper
+
     alias blgripperstate="rostopic echo -c /robot/end_effector/left_gripper/state"
     alias blgrippercal="rostopic pub -1 /robot/end_effector/left_gripper/command baxter_core_msgs/EndEffectorCommand '{command: calibrate, id: 65664, sender: user}'"
     alias blgripperres="rostopic pub -1 /robot/end_effector/left_gripper/command baxter_core_msgs/EndEffectorCommand '{command: reset, id: 65664, sender: user}'"
     alias blgripperopen="rostopic pub -1 /robot/end_effector/left_gripper/command baxter_core_msgs/EndEffectorCommand '{command: release, id: 65664, sender: user}'"
     alias blgripperclose="rostopic pub -1 /robot/end_effector/left_gripper/command baxter_core_msgs/EndEffectorCommand '{command: grip, id: 65664, sender: user}'"
     
-    ## SSH Access
+### SSH Access
+
     alias bssh="ssh osrf@011305P0009.local"
     alias blog="ftp 011305P0009.local"
     alias bkeyboard="rosrun joint_position keyboard.py"
     alias bdownloadlogs="cd ~/ros/baxter_logs/ && rm -rf cu_boulder_ftp_logs.tar.gz 011305p0009.local/ && wget -r ftp://011305P0009.local/ && tar cvzf cu_boulder_ftp_logs.tar.gz 011305p0009.local/ && scp cu_boulder_ftp_logs.tar.gz fabgatec@davetcoleman.com:~/www/"
 
-    # Cameras
+## Cameras
+
     alias brcamera="rosrun image_view image_view image:=/cameras/right_hand_camera/image"
     alias blcamera="rosrun image_view image_view image:=/cameras/left_hand_camera/image"
     alias bacamera="rosrun image_view image_view image:=/camera/image_raw"
     alias bdepthcamera="rosrun image_view image_view image:=/camera/rgb/image_color"
 
-    # SSH Access to Baxter   -  http://sdk.rethinkrobotics.com/wiki/SSH
+## SSH Access to Baxter   -  http://sdk.rethinkrobotics.com/wiki/SSH
+
     alias bstop="sudo rc-service fsm-rsdk stop"  # stop baxter software
     alias bstart="sudo rc-service fsm-rsdk start"  # start baxter software
     # sudo reboot # Reboot
     # sudo shutdown -h now # Shutdown
+
+# Baxter Time ---------------------------------------
+    # See http://sdk.rethinkrobotics.com/wiki/Time_and_NTP
+
+    # Check the offset of time of Baxter
+    alias btimeoffset="ntpdate -q 128.138.224.231"
+
+    # Get the latest baxter IP address
+    # baxter_ip_address
+    
+    ## Sync My Dev machine to Baxter's syncing server
+    alias syncmytime="sudo ntpdate pool.ntp.org"

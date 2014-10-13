@@ -267,6 +267,12 @@
       read -p "Done with secondary harddrive setup. Continue Ubuntu setup? (Ctrl-C to cancel)" mount_resp2
   }
 
+  function baxterinstall() {
+
+      sudo apt-get install -y ntp || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+
+  }
+
   # Setup SSH Access
   function sshinstall() {
       sudo apt-get install -y openssh-server || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
