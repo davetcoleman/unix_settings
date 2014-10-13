@@ -140,15 +140,8 @@ fi
 # Custom environements per computer --------------------------------------------------------
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
-    # The workspaces being used on this computer
-#    ROS_WORKSPACES=( "/home/dave/ros/ws_ompl/"
-#	"/home/dave/ros/ws_ros_control/"
-#	"/home/dave/ros/ws_moveit/"
-#	"/home/dave/ros/ws_moveit_other/")
-#        "/home/dave/ros/ws_baxter/"
-#	"/home/dave/ros/ws_clam/"
-#	"/home/dave/ros/ws_nasa/"
-#	"/home/dave/ros/ws_jsk/" )
+    BAXTER_MASTER=1
+    source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
@@ -444,7 +437,7 @@ fi
 # Set ROS MASTER URI for our robot or locally
 if [ $ROS_SEGMENT == "ros" ]; then
     if [ $BAXTER_MASTER == 1 ]; then  # NOTE: [ ] is false and [ 1 ] is true
-	export ROS_MASTER_URI=$BAXTER_IP
+	export ROS_MASTER_URI=$BAXTER_IP_ADDRESS
 
 	echo -ne " | ROS Master: baxter"
 
