@@ -192,7 +192,7 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     export PATH=$PATH:/home/ruser/software/emacs-24.3/lib-src/
     export PATH=$PATH:/home/ruser/software/emacs-24.3/src/
 
-    BAXTER_MASTER=1
+    BAXTER_MASTER=0
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
@@ -212,8 +212,8 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
 
     # Exports
-    #export ROS_IP=$ROS_BAXTER_IP
-    #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
+    #export ROS_IP=$BAXTER_IP
+    export ROS_HOSTNAME=http://localhost:11311
 
     echo -ne "Computer: ros_baxter"
 
