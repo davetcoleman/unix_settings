@@ -180,7 +180,8 @@
   function matlabinstall()
   {
       sudo apt-get install -y openjdk-6-jre icedtea-netx-common  || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
-      read -p 'Now go to http://www.mathworks.com/downloads/web_downloads/select_release_and_platform and download the web_download file to start installation. Press any key when matlab is done being installed, and then it installs matlab-support'
+      firefox 'http://www.mathworks.com/downloads/web_downloads/select_release?mode=gwylf'
+      read -p 'Now go to mathworks website and download to start installation. Press any key when matlab is done being installed, and then it installs matlab-support'
       sudo apt-get install -y matlab-support || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
   }
 

@@ -43,25 +43,25 @@ gitHasChanges
 export USE_BAXTER_REPOS='true'
 
 if [[ $USE_BAXTER_REPOS == "true" ]]; then
-    cd /home/dave/ros/ws_baxter2/src/baxter/
+    cd /home/dave/ros/ws_baxter/src/baxter/
     gitHasChanges
-    cd /home/dave/ros/ws_baxter2/src/baxter_common/
+    cd /home/dave/ros/ws_baxter/src/baxter_common/
     gitHasChanges
-    cd /home/dave/ros/ws_baxter2/src/baxter_cpp/
+    cd /home/dave/ros/ws_baxter/src/baxter_cpp/
     gitHasChanges
-    cd /home/dave/ros/ws_baxter2/src/baxter_examples/
+    cd /home/dave/ros/ws_baxter/src/baxter_examples/
     gitHasChanges
-    cd /home/dave/ros/ws_baxter2/src/baxter_experimental/
+    cd /home/dave/ros/ws_baxter/src/baxter_experimental/
     gitHasChanges
-    cd /home/dave/ros/ws_baxter2/src/baxter_interface/
+    cd /home/dave/ros/ws_baxter/src/baxter_interface/
     gitHasChanges
-    cd /home/dave/ros/ws_baxter2/src/baxter_tools/
+    cd /home/dave/ros/ws_baxter/src/baxter_tools/
     gitHasChanges
-    cd /home/dave/ros/ws_baxter2/src/rosbag_record_cpp/
+    cd /home/dave/ros/ws_baxter/src/rosbag_record_cpp/
     gitHasChanges
-    cd /home/dave/ros/ws_baxter2/src/ros_control/
+    cd /home/dave/ros/ws_baxter/src/ros_control/
     gitHasChanges
-    cd /home/dave/ros/ws_baxter2/src/ros_controllers/
+    cd /home/dave/ros/ws_baxter/src/ros_controllers/
     gitHasChanges
 fi
 

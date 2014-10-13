@@ -31,7 +31,10 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# Skip for Gento
+if [[ $BASHRC_ENV != "ros_baxter" ]]; then
+    [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+fi
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
@@ -178,6 +181,41 @@ fi
 
 if [ $BASHRC_ENV == "ros_baxter" ]; then
 
+    #alias emacs="/home/ruser/bin/emacs-24.3/src/emacs"
+    export PATH=$PATH:/home/ruser/software/emacs-24.3/lib-src/
+    export PATH=$PATH:/home/ruser/software/emacs-24.3/src/
+
+    BAXTER_MASTER=0
+    source ~/unix_settings/scripts/baxter.sh
+
+    # In-Use Workspaces
+    source /opt/ros/groovy/setup.bash
+    #source /home/dave/ros/ws_moveit/devel/setup.bash
+    #source /home/dave/ros/ws_moveit_other/devel/setup.bash
+    #source /home/dave/ros/ws_baxter/devel/setup.bash
+
+    #source /home/dave/ros/ws_clam/devel/setup.bash
+    #source /home/dave/ros/ws_hrp2/devel/setup.bash
+    #source /home/dave/ros/ws_nasa/devel/setup.bash
+    #source /home/dave/ros/ws_jsk/devel/setup.bash
+
+    echo -ne "ROS: groovy | "
+
+    # overwrite the one from ws_ros/install/setup.bash
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
+
+    # Exports
+    #export ROS_IP=$BAXTER_IP
+    export ROS_HOSTNAME=http://localhost:11311
+
+    echo -ne "Computer: ros_baxter"
+
+    # clean out the stupid logs
+    #rosclean purge -y
+fi
+
+if [ $BASHRC_ENV == "ros_student" ]; then
+
     BAXTER_MASTER=1
     source ~/unix_settings/scripts/baxter.sh
 
@@ -202,10 +240,10 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
 
 
     # Exports
-    export ROS_IP=$ROS_BAXTER_IP
+    export ROS_IP=$ROS_STUDENT_IP
     #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
 
-    echo -ne "Computer: ros_baxter"
+    echo -ne "Computer: ros_student"
 
     # clean out the stupid logs
     rosclean purge -y
@@ -590,34 +628,6 @@ source ~/unix_settings/scripts/git.sh
 
 function cdl() {
   cd "$1" && ll
-}
-
-# Opens the github page for the current git repository in your browser.
-# Can pass in argument for which remote to use, defaults to 'origin'
-function gh() {
-  gitremote="$1"
-  if [ "$1" == "" ]; then
-      gitremote="origin";
-  fi
-
-  giturl=$(git config --get remote.$gitremote.url)
-  if [ "$giturl" == "" ]; then
-     echo "Not a git repository or no remote.origin.url set"
-     return
-  fi
-
-  giturl=${giturl/git\@github\.com\:/https://github.com/}
-  giturl=${giturl/\.git/\/tree}
-  branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
-  branch="(unnamed branch)"     # detached HEAD
-  branch=${branch##refs/heads/}
-  giturl=$giturl/$branch
-
-  if [[ $platform != 'osx' ]]; then
-      xdg-open $giturl # linux
-  else
-      open $giturl # mac
-  fi
 }
 
 # Remove line numbers in history
