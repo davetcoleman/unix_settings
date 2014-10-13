@@ -1,4 +1,4 @@
-if [[ $BASHRC_ENV != "dtc" && $platform != "osx" ]]; then   #only for ubuntu
+if [[ $BASHRC_ENV != "dtc" && $platform != "osx" && $BASHRC_ENV != "ros_baxter" ]]; then   #only for ubuntu
     alias git=hub
 fi
 alias gitst='git status'
@@ -64,5 +64,33 @@ function parse_vc_branch_and_add_brackets {
 
 # Show git branch at prompt:
 export PS1="\[\033[0;32m\]\$(parse_vc_branch_and_add_brackets)\[\033[0m\] \W$ "
+
+# Opens the github page for the current git repository in your browser.
+# Can pass in argument for which remote to use, defaults to 'origin'
+function gh() {
+  gitremote="$1"
+  if [ "$1" == "" ]; then
+      gitremote="origin";
+  fi
+
+  giturl=$(git config --get remote.$gitremote.url)
+  if [ "$giturl" == "" ]; then
+     echo "Not a git repository or no remote.origin.url set"
+     return
+  fi
+
+  giturl=${giturl/git\@github\.com\:/https://github.com/}
+  giturl=${giturl/\.git/\/tree}
+  branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
+  branch="(unnamed branch)"     # detached HEAD
+  branch=${branch##refs/heads/}
+  giturl=$giturl/$branch
+
+  if [[ $platform != 'osx' ]]; then
+      xdg-open $giturl # linux
+  else
+      open $giturl # mac
+  fi
+}
 
 
