@@ -170,8 +170,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 
 
     # Exports
-    #export ROS_IP=$ROS_JSK_IP
-    #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
+    export ROS_IP=$ROS_MONSTER_IP
 
     echo -ne "Computer: ros_monster"
 
@@ -238,7 +237,6 @@ if [ $BASHRC_ENV == "ros_student" ]; then
 
     # Exports
     export ROS_IP=$ROS_STUDENT_IP
-    #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
 
     echo -ne "Computer: ros_student"
 
@@ -401,7 +399,7 @@ if [ $BASHRC_ENV == "ros_gateway" ]; then
     export PULSE_SERVER=$ROS_MONSTER_IP
 
     # Exports
-    export ROS_HOSTNAME=$ROS_GATEWA_IP
+    export ROS_HOSTNAME=$ROS_GATEWAY_IP
 
     echo -ne "Computer: ros_gateway"
 fi
@@ -472,7 +470,7 @@ fi
 # Set ROS MASTER URI for our robot or locally
 if [ $ROS_SEGMENT == "ros" ]; then
     if [ $ROS_MASTER == "baxter" ]; then  # Use Baxter externally
-	export ROS_MASTER_URI=$BAXTER_IP
+	export ROS_MASTER_URI="http://"$BAXTER_IP_ADDRESS":11311"
 
 	echo -ne " | ROS Master: baxter"
     elif [ $ROS_MASTER == "special" ]; then  # Internal Baxter
