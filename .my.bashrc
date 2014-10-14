@@ -123,7 +123,7 @@ if [ $ROS_SEGMENT == "ros" ]; then
     source ~/unix_settings_private/ip_addresses.sh
 
     # shared settings
-    BAXTER_MASTER=0 # to be over written
+    ROS_MASTER="localhost" # to be over written
 
     # make sure the ordering of the ROS sources do not get mixed up
     unset CMAKE_PREFIX_PATH
@@ -143,7 +143,7 @@ fi
 # Custom environements per computer --------------------------------------------------------
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
-    BAXTER_MASTER=1
+    ROS_MASTER="baxter"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
@@ -185,7 +185,7 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     export PATH=$PATH:/home/ruser/software/emacs-24.3/lib-src/
     export PATH=$PATH:/home/ruser/software/emacs-24.3/src/
 
-    BAXTER_MASTER=0
+    ROS_MASTER="localhost"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
@@ -216,7 +216,7 @@ fi
 
 if [ $BASHRC_ENV == "ros_student" ]; then
 
-    BAXTER_MASTER=1
+    ROS_MASTER="baxter"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
@@ -253,7 +253,7 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
     # Settings
     USE_HYDRO=1
     GAZEBO_SOURCE=0
-    BAXTER_MASTER=0
+    ROS_MASTER="localhost"
 
     # Hydro
     if [ $USE_HYDRO == 1 ]; then
@@ -383,7 +383,7 @@ fi
 if [ $BASHRC_ENV == "ros_gateway" ]; then
 
     # Settings
-    BAXTER_MASTER=1
+    ROS_MASTER="baxter"
 
     #In-Use Workspaces
     #source /opt/ros/hydro/setup.bash
@@ -414,7 +414,7 @@ if [ $BASHRC_ENV == "ros_baxter_control" ]; then
     export LIBGL_ALWAYS_SOFTWARE=1
 
     # Settings
-    BAXTER_MASTER=1
+    ROS_MASTER="baxter"
     source ~/unix_settings/scripts/baxter.sh
 
     #In-Use Workspaces
@@ -474,12 +474,15 @@ fi
 
 # Set ROS MASTER URI for our robot or locally
 if [ $ROS_SEGMENT == "ros" ]; then
-    if [ $BAXTER_MASTER == 1 ]; then  # NOTE: [ ] is false and [ 1 ] is true
-	export ROS_MASTER_URI=$BAXTER_IP_ADDRESS
+    if [ $ROS_MASTER == "baxter" ]; then  # Use Baxter externally
+	export ROS_MASTER_URI=$BAXTER_IP
 
 	echo -ne " | ROS Master: baxter"
+    elif [ $ROS_MASTER == "special" ]; then  # Internal Baxter
+	export ROS_MASTER_URI=$BAXTER_IP_ADDRESS
 
-    else # Local
+	echo -ne " | ROS Master: i_am_baxter"
+    else # Localhost
 	export ROS_MASTER_URI=http://localhost:11311
 
 	echo -ne " | ROS Master: localhost"
