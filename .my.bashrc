@@ -1,4 +1,4 @@
-r#!/bin/bash
+#!/bin/bash
 # ~/unix_settings/.my.bashrc  Customized bash script for multiple computers
 
 # BASHRC_ENV tells .my.bashrc which environment we are in
