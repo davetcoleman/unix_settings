@@ -1,4 +1,4 @@
-#!/bin/bash
+r#!/bin/bash
 # ~/unix_settings/.my.bashrc  Customized bash script for multiple computers
 
 # BASHRC_ENV tells .my.bashrc which environment we are in
@@ -191,20 +191,14 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     #alias emacs="/home/ruser/bin/emacs-24.3/src/emacs"
     export PATH=$PATH:/home/ruser/software/emacs-24.3/lib-src/
     export PATH=$PATH:/home/ruser/software/emacs-24.3/src/
+    export PATH=$PATH:/home/ruser/bin
 
     BAXTER_MASTER=0
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
-    source /opt/ros/groovy/setup.bash
-    #source /home/dave/ros/ws_moveit/devel/setup.bash
-    #source /home/dave/ros/ws_moveit_other/devel/setup.bash
-    #source /home/dave/ros/ws_baxter/devel/setup.bash
-
-    #source /home/dave/ros/ws_clam/devel/setup.bash
-    #source /home/dave/ros/ws_hrp2/devel/setup.bash
-    #source /home/dave/ros/ws_nasa/devel/setup.bash
-    #source /home/dave/ros/ws_jsk/devel/setup.bash
+    #source /opt/ros/groovy/setup.bash
+    source /home/ruser/ros/ws_baxter/devel/setup.bash
 
     echo -ne "ROS: groovy | "
 
@@ -213,7 +207,8 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
 
     # Exports
     #export ROS_IP=$BAXTER_IP
-    export ROS_HOSTNAME=http://localhost:11311
+    export ROS_HOSTNAME=$ROS_BAXTER_IP  #http://localhost:11311
+    export ROS_MASTER_URI=http://localhost:11311
 
     echo -ne "Computer: ros_baxter"
 
@@ -480,7 +475,7 @@ if [ $BASHRC_ENV == "ros_vm" ]; then
 fi
 
 # Set ROS MASTER URI for our robot or locally
-if [ $ROS_SEGMENT == "ros" ]; then
+if [ $ROS_SEGMENT == "rosDISABLE" ]; then
     if [ $BAXTER_MASTER == 1 ]; then  # NOTE: [ ] is false and [ 1 ] is true
 	export ROS_MASTER_URI=$BAXTER_IP
 
