@@ -184,20 +184,16 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     #alias emacs="/home/ruser/bin/emacs-24.3/src/emacs"
     export PATH=$PATH:/home/ruser/software/emacs-24.3/lib-src/
     export PATH=$PATH:/home/ruser/software/emacs-24.3/src/
+    export PATH=$PATH:/home/ruser/bin
+    export PYTHONPATH="/home/ruser/bin/catkin_tools/lib/python2.7/site-packages:$PYTHONPATH"
 
     ROS_MASTER="localhost"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
-    source /opt/ros/groovy/setup.bash
-    #source /home/dave/ros/ws_moveit/devel/setup.bash
-    #source /home/dave/ros/ws_moveit_other/devel/setup.bash
-    #source /home/dave/ros/ws_baxter/devel/setup.bash
-
-    #source /home/dave/ros/ws_clam/devel/setup.bash
-    #source /home/dave/ros/ws_hrp2/devel/setup.bash
-    #source /home/dave/ros/ws_nasa/devel/setup.bash
-    #source /home/dave/ros/ws_jsk/devel/setup.bash
+    #source /opt/ros/groovy/setup.bash
+    #source /home/ruser/ros/ws_base/devel/setup.bash
+    source /home/ruser/ros/ws_baxter/devel/setup.bash
 
     echo -ne "ROS: groovy | "
 
@@ -206,7 +202,8 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
 
     # Exports
     #export ROS_IP=$BAXTER_IP
-    export ROS_HOSTNAME=http://localhost:11311
+    export ROS_HOSTNAME=$ROS_BAXTER_IP  #http://localhost:11311
+    export ROS_MASTER_URI=http://localhost:11311
 
     echo -ne "Computer: ros_baxter"
 
