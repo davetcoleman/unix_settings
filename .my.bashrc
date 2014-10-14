@@ -1,4 +1,4 @@
-r#!/bin/bash
+#!/bin/bash
 # ~/unix_settings/.my.bashrc  Customized bash script for multiple computers
 
 # BASHRC_ENV tells .my.bashrc which environment we are in
@@ -185,12 +185,14 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     export PATH=$PATH:/home/ruser/software/emacs-24.3/lib-src/
     export PATH=$PATH:/home/ruser/software/emacs-24.3/src/
     export PATH=$PATH:/home/ruser/bin
+    export PYTHONPATH="/home/ruser/bin/catkin_tools/lib/python2.7/site-packages:$PYTHONPATH"
 
     BAXTER_MASTER=0
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
     #source /opt/ros/groovy/setup.bash
+    #source /home/ruser/ros/ws_base/devel/setup.bash
     source /home/ruser/ros/ws_baxter/devel/setup.bash
 
     echo -ne "ROS: groovy | "
