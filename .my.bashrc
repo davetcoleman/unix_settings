@@ -473,15 +473,13 @@ if [ $ROS_SEGMENT == "ros" ]; then
 	echo -ne " | ROS Master: localhost"
     fi
 
+    # New line
+    echo ""
+
     # clean out the stupid logs
     rosclean purge -y
-fi
 
-# New line
-echo ""
-
-# Display the package path if this is a ROS computer
-if [ $ROS_SEGMENT == "ros" ]; then
+    # Display the package path if this is a ROS computer
     rosPackagePath
 fi
 
