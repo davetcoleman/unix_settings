@@ -128,6 +128,9 @@ if [ $ROS_SEGMENT == "ros" ]; then
     # make sure the ordering of the ROS sources do not get mixed up
     unset CMAKE_PREFIX_PATH
     unset ROS_PACKAGE_PATH
+
+    # clean out the stupid logs
+    rosclean purge -y
 fi
 
 # Web server environment --------------------------------------------------------
@@ -174,8 +177,6 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 
     echo -ne "Computer: ros_monster"
 
-    # clean out the stupid logs
-    rosclean purge -y
 fi
 
 if [ $BASHRC_ENV == "ros_baxter" ]; then
@@ -206,8 +207,6 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
 
     echo -ne "Computer: ros_baxter"
 
-    # clean out the stupid logs
-    #rosclean purge -y
 fi
 
 if [ $BASHRC_ENV == "ros_student" ]; then
@@ -239,9 +238,6 @@ if [ $BASHRC_ENV == "ros_student" ]; then
     export ROS_IP=$ROS_STUDENT_IP
 
     echo -ne "Computer: ros_student"
-
-    # clean out the stupid logs
-    rosclean purge -y
 fi
 
 if [ $BASHRC_ENV == "ros_mac" ]; then
@@ -368,9 +364,6 @@ if [ $BASHRC_ENV == "ros_jsk" ]; then
     # Exports
     #export ROS_IP=$ROS_JSK_IP
     #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
-
-    # clean out the stupid logs
-    rosclean purge -y
 
     echo -ne "Computer: ros_jsk"
 fi
