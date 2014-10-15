@@ -128,9 +128,6 @@ if [ $ROS_SEGMENT == "ros" ]; then
     # make sure the ordering of the ROS sources do not get mixed up
     unset CMAKE_PREFIX_PATH
     unset ROS_PACKAGE_PATH
-
-    # clean out the stupid logs
-    rosclean purge -y
 fi
 
 # Web server environment --------------------------------------------------------
@@ -475,6 +472,9 @@ if [ $ROS_SEGMENT == "ros" ]; then
 
 	echo -ne " | ROS Master: localhost"
     fi
+
+    # clean out the stupid logs
+    rosclean purge -y
 fi
 
 # New line
