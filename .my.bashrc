@@ -174,8 +174,6 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 
     echo -ne "Computer: ros_monster"
 
-    # clean out the stupid logs
-    rosclean purge -y
 fi
 
 if [ $BASHRC_ENV == "ros_baxter" ]; then
@@ -206,8 +204,6 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
 
     echo -ne "Computer: ros_baxter"
 
-    # clean out the stupid logs
-    #rosclean purge -y
 fi
 
 if [ $BASHRC_ENV == "ros_student" ]; then
@@ -239,9 +235,6 @@ if [ $BASHRC_ENV == "ros_student" ]; then
     export ROS_IP=$ROS_STUDENT_IP
 
     echo -ne "Computer: ros_student"
-
-    # clean out the stupid logs
-    rosclean purge -y
 fi
 
 if [ $BASHRC_ENV == "ros_mac" ]; then
@@ -369,9 +362,6 @@ if [ $BASHRC_ENV == "ros_jsk" ]; then
     #export ROS_IP=$ROS_JSK_IP
     #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
 
-    # clean out the stupid logs
-    rosclean purge -y
-
     echo -ne "Computer: ros_jsk"
 fi
 
@@ -482,13 +472,14 @@ if [ $ROS_SEGMENT == "ros" ]; then
 
 	echo -ne " | ROS Master: localhost"
     fi
-fi
 
-# New line
-echo ""
+    # New line
+    echo ""
 
-# Display the package path if this is a ROS computer
-if [ $ROS_SEGMENT == "ros" ]; then
+    # clean out the stupid logs
+    rosclean purge -y
+
+    # Display the package path if this is a ROS computer
     rosPackagePath
 fi
 
