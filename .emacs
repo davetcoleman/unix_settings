@@ -434,12 +434,12 @@
 
 ;;; SNIPPETS --------------------------------------------------------------------
 ; To reload with emacs still open: M-x yas-reload-all
-;(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
-;(require 'yasnippet)
-;(setq yas-snippet-dirs '("~/emacs.d/yasnippet/snippets/cc-mode"))
+(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(setq yas-snippet-dirs '("~/emacs.d/yasnippet/snippets/cc-mode"))
                         ; "~/emacs.d/interesting-snippets"))
-;(setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/plugins/yasnippet/snippets"))
-;(yas-global-mode 1)
+(setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/plugins/yasnippet/snippets"))
+(yas-global-mode 1)
 
 ;;; Remove white space on save for C files --------------------------------------
 ;(add-hook 'c-mode-common-hook
