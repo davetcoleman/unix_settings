@@ -597,7 +597,7 @@ alias pp="ps aux | grep "
 # The Zimmerman
 alias hacker='hexdump -C /dev/urandom | grep "fd b4"'
 
-alias listfiles="find . -maxdepth 1 -type f" # lists files in the current directory
+alias listfiles="find * -type f -print" # lists files in the current directory
 
 alias dave="echo '
   ____    ___     _______
