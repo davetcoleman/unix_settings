@@ -64,8 +64,9 @@
 
     alias bstop="sudo rc-service fsm-rsdk stop"  # stop baxter software
     alias bstart="sudo rc-service fsm-rsdk start"  # start baxter software
-    # sudo reboot # Reboot
-    # sudo shutdown -h now # Shutdown
+    alias bshutdown="sudo shutdown -h now"
+    alias breboot="sudo reboot"
+
 
 # Baxter Time ---------------------------------------
     # See http://sdk.rethinkrobotics.com/wiki/Time_and_NTP
