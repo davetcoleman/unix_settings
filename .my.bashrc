@@ -174,7 +174,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
 
     # Syncing scripts
-    alias sync_ros_monster_to_student="source ros_monster_to_student.sh"
+    alias sync_ros_monster_to_student="source /home/$USER/unix_settings/scripts/rsync/ros_monster_to_student.sh"
 
     # Exports
     export ROS_IP=$ROS_MONSTER_IP
