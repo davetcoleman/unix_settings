@@ -79,11 +79,16 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias listfolders='ls -AF | grep /'
-alias listfiles='ls -AF | grep -v /'
+#alias listfiles='ls -AF | grep -v /'
+alias listfiles="find * -type f -print" # lists files in the current directory
+function cdl() {
+  cd "$1" && ll
+}
+# Quick back folder
+alias c="cd .."
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# Remove line numbers in history
+alias history="history | sed 's/^[ ]*[0-9]\+[ ]*//'"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -94,7 +99,7 @@ fi
 
 
 
-# DAVE'S CUSTOM STUFF ---------------------------------------------------------------------
+# CUSTOM STUFF - NOT UBUNTU DEFAULT---------------------------------------------------------------------
 
 # OS Stuff
 platform='unknown'
@@ -148,17 +153,17 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
-    #source /home/dave/ros/ws_moveit/devel/setup.bash
-    #source /home/dave/ros/ws_moveit_other/devel/setup.bash
-    source /home/dave/ros/ws_baxter/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+    source /home/$USER/ros/ws_baxter/devel/setup.bash
 
-    #source /home/dave/ros/ws_clam/devel/setup.bash
-    #source /home/dave/ros/ws_hrp2/devel/setup.bash
-    #source /home/dave/ros/ws_nasa/devel/setup.bash
-    #source /home/dave/ros/ws_jsk/devel/setup.bash
+    #source /home/$USER/ros/ws_clam/devel/setup.bash
+    #source /home/$USER/ros/ws_hrp2/devel/setup.bash
+    #source /home/$USER/ros/ws_nasa/devel/setup.bash
+    #source /home/$USER/ros/ws_jsk/devel/setup.bash
 
     # Unused
-    #source /home/dave/ros/ws_ompl/devel/setup.bash
+    #source /home/$USER/ros/ws_ompl/devel/setup.bash
 
     echo -ne "ROS: indigo | "
 
@@ -166,7 +171,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
 
     #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
-    #export ROS_PACKAGE_PATH=/home/dave/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
+    #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
 
     # Syncing scripts
     alias sync_ros_monster_to_student="source ros_monster_to_student.sh"
@@ -215,14 +220,14 @@ if [ $BASHRC_ENV == "ros_student" ]; then
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
-    #source /home/dave/ros/ws_moveit/devel/setup.bash
-    #source /home/dave/ros/ws_moveit_other/devel/setup.bash
-    source /home/dave/ros/ws_baxter/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+    source /home/$USER/ros/ws_baxter/devel/setup.bash
 
-    #source /home/dave/ros/ws_clam/devel/setup.bash
-    #source /home/dave/ros/ws_hrp2/devel/setup.bash
-    #source /home/dave/ros/ws_nasa/devel/setup.bash
-    #source /home/dave/ros/ws_jsk/devel/setup.bash
+    #source /home/$USER/ros/ws_clam/devel/setup.bash
+    #source /home/$USER/ros/ws_hrp2/devel/setup.bash
+    #source /home/$USER/ros/ws_nasa/devel/setup.bash
+    #source /home/$USER/ros/ws_jsk/devel/setup.bash
 
     echo -ne "ROS: indigo | "
 
@@ -230,7 +235,7 @@ if [ $BASHRC_ENV == "ros_student" ]; then
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
 
     #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
-    #export ROS_PACKAGE_PATH=/home/dave/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
+    #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
 
 
     # Syncing scripts
@@ -251,31 +256,31 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
     # Hydro
     if [ $USE_HYDRO == 1 ]; then
 	# In-Use Workspaces
-	source /home/dave/ros/ws_ros_catkin/install_isolated/setup.bash
-	#source /home/dave/ros/ws_moveit/devel/setup.bash
-	#source /home/dave/ros/ws_moveit2/devel/setup.bash
-	#source /home/dave/ros/ws_jsk3/devel/setup.bash
-	#source /home/dave/ros/ws_jsk4/devel/setup.bash
-	#source /home/dave/ros/ws_gazebo/devel/setup.bash
-	#source /home/dave/ros/ws_jsk_hrp2/devel/setup.bash
+	source /home/$USER/ros/ws_ros_catkin/install_isolated/setup.bash
+	#source /home/$USER/ros/ws_moveit/devel/setup.bash
+	#source /home/$USER/ros/ws_moveit2/devel/setup.bash
+	#source /home/$USER/ros/ws_jsk3/devel/setup.bash
+	#source /home/$USER/ros/ws_jsk4/devel/setup.bash
+	#source /home/$USER/ros/ws_gazebo/devel/setup.bash
+	#source /home/$USER/ros/ws_jsk_hrp2/devel/setup.bash
 
-	#source /home/dave/ros/ws_jsk2/devel/setup.bash
-	#source /home/dave/ros/ws_jsk/devel/setup.bash
-	#source /home/dave/ros/ws_core/devel/setup.bash
+	#source /home/$USER/ros/ws_jsk2/devel/setup.bash
+	#source /home/$USER/ros/ws_jsk/devel/setup.bash
+	#source /home/$USER/ros/ws_core/devel/setup.bash
         #source /opt/ros/hydro/setup.bash
-	#source /home/dave/ros/ws_baxter/devel/setup.bash
-	#source /home/dave/ros/ws_misc/devel/setup.bash
-	#source /home/dave/ros/ws_atlas/devel/setup.bash
+	#source /home/$USER/ros/ws_baxter/devel/setup.bash
+	#source /home/$USER/ros/ws_misc/devel/setup.bash
+	#source /home/$USER/ros/ws_atlas/devel/setup.bash
 
 	##### UNUSED
-	#source /home/dave/ros/ws_clam/devel/setup.bash
+	#source /home/$USER/ros/ws_clam/devel/setup.bash
 
 	echo -ne "ROS: hydro | "
     else # Groovy
 
 	source /opt/ros/groovy/setup.bash
-	#source /home/dave/ros/ws_misc_groovy/devel/setup.bash
-	#source /home/dave/ros/ws_groovy_baxter/devel/setup.bash
+	#source /home/$USER/ros/ws_misc_groovy/devel/setup.bash
+	#source /home/$USER/ros/ws_groovy_baxter/devel/setup.bash
         source /usr/share/drcsim/setup.sh
 
 	echo -ne "ROS: groovy | "
@@ -284,7 +289,7 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
     export CVSDIR=$HOME/prog # add this line to .bashrc
 
     #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
-    #export ROS_PACKAGE_PATH=/home/dave/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
+    #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
     #export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:`rospack find hrpsys_gazebo_tutorials`/..
     #export GAZEBO_PLUGIN_PATH=`rospack find hrpsys_gazebo_general`/plugins:$GAZEBO_PLUGIN_PATH
 
@@ -333,26 +338,26 @@ fi
 if [ $BASHRC_ENV == "ros_jsk" ]; then
 
     # The workspaces being used on this computer
-    ROS_WORKSPACES=( "/home/dave/ros/ws_ompl/"
-#	"/home/dave/ros/ws_ros_control/"
-	"/home/dave/ros/ws_moveit/"
-	"/home/dave/ros/ws_moveit_other/")
-#        "/home/dave/ros/ws_baxter/"
-#	"/home/dave/ros/ws_clam/"
-#	"/home/dave/ros/ws_nasa/"
-#	"/home/dave/ros/ws_jsk/" )
+    ROS_WORKSPACES=( "/home/$USER/ros/ws_ompl/"
+#	"/home/$USER/ros/ws_ros_control/"
+	"/home/$USER/ros/ws_moveit/"
+	"/home/$USER/ros/ws_moveit_other/")
+#        "/home/$USER/ros/ws_baxter/"
+#	"/home/$USER/ros/ws_clam/"
+#	"/home/$USER/ros/ws_nasa/"
+#	"/home/$USER/ros/ws_jsk/" )
 
   	# In-Use Workspaces
-        #source /home/dave/ros/ws_ros/install/setup.bash
-	#source /home/dave/ros/ws_ompl/devel/setup.bash
-	#source /home/dave/ros/ws_ros_control/devel/setup.bash
-	#source /home/dave/ros/ws_moveit/devel/setup.bash
-	#source /home/dave/ros/ws_moveit_other/devel/setup.bash
-        #source /home/dave/ros/ws_baxter/devel/setup.bash
-	#source /home/dave/ros/ws_clam/devel/setup.bash
-	#source /home/dave/ros/ws_hrp2/devel/setup.bash
-        source /home/dave/ros/ws_nasa/devel/setup.bash
-	#source /home/dave/ros/ws_jsk/devel/setup.bash
+        #source /home/$USER/ros/ws_ros/install/setup.bash
+	#source /home/$USER/ros/ws_ompl/devel/setup.bash
+	#source /home/$USER/ros/ws_ros_control/devel/setup.bash
+	#source /home/$USER/ros/ws_moveit/devel/setup.bash
+	#source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+        #source /home/$USER/ros/ws_baxter/devel/setup.bash
+	#source /home/$USER/ros/ws_clam/devel/setup.bash
+	#source /home/$USER/ros/ws_hrp2/devel/setup.bash
+        source /home/$USER/ros/ws_nasa/devel/setup.bash
+	#source /home/$USER/ros/ws_jsk/devel/setup.bash
 
     echo -ne "ROS: hydro | "
 
@@ -360,7 +365,7 @@ if [ $BASHRC_ENV == "ros_jsk" ]; then
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
 
     #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
-    #export ROS_PACKAGE_PATH=/home/dave/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
+    #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
 
 
     # Exports
@@ -377,8 +382,8 @@ if [ $BASHRC_ENV == "ros_gateway" ]; then
 
     #In-Use Workspaces
     #source /opt/ros/hydro/setup.bash
-    #source /home/dave/ros/ws_baxter/devel/setup.bash
-    source /home/dave/ros/ws_baxter/devel/setup.bash
+    #source /home/$USER/ros/ws_baxter/devel/setup.bash
+    source /home/$USER/ros/ws_baxter/devel/setup.bash
 
     source ~/unix_settings/scripts/baxter.sh
 
@@ -409,7 +414,7 @@ if [ $BASHRC_ENV == "ros_baxter_control" ]; then
 
     #In-Use Workspaces
     source /opt/ros/hydro/setup.bash
-    source /home/dave/ros/ws_baxter/devel/setup.bash
+    source /home/$USER/ros/ws_baxter/devel/setup.bash
 
     echo -ne "ROS: hydro | "
 
@@ -433,7 +438,7 @@ if [ $BASHRC_ENV == "janus" ]; then
 fi
 if [ $BASHRC_ENV == "mac" ]; then
 
-    alias web='cd /Volumes/Dave/Web'
+    alias web='cd /Volumes/$USER/Web'
     alias brewwork='cd /usr/local/Library/Formula'
 
     # For homebrew / ROS Mac
@@ -453,7 +458,7 @@ if [ $BASHRC_ENV == "ros_vm" ]; then
 
     #In-Use Workspaces
     source /opt/ros/indigo/setup.bash
-    #source /home/dave/ros/ws_ros_control/devel/setup.bash
+    #source /home/$USER/ros/ws_ros_control/devel/setup.bash
 
 
     # Change display method for VM graphics card
@@ -507,13 +512,12 @@ export ALTERNATE_EDITOR="" # this evokes emacs server/client stuff somehow
 alias p="python"
 alias pylab="ipython --pylab"
 
-# Ubuntu tricks
-alias myubuntu="more /etc/issue"
-
 # Clipboard
 alias xc="xclip" # copy
 alias xv="xclip -o" # paste
 alias pwdxc="pwd | xclip"
+
+## GREP / FIND --------------------------------------------------------------------------------
 
 # Searching within files, recursive from current location
 gr() { grep -I --color=always --ignore-case --line-number --recursive  "$1" . ;}
@@ -552,6 +556,8 @@ findreplace() { grep -lr -e "$1" * | xargs sed -i "s/$1/$2/g" ;}
 # Find installed programs in Ubuntu:
 findprogram() { sudo find /usr -name "$1*" ;}
 
+## COMPRESSION --------------------------------------------------------------------------------
+
 # Compressed aliases
 alias untargz='tar xvfz ' #file.tar.gz
 alias untarxz='tar xvfJ ' #file.tar.xz
@@ -560,34 +566,16 @@ alias dotargz='tar cfz ' #file.tar.gz folder/
 alias untar='tar xvf ' #file.tar
 alias dotar='tar cvwf ' #file.tar folder/
 
-
-# Matlab
-#alias matlab="matlab -nodesktop -nosplash -r "
-
-if [[ $platform != 'osx' ]]; then
-  # Opening Files fast, more like mac
-  alias open="gvfs-open" #"gnome-open"
-fi
-
 # Quick edit this file
 alias mybash="e ~/unix_settings/.my.bashrc && . ~/unix_settings/.my.bashrc"
 alias mybashr=". ~/unix_settings/.my.bashrc"
 alias myemacs="e ~/unix_settings/.emacs"
 alias myubuntuinstall="e ~/unix_settings/install/ubuntu.sh"
 
-# Quick edit ubuntu install file
-alias myinstall="e ~/unix_settings/install/ubuntu.sh"
-
-# Quick synaptic
-alias synap="sudo synaptic"
-alias esynap="se /etc/apt/sources.list" # manually edit sources
-
 # Diff with color
 alias diff="colordiff"
 
-# Quick back folder
-alias c="cd .."
-
+# Update Ubuntu
 alias sagu="sudo apt-get update && sudo apt-get dist-upgrade -y"
 alias sagi="sudo apt-get install "
 
@@ -599,44 +587,25 @@ alias dmaker="sudo clear && cmake ../ -DCMAKE_BUILD_TYPE=debug && make -j8 && su
 # Search running processes
 alias pp="ps aux | grep "
 
-# The Zimmerman
+# Show fake hacker script
 alias hacker='hexdump -C /dev/urandom | grep "fd b4"'
-
-alias listfiles="find * -type f -print" # lists files in the current directory
-
-alias dave="echo '
-  ____    ___     _______
- |  _ \  / \ \   / / ____|
- | | | |/ _ \ \ / /|  _|
- | |_| / ___ \ V / | |___
- |____/_/   \_\_/  |_____|
-                           '";
 
 # gdb
 alias gdbrun='gdb --ex run --args '
 alias rosrungdb='gdb --ex run --args ' #/opt/ros/hydro/lib/rviz/rviz
 
-# git
+## More Scripts -----------------------------------------------------------------------
+
+# Ubuntu only
+if [[ $platform != 'osx' ]]; then
+    source scripts/ubuntu.sh
+fi
+
+# git aliases and functions
 source ~/unix_settings/scripts/git.sh
-
-
-function cdl() {
-  cd "$1" && ll
-}
-
-# Remove line numbers in history
-alias history="history | sed 's/^[ ]*[0-9]\+[ ]*//'"
 
 # Notes
 source ~/unix_settings/notes/aliases.sh
-
-#hg
-alias hgst='hg status'
-
-# DNS Restart
-alias dnsrestart="sudo /etc/init.d/nscd restart"
-
-#du -hc moveit
 
 function selfdestruct()
 {
