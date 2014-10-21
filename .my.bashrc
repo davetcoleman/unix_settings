@@ -239,7 +239,7 @@ if [ $BASHRC_ENV == "ros_student" ]; then
 
 
     # Syncing scripts
-    alias sync_ros_student_to_monster="source ros_student_to_monster.sh"
+    alias sync_ros_student_to_monster="source /home/$USER/unix_settings/scripts/rsync/ros_student_to_monster.sh"
 
     # Exports
     export ROS_IP=$ROS_STUDENT_IP
