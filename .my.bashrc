@@ -168,6 +168,8 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
     #export ROS_PACKAGE_PATH=/home/dave/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
 
+    # Syncing scripts
+    alias sync_ros_monster_to_student="source ros_monster_to_student.sh"
 
     # Exports
     export ROS_IP=$ROS_MONSTER_IP
@@ -230,6 +232,9 @@ if [ $BASHRC_ENV == "ros_student" ]; then
     #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
     #export ROS_PACKAGE_PATH=/home/dave/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
 
+
+    # Syncing scripts
+    alias sync_ros_student_to_monster="source ros_student_to_monster.sh"
 
     # Exports
     export ROS_IP=$ROS_STUDENT_IP

@@ -49,6 +49,8 @@ if [[ $USE_BAXTER_REPOS == "true" ]]; then
     gitHasChanges
     cd /home/dave/ros/ws_baxter/src/baxter_cpp/
     gitHasChanges
+    cd /home/dave/ros/ws_baxter/src/baxter_ssh/
+    gitHasChanges
     cd /home/dave/ros/ws_baxter/src/baxter_examples/
     gitHasChanges
     cd /home/dave/ros/ws_baxter/src/baxter_experimental/

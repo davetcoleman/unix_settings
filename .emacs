@@ -373,7 +373,7 @@
 (defun ros-compile-command ()
   (set (make-local-variable 'compile-command) 
        (if (string-equal (file-name-directory (get-closest-pathname ".catkin_workspace")) default-directory)
-	 (format "cd %s && catkin bi" (file-name-directory (get-closest-pathname ".catkin_workspace_install")))
+	 (format "cd %s && catkin b" (file-name-directory (get-closest-pathname ".catkin_workspace_install")))
 ;	 (format "cd %s && catkin bo moveit_whole_body_ik" (file-name-directory (get-closest-pathname ".catkin_workspace")))
 	 (format "cd %s && catkin bd" (file-name-directory (get-closest-pathname ".catkin_workspace")))
        )

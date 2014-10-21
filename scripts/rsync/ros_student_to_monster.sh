@@ -1,5 +1,5 @@
+read -p "Are you sure you want to send all contents of /ros from STUDENT to MONSTER?"
 rsync -avg --progress --exclude 'catkin_tools/build' --delete ~/ros/ dave@$ROS_MONSTER_IP:/home/dave/ros/
-#rsync -avg --progress --delete ~/unix_settings/ dave@$ROS_GATEWAY_IP:/home/dave/unix_settings/
 
 # -v : verbose
 # -r : copies data recursively (but don’t preserve timestamps and permission while transferring data
