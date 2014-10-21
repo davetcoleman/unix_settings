@@ -1,6 +1,6 @@
 # GDB Notes
 
-## Basics
+## Basics -------------------------------------------------------------------
 
 ### Output Backtrace of All Threads At Once
     thread apply all bt full
@@ -48,4 +48,28 @@
     ps aux | grep gzserver# get process id
     sudo gdb -p 23845     # connect to that id
 
+## Graphics -------------------------------------------------------------------
 
+### Documentation
+
+    http://davis.lbl.gov/Manuals/GDB/gdb_21.html
+
+### Show Text User Interface
+
+    C-x A 
+
+## Breakpoints -------------------------------------------------------------------
+
+### Set a breakpoint on any line in current file
+
+    break 123
+
+### Remove a breakpoint
+
+    clear linenum
+	clear filename:linenum
+
+### Set a breakpoint on the source line that point is on
+
+    C-x C-a C-b
+    
