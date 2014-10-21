@@ -25,6 +25,8 @@ cd /home/dave/ros/ws_moveit/src/moveit_planners
 gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_ros
 gitHasChanges
+cd /home/dave/ros/ws_moveit/src/rviz_visual_tools
+gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_visual_tools
 gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_whole_body_ik
