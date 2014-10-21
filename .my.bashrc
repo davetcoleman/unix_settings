@@ -598,7 +598,7 @@ alias rosrungdb='gdb --ex run --args ' #/opt/ros/hydro/lib/rviz/rviz
 
 # Ubuntu only
 if [[ $platform != 'osx' ]]; then
-    source scripts/ubuntu.sh
+    source /home/$USER/unix_settings/scripts/ubuntu.sh
 fi
 
 # git aliases and functions
