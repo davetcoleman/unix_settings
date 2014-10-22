@@ -274,6 +274,16 @@
 
   }
 
+  function jekyllinstall() {
+
+      sudo apt-get install -y ruby-dev nodejs
+      sudo gem install jekyll
+      #jekyll new myblog
+      # cd myblog
+      #~/myblog $ jekyll serve
+      # => Now browse to http://localhost:4000      
+  }
+
   # Setup SSH Access
   function sshinstall() {
       sudo apt-get install -y openssh-server || echo -e "\e[00;31mAPT-GET FAILED\e[00m"

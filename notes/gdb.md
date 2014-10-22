@@ -2,6 +2,9 @@
 
 ## Navigation -----------------------------------------------------------------
 
+### Step OVER subfunctions
+    n (next)
+
 ### Step out of current function
     fin
 
@@ -10,9 +13,6 @@
 
 ### Step INTO function
     s (step)
-
-### Step OVER subfunctions
-    n (next)
 
 ## Basics -------------------------------------------------------------------
 

@@ -544,6 +544,9 @@ findfile()
     fi
 }
 
+# Find files recursively by file type and copy them to a directory
+#find . -name "*.rst" -type f -exec cp {} ~/Desktop/ \;
+
 # Also:
 # find . -iname '*.so'
 #alias dfind="find . -iname "
