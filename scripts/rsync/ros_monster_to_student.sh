@@ -1,3 +1,4 @@
+read -p "Are you sure you want to send all contents of /ros from MONSTER to STUDENT?"
 rsync -avg --progress --delete ~/ros/ dave@$ROS_STUDENT_IP:/home/dave/ros/
 
 # -v : verbose

@@ -31,6 +31,3 @@ Update Repo
 
 Undo all uncommited changes to current branch
   hg up -C
-
-
-

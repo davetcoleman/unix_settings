@@ -25,6 +25,8 @@ cd /home/dave/ros/ws_moveit/src/moveit_planners
 gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_ros
 gitHasChanges
+cd /home/dave/ros/ws_moveit/src/rviz_visual_tools
+gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_visual_tools
 gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_whole_body_ik
@@ -48,6 +50,8 @@ if [[ $USE_BAXTER_REPOS == "true" ]]; then
     cd /home/dave/ros/ws_baxter/src/baxter_common/
     gitHasChanges
     cd /home/dave/ros/ws_baxter/src/baxter_cpp/
+    gitHasChanges
+    cd /home/dave/ros/ws_baxter/src/baxter_ssh/
     gitHasChanges
     cd /home/dave/ros/ws_baxter/src/baxter_examples/
     gitHasChanges

@@ -373,7 +373,7 @@
 (defun ros-compile-command ()
   (set (make-local-variable 'compile-command) 
        (if (string-equal (file-name-directory (get-closest-pathname ".catkin_workspace")) default-directory)
-	 (format "cd %s && catkin bi" (file-name-directory (get-closest-pathname ".catkin_workspace_install")))
+	 (format "cd %s && catkin b" (file-name-directory (get-closest-pathname ".catkin_workspace_install")))
 ;	 (format "cd %s && catkin bo moveit_whole_body_ik" (file-name-directory (get-closest-pathname ".catkin_workspace")))
 	 (format "cd %s && catkin bd" (file-name-directory (get-closest-pathname ".catkin_workspace")))
        )
@@ -386,11 +386,11 @@
 (defun ros-pkg-compile-command ()
   "Only build Catkin pkg, not whole workspace"
   (interactive)
-  (set (make-local-variable 'compile-command) 
-       (format "cd %s && catkin bo %s" 
-	       (file-name-directory (get-closest-pathname ".catkin_workspace"))
-	       (nth 0 (last (split-string (directory-file-name (file-name-directory (get-closest-pathname "package.xml"))) "/")))
-       ))
+  (set (make-local-variable 'compile-command)  "catkin bot")
+       ;(format "cd %s && catkin bo %s" 
+       ;       (file-name-directory (get-closest-pathname ".catkin_workspace"))
+       ;       (nth 0 (last (split-string (directory-file-name (file-name-directory (get-closest-pathname "package.xml"))) "/")))
+       ;))
   (call-interactively 'compile)
 )
 
