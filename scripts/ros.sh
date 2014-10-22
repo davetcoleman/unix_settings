@@ -153,6 +153,10 @@
     # other
     alias roseus="rosrun roseus roseus "
 
+    # Testing
+    alias rostestpub="rostopic pub /dave_test -r 1 std_msgs/Float32 99.9"
+    alias rostestecho="rostopic echo /dave_test"
+
     # ROS STUFF
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
     #export ROS_PYTHON_LOG_CONFIG_FILE=~/unix_settings/.my.rosconsole_python

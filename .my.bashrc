@@ -162,9 +162,6 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     #source /home/$USER/ros/ws_nasa/devel/setup.bash
     #source /home/$USER/ros/ws_jsk/devel/setup.bash
 
-    # Unused
-    #source /home/$USER/ros/ws_ompl/devel/setup.bash
-
     echo -ne "ROS: indigo | "
 
     # overwrite the one from ws_ros/install/setup.bash
