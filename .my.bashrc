@@ -170,17 +170,14 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
 
-    #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
-    #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
-
     # Syncing scripts
     alias sync_ros_monster_to_student="source /home/$USER/unix_settings/scripts/rsync/ros_monster_to_student.sh"
 
     # Exports
     export ROS_IP=$ROS_MONSTER_IP
+    #export ROS_IP=`hostname -I`
 
     echo -ne "Computer: ros_monster"
-
 fi
 
 if [ $BASHRC_ENV == "ros_baxter" ]; then
@@ -205,7 +202,8 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
 
     # Exports
-    #export ROS_IP=$BAXTER_IP
+    #export ROS_IP=$ROS_BAXTER_IP
+    #export ROS_IP=`hostname -I`
     export ROS_HOSTNAME=$ROS_BAXTER_IP  #http://localhost:11311
     export ROS_MASTER_URI=http://localhost:11311
 
@@ -233,10 +231,6 @@ if [ $BASHRC_ENV == "ros_student" ]; then
 
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
-
-    #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
-    #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
-
 
     # Syncing scripts
     alias sync_ros_student_to_monster="source /home/$USER/unix_settings/scripts/rsync/ros_student_to_monster.sh"
@@ -470,11 +464,11 @@ fi
 # Set ROS MASTER URI for our robot or locally
 if [ $ROS_SEGMENT == "ros" ]; then
     if [ $ROS_MASTER == "baxter" ]; then  # Use Baxter externally
-	export ROS_MASTER_URI="http://"$BAXTER_IP_ADDRESS":11311"
+	export ROS_MASTER_URI="http://"$ROS_BAXTER_IP":11311"
 
 	echo -ne " | ROS Master: baxter"
     elif [ $ROS_MASTER == "special" ]; then  # Internal Baxter
-	export ROS_MASTER_URI=$BAXTER_IP_ADDRESS
+	export ROS_MASTER_URI=$ROS_BAXTER_IP
 
 	echo -ne " | ROS Master: i_am_baxter"
     else # Localhost
