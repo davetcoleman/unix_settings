@@ -179,7 +179,6 @@ fi
 
 if [ $BASHRC_ENV == "ros_baxter" ]; then
 
-    #alias emacs="/home/ruser/bin/emacs-24.3/src/emacs"
     export PATH=$PATH:/home/ruser/software/emacs-24.3/lib-src/
     export PATH=$PATH:/home/ruser/software/emacs-24.3/src/
     export PATH=$PATH:/home/ruser/bin
@@ -199,10 +198,10 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
 
     # Exports
-    #export ROS_IP=$ROS_BAXTER_IP
-    #export ROS_IP=`hostname -I`
-    export ROS_HOSTNAME=$ROS_BAXTER_IP  #http://localhost:11311
-    export ROS_MASTER_URI=http://localhost:11311
+    # Use ROS_IP if you are specifying an IP address, and ROS_HOSTNAME if you are specifying a host name. 
+    export ROS_IP=$ROS_BAXTER_IP
+    #export ROS_HOSTNAME=$ROS_BAXTER_IP  #http://localhost:11311
+    #export ROS_MASTER_URI=http://localhost:11311
 
     echo -ne "Computer: ros_baxter"
 
