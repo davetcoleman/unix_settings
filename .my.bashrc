@@ -202,7 +202,7 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
 
     # Exports
     # Use ROS_IP if you are specifying an IP address, and ROS_HOSTNAME if you are specifying a host name. 
-    export ROS_IP=`hostname -I` #$ROS_BAXTER_IP
+    export ROS_IP=$ROS_BAXTER_IP
     #export ROS_HOSTNAME=$ROS_BAXTER_IP  #http://localhost:11311
     #export ROS_MASTER_URI=http://localhost:11311
 
