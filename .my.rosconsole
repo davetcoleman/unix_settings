@@ -44,7 +44,8 @@ log4j.logger.ros.moveit_setup_assistant.pluginlib.ClassLoader=INFO
 
 # Baxter
 log4j.logger.ros.baxter_state_publisher=INFO
-log4j.logger.ros.baxter_moveit_ikfast_plugin=INFO
+log4j.logger.ros.baxter_ikfast_left_arm_plugin.ikfast=INFO
+log4j.logger.ros.baxter_ikfast_right_arm_plugin.ikfast=INFO
 log4j.logger.ros.baxter_moveit_plugins.actionlib=INFO
 log4j.logger.ros.baxter_controller.actionlib=INFO
 log4j.logger.ros.baxter_block_manipulation.actionlib=INFO

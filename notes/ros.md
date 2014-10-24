@@ -31,3 +31,7 @@ set(ROS_COMPILE_FLAGS "-W -Wall -Wno-unused-parameter -fno-strict-aliasing")
 ## Convert URDF to PDF
 
     urdf_to_graphiz
+
+# View TF as PDF
+
+    tfpdf    
