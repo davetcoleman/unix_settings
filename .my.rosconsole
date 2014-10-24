@@ -23,7 +23,7 @@ log4j.logger.ros.moveit_planners_ompl.parameters=INFO
 
 # MoveIt ROS
 log4j.logger.ros.moveit_ros_planning.kinematics_plugin_loader=INFO
-log4j.logger.ros.moveit_ros_perception.message_filter=DEBUG
+log4j.logger.ros.moveit_ros_perception.message_filter=INFO
 log4j.logger.ros.moveit_ros_move_group.actionlib=INFO
 log4j.logger.ros.moveit_ros_perception=DEBUG
 log4j.logger.ros.moveit_ros_benchmarks.pluginlib=INFO
