@@ -8,7 +8,7 @@
     alias bd="rostopic pub -1 /robot/set_super_enable std_msgs/Bool False"
     alias br="rostopic pub -1 /robot/set_super_reset std_msgs/Empty"
     alias bs="rostopic echo -c /robot/state"
-    alias bready="rosrun baxter_experimental send_both_ready"
+    alias bready="rosrun baxter_experimental send_ready"
     alias bdcc="rostopic pub -r 6 /robot/limb/right/CollisionAvoidance/suppress_body_avoidance std_msgs/Empty"
 
     alias bhardware="roslaunch baxter_control baxter_hardware.launch"

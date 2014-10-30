@@ -90,6 +90,35 @@ function gh() {
   fi
 }
 
+function bb() {
+  gitremote="$1"
+  if [ "$1" == "" ]; then
+      gitremote="origin";
+  fi
+
+  giturl=$(git config --get remote.$gitremote.url)
+  if [ "$giturl" == "" ]; then
+     echo "Not a git repository or no remote.origin.url set"
+     return
+  fi
+
+  giturl=${giturl/git\@bitbucket\.org\:/https://bitbucket.org/}
+  giturl=${giturl/\.git/\/branch}
+  branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
+  branch="(unnamed branch)"     # detached HEAD
+  branch=${branch##refs/heads/}
+  giturl=$giturl/$branch
+
+  if [[ $platform != 'osx' ]]; then
+      xdg-open $giturl # linux
+  else
+      open $giturl # mac
+  fi
+}
+
+#https://github.com/davetcoleman/moveit_ros/tree/add-joystick-interface
+#https://bitbucket.org/davetcoleman/moveit_ros/branch/all_dev_combined_indigo
+
 
 
 # Show git branch at prompt:

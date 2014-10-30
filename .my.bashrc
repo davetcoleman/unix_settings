@@ -154,10 +154,11 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
-    source /opt/ros/indigo/setup.bash
+    #source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_base/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    #source /home/$USER/ros/ws_baxter/devel/setup.bash
+    source /home/$USER/ros/ws_baxter/devel/setup.bash
 
     #source /home/$USER/ros/ws_clam/devel/setup.bash
     #source /home/$USER/ros/ws_hrp2/devel/setup.bash
