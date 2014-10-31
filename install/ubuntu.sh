@@ -349,18 +349,19 @@ if [ "$bashrc_answer" != "" ]; then
     echo "export BASHRC_ENV=$bashrc_answer && . ~/unix_settings/.my.bashrc" > ~/.bashrc
 
     # Clone the private repo as well
-    #TODO git clone fabgatec@davetcoleman.com:~/src/unix_settings_private
+    git clone fabgatec@davetcoleman.com:~/src/unix_settings_private
 
     # Source the bashrc for the first time
     source ~/.bashrc
 
     # Create simulinks from /unix_settings folder in the home folder
     echo "Creating simulinks in home folder to custom scripts"
-    #TODO ln -s ~/unix_settings_private/.gitconfig ~/.gitconfig
-    #ln -s ~/unix_settings/.hgrc ~/.hgrc
-    #ln -s ~/unix_settings/emacs ~/emacs
-    #ln -s ~/unix_settings/.emacs.d ~/.emacs.d
-    #ln -s ~/unix_settings/.emacs ~/.emacs
+    ln -s ~/unix_settings_private/.gitconfig ~/.gitconfig
+    ln -s ~/unix_settings/.hgrc ~/.hgrc
+
+    ln -s ~/unix_settings/emacs ~/emacs
+    ln -s ~/unix_settings/.emacs.d ~/.emacs.d
+    ln -s ~/unix_settings/.emacs ~/.emacs
 
 fi
 
