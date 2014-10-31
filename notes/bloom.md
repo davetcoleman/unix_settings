@@ -7,13 +7,13 @@ Source: http://wiki.ros.org/bloom/Tutorials/FirstTimeRelease
 ```
 bloom_alias_load            # load our shortcuts for this process
 roscd PACKAGE
-bcgc --all  
+bcgc --all
 e CHANGELOG.rst
 bcclft
 bcpr patch
  # CREATE PACKAGE on github.com/davetcoleman named PACKAGE-release
  # COPY THE HTTPS URL
-bloom-release --rosdistro hydro --track hydro PACKAGE --edit
+bloom-release --rosdistro indigo --track indigo PACKAGE --edit
 ```
 
 

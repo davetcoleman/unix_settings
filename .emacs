@@ -333,12 +333,15 @@
 
 ;;; ROS EMACS --------------------------------------------------------------------
 ; Only load it if on appropriate machine
-(cond ( (string= (getenv "BASHRC_ENV") "ros_jsk")
-  ; Load rosemacs
-  (require 'rosemacs)
-  (invoke-rosemacs)
-  ; Keyboard shortcuts. \C-x\C-r means control-x control-r:
-  (global-set-key "\C-x\C-r" ros-keymap)
+(cond ( (string= (getenv "BASHRC_ENV") "ros_monster")
+
+	(add-to-list 'load-path "/opt/ros/indigo/share/emacs/site-lisp")
+	;; or whatever your install space is + "/share/emacs/site-lisp"
+	(require 'rosemacs-config)
+	(ido-mode nil)  ;It's just the ido mode, I always found it very useful and there was a feature of roslisp_repl actually that relied on that, so I thought it would make things only better if it was enabled per default. 
+
+	; Keyboard shortcuts. \C-x\C-r means control-x control-r:
+	(global-set-key "\C-x\C-r" ros-keymap)
 ))
 
 ;;; YAML -------------------------------------------------------------------------

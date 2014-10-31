@@ -86,6 +86,7 @@ function cdl() {
 }
 # Quick back folder
 alias c="cd .."
+alias mkdir="mkdir -p"
 
 # Remove line numbers in history
 alias history="history | sed 's/^[ ]*[0-9]\+[ ]*//'"
@@ -148,11 +149,13 @@ fi
 # Custom environements per computer --------------------------------------------------------
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
-    ROS_MASTER="baxter"
+    #ROS_MASTER="baxter"
+    ROS_MASTER="localhost"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_base/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
     source /home/$USER/ros/ws_baxter/devel/setup.bash
@@ -171,8 +174,8 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     alias sync_ros_monster_to_student="source /home/$USER/unix_settings/scripts/rsync/ros_monster_to_student.sh"
 
     # Exports
-    export ROS_IP=$ROS_MONSTER_IP
-    #export ROS_IP=`hostname -I`
+    #export ROS_IP=$ROS_MONSTER_IP
+    export ROS_IP=`hostname -I`
 
     echo -ne "Computer: ros_monster"
 fi

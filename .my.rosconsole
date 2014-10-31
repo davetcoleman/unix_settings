@@ -23,14 +23,17 @@ log4j.logger.ros.moveit_planners_ompl.parameters=INFO
 
 # MoveIt ROS
 log4j.logger.ros.moveit_ros_planning.kinematics_plugin_loader=INFO
-log4j.logger.ros.moveit_ros_perception.message_filter=DEBUG
+log4j.logger.ros.moveit_ros_perception.message_filter=INFO
 log4j.logger.ros.moveit_ros_move_group.actionlib=INFO
 log4j.logger.ros.moveit_ros_perception=DEBUG
 log4j.logger.ros.moveit_ros_benchmarks.pluginlib=INFO
 log4j.logger.ros.moveit_ros_planning.rdf=INFO
+log4j.logger.ros.moveit_ros_planning.collision=INFO
 log4j.logger.ros.moveit_ros_planning.robot_model_loader=INFO
 log4j.logger.ros.moveit_ros_planning.kdl=INFO
 log4j.logger.ros.moveit_ros_planning.planning_scene_monitor=INFO
+log4j.logger.ros.moveit_ros_planning.message_filter=INFO
+
 # MoveIt Actionlib
 log4j.logger.ros.moveit_ros_visualization.actionlib=INFO
 log4j.logger.ros.moveit_ros_planning_interface.actionlib=INFO
@@ -44,7 +47,8 @@ log4j.logger.ros.moveit_setup_assistant.pluginlib.ClassLoader=INFO
 
 # Baxter
 log4j.logger.ros.baxter_state_publisher=INFO
-log4j.logger.ros.baxter_moveit_ikfast_plugin=INFO
+log4j.logger.ros.baxter_ikfast_left_arm_plugin.ikfast=INFO
+log4j.logger.ros.baxter_ikfast_right_arm_plugin.ikfast=INFO
 log4j.logger.ros.baxter_moveit_plugins.actionlib=INFO
 log4j.logger.ros.baxter_controller.actionlib=INFO
 log4j.logger.ros.baxter_block_manipulation.actionlib=INFO
