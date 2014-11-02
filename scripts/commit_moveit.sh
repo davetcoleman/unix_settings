@@ -7,11 +7,15 @@ function gitHasChanges() {
 	echo "Changed detected in git repo:"
 	pwd
 	git diff
-	read -p "Press enter to gitall" resp
-	gitall
-	read -p "Continue?" resp
+	read -p "Type 'y' and press enter to gitall" resp
+	if [ "$resp" = "y" ]; then
+	    gitall
+	    read -p "Continue?" resp
+	fi	
     fi
 }
+
+# Main MoveIt
 
 cd /home/dave/ros/ws_moveit/src/hrl_kinematics
 gitHasChanges
@@ -21,9 +25,13 @@ cd /home/dave/ros/ws_moveit/src/moveit_humanoid_stability
 gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_msgs
 gitHasChanges
-cd /home/dave/ros/ws_moveit/src/moveit_planners
+cd /home/dave/ros/ws_moveit/src/moveit_core
 gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_ros
+gitHasChanges
+cd /home/dave/ros/ws_moveit/src/moveit_planners
+gitHasChanges
+cd /home/dave/ros/ws_moveit/src/rviz_visual_tools
 gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_visual_tools
 gitHasChanges
@@ -40,6 +48,26 @@ gitHasChanges
 cd /home/dave/ros/ws_moveit/src/ros_private_pkgs
 gitHasChanges
 
+# MoveIt Other
+
+cd /home/dave/ros/ws_moveit_other/src/moveit_commander/
+gitHasChanges
+cd /home/dave/ros/ws_moveit_other/src/moveit_docs/
+gitHasChanges
+cd /home/dave/ros/ws_moveit_other/src/moveit_ikfast/
+gitHasChanges
+cd /home/dave/ros/ws_moveit_other/src/moveit_plugins/
+gitHasChanges
+cd /home/dave/ros/ws_moveit_other/src/moveit_pr2/
+gitHasChanges
+cd /home/dave/ros/ws_moveit_other/src/moveit_resources/
+gitHasChanges
+cd /home/dave/ros/ws_moveit_other/src/moveit_setup_assistant/
+gitHasChanges
+cd /home/dave/ros/ws_moveit_other/src/moveit_simple_grasps/
+gitHasChanges
+
+# Baxter
 export USE_BAXTER_REPOS='true'
 
 if [[ $USE_BAXTER_REPOS == "true" ]]; then
@@ -48,6 +76,8 @@ if [[ $USE_BAXTER_REPOS == "true" ]]; then
     cd /home/dave/ros/ws_baxter/src/baxter_common/
     gitHasChanges
     cd /home/dave/ros/ws_baxter/src/baxter_cpp/
+    gitHasChanges
+    cd /home/dave/ros/ws_baxter/src/baxter_ssh/
     gitHasChanges
     cd /home/dave/ros/ws_baxter/src/baxter_examples/
     gitHasChanges

@@ -1,26 +1,42 @@
 #!/bin/bash
 
-# Baxter Notes ---------------------------------
+# Baxter Notes
 
-# Baxter Aliases -------------------------------
-
+## Baxter SDK
+  
+    # Baxter Enable
     alias be="rostopic pub -1 /robot/set_super_enable std_msgs/Bool True"
+    # Baxter Disable
     alias bd="rostopic pub -1 /robot/set_super_enable std_msgs/Bool False"
+    # Baxter Reset
     alias br="rostopic pub -1 /robot/set_super_reset std_msgs/Empty"
+    # Baxter State
     alias bs="rostopic echo -c /robot/state"
-    alias bready="rosrun baxter_experimental send_both_ready"
+    # Baxter disable collision avoidance
     alias bdcc="rostopic pub -r 6 /robot/limb/right/CollisionAvoidance/suppress_body_avoidance std_msgs/Empty"
 
+## Baxter CPP Shortcuts
+
+    # Start the hardware controllers
     alias bhardware="roslaunch baxter_control baxter_hardware.launch"
+    # Simulate Baxter
     alias bgazebo="roslaunch baxter_gazebo baxter_gazebo.launch"
+    # Visualize Baxter
     alias bvisualize="roslaunch baxter_control baxter_visualization.launch"
-    
+
+    # Baxter move_group
     alias bm="roslaunch baxter_moveit_config baxter_moveit.launch"
+    # Baxter pick place
     alias bpp="roslaunch baxter_pick_place block_pick_place.launch"
+    # Send Baxter to ready position, avoiding obstacles
+    alias bready="rosrun baxter_moveit_scripts send_ready"
+
+## Baxter Demos
 
     alias bw="rosrun joint_velocity wobbler.py"
     alias bsu="rosrun baxter_scripts sonar_enable.py --enable=0"
     alias bsd="rosrun baxter_scripts sonar_enable.py --enable=1"
+    alias bkeyboard="rosrun joint_position keyboard.py"
     alias brtare="rosrun baxter_tools tare.py -l right"
     alias bltare="rosrun baxter_tools tare.py -l left"
     alias brcalibrate="rosrun baxter_tools calibrate_arm.py -l right"
@@ -48,12 +64,11 @@
     
 ### SSH Access
 
-    alias bssh="ssh osrf@011305P0009.local"
-    alias blog="ftp 011305P0009.local"
-    alias bkeyboard="rosrun joint_position keyboard.py"
-    alias bdownloadlogs="cd ~/ros/baxter_logs/ && rm -rf cu_boulder_ftp_logs.tar.gz 011305p0009.local/ && wget -r ftp://011305P0009.local/ && tar cvzf cu_boulder_ftp_logs.tar.gz 011305p0009.local/ && scp cu_boulder_ftp_logs.tar.gz fabgatec@davetcoleman.com:~/www/"
+    #alias bssh="ssh osrf@011305P0009.local"
+    #alias blog="ftp 011305P0009.local"
+    #alias bdownloadlogs="cd ~/ros/baxter_logs/ && rm -rf cu_boulder_ftp_logs.tar.gz 011305p0009.local/ && wget -r ftp://011305P0009.local/ && tar cvzf cu_boulder_ftp_logs.tar.gz 011305p0009.local/ && scp cu_boulder_ftp_logs.tar.gz fabgatec@davetcoleman.com:~/www/"
 
-## Cameras
+## View Camera Streams
 
     alias brcamera="rosrun image_view image_view image:=/cameras/right_hand_camera/image"
     alias blcamera="rosrun image_view image_view image:=/cameras/left_hand_camera/image"
@@ -64,10 +79,11 @@
 
     alias bstop="sudo rc-service fsm-rsdk stop"  # stop baxter software
     alias bstart="sudo rc-service fsm-rsdk start"  # start baxter software
-    # sudo reboot # Reboot
-    # sudo shutdown -h now # Shutdown
+    alias bshutdown="sudo shutdown -h now"
+    alias breboot="sudo reboot"
 
-# Baxter Time ---------------------------------------
+## Baxter Time
+
     # See http://sdk.rethinkrobotics.com/wiki/Time_and_NTP
 
     # Check the offset of time of Baxter

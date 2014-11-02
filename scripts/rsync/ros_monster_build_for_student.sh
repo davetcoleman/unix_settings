@@ -1,5 +1,9 @@
-read -p "Are you sure you want to send all contents of /ros from STUDENT to MONSTER?"
-rsync -avg --progress --exclude 'catkin_tools/build' --delete ~/ros/ dave@$ROS_MONSTER_IP:/home/dave/ros/
+echo "You should be logged into MONSTER"
+read -p "Are you sure you want to send all contents of /ros from STUDENT to MONSTER, build, then send back?"
+rsync -avg --progress --exclude 'catkin_tools/build' --delete dave@$ROS_STUDENT_IP:/home/dave/ros/ ~/ros
+cd /home/dave/ros/ws_moveit
+catkin b
+rsync -avg --progress --exclude 'catkin_tools/build' --delete ~/ros dave@$ROS_STUDENT_IP:/home/dave/ros/ 
 
 # -v : verbose
 # -r : copies data recursively (but don’t preserve timestamps and permission while transferring data

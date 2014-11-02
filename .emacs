@@ -333,12 +333,15 @@
 
 ;;; ROS EMACS --------------------------------------------------------------------
 ; Only load it if on appropriate machine
-(cond ( (string= (getenv "BASHRC_ENV") "ros_jsk")
-  ; Load rosemacs
-  (require 'rosemacs)
-  (invoke-rosemacs)
-  ; Keyboard shortcuts. \C-x\C-r means control-x control-r:
-  (global-set-key "\C-x\C-r" ros-keymap)
+(cond ( (string= (getenv "BASHRC_ENV") "ros_monster")
+
+	(add-to-list 'load-path "/opt/ros/indigo/share/emacs/site-lisp")
+	;; or whatever your install space is + "/share/emacs/site-lisp"
+	(require 'rosemacs-config)
+	(ido-mode nil)  ;It's just the ido mode, I always found it very useful and there was a feature of roslisp_repl actually that relied on that, so I thought it would make things only better if it was enabled per default. 
+
+	; Keyboard shortcuts. \C-x\C-r means control-x control-r:
+	(global-set-key "\C-x\C-r" ros-keymap)
 ))
 
 ;;; YAML -------------------------------------------------------------------------
@@ -373,7 +376,7 @@
 (defun ros-compile-command ()
   (set (make-local-variable 'compile-command) 
        (if (string-equal (file-name-directory (get-closest-pathname ".catkin_workspace")) default-directory)
-	 (format "cd %s && catkin bi" (file-name-directory (get-closest-pathname ".catkin_workspace_install")))
+	 (format "cd %s && catkin b" (file-name-directory (get-closest-pathname ".catkin_workspace_install")))
 ;	 (format "cd %s && catkin bo moveit_whole_body_ik" (file-name-directory (get-closest-pathname ".catkin_workspace")))
 	 (format "cd %s && catkin bd" (file-name-directory (get-closest-pathname ".catkin_workspace")))
        )
@@ -386,11 +389,11 @@
 (defun ros-pkg-compile-command ()
   "Only build Catkin pkg, not whole workspace"
   (interactive)
-  (set (make-local-variable 'compile-command) 
-       (format "cd %s && catkin bo %s" 
-	       (file-name-directory (get-closest-pathname ".catkin_workspace"))
-	       (nth 0 (last (split-string (directory-file-name (file-name-directory (get-closest-pathname "package.xml"))) "/")))
-       ))
+  (set (make-local-variable 'compile-command)  "catkin bot")
+       ;(format "cd %s && catkin bo %s" 
+       ;       (file-name-directory (get-closest-pathname ".catkin_workspace"))
+       ;       (nth 0 (last (split-string (directory-file-name (file-name-directory (get-closest-pathname "package.xml"))) "/")))
+       ;))
   (call-interactively 'compile)
 )
 
@@ -434,12 +437,12 @@
 
 ;;; SNIPPETS --------------------------------------------------------------------
 ; To reload with emacs still open: M-x yas-reload-all
-;(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
-;(require 'yasnippet)
-;(setq yas-snippet-dirs '("~/emacs.d/yasnippet/snippets/cc-mode"))
+(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(setq yas-snippet-dirs '("~/emacs.d/yasnippet/snippets/cc-mode"))
                         ; "~/emacs.d/interesting-snippets"))
-;(setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/plugins/yasnippet/snippets"))
-;(yas-global-mode 1)
+(setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/plugins/yasnippet/snippets"))
+(yas-global-mode 1)
 
 ;;; Remove white space on save for C files --------------------------------------
 ;(add-hook 'c-mode-common-hook

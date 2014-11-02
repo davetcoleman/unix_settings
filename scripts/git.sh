@@ -23,19 +23,19 @@ function gitsshfix() {
     if [ -z "$REPO_URL" ]; then
 	echo "-- ERROR:  Could not identify Repo url."
 	echo "   It is possible this repo is already using SSH instead of HTTPS."
-	exit
+	return
     fi
 
     USER=`echo $REPO_URL | sed -Ene's#https://github.com/([^/]*)/(.*).git#\1#p'`
     if [ -z "$USER" ]; then
 	echo "-- ERROR:  Could not identify User."
-	exit
+	return
     fi
 
     REPO=`echo $REPO_URL | sed -Ene's#https://github.com/([^/]*)/(.*).git#\2#p'`
     if [ -z "$REPO" ]; then
 	echo "-- ERROR:  Could not identify Repo."
-	exit
+	return
     fi
 
     NEW_URL="git@github.com:$USER/$REPO.git"
@@ -61,9 +61,6 @@ function parse_vc_branch_and_add_brackets {
 	hg branch 2> /dev/null | awk '{print $1 }'
     fi
 }
-
-# Show git branch at prompt:
-export PS1="\[\033[0;32m\]\$(parse_vc_branch_and_add_brackets)\[\033[0m\] \W$ "
 
 # Opens the github page for the current git repository in your browser.
 # Can pass in argument for which remote to use, defaults to 'origin'
@@ -93,4 +90,40 @@ function gh() {
   fi
 }
 
+function bb() {
+  gitremote="$1"
+  if [ "$1" == "" ]; then
+      gitremote="origin";
+  fi
+
+  giturl=$(git config --get remote.$gitremote.url)
+  if [ "$giturl" == "" ]; then
+     echo "Not a git repository or no remote.origin.url set"
+     return
+  fi
+
+  giturl=${giturl/git\@bitbucket\.org\:/https://bitbucket.org/}
+  giturl=${giturl/\.git/\/branch}
+  branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
+  branch="(unnamed branch)"     # detached HEAD
+  branch=${branch##refs/heads/}
+  giturl=$giturl/$branch
+
+  if [[ $platform != 'osx' ]]; then
+      xdg-open $giturl # linux
+  else
+      open $giturl # mac
+  fi
+}
+
+#https://github.com/davetcoleman/moveit_ros/tree/add-joystick-interface
+#https://bitbucket.org/davetcoleman/moveit_ros/branch/all_dev_combined_indigo
+
+
+
+# Show git branch at prompt:
+#export PS1="\[\033[0;32m\]\$(parse_vc_branch_and_add_brackets)\[\033[0m\] \W$ "
+export PS1="\[\033[34m\][\h]\[\033[0m\]\[\033[0;32m\]\$(parse_vc_branch_and_add_brackets)\[\033[0m\] \W$ " 
+
+#export PS1="0;36 `hostname` 0;30"
 
