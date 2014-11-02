@@ -445,7 +445,7 @@ if [ $BASHRC_ENV == "mac" ]; then
     export CLICOLOR=1
     export LSCOLORS=ExFxCxDxBxegedabagacad
 
-    echo -ne "Computer: MBP"
+    echo "Computer: MBP"
 fi
 if [ $BASHRC_ENV == "ros_vm" ]; then
 
