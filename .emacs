@@ -1,5 +1,5 @@
 ;;;; EMACS CONFIGURATION FILE
-;;; Dave Coleman
+;;; Dave Coleman <dave@dav.ee>
 
 ; F2 - rename file and buffer
 ; F4 - refresh file
@@ -21,28 +21,36 @@
 (setq column-number-mode t)
 ; pretty print shortcut
 (global-set-key "\M-p" `indent-all)
+; goto line
+(global-set-key "\M-g" 'goto-line)
 ; disable menu bar
 (menu-bar-mode 0)
-; goto line keyboard shortcut
-;(global-set-key "\C-g" `goto-line)
+; Automatically update a file when it changes on disk (unless buffer has not been saved)
+(global-auto-revert-mode t)
+; Reload file
+(global-set-key [f4] 'refresh-file)
 ; compile command using F5 key
 (global-set-key [f5] 'compile)
 (global-set-key [f6] `ros-pkg-compile-command)
-; use system copy and paste
-;(setq x-select-enable-clipboard t) 
-;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 ; kill emacs server
 (global-set-key [f7] 'save-buffers-kill-emacs)
 ; make switch bufferer reversible with SHIFT key
 (global-set-key (kbd "C-x O") 'previous-multiframe-window)
 ; no word wrap
-;(setq truncate-lines t)
-;(set-default 'truncate-lines t)
+(setq truncate-lines t)
+(set-default 'truncate-lines t)
+; word wrap for compilation buffer
+(defun my-compilation-mode-hook ()
+  (setq truncate-lines nil) ;; automatically becomes buffer local
+  (set (make-local-variable 'truncate-partial-width-windows) nil))
+(add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
+; use system copy and paste
+;(setq x-select-enable-clipboard t) 
+;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 ; highlight line
 ;(global-hl-line-mode 1)
 ;(set-face-background 'hl-line "#333333")
 ;(set-face-background hl-line-face "gray13")
-
 ;(require 'highlight-current-line)
 ;(highlight-current-line-on t) 
 ;(highlight-current-line-whole-line-on nil)
@@ -59,8 +67,7 @@
 (defun refresh-file ()
   (interactive)
   (revert-buffer t t t)
-  )
-(global-set-key [f4] 'refresh-file)
+)
 
 ;;; BACKUP AND AUTOSAVE ---------------------------------------------------------
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
@@ -311,6 +318,12 @@
                   ("\\.cmake\\'" . cmake-mode))
                 auto-mode-alist))
 
+;;; MARKDOWN --------------------------------------------------------------------
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;;; MATLAB --------------------------------------------------------------------
 (autoload 'matlab-mode "matlab" "Enter MATLAB mode." t)
@@ -320,12 +333,15 @@
 
 ;;; ROS EMACS --------------------------------------------------------------------
 ; Only load it if on appropriate machine
-(cond ( (string= (getenv "BASHRC_ENV") "ros_jsk")
-  ; Load rosemacs
-  (require 'rosemacs)
-  (invoke-rosemacs)
-  ; Keyboard shortcuts. \C-x\C-r means control-x control-r:
-  (global-set-key "\C-x\C-r" ros-keymap)
+(cond ( (string= (getenv "BASHRC_ENV") "ros_monster")
+
+	(add-to-list 'load-path "/opt/ros/indigo/share/emacs/site-lisp")
+	;; or whatever your install space is + "/share/emacs/site-lisp"
+	(require 'rosemacs-config)
+	(ido-mode nil)  ;It's just the ido mode, I always found it very useful and there was a feature of roslisp_repl actually that relied on that, so I thought it would make things only better if it was enabled per default. 
+
+	; Keyboard shortcuts. \C-x\C-r means control-x control-r:
+	(global-set-key "\C-x\C-r" ros-keymap)
 ))
 
 ;;; YAML -------------------------------------------------------------------------
@@ -360,9 +376,9 @@
 (defun ros-compile-command ()
   (set (make-local-variable 'compile-command) 
        (if (string-equal (file-name-directory (get-closest-pathname ".catkin_workspace")) default-directory)
-	 (format "cd %s && catkin bi" (file-name-directory (get-closest-pathname ".catkin_workspace_install")))
+	 (format "cd %s && catkin b" (file-name-directory (get-closest-pathname ".catkin_workspace_install")))
 ;	 (format "cd %s && catkin bo moveit_whole_body_ik" (file-name-directory (get-closest-pathname ".catkin_workspace")))
-	 (format "cd %s && catkin b" (file-name-directory (get-closest-pathname ".catkin_workspace")))
+	 (format "cd %s && catkin bd" (file-name-directory (get-closest-pathname ".catkin_workspace")))
        )
   )
 )
@@ -373,13 +389,12 @@
 (defun ros-pkg-compile-command ()
   "Only build Catkin pkg, not whole workspace"
   (interactive)
-  (set (make-local-variable 'compile-command) 
-       (format "cd %s && catkin bo %s" 
-	       (file-name-directory (get-closest-pathname ".catkin_workspace"))
-	       (nth 0 (last (split-string (directory-file-name (file-name-directory (get-closest-pathname "package.xml"))) "/")))
-       )
-  )
-  ;(funcall 'compile)
+  (set (make-local-variable 'compile-command)  "catkin bot")
+       ;(format "cd %s && catkin bo %s" 
+       ;       (file-name-directory (get-closest-pathname ".catkin_workspace"))
+       ;       (nth 0 (last (split-string (directory-file-name (file-name-directory (get-closest-pathname "package.xml"))) "/")))
+       ;))
+  (call-interactively 'compile)
 )
 
 ;;; COMPILE NOTIFICATION WHEN DONE ------------------------------------------------------
@@ -471,5 +486,6 @@
 
 ;; To reload snippets from yas with emacs still open: 
 ; M-x yas-reload-all
+
 
 

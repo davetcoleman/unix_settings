@@ -1,0 +1,4 @@
+# name: short comment block for function
+# key: /*
+# --
+/** \brief ${1:description} */

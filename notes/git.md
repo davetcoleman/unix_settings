@@ -21,8 +21,8 @@ Removes staged and working directory changes.
 Removes the last commit
   git reset --hard  HEAD~1
 
-Delete all untracked files in a Git repo (careful!)
-  git clean -f
+Delete all untracked files in a Git repo (careful!) including directories
+  git clean -f -d
 
 Removes a commit from remote
   git push upstream +dd61ab32^:master
@@ -101,9 +101,17 @@ Stash =========================================================
 
 Stash current changes
   git stash
+  or
+  git stash save
 
 Recall stash
-  git stash apply
+  git stash pop
+
+See all stashes
+  git stash list
+
+Remove all old staets
+  git stash clear
 
 Working with Documents / Latex =========================================================
 

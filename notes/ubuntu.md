@@ -1,42 +1,47 @@
 # UBUNTU NOTES
 
+## Video Editing
+
+### Rotate video
+
+    I just tried it with avidemux. I use xvid and also I don't use the english version of avidemux so I may not describe it perfectly but you'll get it.
+
+    1. start avidemux and load your video.
+
+    2. choose avi from the button at the (almost) bottom left.
+
+    3. choose the line containing Xvid4 on the top video button at the left.
+
+    4. Press the filters button which is the third button on the left.
+
+    5. Find rotate filter, double click it, choose angle and click ok.
+
+    6. Now close filters windows.
+
+    7. Press the Save button and enter a new name name.avi.
+
+
 ## High Level Software
+
+### Kill a program that is not responding
+
+    Ctrl-z 
+    kill %
 
 ### Command to mount disks at startup
 
+    Find the disk name:
+    ```
+    mount
+    ```
+
     Add to Startup Applications:
+    udisksctl mount --block-device /dev/sdb3
+    Instructions: https://askubuntu.com/questions/299298/how-can-i-change-the-mount-point-path-while-using-udisks
+
+    OLD VERSION:
     /usr/bin/udisks --mount /dev/sdb3
-
     Instructions: https://help.ubuntu.com/community/AutomaticallyMountPartitions
-
-
-### Convert owner to Dave's Mac user
-    sudo chown -R dave:staff FOLDER/
-
-
-### Last Resort Shutdown
-
-    First, we’ll try and kill all the process on your current terminal. To do this, hold down the following keys -
-    ALT + SysReq + k
-    What the heck is a SysReq key? Look for it on your PrtSc or Print Screen key. The k in this instance stands for Kill.
-    If that doesn’t work for you, it’s time to take drastic action. You’ll now enter a series of keystrokes that will tell your computer to do some housekeeping before shutting down.
-    ALT + SysReq + r
-    This stands for Raw keyboard mode.
-    ALT + SysReq + s
-    This syncs the disk.
-    ALT + SysReq + e
-    This terminates all processes
-    ALT + SysReq + i
-    Kill’s all processes that weren’t terminated nicely.
-    ALT + SysReq + u
-    Remounts all filesystems as read only.
-    ALT + SysReq + b
-    Reboots.
-    That’s a heck of a lot better than simply holding down the power button and hoping everything works out okay.
-    How will you ever remember all those keystrokes? There is a long held mnemonic that makes it a bit easier:
-    Raising Skinny Elephants Is Utterly Boring – RSEIUB
-    You should use this method only if other methods (mentioned above) fail.
-
 
 
 ### View Hardware
@@ -61,13 +66,13 @@
 
 ### Mount USB Drive while in Recovery Mode
 
-# See list of mountable names
+See list of mountable names
     sudo fdisk -l
 
-# Make the mount point
+Make the mount point
     mkdir /media/usb_drive
 
-# Mount it
+Mount it
     mount -t vfat /dev/sdc /media/usb_drive
 
 
@@ -77,8 +82,10 @@
 
 
 ### Boot with Safe Video Settings
-    add these linux kernel boot options: nomodeset nointremap vga=0x361.
 
+add these linux kernel boot options:
+
+    nomodeset nointremap vga=0x361.
 
 ### See Disk Free Space of Filesystem
 
@@ -138,11 +145,6 @@ Patterns work too:
     killall -s INT
 
 
-### Run gdb on a running process
-    ps aux | grep gzserver# get process id
-    sudo gdb -p 23845     # connect to that id
-
-
 ### Add a new nameserver to internet lookup
     se /etc/resolv.conf 
     add
@@ -166,33 +168,34 @@ Patterns work too:
     pkill -9 -f gazebo
 
 
-### Useful tools
-    strace 
+### Debugging Tool
 
 a useful diagnostic, instructional, and debugging tool.  System administrators, diagnosticians and trouble-shooters will find it invaluable for solving problems with programs for which  the  source  is  not  readily
 available  since they do not need to be recompiled in order to trace them.  Students, hackers and the overly-curious will find that a great deal can be learned about a system and its system calls by tracing even ordinary pro‐
 grams.  And programmers will find that since system calls and signals are events that happen at the user/kernel interface, a close examination of this boundary is very useful for bug isolation, sanity checking and  attempting
 to capture race conditions.
 
-### pgrep - search for proccesses. if you see a number it is running
+    strace 
 
+### search for proccesses. if you see a number it is running
 
+    pgrep
+	
 ### See all proccesses with certain name
+
     ps -e | grep ros
 
-
 ### Change keyboard layout
+
     sudo dpkg-reconfigure keyboard-configuration
 
-
 ### Get folder sizes
-    du
 
+    du
 
 ### Upper case all file extensions in a folder:
 
     for i in *.dae; do ext=$(echo ${i##*.} | tr '[:lower:]' '[:upper:]'); name=$(basename "$i" ".${i##*.}").$ext; cp $i ../$name; done
-
 
 ### Get number of cores on Ubuntu
     cat /proc/cpuinfo | grep processor | wc -l
@@ -208,46 +211,12 @@ Remove ``-vn`` to actually use (this is test mode)
     
     rename 's/.m4b$/.m4a/' *.m4b -vn
 
-### Copy clipboard
+### Make symbolic link
 
-Current Working Directory
-pwd | xclip
-xclip -o
-nano
-File contents to clipboard
-xclip -sel clip < ~/.ssh/id_rsa.pub		
+ln -s source_file destination_file
 
+## Apt-Get Commands
 
-### SCREEN
+### Fix broken system
 
-Create screen		screen -S GLLCodes
-View screens		screen -ls
-Detact from screen 	C-a C-d
-Re-atach to screen 	screen -r GLLCodes
-Make new screen		C-a C-c
-Go to next screen	C-a C-n
-Go to prev screen	C-a C-p
-End screen		exit
-
-
-### X Server
-
-sudo /etc/init.d/gdm restart
-
-
-### Network Commands
-
-arp -n
-arp --verbose
-
-### DISABLE Firewall:
-
-sudo iptables -P INPUT ACCEPT
-sudo iptables -F
-
-### ENABLE Firewall:
-
-cd /etc/network/if-pre-up.d/
-sudo ./iptablesload
-sudo iptables -L -v
-
+     sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install

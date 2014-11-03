@@ -1,0 +1,16 @@
+# name: OMPL Benchmarking
+# key: obenchmark
+# --
+// Benchmark runtime
+time::point startTime = time::now();
+std::size_t problems = 100;
+
+for (std::size_t i = 0; i < problems; ++i)
+{
+
+}
+
+// Benchmark runtime
+double milliseconds = time::seconds(time::now() - startTime);
+std::cout << "Total time: " << milliseconds << " seconds averaging " << milliseconds/problems
+	  << " seconds per thing" << std::endl;

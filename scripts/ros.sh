@@ -5,9 +5,9 @@
 
     alias myrosconsole="e ~/unix_settings/.my.rosconsole"
 
-    alias catbuild="catkin b"
-    alias catbuilddebug="catkin b --cmake-args -DCMAKE_BUILD_TYPE=Debug"
-    alias catclean="rm -rf build/ devel/ install/" #build_isolated/ devel_isolated/ install_isolated/"
+    alias catbuild="catkin b" # catkin build
+    alias catbuilddebug="catkin bd" #catkin build cmake-args -DCMAKE_BUILD_TYPE=Debug
+    alias catclean="catkin clean -a"
     alias catcleanbuild="catclean && catbuild"
     alias catcleanbuilddebug="catclean && catbuilddebug"
 
@@ -16,8 +16,11 @@
     alias disablepkg="mv package.xml package.xml.disabled"
     alias enablepkg="mv package.xml.disabled package.xml"
 
-    alias rosdepinstall_hydro="rosdep install --from-paths src --ignore-src --rosdistro hydro"
-    alias rosdepinstall_indigo="rosdep install --from-paths src --ignore-src --rosdistro indigo"
+    alias rosdepinstall_hydro="rosdep install -y --from-paths src --ignore-src --rosdistro hydro"
+    alias rosdepinstall_indigo="rosdep install -y --from-paths src --ignore-src --rosdistro indigo"
+
+    # Commit to MoveIt!
+    alias commitmoveit=". ~/unix_settings/scripts/commit_moveit.sh"
 
     # ROSCD
     alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
@@ -25,9 +28,9 @@
     alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
     alias roscdmisc="cd ~/ros/ws_misc/src && ll"
     alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
-    alias roscdrosbuild="cd ~/ros/ws_rosbuild/src && ll"
+    alias roscdros="cd ~/ros/ws_ros/src && ll"
     alias roscdhrp2="cd ~/ros/ws_hrp2/src && ll"
-    alias roscdompl="cd ~/ros/ws_ompl/src/ompl/src/ompl && ll"
+    alias roscdompl="cd ~/ros/ws_moveit/src/ompl/src/ompl && ll"
     alias roscdompl_interface="cd ~/ros/ws_moveit/src/moveit_planners/ompl/ompl_interface && ll"
     alias roscdh="cd /home/dave/ros/ws_moveit/src/moveit_hrp2/hrp2jsknt_moveit_demos && ll"
 
@@ -45,28 +48,7 @@
     alias moveit_hydro_to_indigo="git pull-request -o -m \"Sync Hydro to Indigo Branch\" -b ros-planning:indigo-devel -h ros-planning:hydro-devel"
 
     # Bloom shortcuts
-    alias bcgc="catkin_generate_changelog"
-    alias bctc="catkin_tag_changelog --bump "
-    alias bccl="git commit -a -m 'Updated changelogs'"
-    alias bcpr="catkin_prepare_release --bump "
-
-    alias indigo_brgrp="bloom-release gazebo_ros_pkgs -t indigo -r indigo"
-    alias indigo_brrc="bloom-release ros_control -t indigo -r indigo"
-    alias indigo_brrcl="bloom-release ros_controllers -t indigo -r indigo"
-    alias indigo_brrt="bloom-release realtime_tools -t indigo -r indigo"
-    alias indigo_brct="bloom-release control_toolbox -t indigo -r indigo"
-    alias indigo_brmvt="bloom-release moveit_visual_tools -t indigo -r indigo"
-    alias indigo_brmsg="bloom-release moveit_simple_grasps -t indigo -r indigo"
-    alias indigo_brgm="bloom-release graph_msgs -t indigo -r indigo"
-
-    alias hydro_brgrp="bloom-release gazebo_ros_pkgs -t hydro -r hydro"
-    alias hydro_brrc="bloom-release ros_control -t hydro -r hydro"
-    alias hydro_brrcl="bloom-release ros_controllers -t hydro -r hydro"
-    alias hydro_brrt="bloom-release realtime_tools -t hydro -r hydro"
-    alias hydro_brct="bloom-release control_toolbox -t hydro -r hydro"
-    alias hydro_brmvt="bloom-release moveit_visual_tools -t hydro -r hydro"
-    alias hydro_brmsg="bloom-release moveit_simple_grasps -t hydro -r hydro"
-    alias hydro_brgm="bloom-release graph_msgs -t hydro -r hydro"
+    alias bloom_alias_load="source ~/unix_settings/scripts/bloom.sh"
 
     # Building ROS from source shortcuts
     function install_ros_hydro_source()
@@ -132,12 +114,12 @@
     function ros_add_dependency()
     {
 	#cd ~/ros/ws_ros_catkin/
-	rosinstall_generator "$1" --rosdistro hydro --deps --wet-only --tar >> moveit.rosinstall
+	rosinstall_generator "$1" --rosdistro hydro --deps --wet-only --tar >> new_packages.rosinstall
 	read -p "Merge with wstool?"
-	wstool merge -t src moveit.rosinstall
+	wstool merge -t src new_packages.rosinstall
 	read -p "Wstool update?"
 	wstool update -t src/
-	read -p "catkin_make_isolated?"
+	read -p "catkin build --install ?"
 	catkin build --install
     }
 
@@ -170,6 +152,10 @@
 
     # other
     alias roseus="rosrun roseus roseus "
+
+    # Testing
+    alias rostestpub="rostopic pub /dave_test -r 1 std_msgs/Float32 99.9"
+    alias rostestecho="rostopic echo /dave_test"
 
     # ROS STUFF
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole

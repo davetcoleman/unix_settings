@@ -1,7 +1,19 @@
 Emacs Notes
 =========
 
+Keyboard shortcuts (custom) -------------------------------------
+
+F2 - rename file and buffer
+F4 - refresh file
+F5 - auto compile
+F6 - auto compile just current package
+F7 - kill emacs
+
 Formatting --------------------------------------------------------
+
+Comment region
+  M-x comment-region
+      uncomment-region
 
 Delete trailing whitespace
   M-x delete-trailing-whitespace
@@ -22,6 +34,11 @@ Indent Region in Any Mode
 
 Do command X times:
   C-u X
+
+Window Management --------------------------------------------------------
+
+Make three column windows equal size (equally size all windows)
+  C-x + 
 
 File Handling --------------------------------------------------------
 

@@ -1,10 +1,6 @@
--------------------------------------------------------------
-MAKE SYMBOLIC LINK
+# Mac Notes
 
-ln -s source_file destination_file
-
--------------------------------------------------------------
-ZEND/WEB SERVER CONFIG
+## ZEND/WEB SERVER CONFIG
 
 hosts
 	sudo emacs /private/etc/hosts
@@ -26,11 +22,17 @@ Restart Mac Apache
 
 Notes I've used:
       http://akrabat.com/php/some-notes-on-zend-server-ce-for-mac-os-x/
--------------------------------------------------------------
-Setup Matlab on command line:
-$ sudo ln -s /Applications/MATLAB_R2011a.app/bin/matlab /usr/bin/matlab
 
--------------------------------------------------------------
-Invert Picture
-control+option+command+8
--------------------------------------------------------------
+
+## Setup Matlab on command line:
+
+   sudo ln -s /Applications/MATLAB_R2011a.app/bin/matlab /usr/bin/matlab
+
+## Invert Picture
+
+   control+option+command+8
+
+### Convert owner to Dave's Mac user
+
+    sudo chown -R dave:staff FOLDER/
+
