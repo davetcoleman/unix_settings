@@ -119,14 +119,14 @@ function myip()
     ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
 }
 
+# all ip address are hidden for security reasons
+source ~/unix_settings_private/ip_addresses.sh
+
 # Generic ROS Stuff --------------------------------------------------------------------
 ROS_SEGMENT=`echo $BASHRC_ENV | cut -d'_' -f 1`
 if [ $ROS_SEGMENT == "ros" ]; then
     # Shortcuts, aliases and exports
     source ~/unix_settings/scripts/ros.sh
-
-    # all ip address are hidden for security reasons
-    source ~/unix_settings_private/ip_addresses.sh
 
     # shared settings
     ROS_MASTER="localhost" # to be over written
@@ -435,8 +435,7 @@ if [ $BASHRC_ENV == "mac" ]; then
     alias brewwork='cd /usr/local/Library/Formula'
 
     # For homebrew / ROS Mac
-    export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/lib/python2.7/site-packages:$PATH
-    export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+    export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
     # For gedit
     PATH=$PATH:/Applications/gedit.app/Contents/MacOS
@@ -445,7 +444,10 @@ if [ $BASHRC_ENV == "mac" ]; then
     export CLICOLOR=1
     export LSCOLORS=ExFxCxDxBxegedabagacad
 
-    echo -ne "Computer: MBP"
+    # Chrome
+    alias google-chrome='open -a Google\ Chrome --args --allow-file-access-from-files'
+
+    echo "Computer: MBP"
 fi
 if [ $BASHRC_ENV == "ros_vm" ]; then
 

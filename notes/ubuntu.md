@@ -23,6 +23,10 @@
 
 ## High Level Software
 
+### Command line copy to clipboad
+
+    cat ~/.ssh/id_rsa.pub | pbcopy
+
 ### Kill a program that is not responding
 
     Ctrl-z 
@@ -217,6 +221,7 @@ ln -s source_file destination_file
 
 ## Apt-Get Commands
 
-### Fix broken system
+### Fix broken apt-get
 
      sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
+

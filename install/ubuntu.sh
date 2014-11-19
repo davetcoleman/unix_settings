@@ -295,7 +295,7 @@
       ssh-keygen -t rsa -b 4096
 
       # copy public key to various websites
-      gedit ~/.ssh/id_rsa.pub
+      cat ~/.ssh/id_rsa.pub | pbcopy
       firefox 'https://my.hostmonster.com/web-hosting/cplogin' 
       firefox 'https://github.com/settings/ssh'
       firefox 'https://bitbucket.org/account/user/davetcoleman/ssh-keys/'
