@@ -15,15 +15,22 @@ function gitHasChanges() {
     fi
 }
 
-# Main MoveIt
-
-cd /home/dave/ros/ws_moveit/src/hrl_kinematics
+# Base Workspace
+cd /home/dave/ros/ws_base/src/geometric_shapes
 gitHasChanges
+cd /home/dave/ros/ws_base/src/graph_msgs
+gitHasChanges
+cd /home/dave/ros/ws_base/src/hrl_kinematics
+gitHasChanges
+cd /home/dave/ros/ws_base/src/moveit_msgs
+gitHasChanges
+cd /home/dave/ros/ws_base/src/ros_private_pkgs
+gitHasChanges
+
+# Main MoveIt
 cd /home/dave/ros/ws_moveit/src/moveit_hrp2
 gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_humanoid_stability
-gitHasChanges
-cd /home/dave/ros/ws_moveit/src/moveit_msgs
 gitHasChanges
 cd /home/dave/ros/ws_moveit/src/moveit_core
 gitHasChanges
@@ -44,8 +51,6 @@ gitHasChanges
 cd /home/dave/ros/ws_moveit/src/ompl_thunder
 gitHasChanges
 cd /home/dave/ros/ws_moveit/src/ompl_visual_tools
-gitHasChanges
-cd /home/dave/ros/ws_moveit/src/ros_private_pkgs
 gitHasChanges
 
 # MoveIt Other

@@ -44,6 +44,8 @@
   (setq truncate-lines nil) ;; automatically becomes buffer local
   (set (make-local-variable 'truncate-partial-width-windows) nil))
 (add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
+; word wrap for all text documents
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 ; use system copy and paste
 ;(setq x-select-enable-clipboard t) 
 ;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)

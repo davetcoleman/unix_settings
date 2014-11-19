@@ -540,10 +540,12 @@ findfile()
 # Find files recursively by file type and copy them to a directory
 #find . -name "*.rst" -type f -exec cp {} ~/Desktop/ \;
 
+# Find files and delete them
+#find -name *conflicted* -delete
+
 # Also:
 # find . -iname '*.so'
-#alias dfind="find . -iname "
-
+#
 # Find and replace string in all files in a directory
 #  param1 - old word
 #  param2 - new word
@@ -579,6 +581,9 @@ alias sagi="sudo apt-get install "
 alias maker="sudo clear && cmake ../ && make -j8 && sudo make install"
 alias maker_local="cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/local && make -j8 && make install"
 alias dmaker="sudo clear && cmake ../ -DCMAKE_BUILD_TYPE=debug && make -j8 && sudo make install"
+
+# Build Latex document and open it
+alias quicktex="ls *.tex | pdflatex && open *.pdf"
 
 # Search running processes
 alias pp="ps aux | grep "
