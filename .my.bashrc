@@ -168,7 +168,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     echo -ne "ROS: indigo | "
 
     # overwrite the one from ws_ros/install/setup.bash
-    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
     # Syncing scripts
     alias sync_ros_monster_to_student="source /home/$USER/unix_settings/scripts/rsync/ros_monster_to_student.sh"
@@ -198,7 +198,7 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     echo -ne "ROS: groovy | "
 
     # overwrite the one from ws_ros/install/setup.bash
-    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
     # Exports
     # Use ROS_IP if you are specifying an IP address, and ROS_HOSTNAME if you are specifying a host name. 
@@ -229,7 +229,7 @@ if [ $BASHRC_ENV == "ros_student" ]; then
     echo -ne "ROS: indigo | "
 
     # overwrite the one from ws_ros/install/setup.bash
-    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
     # Syncing scripts
     alias sync_ros_student_to_monster="source /home/$USER/unix_settings/scripts/rsync/ros_student_to_monster.sh"
@@ -355,7 +355,7 @@ if [ $BASHRC_ENV == "ros_jsk" ]; then
     echo -ne "ROS: hydro | "
 
     # overwrite the one from ws_ros/install/setup.bash
-    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
     #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
     #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
