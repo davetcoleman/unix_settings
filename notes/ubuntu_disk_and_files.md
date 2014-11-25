@@ -1,0 +1,66 @@
+### Command to mount disks at startup
+
+    Find the disk name:
+    ```
+    mount
+    ```
+
+    Add to Startup Applications:
+    udisksctl mount --block-device /dev/sdb3
+    Instructions: https://askubuntu.com/questions/299298/how-can-i-change-the-mount-point-path-while-using-udisks
+
+    OLD VERSION:
+    /usr/bin/udisks --mount /dev/sdb3
+    Instructions: https://help.ubuntu.com/community/AutomaticallyMountPartitions
+
+
+### View connected partitions
+
+    blkid
+
+
+### Mount Filesystem while in Recovery Mode
+
+    When you boot into Recovery Mode, enter the following two commands before doing anything else:
+
+    mount --options remount,rw /
+    mount --all
+
+    These commands will set Recovery Mode to how it should have been.
+
+
+### Mount USB Drive while in Recovery Mode
+
+See list of mountable names
+    sudo fdisk -l
+
+Make the mount point
+    mkdir /media/usb_drive
+
+Mount it
+    mount -t vfat /dev/sdc /media/usb_drive
+
+
+### See Disk Free Space of Filesystem
+
+    df -h
+
+### Get folder sizes
+
+    du
+
+### Show all files in directory with no details
+
+    ls -AF | grep -v /$
+
+### Rename all files in a folder with a certain extension
+
+(From file name *.m4b to *.m4a)
+Remove ``-vn`` to actually use (this is test mode)
+    
+    rename 's/.m4b$/.m4a/' *.m4b -vn
+
+### Make symbolic link
+
+ln -s source_file destination_file
+

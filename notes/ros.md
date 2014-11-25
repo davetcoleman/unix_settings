@@ -39,5 +39,9 @@ Or during build time
 
     tfpdf
 
+## Kill all ROS nodes
+
+    killall rosout 
+    killall rosout -9
 
 
