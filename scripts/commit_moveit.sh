@@ -3,15 +3,22 @@ function gitHasChanges() {
 	echo "No changes detected in git repo"
     else
 	echo ""
-	echo ""
-	echo "Changed detected in git repo:"
+	echo "Changes have been detected in git repo:"
+	echo "--------------------------------------------------------"
 	pwd
-	git diff
-	read -p "Type 'y' and press enter to gitall" resp
+	echo "--------------------------------------------------------"
+	echo ""
+	gitst
+	read -p "View git diff? (y/n): " resp
 	if [ "$resp" = "y" ]; then
-	    gitall
-	    read -p "Continue?" resp
-	fi	
+	    echo ""
+	    git diff
+	    read -p "Commit with gitall? (y/n): " resp
+	    if [ "$resp" = "y" ]; then
+		gitall
+		read -p "Continue? " resp
+	    fi	
+	fi 
     fi
 }
 

@@ -1,5 +1,5 @@
 # ROS ALL
-log4j.logger.ros=DEBUG
+log4j.logger.ros=INFO
 
 # ROS
 log4j.logger.ros.rviz=INFO
@@ -12,9 +12,9 @@ log4j.logger.ros.robot_state_publisher=INFO
 log4j.logger.ros.rqt_gui_cpp.pluginlib.ClassLoader=INFO
 
 # CONSOLE BRIDGE
-#log4j.logger.ros.rosconsole_bridge=INFO
-#log4j.logger.ros.rosconsole_bridge.console_bridge=INFO
-log4j.logger.ros.rosconsole_bridge.moveit_planners_ompl=DEBUG
+log4j.logger.ros.rosconsole_bridge=INFO
+log4j.logger.ros.rosconsole_bridge.console_bridge=INFO
+#log4j.logger.ros.rosconsole_bridge.moveit_planners_ompl=INFO
 log4j.logger.ros.rosconsole_bridge.class_loader.class_loader_private=INFO
 log4j.logger.ros.rosconsole_bridge.urdfdom=INFO
 
@@ -25,13 +25,13 @@ log4j.logger.ros.moveit_planners_ompl.parameters=INFO
 log4j.logger.ros.moveit_ros_planning.kinematics_plugin_loader=INFO
 log4j.logger.ros.moveit_ros_perception.message_filter=INFO
 log4j.logger.ros.moveit_ros_move_group.actionlib=INFO
-log4j.logger.ros.moveit_ros_perception=DEBUG
+#log4j.logger.ros.moveit_ros_perception=INFO
 log4j.logger.ros.moveit_ros_benchmarks.pluginlib=INFO
 log4j.logger.ros.moveit_ros_planning.collision=INFO
-
-#log4j.logger.ros.moveit_ros_planning.rdf=INFO
+log4j.logger.ros.moveit_ros_planning.rdf=INFO
+log4j.logger.ros.moveit_ros_planning.robot_model_loader=INFO
+log4j.logger.ros.moveit_ros_planning.kinematics_loader=INFO
 #log4j.logger.ros.moveit_ros_planning.robot_model_loader=INFO
-
 log4j.logger.ros.moveit_ros_planning.kdl=INFO
 log4j.logger.ros.moveit_ros_planning.planning_scene_monitor=INFO
 log4j.logger.ros.moveit_ros_planning.message_filter=INFO

@@ -3,6 +3,10 @@ ROS Notes
 
 ## Build catkin with tests
 
+Newer
+
+    catkin run_tests
+
 New catkin tools
 
     catkin build --no-deps PACKAGE_NAME -i --catkin-make-args run_tests

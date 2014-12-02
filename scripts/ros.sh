@@ -3,7 +3,7 @@
     alias rviz="rosrun rviz rviz"
     alias rqt="rosrun rqt_gui rqt_gui"
 
-    alias myrosconsole="e ~/unix_settings/.my.rosconsole"
+    alias myrosconsole="e ~/unix_settings/config/rosconsole.yaml"
 
     alias catbuild="catkin b" # catkin build
     alias catbuilddebug="catkin bd" #catkin build cmake-args -DCMAKE_BUILD_TYPE=Debug
@@ -49,6 +49,19 @@
 
     # Bloom shortcuts
     alias bloom_alias_load="source ~/unix_settings/scripts/bloom.sh"
+
+    # Source public moveit workspace
+    function source_moveit_public()
+    {	
+	# make sure the ordering of the ROS sources do not get mixed up
+	unset CMAKE_PREFIX_PATH
+	unset ROS_PACKAGE_PATH
+
+	source ~/ros/ws_moveit_public/devel/setup.bash
+
+	# Display the package path if this is a ROS computer
+	rosPackagePath
+    }
 
     # Building ROS from source shortcuts
     function install_ros_hydro_source()

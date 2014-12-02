@@ -117,7 +117,7 @@
       sudo apt-get install fluxgui -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
   }
 
-  #Install good video & image stuff, Adobe Reader, and PDF Printer
+  #Install good video & image stuff, and PDF Printer
   function mediainstall() {
       #sudo apt-get install -y vlc vlc-plugin-pulse gimp cups-pdf
       sudo apt-get install -y gimp
@@ -220,8 +220,9 @@
 
   # Install Adobe Acrobat
   function acrobatinstall() {
-      sudo add-apt-repository -y "deb http://archive.canonical.com/ '$(lsb_release -cs)' partner"
-      sudo apt-get update && sudo apt-get install acroread -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      # follow these instructions: http://ubuntuhandbook.org/index.php/2014/04/install-adobe-reader-ubuntu-1404/
+      #sudo add-apt-repository -y "deb http://archive.canonical.com/ '$(lsb_release -cs)' partner"
+      #sudo apt-get update && sudo apt-get install acroread -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
   }
 
   # Install workrave break manager

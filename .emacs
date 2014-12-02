@@ -335,7 +335,7 @@
 
 ;;; ROS EMACS --------------------------------------------------------------------
 ; Only load it if on appropriate machine
-(cond ( (string= (getenv "BASHRC_ENV") "ros_monster")
+(cond ( (string= (getenv "BASHRC_ENV") "ros_monsterz")
 
 	(add-to-list 'load-path "/opt/ros/indigo/share/emacs/site-lisp")
 	;; or whatever your install space is + "/share/emacs/site-lisp"
