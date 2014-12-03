@@ -20,11 +20,12 @@
     alias rosdepinstall_indigo="rosdep install -y --from-paths src --ignore-src --rosdistro indigo"
 
     # Commit to MoveIt!
-    alias commitmoveit=". ~/unix_settings/scripts/commit_moveit.sh"
+    alias commitros=". ~/unix_settings/scripts/commit_ros.sh"
 
     # ROSCD
     alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
     alias roscdclam="cd ~/ros/ws_clam/src && ll"
+    alias roscdnasa="cd ~/ros/ws_nasa/src && ll"
     alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
     alias roscdmisc="cd ~/ros/ws_misc/src && ll"
     alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"

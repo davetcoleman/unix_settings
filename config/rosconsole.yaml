@@ -1,5 +1,5 @@
 # ROS ALL
-log4j.logger.ros=INFO
+log4j.logger.ros=DEBUG
 
 # ROS
 log4j.logger.ros.rviz=INFO

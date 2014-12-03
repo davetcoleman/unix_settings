@@ -9,6 +9,10 @@ RecordMyDesktop
 
 OpenShot
 
+### Speedup Video
+
+See scripts/speed_up_video.sh to add 
+
 ### Rotate video
 
     I just tried it with avidemux. I use xvid and also I don't use the english version of avidemux so I may not describe it perfectly but you'll get it.
