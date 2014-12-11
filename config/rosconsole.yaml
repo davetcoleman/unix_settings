@@ -42,10 +42,12 @@ log4j.logger.ros.moveit_ros_planning_interface.actionlib=INFO
 log4j.logger.ros.moveit_ros_manipulation.actionlib=INFO
 log4j.logger.ros.moveit_simple_controller_manager.actionlib=INFO
 log4j.logger.ros.hrp2jsknt_moveit_demos.actionlib=INFO
+
 # MoveIt ClassLoader
 log4j.logger.ros.moveit_ros_move_group.pluginlib.ClassLoader=INFO
 log4j.logger.ros.moveit_ros_planning.pluginlib.ClassLoader=INFO
 log4j.logger.ros.moveit_setup_assistant.pluginlib.ClassLoader=INFO
+log4j.logger.ros.hrp2jsknt_moveit_demos.pluginlib.ClassLoader=INFO
 
 # Baxter
 log4j.logger.ros.baxter_state_publisher=INFO

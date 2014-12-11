@@ -20,7 +20,8 @@
     alias rosdepinstall_indigo="rosdep install -y --from-paths src --ignore-src --rosdistro indigo"
 
     # Commit to MoveIt!
-    alias commitros=". ~/unix_settings/scripts/commit_ros.sh"
+    alias roscommit=". ~/unix_settings/scripts/ros_commit.sh"
+    alias roscompile=". ~/unix_settings/scripts/ros_compile.sh"
 
     # ROSCD
     alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
@@ -200,70 +201,6 @@
 	sudo ntpdate pool.ntp.org
 	ntpdate -q 128.138.244.56
 	sudo service ntp start
-    }
-
-    function cleanWorkspaces()
-    {	
-	i="/home/dave/ros/ws_ros"
-	cd "$i"
-	echo "Cleaning $i"
-	catclean
-
-	for i in "${ROS_WORKSPACES[@]}"
-	do
-	    :
-	    echo "Cleaning $i"
-	    cd "$i"
-	    catclean
-	done    
-    }
-
-    # ENTRY POINT
-    function buildWorkspaces()
-    {
-	echo "Build multiple Catkin workspaces version 1.1"
-
-	unset CMAKE_PREFIX_PATH
-	unset ROS_PACKAGE_PATH
-
-	helper_buildWorkspace "/home/dave/ros/ws_ros"          "catbuild --install" "/install/setup.bash"
-	helper_buildWorkspace "/home/dave/ros/ws_ompl"         "catbuild"           "/devel/setup.bash"
-	helper_buildWorkspace "/home/dave/ros/ws_moveit"       "catbuild"           "/devel/setup.bash"
-	helper_buildWorkspace "/home/dave/ros/ws_moveit_other" "catbuild"           "/devel/setup.bash"
-
-	# REST OF WORKSPACES
-	#for i in "${ROS_WORKSPACES[@]}"
-	#do
-	#    :
-	#    helper_buildWorkspace "$i" "catbuild" "devel/setup.bash"
-	#done
-    }
-
-    function helper_buildWorkspace() #folder, buildCommand, sourceCommand
-    {
-	# parameters
-	folder=$1
-	buildCommand=$2
-	sourceCommand=$3
-
-	# Build
-	cd "$folder"
-	echo "BUILDING $buildCommand in folder $folder ======================"
-	eval "$buildCommand"
-	if [ "$?" = "0" ]; then
-	    echo "Build succeeded."
-	else
-	    echo "Build failed!!!!!"
-	    return
-	fi	
-
-	# Source
-	setupFile="${folder}${sourceCommand}"
-	echo "SOURCING $setupFile =========================================================="
-	if [ ! -f "$setupFile" ]; then
-	    echo "File $setupFile not found!!!!!!!!!!"
-	fi
-	source "$setupFile"
     }
 
     function gitpr() # davetcoleman_branch_name

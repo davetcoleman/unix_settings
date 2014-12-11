@@ -223,6 +223,7 @@
       # follow these instructions: http://ubuntuhandbook.org/index.php/2014/04/install-adobe-reader-ubuntu-1404/
       #sudo add-apt-repository -y "deb http://archive.canonical.com/ '$(lsb_release -cs)' partner"
       #sudo apt-get update && sudo apt-get install acroread -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      echo 'nothing'
   }
 
   # Install workrave break manager

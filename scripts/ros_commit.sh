@@ -42,6 +42,8 @@ cd /home/dave/ros/ws_baxter/src
 scanThisDirectoryForGit
 cd /home/dave/ros/ws_nasa/src
 scanThisDirectoryForGit
+cd /home/dave/ros/ws_clam/src
+scanThisDirectoryForGit
 
 echo ""
 echo "Finished committing all ROS repos!"
