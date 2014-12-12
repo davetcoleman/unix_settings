@@ -45,6 +45,9 @@ scanThisDirectoryForGit
 cd /home/dave/ros/ws_clam/src
 scanThisDirectoryForGit
 
+cd /home/dave/ros
+
 echo ""
 echo "Finished committing all ROS repos!"
 echo ""
+play -q ~/unix_settings/emacs/success.wav

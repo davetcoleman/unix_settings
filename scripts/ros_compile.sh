@@ -12,6 +12,7 @@ function buildWorkspace()
 	echo "------------------------------------------------------"
 	echo "Command failed"
 	echo ""
+	play -q ~/unix_settings/emacs/failure.wav
 	return 0
     fi
 }
@@ -49,3 +50,4 @@ fi
 echo ""
 echo "Finished compiling all ROS workspaces!"
 echo ""
+play -q ~/unix_settings/emacs/success.wav

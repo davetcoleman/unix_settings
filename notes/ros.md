@@ -3,15 +3,15 @@ ROS Notes
 
 ## Build catkin with tests
 
-Newer
+Run test for just 1 package
 
-    catkin run_tests
+    catkin build moveit_core --verbose -i --no-deps --catkin-make-args run_tests
+	
+Run test for all packages
 
-New catkin tools
+    catkin run_tests --verbose -i
 
-    catkin build --no-deps PACKAGE_NAME -i --catkin-make-args run_tests
-
-OLD catkin
+Run test for 1 package, old catkin_make version
 
     catkin_make run_tests_control_toolbox
     #catkin_make run_tests_packageName_gtest_testTarget

@@ -24,7 +24,9 @@
     alias roscompile=". ~/unix_settings/scripts/ros_compile.sh"
 
     # ROSCD
+    alias roscdbase="cd ~/ros/ws_base/src && ll"
     alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
+    alias roscdmoveitother="cd ~/ros/ws_moveit_other/src && ll"
     alias roscdclam="cd ~/ros/ws_clam/src && ll"
     alias roscdnasa="cd ~/ros/ws_nasa/src && ll"
     alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
