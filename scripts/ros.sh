@@ -3,7 +3,7 @@
     alias rviz="rosrun rviz rviz"
     alias rqt="rosrun rqt_gui rqt_gui"
 
-    alias myrosconsole="e ~/unix_settings/.my.rosconsole"
+    alias myrosconsole="e ~/unix_settings/config/rosconsole.yaml"
 
     alias catbuild="catkin b" # catkin build
     alias catbuilddebug="catkin bd" #catkin build cmake-args -DCMAKE_BUILD_TYPE=Debug
@@ -20,11 +20,15 @@
     alias rosdepinstall_indigo="rosdep install -y --from-paths src --ignore-src --rosdistro indigo"
 
     # Commit to MoveIt!
-    alias commitmoveit=". ~/unix_settings/scripts/commit_moveit.sh"
+    alias roscommit=". ~/unix_settings/scripts/ros_commit.sh"
+    alias roscompile=". ~/unix_settings/scripts/ros_compile.sh"
 
     # ROSCD
+    alias roscdbase="cd ~/ros/ws_base/src && ll"
     alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
+    alias roscdmoveitother="cd ~/ros/ws_moveit_other/src && ll"
     alias roscdclam="cd ~/ros/ws_clam/src && ll"
+    alias roscdnasa="cd ~/ros/ws_nasa/src && ll"
     alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
     alias roscdmisc="cd ~/ros/ws_misc/src && ll"
     alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
@@ -49,6 +53,19 @@
 
     # Bloom shortcuts
     alias bloom_alias_load="source ~/unix_settings/scripts/bloom.sh"
+
+    # Source public moveit workspace
+    function source_moveit_public()
+    {	
+	# make sure the ordering of the ROS sources do not get mixed up
+	unset CMAKE_PREFIX_PATH
+	unset ROS_PACKAGE_PATH
+
+	source ~/ros/ws_moveit_public/devel/setup.bash
+
+	# Display the package path if this is a ROS computer
+	rosPackagePath
+    }
 
     # Building ROS from source shortcuts
     function install_ros_hydro_source()
@@ -186,70 +203,6 @@
 	sudo ntpdate pool.ntp.org
 	ntpdate -q 128.138.244.56
 	sudo service ntp start
-    }
-
-    function cleanWorkspaces()
-    {	
-	i="/home/dave/ros/ws_ros"
-	cd "$i"
-	echo "Cleaning $i"
-	catclean
-
-	for i in "${ROS_WORKSPACES[@]}"
-	do
-	    :
-	    echo "Cleaning $i"
-	    cd "$i"
-	    catclean
-	done    
-    }
-
-    # ENTRY POINT
-    function buildWorkspaces()
-    {
-	echo "Build multiple Catkin workspaces version 1.1"
-
-	unset CMAKE_PREFIX_PATH
-	unset ROS_PACKAGE_PATH
-
-	helper_buildWorkspace "/home/dave/ros/ws_ros"          "catbuild --install" "/install/setup.bash"
-	helper_buildWorkspace "/home/dave/ros/ws_ompl"         "catbuild"           "/devel/setup.bash"
-	helper_buildWorkspace "/home/dave/ros/ws_moveit"       "catbuild"           "/devel/setup.bash"
-	helper_buildWorkspace "/home/dave/ros/ws_moveit_other" "catbuild"           "/devel/setup.bash"
-
-	# REST OF WORKSPACES
-	#for i in "${ROS_WORKSPACES[@]}"
-	#do
-	#    :
-	#    helper_buildWorkspace "$i" "catbuild" "devel/setup.bash"
-	#done
-    }
-
-    function helper_buildWorkspace() #folder, buildCommand, sourceCommand
-    {
-	# parameters
-	folder=$1
-	buildCommand=$2
-	sourceCommand=$3
-
-	# Build
-	cd "$folder"
-	echo "BUILDING $buildCommand in folder $folder ======================"
-	eval "$buildCommand"
-	if [ "$?" = "0" ]; then
-	    echo "Build succeeded."
-	else
-	    echo "Build failed!!!!!"
-	    return
-	fi	
-
-	# Source
-	setupFile="${folder}${sourceCommand}"
-	echo "SOURCING $setupFile =========================================================="
-	if [ ! -f "$setupFile" ]; then
-	    echo "File $setupFile not found!!!!!!!!!!"
-	fi
-	source "$setupFile"
     }
 
     function gitpr() # davetcoleman_branch_name

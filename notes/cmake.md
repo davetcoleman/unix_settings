@@ -12,3 +12,13 @@
 	MESSAGE( STATUS "CMAKE_CXX_FLAGS_RELEASE: " ${CMAKE_CXX_FLAGS_RELEASE} )
 
 
+### Set CMakeLists to debug mode
+    set(CMAKE_BUILD_TYPE Debug)
+
+
+## To understand a library linking
+
+cd install/lib/
+ldd librospack.so 
+nm -a librospack.so 
+nm -a librospack.so | grep Rospack

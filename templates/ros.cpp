@@ -40,7 +40,11 @@
     SHORT_NAME - verticle_test
     CLASS_NAME - VerticleApproachTest
     PACKAGE_NAME - baxter_experimental
+    THEN make ifndef all caps
  */
+
+#ifndef PACKAGE_NAME__SHORT_NAME
+#define PACKAGE_NAME__SHORT_NAME
 
 // ROS
 #include <ros/ros.h>
@@ -118,3 +122,4 @@ int main(int argc, char** argv)
   return 0;
 }
 
+#endif

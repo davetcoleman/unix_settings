@@ -117,7 +117,7 @@
       sudo apt-get install fluxgui -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
   }
 
-  #Install good video & image stuff, Adobe Reader, and PDF Printer
+  #Install good video & image stuff, and PDF Printer
   function mediainstall() {
       #sudo apt-get install -y vlc vlc-plugin-pulse gimp cups-pdf
       sudo apt-get install -y gimp
@@ -172,8 +172,9 @@
       # Setup Hub for Github
       sagi rake
       cd ~/
-      git clone git://github.com/github/hub.git
-      cd hub
+      wget https://github.com/github/hub/archive/v1.12.3.tar.gz hub
+      untargz https://github.com/github/hub/archive/v1.12.3.tar.gz
+      cd hub-1.12.3
       sudo rake install
   }
   
@@ -220,8 +221,10 @@
 
   # Install Adobe Acrobat
   function acrobatinstall() {
-      sudo add-apt-repository -y "deb http://archive.canonical.com/ '$(lsb_release -cs)' partner"
-      sudo apt-get update && sudo apt-get install acroread -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      # follow these instructions: http://ubuntuhandbook.org/index.php/2014/04/install-adobe-reader-ubuntu-1404/
+      #sudo add-apt-repository -y "deb http://archive.canonical.com/ '$(lsb_release -cs)' partner"
+      #sudo apt-get update && sudo apt-get install acroread -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      echo 'nothing'
   }
 
   # Install workrave break manager
@@ -256,7 +259,7 @@
       cp ~/unix_settings/install/ubuntu/autostart/udisks.desktop ~/.config/autostart/udisks.desktop
       sed -i "s,MOUNTPOINT,$ubuntuMountName,g" ~/.config/autostart/udisks.desktop
 
-      echo "Attempting to symblink Dropbox folders:"
+      read -p "Attempt to symblink Dropbox folders? (Ctrl-C to cancel)"
       ln -s /media/dave/DataDrive/Dropbox ~/Dropbox
       ln -s /media/dave/DataDrive/Dropbox/Documents/2014 ~/2014
 
@@ -382,7 +385,6 @@ fi
 
 #read -p "Install chrome? (y/n)" resp3
 read -p "Setup secondary hard drive and ROS workspace sync? (for Dropbox) (y/n)" resp27
-read -p "Install Flux? (y/n)" resp20
 read -p "Install spotify? (y/n)" resp4
 read -p "Install media stuff? (y/n)" resp6
 #read -p "Install Gazebo? (y/n)" resp16
@@ -397,7 +399,7 @@ read -p "Install truecrypt? (y/n)" resp15
 read -p "Install Matlab? (y/n)" resp21
 read -p "Install Wine? (y/n)" resp23
 read -p "Install and run Benchmarking? (y/n)" resp24
-read -p "Install Workrave break reminder? (y/n)" resp25
+read -p "Install Workrave break reminder and flux? (y/n)" resp25
 read -p "Install python tools? (y/n)" resp26
 
 if [ "$resp1" = "y" ]; then
@@ -417,9 +419,6 @@ if [ "$resp5" = "y" ]; then
 fi
 if [ "$resp19" = "y" ]; then
     acrobatinstall
-fi
-if [ "$resp20" = "y" ]; then
-    fluxinstall
 fi
 if [ "$resp4" = "y" ]; then
     spotifyinstall
@@ -468,6 +467,7 @@ if [ "$resp24" = "y" ]; then
 fi
 if [ "$resp25" = "y" ]; then
     workraveinstall
+    fluxinstall
 fi
 if [ "$resp26" = "y" ]; then
     pythoninstall

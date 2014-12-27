@@ -1,0 +1,5 @@
+# name: verbose
+# key: verb
+# --
+if (verbose_)
+   ROS_DEBUG_STREAM_NAMED("${1:temp}","${2:here}");
