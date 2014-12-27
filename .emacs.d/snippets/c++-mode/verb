@@ -1,0 +1,4 @@
+# name: verbose conditional
+# key: verb
+# --
+if (verbose)
