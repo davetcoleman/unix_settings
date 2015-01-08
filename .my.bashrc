@@ -243,89 +243,35 @@ if [ $BASHRC_ENV == "ros_student" ]; then
 fi
 
 if [ $BASHRC_ENV == "ros_mac" ]; then
-    # Settings
-    USE_HYDRO=1
-    GAZEBO_SOURCE=0
+
+    #ROS_MASTER="baxter"
     ROS_MASTER="localhost"
+    source ~/unix_settings/scripts/baxter.sh
 
-    # Hydro
-    if [ $USE_HYDRO == 1 ]; then
-	# In-Use Workspaces
-	source /home/$USER/ros/ws_ros_catkin/install_isolated/setup.bash
-	#source /home/$USER/ros/ws_moveit/devel/setup.bash
-	#source /home/$USER/ros/ws_moveit2/devel/setup.bash
-	#source /home/$USER/ros/ws_jsk3/devel/setup.bash
-	#source /home/$USER/ros/ws_jsk4/devel/setup.bash
-	#source /home/$USER/ros/ws_gazebo/devel/setup.bash
-	#source /home/$USER/ros/ws_jsk_hrp2/devel/setup.bash
+    # In-Use Workspaces
+    source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_base/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+    #source /home/$USER/ros/ws_baxter/devel/setup.bash
+    #source /home/$USER/ros/ws_nasa/devel/setup.bash
 
-	#source /home/$USER/ros/ws_jsk2/devel/setup.bash
-	#source /home/$USER/ros/ws_jsk/devel/setup.bash
-	#source /home/$USER/ros/ws_core/devel/setup.bash
-        #source /opt/ros/hydro/setup.bash
-	#source /home/$USER/ros/ws_baxter/devel/setup.bash
-	#source /home/$USER/ros/ws_misc/devel/setup.bash
-	#source /home/$USER/ros/ws_atlas/devel/setup.bash
+    #source /home/$USER/ros/ws_clam/devel/setup.bash
+    #source /home/$USER/ros/ws_hrp2/devel/setup.bash
+    #source /home/$USER/ros/ws_nasa/devel/setup.bash
+    #source /home/$USER/ros/ws_jsk/devel/setup.bash
 
-	##### UNUSED
-	#source /home/$USER/ros/ws_clam/devel/setup.bash
+    echo -ne "ROS: indigo | "
 
-	echo -ne "ROS: hydro | "
-    else # Groovy
-
-	source /opt/ros/groovy/setup.bash
-	#source /home/$USER/ros/ws_misc_groovy/devel/setup.bash
-	#source /home/$USER/ros/ws_groovy_baxter/devel/setup.bash
-        source /usr/share/drcsim/setup.sh
-
-	echo -ne "ROS: groovy | "
-    fi
-
-    export CVSDIR=$HOME/prog # add this line to .bashrc
-
-    #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
-    #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
-    #export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:`rospack find hrpsys_gazebo_tutorials`/..
-    #export GAZEBO_PLUGIN_PATH=`rospack find hrpsys_gazebo_general`/plugins:$GAZEBO_PLUGIN_PATH
-
-    # Backup before changing
-    export PKG_CONFIG_PATH_ORIGINAL=$PKG_CONFIG_PATH
-    export LIBRARY_PATH_ORIGINAL=$LIBRARY_PATH
-    export LD_LIBRARY_PATH_ORIGINAL=$LD_LIBRARY_PATH
-    export PATH_ORIGINAL=$PATH
-
-    # Gazebo from source
-    if [ $GAZEBO_SOURCE == 1 ]; then
-	# Set local path precendence
-	export MY_LOCAL=$HOME/local
-	export PKG_CONFIG_PATH=$MY_LOCAL/lib/pkgconfig:$PKG_CONFIG_PATH
-	export LIBRARY_PATH=$LIBRARY_PATH:$MY_LOCAL/lib
- 	export LD_LIBRARY_PATH=$MY_LOCAL/lib:$LD_LIBRARY_PATH
-	export PATH=$MY_LOCAL/bin:$PATH
-
-	#source $MY_LOCAL/share/gazebo/setup.sh # for source installs
-
-	echo -ne "Gazebo: source | "
-
-    else # Gazebo debian
-
-	# Restore default behavior
-	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH_ORIGINAL
-	export LIBRARY_PATH=$LIBRARY_PATH_ORIGINAL
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_ORIGINAL
-	export PATH=$PATH_ORIGINAL
-
-        #source /usr/share/gazebo/setup.sh   # for debian installs
-
-	echo -ne "Gazebo: debians | "
-    fi
+    # overwrite the one from ws_ros/install/setup.bash
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
     # Aliases
     alias runmatlab="/usr/local/MATLAB/R2013b/bin/matlab"
 
     # Exports
-    export ROS_IP=`myip`
-    export ROS_HOSTNAME=$ROS_IP
+    #export ROS_IP=$ROS_MONSTER_IP
+    export ROS_IP=`hostname -I`
 
     echo -ne "Computer: ros_mac"
 fi
