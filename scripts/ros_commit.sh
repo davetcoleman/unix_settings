@@ -6,7 +6,10 @@ function gitHasChanges()
 	echo ""
 	echo "Changes have been detected in git repo:"
 	echo "--------------------------------------------------------"
+	echo -e "\e[00;1;95m"
 	pwd
+	parse_vc_branch_and_add_brackets
+	echo -e "\e[00m"
 	echo "--------------------------------------------------------"
 	echo ""
 	gitst

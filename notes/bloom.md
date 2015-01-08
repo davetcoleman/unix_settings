@@ -32,3 +32,5 @@ bcpr {major,minor,patch}  # catkin_prepare_release --bump {major,minor,patch}
 Bloom Steps:
 
 Call the associated alias from indigo or hydro as documented in unix_settings/scripts/bloom.sh
+
+    e.g. indigo_brXXX

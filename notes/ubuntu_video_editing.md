@@ -3,15 +3,24 @@
 ## Screen Capture
 
 Kazam
-RecordMyDesktop
+RecordMyDesktop - suchs because .ogv
+Try http://www.maartenbaert.be/simplescreenrecorder/
+
+## Setup converter for videos
+
+    sudo apt-get install mencoder
+
+## Run converter
+
+    mencoder out.ogv -of lavf -lavfopts format=mp4 -oac mp3lame -lameopts cbr:br=128 -ovc x264 -x264encopts bitrate=1000 -o final.mp4 - See more at: http://biofeed.tumblr.com/post/15395563944/mencoder#sthash.k3l4UTeI.dpuf
 
 ## Video Editing
 
-OpenShot
+OpenShot - seems crappy
 
 ### Speedup Video
 
-See scripts/speed_up_video.sh to add 
+See scripts/speed_up_video/speed_up_video.sh to add 
 
 ### Rotate video
 

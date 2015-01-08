@@ -25,6 +25,7 @@ log4j.logger.ros.moveit_planners_ompl.parameters=INFO
 log4j.logger.ros.moveit_core.pr2_arm_kinematics_plugin=INFO
 
 # MoveIt ROS
+log4j.logger.ros.moveit_simple_controller_manager=INFO
 log4j.logger.ros.moveit_ros_planning.kinematics_plugin_loader=INFO
 log4j.logger.ros.moveit_ros_perception.message_filter=INFO
 log4j.logger.ros.moveit_ros_move_group.actionlib=INFO
@@ -34,10 +35,11 @@ log4j.logger.ros.moveit_ros_planning.collision=INFO
 log4j.logger.ros.moveit_ros_planning.rdf=INFO
 log4j.logger.ros.moveit_ros_planning.robot_model_loader=INFO
 log4j.logger.ros.moveit_ros_planning.kinematics_loader=INFO
-#log4j.logger.ros.moveit_ros_planning.robot_model_loader=INFO
+log4j.logger.ros.moveit_ros_planning.robot_model_loader=INFO
 log4j.logger.ros.moveit_ros_planning.kdl=INFO
 log4j.logger.ros.moveit_ros_planning.planning_scene_monitor=INFO
 log4j.logger.ros.moveit_ros_planning.message_filter=INFO
+log4j.logger.ros.moveit_ros_planning.traj_execution=INFO
 
 # MoveIt Actionlib
 log4j.logger.ros.moveit_ros_visualization.actionlib=INFO
@@ -87,5 +89,11 @@ log4j.logger.ros.hrl_kinematics=INFO
 # Dave Custom Code
 log4j.logger.ros.moveit_visual_tools.visual_tools=INFO
 log4j.logger.ros.rviz_visual_tools.visual_tools=INFO
+
+# Humanoid
 log4j.logger.ros.moveit_humanoid_stability.bounding_box=INFO
 #log4j.logger.ros.moveit_humanoid_stability.stability=INFO
+
+# Baxter APC
+log4j.logger.ros.baxter_apc_main.parser=INFO
+log4j.logger.ros.baxter_apc_main.shelf=INFO

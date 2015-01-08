@@ -40,7 +40,7 @@
     SHORT_NAME - verticle_test
     CLASS_NAME - VerticleApproachTest
     PACKAGE_NAME - baxter_experimental
-    THEN make ifndef all caps
+    THEN make ifndef all caps with Alt-U
  */
 
 #ifndef PACKAGE_NAME__SHORT_NAME

@@ -1,8 +1,8 @@
-# name: comment block for function
+# name: comments for describing a function
 # key: /**
 # --
 /**
- * \brief ${1:description}
- * \param ${2:parameter} ${3:description}
+ * \brief ${1:}
+ * \param ${2:input} - ${3:description}
  * \return ${4:true on success}
  */

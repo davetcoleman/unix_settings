@@ -2,7 +2,7 @@
 # key: getset
 # --
 /**
- * \brief Getter for NAMEIT
+ * \brief Getter for THING
  */ 
 TYPE getTHING()
 {
@@ -10,7 +10,7 @@ TYPE getTHING()
 }
 
 /**
- * \brief Setter for NAMEIT
+ * \brief Setter for THING
  */
 void setTHING(TYPE VAR)
 {

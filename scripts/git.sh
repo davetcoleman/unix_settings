@@ -15,6 +15,36 @@ alias gitlogcompare_indigo_hydro="gitlogcompare indigo-devel..hydro-devel"
 
 alias gitremoteswich="git remote rename origin upstream"
 
+# Find all git repos in pwd and run 'git pull'
+function git_pull_all()
+{
+    original_location=$(pwd);
+
+    for x in `find \`pwd\` -name .git -type d -prune`; do
+	cd $x
+	cd ../
+	echo "--------------------------------------------------------"
+	echo -e "\e[00;1;95m"
+	pwd
+	parse_vc_branch_and_add_brackets
+	echo -e "\e[00m"
+
+	if git pull; then
+	    echo "Pull successfull"
+	else
+	    read -p "Error. Continue?" resp
+	fi
+	echo "--------------------------------------------------------"
+    done
+
+    cd $original_location
+    echo ""
+    echo "Finished pulling all ROS repos!"
+    echo ""
+    play -q ~/unix_settings/emacs/success.wav
+}
+
+
 # change git https to ssh
 function gitsshfix() {
     #-- Script to automate https://help.github.com/articles/why-is-git-always-asking-for-my-password
