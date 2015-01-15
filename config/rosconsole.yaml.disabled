@@ -12,14 +12,14 @@ log4j.logger.ros.robot_state_publisher=INFO
 log4j.logger.ros.rqt_gui_cpp.pluginlib.ClassLoader=INFO
 
 # CONSOLE BRIDGE
-log4j.logger.ros.rosconsole_bridge=INFO
-#log4j.logger.ros.rosconsole_bridge.console_bridge=INFO
-#log4j.logger.ros.rosconsole_bridge.moveit_planners_ompl=INFO
+#log4j.logger.ros.rosconsole_bridge=INFO
+log4j.logger.ros.rosconsole_bridge.console_bridge=INFO
+#log4j.logger.ros.rosconsole_bridge.moveit_ompl=INFO
 log4j.logger.ros.rosconsole_bridge.class_loader.class_loader_private=INFO
 log4j.logger.ros.rosconsole_bridge.urdfdom=INFO
 
 # MoveIt Planners
-log4j.logger.ros.moveit_planners_ompl.parameters=INFO
+log4j.logger.ros.moveit_ompl.parameters=INFO
 
 # MoveIt Core
 log4j.logger.ros.moveit_core.pr2_arm_kinematics_plugin=INFO

@@ -1,7 +1,7 @@
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
- *  Copyright (c) 2014, University of Colorado, Boulder
+ *  Copyright (c) 2015, University of Colorado, Boulder
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@
     SHORT_NAME - verticle_test
     CLASS_NAME - VerticleApproachTest
     PACKAGE_NAME - baxter_experimental
-    THEN make ifndef all caps with Alt-U
+    THEN make ifndef all caps with Alt-U  (and Alt-F to skip the #define)
  */
 
 #ifndef PACKAGE_NAME__SHORT_NAME
@@ -54,14 +54,6 @@ namespace PACKAGE_NAME
 
 class CLASS_NAME
 {
-private:
-
-  // A shared node handle
-  ros::NodeHandle nh_;
-
-  // Show more visual and console output, with general slower run time.
-  bool verbose_;
-
 public:
 
   /**
@@ -82,6 +74,14 @@ public:
   {
 
   }
+
+private:
+
+  // A shared node handle
+  ros::NodeHandle nh_;
+
+  // Show more visual and console output, with general slower run time.
+  bool verbose_;
 
 }; // end class
 

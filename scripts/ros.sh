@@ -54,12 +54,20 @@
     # Bloom shortcuts
     alias bloom_alias_load="source ~/unix_settings/scripts/bloom.sh"
 
-    # Source public moveit workspace
-    function source_moveit_public()
-    {	
+    function clear_ros()
+    {
 	# make sure the ordering of the ROS sources do not get mixed up
 	unset CMAKE_PREFIX_PATH
 	unset ROS_PACKAGE_PATH
+
+	echo "Displaying ros package path:"
+	rosPackagePath
+    }
+    
+    # Source public moveit workspace
+    function source_moveit_public()
+    {	
+	clear_ros
 
 	source ~/ros/ws_moveit_public/devel/setup.bash
 
