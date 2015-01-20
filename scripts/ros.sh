@@ -16,7 +16,6 @@
     alias disablepkg="mv package.xml package.xml.disabled"
     alias enablepkg="mv package.xml.disabled package.xml"
 
-    alias rosdepinstall_hydro="rosdep install -y --from-paths src --ignore-src --rosdistro hydro"
     alias rosdepinstall_indigo="rosdep install -y --from-paths src --ignore-src --rosdistro indigo"
 
     # Commit to MoveIt!

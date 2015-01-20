@@ -5,11 +5,11 @@ ROS Notes
 
 Run test for just 1 package
 
-    catkin build moveit_core --verbose -i --no-deps --catkin-make-args run_tests
+    catkin runs_tests --no-deps --this -i
 	
 Run test for all packages
 
-    catkin run_tests --verbose -i
+    catkin run_tests -i
 
 Run test for 1 package, old catkin_make version
 
