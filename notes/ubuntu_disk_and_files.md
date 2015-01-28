@@ -47,7 +47,11 @@ Mount it
 
 ### Get folder sizes
 
-    du
+	du -hs /path/to/directory
+
+### Get all file sizes
+
+    du -a -h --max-depth=2 | sort -hr 
 
 ### Show all files in directory with no details
 

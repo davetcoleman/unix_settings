@@ -29,13 +29,12 @@
     alias roscdclam="cd ~/ros/ws_clam/src && ll"
     alias roscdnasa="cd ~/ros/ws_nasa/src && ll"
     alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
+    alias roscdamazon="cd ~/ros/ws_baxter/src/cu_amazon/ && ll"
     alias roscdmisc="cd ~/ros/ws_misc/src && ll"
     alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
     alias roscdros="cd ~/ros/ws_ros/src && ll"
-    alias roscdhrp2="cd ~/ros/ws_hrp2/src && ll"
     alias roscdompl="cd ~/ros/ws_moveit/src/ompl/src/ompl && ll"
-    alias roscdompl_interface="cd ~/ros/ws_moveit/src/moveit_planners/ompl/ompl_interface && ll"
-    alias roscdh="cd /home/dave/ros/ws_moveit/src/moveit_hrp2/hrp2jsknt_moveit_demos && ll"
+
 
     alias moveitplanningscene="rosrun moveit_ros_planning moveit_print_planning_model_info"
     alias iscore="ps aux | grep roscore"
@@ -53,7 +52,7 @@
     # Bloom shortcuts
     alias bloom_alias_load="source ~/unix_settings/scripts/bloom.sh"
 
-    function clear_ros()
+    function roscleanworkspace()
     {
 	# make sure the ordering of the ROS sources do not get mixed up
 	unset CMAKE_PREFIX_PATH

@@ -42,10 +42,15 @@ if buildWorkspace ; then
     return 1
 fi
 
-cd /home/dave/ros/ws_clam/src
+cd /home/dave/ros/ws_vision/src
 if buildWorkspace ; then
     return 1
 fi
+
+# cd /home/dave/ros/ws_clam/src
+# if buildWorkspace ; then
+#     return 1
+# fi
 
 echo ""
 echo "Finished compiling all ROS workspaces!"

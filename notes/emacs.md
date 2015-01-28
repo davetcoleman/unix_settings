@@ -36,6 +36,9 @@ Indent Region in Any Mode
 Do command X times:
   C-u X
 
+Toggle between two tab widths with hotkey
+  M-2, M-4
+
 Window Management --------------------------------------------------------
 
 Make three column windows equal size (equally size all windows)

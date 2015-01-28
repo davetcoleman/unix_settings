@@ -1,7 +1,7 @@
 #!/bin/bash
 alias gitnotes="e ~/unix_settings/notes/git.md"
 alias hgnotes="e ~/unix_settings/notes/hg.md"
-alias ubuntunotes="e ~/unix_settings/notes/ubuntu.md"
+alias ubuntunotes="cd ~/unix_settings/notes/ && ls -l ubuntu_*"
 alias emacsnotes="e ~/unix_settings/notes/emacs.md"
 alias brewnotes="e ~/unix_settings/notes/brew.md"
 alias moveitnotes="e ~/unix_settings/notes/moveit.md"

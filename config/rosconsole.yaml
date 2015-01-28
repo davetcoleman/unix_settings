@@ -95,5 +95,5 @@ log4j.logger.ros.moveit_humanoid_stability.bounding_box=INFO
 #log4j.logger.ros.moveit_humanoid_stability.stability=INFO
 
 # Baxter APC
-log4j.logger.ros.baxter_apc_main.parser=INFO
-log4j.logger.ros.baxter_apc_main.shelf=INFO
+log4j.logger.ros.baxter_apc_main.parser=DEBUG
+log4j.logger.ros.baxter_apc_main.shelf=DEBUG
