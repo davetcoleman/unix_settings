@@ -92,18 +92,21 @@
   #Install Dropbox
   function dropboxinstall() {
       # download dropbox
-      cd ~ 
-      wget -O - 'https://www.dropbox.com/download?plat=lnx.x86_64' | tar xzf - 
+      #cd ~ 
+      #wget -O - 'https://www.dropbox.com/download?plat=lnx.x86_64' | tar xzf - 
+
+      # Install 
+      sudo apt-get -y install nautilus-dropbox
 
       # Make dropbox auto start
-      mkdir -p ~/.config/autostart      
-      cp ~/unix_settings/install/ubuntu/autostart/dropbox.desktop ~/.config/autostart/dropbox.desktop
+      #mkdir -p ~/.config/autostart      
+      #cp ~/unix_settings/install/ubuntu/autostart/dropbox.desktop ~/.config/autostart/dropbox.desktop
 
       # Start dropbox
-      ~/.dropbox-dist/dropboxd &
+      #~/.dropbox-dist/dropboxd &
 
       # The Linux version of the Dropbox desktop application is limited from monitoring more than 10000 folders by default. Anything over that is not watched and, therefore, ignored when syncing. There's an easy fix for this. Open a terminal and enter the following:
-      echo fs.inotify.max_user_watches=100000 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p
+      #echo fs.inotify.max_user_watches=100000 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p
 
       # Check if dropbox is running:
       #sudo service dropbox status

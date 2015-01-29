@@ -33,6 +33,7 @@
 (global-set-key [f5] 'compile)
 (global-set-key [f6] `ros-pkg-compile-command)
 ; kill emacs server
+(setq confirm-kill-emacs 'yes-or-no-p)
 (global-set-key [f7] 'save-buffers-kill-emacs)
 ; make switch bufferer reversible with SHIFT key
 (global-set-key (kbd "C-x O") 'previous-multiframe-window)
