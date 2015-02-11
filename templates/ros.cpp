@@ -72,7 +72,6 @@ public:
    */
   ~CLASS_NAME()
   {
-
   }
 
 private:

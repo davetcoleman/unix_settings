@@ -23,6 +23,10 @@
     alias bgazebo="roslaunch baxter_gazebo baxter_gazebo.launch"
     # Visualize Baxter
     alias bvisualize="roslaunch baxter_control baxter_visualization.launch"
+    
+    # APC
+    alias bapc1="roslaunch baxter_apc_main moveit_rviz.launch"
+    alias bapc2="roslaunch baxter_apc_main moveit_display_rviz.launch"
 
     # Baxter move_group
     alias bm="roslaunch baxter_moveit_config baxter_moveit.launch"

@@ -1,7 +1,7 @@
 function buildWorkspace()
 {
 
-    if catkin bd; then
+    if catkin bd -p 2; then
 	echo ""
 	echo "------------------------------------------------------"
 	echo "Command succeeded"
@@ -17,10 +17,10 @@ function buildWorkspace()
     fi
 }
 
-cd /home/dave/ros/ws_base/src
-if buildWorkspace ; then
-    return 1
-fi
+# cd /home/dave/ros/ws_base/src
+# if buildWorkspace ; then
+#     return 1
+# fi
 
 cd /home/dave/ros/ws_moveit/src
 if buildWorkspace ; then

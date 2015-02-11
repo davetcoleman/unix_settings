@@ -88,7 +88,7 @@ log4j.logger.ros.hrl_kinematics=INFO
 
 
 # Dave Custom Code
-log4j.logger.ros.moveit_visual_tools.visual_tools=INFO
+#log4j.logger.ros.moveit_visual_tools.visual_tools=INFO
 log4j.logger.ros.rviz_visual_tools.visual_tools=INFO
 
 # Humanoid
@@ -98,3 +98,9 @@ log4j.logger.ros.moveit_humanoid_stability.bounding_box=INFO
 # Baxter APC
 log4j.logger.ros.baxter_apc_main.parser=INFO
 log4j.logger.ros.baxter_apc_main.shelf=INFO
+
+log4j.logger.ros.baxter_apc_main.learning.ik_filtered_grasps=INFO
+log4j.logger.ros.baxter_apc_main.learning.ik_animated_grasps=INFO
+log4j.logger.ros.baxter_apc_main.learning.ik_filtered_solutions=INFO
+#log4j.logger.ros.baxter_apc_main.learning.collision_filtered_grasps=INFO
+log4j.logger.ros.baxter_apc_main.learning.collision_filtered_solutions=INFO
