@@ -84,7 +84,7 @@
     alias bstop="sudo rc-service fsm-rsdk stop"  # stop baxter software
     alias bstart="sudo rc-service fsm-rsdk start"  # start baxter software
     alias bshutdown="sudo shutdown -h now"
-    alias breboot="sudo reboot"
+    alias breboot="sudo reboot" #restart
 
 ## Baxter Time
 

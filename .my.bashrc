@@ -149,8 +149,8 @@ fi
 # Custom environements per computer --------------------------------------------------------
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
-    #ROS_MASTER="baxter"
-    ROS_MASTER="localhost"
+    ROS_MASTER="baxter"
+    #ROS_MASTER="localhost"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
