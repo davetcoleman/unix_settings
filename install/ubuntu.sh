@@ -173,10 +173,10 @@
       git config --global color.ui auto
       
       # Setup Hub for Github
-      sagi rake
+      sudo apt-get install -y rake
       cd ~/
       wget https://github.com/github/hub/archive/v1.12.3.tar.gz hub
-      untargz https://github.com/github/hub/archive/v1.12.3.tar.gz
+      untargz v1.12.3.tar.gz
       cd hub-1.12.3
       sudo rake install
   }
@@ -301,7 +301,9 @@
       ssh-keygen -t rsa -b 4096
 
       # copy public key to various websites
-      cat ~/.ssh/id_rsa.pub | pbcopy
+      #cat ~/.ssh/id_rsa.pub | pbcopy  # OSX
+      xclip -sel clip < ~/.ssh/id_rsa.pub # Linux
+
       firefox 'https://my.hostmonster.com/web-hosting/cplogin' 
       firefox 'https://github.com/settings/ssh'
       firefox 'https://bitbucket.org/account/user/davetcoleman/ssh-keys/'
@@ -386,7 +388,7 @@ else
     return
 fi
 
-#read -p "Install chrome? (y/n)" resp3
+read -p "Install chrome? (y/n)" resp3
 read -p "Setup secondary hard drive and ROS workspace sync? (for Dropbox) (y/n)" resp27
 read -p "Install spotify? (y/n)" resp4
 read -p "Install media stuff? (y/n)" resp6
