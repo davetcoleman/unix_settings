@@ -213,6 +213,12 @@ if [ $BASHRC_ENV == "ros_student" ]; then
 
     # In-Use Workspaces
     source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_base/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+    #source /home/$USER/ros/ws_baxter/devel/setup.bash
+    source /home/$USER/ros/ws_nasa/devel/setup.bash
+    #source /home/$USER/ros/ws_vision/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
     #source /home/$USER/ros/ws_baxter/devel/setup.bash
