@@ -149,24 +149,17 @@ fi
 # Custom environements per computer --------------------------------------------------------
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
-    ROS_MASTER="baxter"
-    #ROS_MASTER="localhost"
+    #ROS_MASTER="baxter"
+    ROS_MASTER="localhost"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
     #source /home/$USER/ros/ws_base/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    #source /home/$USER/ros/ws_baxter/devel/setup.bash
-    #source /home/$USER/ros/ws_nasa/devel/setup.bash
-    source /home/$USER/ros/ws_vision/devel/setup.bash
-    #source /home/$USER/ros/ws_clam/devel/setup.bash
-
-    #source /home/$USER/ros/ws_clam/devel/setup.bash
-    #source /home/$USER/ros/ws_hrp2/devel/setup.bash
-    #source /home/$USER/ros/ws_nasa/devel/setup.bash
-    #source /home/$USER/ros/ws_jsk/devel/setup.bash
+    #source /home/$USER/ros/ws_robots/devel/setup.bash
+    #source /home/$USER/ros/ws_amazon/devel/setup.bash
 
     echo -ne "ROS: indigo | "
 
@@ -252,11 +245,6 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
     #source /home/$USER/ros/ws_baxter/devel/setup.bash
     #source /home/$USER/ros/ws_nasa/devel/setup.bash
 
-    #source /home/$USER/ros/ws_clam/devel/setup.bash
-    #source /home/$USER/ros/ws_hrp2/devel/setup.bash
-    #source /home/$USER/ros/ws_nasa/devel/setup.bash
-    #source /home/$USER/ros/ws_jsk/devel/setup.bash
-
     echo -ne "ROS: indigo | "
 
     # overwrite the one from ws_ros/install/setup.bash
@@ -270,46 +258,6 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
     export ROS_IP=`hostname -I`
 
     echo -ne "Computer: ros_mac"
-fi
-
-if [ $BASHRC_ENV == "ros_jsk" ]; then
-
-    # The workspaces being used on this computer
-    ROS_WORKSPACES=( "/home/$USER/ros/ws_ompl/"
-#	"/home/$USER/ros/ws_ros_control/"
-	"/home/$USER/ros/ws_moveit/"
-	"/home/$USER/ros/ws_moveit_other/")
-#        "/home/$USER/ros/ws_baxter/"
-#	"/home/$USER/ros/ws_clam/"
-#	"/home/$USER/ros/ws_nasa/"
-#	"/home/$USER/ros/ws_jsk/" )
-
-  	# In-Use Workspaces
-        #source /home/$USER/ros/ws_ros/install/setup.bash
-	#source /home/$USER/ros/ws_ompl/devel/setup.bash
-	#source /home/$USER/ros/ws_ros_control/devel/setup.bash
-	#source /home/$USER/ros/ws_moveit/devel/setup.bash
-	#source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-        #source /home/$USER/ros/ws_baxter/devel/setup.bash
-	#source /home/$USER/ros/ws_clam/devel/setup.bash
-	#source /home/$USER/ros/ws_hrp2/devel/setup.bash
-        source /home/$USER/ros/ws_nasa/devel/setup.bash
-	#source /home/$USER/ros/ws_jsk/devel/setup.bash
-
-    echo -ne "ROS: hydro | "
-
-    # overwrite the one from ws_ros/install/setup.bash
-    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
-
-    #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
-    #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
-
-
-    # Exports
-    #export ROS_IP=$ROS_JSK_IP
-    #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
-
-    echo -ne "Computer: ros_jsk"
 fi
 
 if [ $BASHRC_ENV == "ros_gateway" ]; then

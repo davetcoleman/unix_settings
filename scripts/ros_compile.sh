@@ -1,7 +1,7 @@
 function buildWorkspace()
 {
 
-    if catkin bd -p 2; then
+    if catkin build --parallel-jobs 1 --cmake-args -DCMAKE_BUILD_TYPE=Debug; then  # -j1
 	echo ""
 	echo "------------------------------------------------------"
 	echo "Command succeeded"
@@ -32,25 +32,15 @@ if buildWorkspace ; then
     return 1
 fi
 
-cd /home/dave/ros/ws_baxter/src
+cd /home/dave/ros/ws_robots/src
 if buildWorkspace ; then
     return 1
 fi
 
-cd /home/dave/ros/ws_nasa/src
+cd /home/dave/ros/ws_amazon/src
 if buildWorkspace ; then
     return 1
 fi
-
-cd /home/dave/ros/ws_vision/src
-if buildWorkspace ; then
-    return 1
-fi
-
-# cd /home/dave/ros/ws_clam/src
-# if buildWorkspace ; then
-#     return 1
-# fi
 
 echo ""
 echo "Finished compiling all ROS workspaces!"

@@ -96,17 +96,17 @@ log4j.logger.ros.moveit_humanoid_stability.bounding_box=INFO
 #log4j.logger.ros.moveit_humanoid_stability.stability=INFO
 
 # Baxter APC
-log4j.logger.ros.baxter_apc_main.parser=INFO
-log4j.logger.ros.baxter_apc_main.shelf=INFO
+log4j.logger.ros.picknik_main.parser=INFO
+#log4j.logger.ros.picknik_main.shelf=INFO
 
 # Learning Pipeline
-log4j.logger.ros.baxter_apc_main.learning.ik_filtered_grasps=INFO
-log4j.logger.ros.baxter_apc_main.learning.ik_animated_grasps=INFO
-log4j.logger.ros.baxter_apc_main.learning.ik_filtered_solutions=INFO
-log4j.logger.ros.baxter_apc_main.learning.collision_filtered_grasps=INFO
-log4j.logger.ros.baxter_apc_main.learning.collision_filtered_solutions=INFO
+log4j.logger.ros.picknik_main.learning.ik_filtered_grasps=INFO
+log4j.logger.ros.picknik_main.learning.ik_animated_grasps=INFO
+log4j.logger.ros.picknik_main.learning.ik_filtered_solutions=INFO
+log4j.logger.ros.picknik_main.learning.collision_filtered_grasps=INFO
+log4j.logger.ros.picknik_main.learning.collision_filtered_solutions=INFO
 
 # Manipulation Pipeline
-log4j.logger.ros.baxter_apc_main.manipulation.animated_grasps=INFO
-log4j.logger.ros.baxter_apc_main.manipulation.ik_filtered_grasps=INFO
-log4j.logger.ros.baxter_apc_main.manipulation.collision_filtered_solutions=INFO
+log4j.logger.ros.picknik_main.manipulation.animated_grasps=INFO
+log4j.logger.ros.picknik_main.manipulation.ik_filtered_grasps=INFO
+log4j.logger.ros.picknik_main.manipulation.collision_filtered_solutions=INFO

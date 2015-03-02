@@ -41,11 +41,9 @@ cd /home/dave/ros/ws_moveit/src
 scanThisDirectoryForGit
 cd /home/dave/ros/ws_moveit_other/src
 scanThisDirectoryForGit
-cd /home/dave/ros/ws_baxter/src
+cd /home/dave/ros/ws_robots/src
 scanThisDirectoryForGit
-cd /home/dave/ros/ws_nasa/src
-scanThisDirectoryForGit
-cd /home/dave/ros/ws_clam/src
+cd /home/dave/ros/ws_amazon/src
 scanThisDirectoryForGit
 
 cd /home/dave/ros

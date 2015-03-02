@@ -133,7 +133,7 @@ function bb() {
   fi
 
   giturl=${giturl/git\@bitbucket\.org\:/https://bitbucket.org/}
-  giturl=${giturl/\.git/\/branch}
+  giturl=${giturl/\.git/\/commits\/branch}
   branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
   branch="(unnamed branch)"     # detached HEAD
   branch=${branch##refs/heads/}
