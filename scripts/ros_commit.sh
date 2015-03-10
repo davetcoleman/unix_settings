@@ -43,8 +43,8 @@ cd /home/dave/ros/ws_moveit_other/src
 scanThisDirectoryForGit
 cd /home/dave/ros/ws_robots/src
 scanThisDirectoryForGit
-cd /home/dave/ros/ws_amazon/src
-scanThisDirectoryForGit
+#cd /home/dave/ros/ws_amazon/src
+#scanThisDirectoryForGit
 
 cd /home/dave/ros
 

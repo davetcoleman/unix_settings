@@ -27,6 +27,7 @@ log4j.logger.ros.moveit_core.pr2_arm_kinematics_plugin=INFO
 # MoveIt ROS
 log4j.logger.ros.moveit_simple_controller_manager=INFO
 log4j.logger.ros.moveit_ros_planning.kinematics_plugin_loader=INFO
+log4j.logger.ros.moveit_ros_planning.planning_scene=INFO
 log4j.logger.ros.moveit_ros_perception.message_filter=INFO
 log4j.logger.ros.moveit_ros_move_group.actionlib=INFO
 #log4j.logger.ros.moveit_ros_perception=INFO
@@ -72,22 +73,14 @@ log4j.logger.ros.gazebo_ros_control.pluginlib.ClassLoader=INFO
 
 # Controllers
 #log4j.logger.ros.controller_manager=INFO
-#log4j.logger.ros.controller_manager.pluginlib=INFO
+log4j.logger.ros.controller_manager.pluginlib=INFO
 #log4j.logger.ros.joint_trajectory_controller.actionlib=INFO
 #log4j.logger.ros.control_toolbox.pid=INFO
-
-# Clam
-log4j.logger.ros.clam_ikfast_arm_plugin.ikfast=INFO
-log4j.logger.ros.clam_moveit_ikfast_plugin=INFO
-log4j.logger.ros.clam_moveit_plugins.actionlib=INFO
-log4j.logger.ros.clam_controller.actionlib=INFO
-log4j.logger.ros.clam_block_manipulation.actionlib=INFO
 
 # KDL
 log4j.logger.ros.hrl_kinematics=INFO
 
-
-# Dave Custom Code
+# Visuals Tools Code
 log4j.logger.ros.moveit_visual_tools.visual_tools=INFO
 log4j.logger.ros.rviz_visual_tools.visual_tools=INFO
 
@@ -95,9 +88,9 @@ log4j.logger.ros.rviz_visual_tools.visual_tools=INFO
 log4j.logger.ros.moveit_humanoid_stability.bounding_box=INFO
 #log4j.logger.ros.moveit_humanoid_stability.stability=INFO
 
-# Baxter APC
+# PickNik Amazon Challenge -------------------------------------------------------------
 log4j.logger.ros.picknik_main.parser=INFO
-#log4j.logger.ros.picknik_main.shelf=INFO
+log4j.logger.ros.picknik_main.shelf=INFO
 
 # Learning Pipeline
 log4j.logger.ros.picknik_main.learning.ik_filtered_grasps=INFO
@@ -106,7 +99,24 @@ log4j.logger.ros.picknik_main.learning.ik_filtered_solutions=INFO
 log4j.logger.ros.picknik_main.learning.collision_filtered_grasps=INFO
 log4j.logger.ros.picknik_main.learning.collision_filtered_solutions=INFO
 
-# Manipulation Pipeline
+# Manipulation Pipeline - Grasping
 log4j.logger.ros.picknik_main.manipulation.animated_grasps=INFO
 log4j.logger.ros.picknik_main.manipulation.ik_filtered_grasps=INFO
 log4j.logger.ros.picknik_main.manipulation.collision_filtered_solutions=INFO
+
+# Manipulation Pipeline - Execution
+log4j.logger.ros.picknik_main.pipeline.trajectory=INFO
+log4j.logger.ros.picknik_main.pipeline.collision_matrix=INFO
+
+# JACO
+log4j.logger.ros.kinova_driver.actionlib=INFO
+log4j.logger.ros.kinova_driver.raw=INFO
+
+# JACO ros_control
+log4j.logger.ros.kinova_ros_control.raw_positions=INFO
+log4j.logger.ros.kinova_ros_control.raw_velocities=INFO
+log4j.logger.ros.kinova_ros_control.raw_torques=INFO
+log4j.logger.ros.kinova_ros_control.commanded_position=INFO
+log4j.logger.ros.kinova_ros_control.commanded_velocity=INFO
+#log4j.logger.ros.kinova_ros_control.skip=INFO
+log4j.logger.ros.moveit_grasps.cuboid_grasp_points=INFO

@@ -151,14 +151,15 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 
     #ROS_MASTER="baxter"
     ROS_MASTER="localhost"
-    source ~/unix_settings/scripts/baxter.sh
+    #source ~/unix_settings/scripts/baxter.sh
+    source ~/unix_settings/scripts/amazon.sh
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
     #source /home/$USER/ros/ws_base/devel/setup.bash
-    source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    #source /home/$USER/ros/ws_robots/devel/setup.bash
+    source /home/$USER/ros/ws_robots/devel/setup.bash
     #source /home/$USER/ros/ws_amazon/devel/setup.bash
 
     echo -ne "ROS: indigo | "
@@ -418,7 +419,7 @@ grcase() { grep -I --color=always --line-number --recursive  "$1" . ;}
 
 # Exclude certain directories from grep. this doesn't work for osx
 if [[ $platform != 'osx' ]]; then
-    export GREP_OPTIONS="--exclude-dir=\build --exclude-dir=\.svn --exclude-dir=\.hg --exclude-dir=\.git --exclude=\.#*"
+    export GREP_OPTIONS="--exclude-dir=\build --exclude-dir=\.svn --exclude-dir=\.hg --exclude-dir=\.git --exclude=\.#* --exclude=*.dae"
 fi
 
 #grep -r -i "WORD" .     # search recursively in directory for case-insensitive word

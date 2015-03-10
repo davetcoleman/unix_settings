@@ -109,6 +109,7 @@ int main(int argc, char** argv)
       {
         ROS_INFO_STREAM_NAMED("main","Running in VERBOSE mode (slower)");
         verbose = true;
+        continue;
       }
     }
   }

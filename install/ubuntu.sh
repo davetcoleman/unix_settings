@@ -146,8 +146,8 @@
       rosdep update      
 
       # setup catkin_tools config
-      mkdir -p /home/dave/.config/catkin/verb_aliases
-      ln -s ~/unix_settings/config/01-dave-aliases.yaml /home/dave/.config/catkin/verb_aliases/01-dave-aliases.yaml
+      mkdir -p ~/.config/catkin/verb_aliases
+      ln -s ~/unix_settings/config/01-dave-aliases.yaml ~/.config/catkin/verb_aliases/01-dave-aliases.yaml
   }
 
   #Install Gazebo for ubuntu 12.04 - FIRST INSTALL ROS
@@ -205,7 +205,7 @@
   # TrueCrypt
   function truecryptinstall()
   {
-      if [ ! -f "/home/dave/Dropbox/Documents/2014/truecrypt/truecrypt-7.1a-linux-x64.tar.gz" ]; then
+      if [ ! -f "~/Dropbox/Documents/2014/truecrypt/truecrypt-7.1a-linux-x64.tar.gz" ]; then
 	  zenity --info --text 'Is dropbox setup and 2014 files synced? Truecrypt will not install without those files and currently cannot find the tar.gz file. Skipping.'
       else
 	  chmod a+rx ~/unix_settings/install/truecrypt-install-local.sh 

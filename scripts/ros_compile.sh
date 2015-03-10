@@ -1,7 +1,8 @@
 function buildWorkspace()
 {
 
-    if catkin build --parallel-jobs 1 --cmake-args -DCMAKE_BUILD_TYPE=Debug; then  # -j1
+    #if catkin build --parallel-jobs 1 --cmake-args -DCMAKE_BUILD_TYPE=Debug; then  # -j1
+    if catkin build --cmake-args -DCMAKE_BUILD_TYPE=Debug; then  # -j1
 	echo ""
 	echo "------------------------------------------------------"
 	echo "Command succeeded"
@@ -37,10 +38,10 @@ if buildWorkspace ; then
     return 1
 fi
 
-cd /home/dave/ros/ws_amazon/src
-if buildWorkspace ; then
-    return 1
-fi
+#cd /home/dave/ros/ws_amazon/src
+#if buildWorkspace ; then
+#    return 1
+#fi
 
 echo ""
 echo "Finished compiling all ROS workspaces!"

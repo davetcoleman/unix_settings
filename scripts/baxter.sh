@@ -24,10 +24,6 @@
     # Visualize Baxter
     alias bvisualize="roslaunch baxter_control baxter_visualization.launch"
     
-    # APC
-    alias pm1="roslaunch picknik_main moveit_rviz.launch"
-    alias pm2="roslaunch picknik_main moveit_display_rviz.launch"
-
     # Baxter move_group
     alias bm="roslaunch baxter_moveit_config baxter_moveit.launch"
     # Baxter pick place
