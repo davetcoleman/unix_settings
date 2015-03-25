@@ -21,6 +21,7 @@
     # Commit to MoveIt!
     alias roscommit=". ~/unix_settings/scripts/ros_commit.sh"
     alias roscompile=". ~/unix_settings/scripts/ros_compile.sh"
+    alias roscheckbranch=". ~/unix_settings/scripts/ros_check_branch.sh"
 
     # ROSCD
     alias roscdbase="cd ~/ros/ws_base/src && ll"
@@ -32,6 +33,7 @@
     alias roscdamazon="cd ~/ros/ws_baxter/src/cu_amazon/ && ll"
     alias roscdmisc="cd ~/ros/ws_misc/src && ll"
     alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
+    alias roscdrobots="cd ~/ros/ws_robots/src && ll"
     alias roscdros="cd ~/ros/ws_ros/src && ll"
     alias roscdompl="cd ~/ros/ws_moveit/src/ompl/src/ompl && ll"
 

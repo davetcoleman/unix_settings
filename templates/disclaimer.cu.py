@@ -34,5 +34,5 @@
 #  POSSIBILITY OF SUCH DAMAGE.
 # ********************************************************************/
 
-#   Author: Dave Coleman
+#   Author: Dave Coleman <dave@dav.ee>
 #   Desc:   

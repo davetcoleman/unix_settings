@@ -1,7 +1,7 @@
-# Generic
-    alias pm1="roslaunch picknik_main moveit_rviz.launch"
-    alias pm2="roslaunch picknik_main moveit_display_rviz.launch"
+# Baxter
+    alias baxter_pm1="roslaunch picknik_main rviz.launch jacob:=false"
+    alias baxter_pm2="roslaunch picknik_main rviz_display.launch jacob:=false"
 
 # Jacob Robot
-    alias jacoburdf="roslaunch jacob_moveit_config planning_context.launch load_robot_description:=true"
-
+    alias jacob_pm1="roslaunch picknik_main rviz.launch"
+    alias jacob_pm2="roslaunch picknik_main rviz_display.launch"

@@ -151,7 +151,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 
     #ROS_MASTER="baxter"
     ROS_MASTER="localhost"
-    #source ~/unix_settings/scripts/baxter.sh
+    source ~/unix_settings/scripts/baxter.sh
     source ~/unix_settings/scripts/amazon.sh
 
     # In-Use Workspaces
@@ -169,6 +169,9 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 
     # Syncing scripts
     alias sync_ros_monster_to_student="source /home/$USER/unix_settings/scripts/rsync/ros_monster_to_student.sh"
+
+    # PCL hack
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/include                                                                              
 
     # Exports
     #export ROS_IP=$ROS_MONSTER_IP

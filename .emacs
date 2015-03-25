@@ -406,7 +406,6 @@
   (if (string-match "^finished" msg)
       (progn 
 	(shell-command "play -q ~/unix_settings/emacs/success.wav"))
-;	(shell-command "source ~/unix_settings/scripts/backup_rsync_ros_gateway.sh &"))
       (shell-command "play -q ~/unix_settings/emacs/failure.wav"))
   )
 

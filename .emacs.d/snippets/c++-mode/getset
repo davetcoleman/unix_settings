@@ -4,7 +4,7 @@
 /**
  * \brief Getter for THING
  */ 
-TYPE getTHING()
+const TYPE& getTHING() const
 {
   return VAR_;
 }
@@ -12,7 +12,7 @@ TYPE getTHING()
 /**
  * \brief Setter for THING
  */
-void setTHING(TYPE VAR)
+void setTHING(const TYPE& VAR)
 {
   VAR_ = VAR;
 }
