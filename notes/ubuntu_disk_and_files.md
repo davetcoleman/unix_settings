@@ -18,7 +18,6 @@
 
     blkid
 
-
 ### Mount Filesystem while in Recovery Mode
 
     When you boot into Recovery Mode, enter the following two commands before doing anything else:
@@ -66,5 +65,25 @@ Remove ``-vn`` to actually use (this is test mode)
 
 ### Make symbolic link
 
-ln -s source_file destination_file
+    ln -s source_file destination_file
 
+### Check Swap Space
+
+Two options:
+
+    sudo swapon -s
+    free -m
+	
+### Make a swap file
+
+See https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04
+
+    sudo fallocate -l 4G /swapfile
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
+
+### Make swap partition permanent:
+
+    sudo nano /etc/fstab
+	

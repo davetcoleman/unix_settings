@@ -1,4 +1,5 @@
 #!/bin/bash
+alias mynotes="cd ~/unix_settings/notes/"
 alias gitnotes="e ~/unix_settings/notes/git.md"
 alias hgnotes="e ~/unix_settings/notes/hg.md"
 alias ubuntunotes="cd ~/unix_settings/notes/ && ls -l ubuntu_*"

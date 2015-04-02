@@ -75,9 +75,9 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases for listing files and folders
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -alFh'
+alias la='ls -Ah'
+alias l='ls -CFh'
 alias listfolders='ls -AF | grep /'
 #alias listfiles='ls -AF | grep -v /'
 alias listfiles="find * -type f -print" # lists files in the current directory

@@ -14,12 +14,8 @@ log4j.logger.ros.rqt_gui_cpp.pluginlib.ClassLoader=INFO
 # CONSOLE BRIDGE
 #log4j.logger.ros.rosconsole_bridge=INFO
 log4j.logger.ros.rosconsole_bridge.console_bridge=INFO
-log4j.logger.ros.rosconsole_bridge.moveit_ompl=INFO
 log4j.logger.ros.rosconsole_bridge.class_loader.class_loader_private=INFO
 log4j.logger.ros.rosconsole_bridge.urdfdom=INFO
-
-# MoveIt Planners
-log4j.logger.ros.moveit_ompl.parameters=INFO
 
 # MoveIt ROS
 log4j.logger.ros.moveit_simple_controller_manager=INFO
@@ -101,20 +97,13 @@ log4j.logger.ros.picknik_main.apc_manager.perception=INFO
 # Perception
 log4j.logger.ros.moveit_arpg_perception.actionlib=INFO
 
-# Manipulation - Choosing a grasp
-# Set the grasp_generator to verbose
-log4j.logger.ros.picknik_main.manipulation.grasp_generator=INFO
-# before IK
-log4j.logger.ros.picknik_main.manipulation.animated_grasps=INFO
-# after IK
-log4j.logger.ros.picknik_main.manipulation.ik_filtered_grasps=INFO
-# after collision detection whole arm
-log4j.logger.ros.picknik_main.manipulation.collision_filtered_solutions=INFO
-# after collision detection just EE
-log4j.logger.ros.picknik_main.manipulation.collision_filtered_grasps=INFO
+# GRASPING /////////////////////////////////////////////////////////////////
+
+# Show lots out output
+log4j.logger.ros.moveit_grasps.filter.superdebug=INFO
 
 # Manipulation - Execution
-#log4j.logger.ros.picknik_main.manipulation.trajectory=INFO
+log4j.logger.ros.picknik_main.manipulation.trajectory=INFO
 log4j.logger.ros.picknik_main.manipulation.collision_matrix=INFO
 log4j.logger.ros.picknik_main.actionlib=INFO
 
@@ -135,6 +124,7 @@ log4j.logger.ros.kinova_ros_control.raw_torques=INFO
 log4j.logger.ros.kinova_ros_control.commanded_position=INFO
 log4j.logger.ros.kinova_ros_control.commanded_velocity=INFO
 log4j.logger.ros.moveit_grasps.cuboid_grasp_points=INFO
+log4j.logger.ros.moveit_grasps.cuboid=INFO
 log4j.logger.ros.moveit_grasps.cuboid_axis_grasps=INFO
 
 # Control Manager
@@ -145,15 +135,6 @@ log4j.logger.ros.moveit_ros_planning.traj_execution=WARN
 log4j.logger.ros.ompl=WARN
 log4j.logger.ros.moveit_ros_planning=WARN
 log4j.logger.ros.moveit_ompl=WARN
+log4j.logger.ros.rosconsole_bridge.moveit_ompl=INFO
+log4j.logger.ros.moveit_ompl.parameters=INFO
 
-
-
-
-
-# OLD
-# Learning Pipeline
-log4j.logger.ros.picknik_main.learning.ik_filtered_grasps=INFO
-log4j.logger.ros.picknik_main.learning.ik_animated_grasps=INFO
-log4j.logger.ros.picknik_main.learning.ik_filtered_solutions=INFO
-log4j.logger.ros.picknik_main.learning.collision_filtered_grasps=INFO
-log4j.logger.ros.picknik_main.learning.collision_filtered_solutions=INFO

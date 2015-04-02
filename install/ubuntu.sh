@@ -139,7 +139,7 @@
       sudo apt-get update 
       sudo apt-get install -y ros-indigo-desktop-full || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       # seperate incase the pkg is not available yet
-      sudo apt-get install -y python-rosdep python-rosinstall python-bloom ros-indigo-rqt python-wstool python-bloom python-pip python-catkin-lint liburdfdom-tools || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y python-rosdep python-rosinstall python-bloom ros-indigo-rqt python-wstool python-bloom python-pip python-catkin-lint liburdfdom-tools python-catkin-tools || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       sudo apt-get install -y ros-indigo-rosemacs
 
       sudo rosdep init
@@ -224,10 +224,9 @@
 
   # Install Adobe Acrobat
   function acrobatinstall() {
-      # follow these instructions: http://ubuntuhandbook.org/index.php/2014/04/install-adobe-reader-ubuntu-1404/
+      echo 'follow these instructions: http://ubuntuhandbook.org/index.php/2014/04/install-adobe-reader-ubuntu-1404/'
       #sudo add-apt-repository -y "deb http://archive.canonical.com/ '$(lsb_release -cs)' partner"
       #sudo apt-get update && sudo apt-get install acroread -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
-      echo 'nothing'
   }
 
   # Install workrave break manager

@@ -77,8 +77,8 @@
 
 ## SSH Access to Baxter   -  http://sdk.rethinkrobotics.com/wiki/SSH
 
-    alias bstop="sudo rc-service fsm-rsdk stop"  # stop baxter software
-    alias bstart="sudo rc-service fsm-rsdk start"  # start baxter software
+    alias bstop="sudo rc-service rethink stop"  # stop baxter software
+    alias bstart="sudo rc-service rethink start"  # start baxter software
     alias bshutdown="sudo shutdown -h now"
     alias breboot="sudo reboot" #restart
 
