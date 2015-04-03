@@ -171,7 +171,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     alias sync_ros_monster_to_student="source /home/$USER/unix_settings/scripts/rsync/ros_monster_to_student.sh"
 
     # PCL hack
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/include                                                                              
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/include
 
     # Exports
     #export ROS_IP=$ROS_MONSTER_IP
@@ -201,7 +201,7 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
     # Exports
-    # Use ROS_IP if you are specifying an IP address, and ROS_HOSTNAME if you are specifying a host name. 
+    # Use ROS_IP if you are specifying an IP address, and ROS_HOSTNAME if you are specifying a host name.
     export ROS_IP=$ROS_BAXTER_IP
     #export ROS_HOSTNAME=$ROS_BAXTER_IP  #http://localhost:11311
     #export ROS_MASTER_URI=http://localhost:11311
@@ -317,6 +317,33 @@ if [ $BASHRC_ENV == "ros_baxter_control" ]; then
     export ROS_HOSTNAME=$ROS_BAXTER_CONTROL_IP
 
     echo -ne "Computer: ros_baxter_control"
+fi
+
+# Custom environements per computer --------------------------------------------------------
+if [ $BASHRC_ENV == "ros_block" ]; then
+
+    ROS_MASTER="baxter"
+    #ROS_MASTER="localhost"
+    source ~/unix_settings/scripts/baxter.sh
+    source ~/unix_settings/scripts/amazon.sh
+
+    # In-Use Workspaces
+    source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_base/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+    #source /home/$USER/ros/ws_robots/devel/setup.bash
+    #source /home/$USER/ros/ws_amazon/devel/setup.bash
+
+    echo -ne "ROS: indigo | "
+
+    # overwrite the one from ws_ros/install/setup.bash
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
+
+    # Exports
+    export ROS_IP=`hostname -I`
+
+    echo -ne "Computer: ros_block"
 fi
 
 if [ $BASHRC_ENV == "janus" ]; then
