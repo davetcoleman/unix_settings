@@ -320,7 +320,7 @@ if [ $BASHRC_ENV == "ros_baxter_control" ]; then
 fi
 
 # Custom environements per computer --------------------------------------------------------
-if [ $BASHRC_ENV == "ros_block" ]; then
+if [ $BASHRC_ENV == "ros_brick" ]; then
 
     ROS_MASTER="baxter"
     #ROS_MASTER="localhost"
@@ -329,7 +329,7 @@ if [ $BASHRC_ENV == "ros_block" ]; then
 
     # In-Use Workspaces
     source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_base/devel/setup.bash
+    source /home/$USER/ros/ws_picknik/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
     #source /home/$USER/ros/ws_robots/devel/setup.bash
@@ -340,10 +340,12 @@ if [ $BASHRC_ENV == "ros_block" ]; then
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
+    alias startcamera="roslaunch realsense_camera realsense_camera.launch"
+
     # Exports
     export ROS_IP=`hostname -I`
 
-    echo -ne "Computer: ros_block"
+    echo -ne "Computer: ros_brick"
 fi
 
 if [ $BASHRC_ENV == "janus" ]; then
