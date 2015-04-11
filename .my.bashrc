@@ -151,6 +151,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
 
     #ROS_MASTER="baxter"
     ROS_MASTER="localhost"
+    #ROS_MASTER="localhost2"
     source ~/unix_settings/scripts/baxter.sh
     source ~/unix_settings/scripts/amazon.sh
 
@@ -159,8 +160,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     #source /home/$USER/ros/ws_base/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    source /home/$USER/ros/ws_robots/devel/setup.bash
-    #source /home/$USER/ros/ws_amazon/devel/setup.bash
+    source /home/$USER/ros/ws_amazon/devel/setup.bash
 
     echo -ne "ROS: indigo | "
 
@@ -374,6 +374,10 @@ if [ $ROS_SEGMENT == "ros" ]; then
 	export ROS_MASTER_URI=$ROS_BAXTER_IP
 
 	echo -ne " | ROS Master: i_am_baxter"
+    elif [ $ROS_MASTER == "localhost2" ]; then  # Internal Baxter
+	export ROS_MASTER_URI=http://localhost:11312
+
+	echo -ne " | ROS Master: localhost2"
     else # Localhost
 	export ROS_MASTER_URI=http://localhost:11311
 

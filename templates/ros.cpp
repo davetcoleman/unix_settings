@@ -67,13 +67,6 @@ public:
     ROS_INFO_STREAM_NAMED("SHORT_NAME","CLASS_NAME Ready.");
   }
 
-  /**
-   * \brief Destructor
-   */
-  ~CLASS_NAME()
-  {
-  }
-
 private:
 
   // A shared node handle

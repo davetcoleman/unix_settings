@@ -401,6 +401,7 @@
 )
 
 ;;; COMPILE NOTIFICATION WHEN DONE ------------------------------------------------------
+;;; keywords: bell door bell horn compile
 (defun notify-compilation-result(buffer msg)
   "Notify that the compilation is finished"
   (if (string-match "^finished" msg)
@@ -409,8 +410,8 @@
       (shell-command "play -q ~/unix_settings/emacs/failure.wav"))
   )
 
-(add-to-list 'compilation-finish-functions
-	     'notify-compilation-result)
+;(add-to-list 'compilation-finish-functions
+;	     'notify-compilation-result)
 
 ;;; DOXYGEN ---------------------------------------------------------------------
 ;(add-hook 'c-mode-common-hook
@@ -471,6 +472,15 @@
 
 (global-set-key (kbd "M-2") 'set-c-basic-offset-2-command)
 (global-set-key (kbd "M-4") 'set-c-basic-offset-4-command)
+
+;;; Create direcotry if necessary when creating new file --------------------------------------------------------------
+
+(defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
+  "Create parent directory if not exists while visiting file."
+  (unless (file-exists-p filename)
+    (let ((dir (file-name-directory filename)))
+      (unless (file-exists-p dir)
+        (make-directory dir)))))
 
 ;;; EMACS Handling --------------------------------------------------------------
 
