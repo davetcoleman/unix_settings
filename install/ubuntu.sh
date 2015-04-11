@@ -163,6 +163,7 @@
 
   # Setup Github:
   function githubsetup() {
+      alias | grep hub
       unalias git  # git is an alias for hub in my config
 
       git config --global user.name 'Dave Coleman' 
