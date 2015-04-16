@@ -33,15 +33,10 @@ if buildWorkspace ; then
     return 1
 fi
 
-cd /home/dave/ros/ws_robots/src
+cd /home/dave/ros/ws_amazon/src
 if buildWorkspace ; then
     return 1
 fi
-
-#cd /home/dave/ros/ws_amazon/src
-#if buildWorkspace ; then
-#    return 1
-#fi
 
 echo ""
 echo "Finished compiling all ROS workspaces!"

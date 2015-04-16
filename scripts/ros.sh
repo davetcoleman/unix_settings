@@ -21,6 +21,7 @@
     # Commit to MoveIt!
     alias roscommit=". ~/unix_settings/scripts/ros_commit.sh"
     alias roscompile=". ~/unix_settings/scripts/ros_compile.sh"
+    alias rospull=". ~/unix_settings/scripts/ros_pull.sh"
     alias roscheckbranch=". ~/unix_settings/scripts/ros_check_branch.sh"
 
     # ROSCD
@@ -33,7 +34,7 @@
     alias roscdamazon="cd ~/ros/ws_baxter/src/cu_amazon/ && ll"
     alias roscdmisc="cd ~/ros/ws_misc/src && ll"
     alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
-    alias roscdrobots="cd ~/ros/ws_robots/src && ll"
+    alias roscdamazon="cd ~/ros/ws_amazon/src && ll"
     alias roscdros="cd ~/ros/ws_ros/src && ll"
     alias roscdompl="cd ~/ros/ws_moveit/src/ompl/src/ompl && ll"
 
@@ -53,6 +54,10 @@
 
     # Bloom shortcuts
     alias bloom_alias_load="source ~/unix_settings/scripts/bloom.sh"
+
+    # Testing communication
+    #rostopic pub /test std_msgs/Bool true -r 10
+    #rostopic echo /test
 
     function roscleanworkspace()
     {

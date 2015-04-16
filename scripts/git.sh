@@ -45,8 +45,44 @@ function git_pull_all()
 }
 
 
+# change git ssh to https
+function git_ssh_to_https() {
+    #-- Script to automate https://help.github.com/articles/why-is-git-always-asking-for-my-password
+
+    REPO_URL=`git remote -v | grep -m1 '^origin' | sed -Ene's#.*(git@[^[:space:]]*).*#\1#p'`
+    if [ -z "$REPO_URL" ]; then
+	echo "-- ERROR:  Could not identify Repo url."
+	echo "   It is possible this repo is already using SSH instead of HTTPS."
+	return
+    fi
+
+    USER=`echo $REPO_URL | sed -Ene's#git@github.com:([^/]*)/(.*).git#\1#p'`
+    if [ -z "$USER" ]; then
+	echo "-- ERROR:  Could not identify User."
+	return
+    fi
+
+    REPO=`echo $REPO_URL | sed -Ene's#git@github.com:([^/]*)/(.*).git#\2#p'`
+    if [ -z "$REPO" ]; then
+	echo "-- ERROR:  Could not identify Repo."
+	return
+    fi
+
+    NEW_URL="https://github.com/$USER/$REPO.git"
+    echo "Changing repo url from "
+    echo "  '$REPO_URL'"
+    echo "      to "
+    echo "  '$NEW_URL'"
+    echo ""
+
+    CHANGE_CMD="git remote set-url origin $NEW_URL"
+    `$CHANGE_CMD`
+
+    echo "Success"
+}
+
 # change git https to ssh
-function gitsshfix() {
+function git_https_to_ssh() {
     #-- Script to automate https://help.github.com/articles/why-is-git-always-asking-for-my-password
 
     REPO_URL=`git remote -v | grep -m1 '^origin' | sed -Ene's#.*(https://[^[:space:]]*).*#\1#p'`
