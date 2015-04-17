@@ -323,13 +323,18 @@ fi
 # Custom environements per computer --------------------------------------------------------
 if [ $BASHRC_ENV == "ros_brick" ]; then
 
-    ROS_MASTER="baxter"
-    #ROS_MASTER="localhost"
+    #ROS_MASTER="baxter"
+    ROS_MASTER="localhost"
+    #ROS_MASTER="davecore"
+
+    export PATH=/usr/local/cuda-7.0/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
+
     source ~/unix_settings/scripts/baxter.sh
     source ~/unix_settings/scripts/amazon.sh
 
     # In-Use Workspaces
-    source /opt/ros/indigo/setup.bash
+    #source /opt/ros/indigo/setup.bash
     source /home/$USER/ros/ws_picknik/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
@@ -347,6 +352,39 @@ if [ $BASHRC_ENV == "ros_brick" ]; then
     export ROS_IP=`hostname -I`
 
     echo -ne "Computer: ros_brick"
+fi
+
+if [ $BASHRC_ENV == "ros_luma" ]; then
+
+    #ROS_MASTER="baxter"
+    ROS_MASTER="localhost"
+    #ROS_MASTER="davecore"
+
+    #export PATH=/usr/local/cuda-7.0/bin:$PATH
+    #export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
+
+    source ~/unix_settings/scripts/baxter.sh
+    source ~/unix_settings/scripts/amazon.sh
+
+    # In-Use Workspaces
+    source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_picknik/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+    #source /home/$USER/ros/ws_robots/devel/setup.bash
+    #source /home/$USER/ros/ws_amazon/devel/setup.bash
+
+    echo -ne "ROS: indigo | "
+
+    # overwrite the one from ws_ros/install/setup.bash
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
+
+    alias startcamera="roslaunch realsense_camera realsense_camera.launch"
+
+    # Exports
+    export ROS_IP=`hostname -I`
+
+    echo -ne "Computer: ros_luma"
 fi
 
 if [ $BASHRC_ENV == "janus" ]; then
@@ -404,6 +442,10 @@ if [ $ROS_SEGMENT == "ros" ]; then
 	export ROS_MASTER_URI=$ROS_BAXTER_IP
 
 	echo -ne " | ROS Master: i_am_baxter"
+    elif [ $ROS_MASTER == "davecore" ]; then  # Internal Baxter
+	export ROS_MASTER_URI=232323
+
+	echo -ne " | ROS Master: Dave's computer"
     elif [ $ROS_MASTER == "localhost2" ]; then  # Internal Baxter
 	export ROS_MASTER_URI=http://localhost:11312
 
