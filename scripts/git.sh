@@ -1,6 +1,3 @@
-if [[ $BASHRC_ENV != "dtc" && $platform != "osx" && $BASHRC_ENV != "ros_baxter" ]]; then   #only for ubuntu
-    alias git=hub
-fi
 alias gitst='git status'
 alias gitlg='git log -p'
 alias gitall='git add -A :/ && git commit -a && git push origin --all'
@@ -56,19 +53,28 @@ function git_ssh_to_https() {
 	return
     fi
 
+    USE_BITBUCKET=0
     USER=`echo $REPO_URL | sed -Ene's#git@github.com:([^/]*)/(.*).git#\1#p'`
     if [ -z "$USER" ]; then
-	echo "-- ERROR:  Could not identify User."
-	return
+	USER=`echo $REPO_URL | sed -Ene's#git@bitbucket.org:([^/]*)/(.*).git#\1#p'`
+	USE_BITBUCKET=1
+	if [ -z "$USER" ]; then
+	    echo "-- ERROR:  Could not identify User."
+	    return
+	fi
     fi
 
     REPO=`echo $REPO_URL | sed -Ene's#git@github.com:([^/]*)/(.*).git#\2#p'`
     if [ -z "$REPO" ]; then
-	echo "-- ERROR:  Could not identify Repo."
-	return
+	REPO=`echo $REPO_URL | sed -Ene's#git@bitbucket.org:([^/]*)/(.*).git#\2#p'`
+	if [ -z "$REPO" ]; then
+	    echo "-- ERROR:  Could not identify Repo."
+	    return
+	fi
     fi
 
     NEW_URL="https://github.com/$USER/$REPO.git"
+
     echo "Changing repo url from "
     echo "  '$REPO_URL'"
     echo "      to "
