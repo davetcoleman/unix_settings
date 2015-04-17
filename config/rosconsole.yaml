@@ -22,15 +22,12 @@ log4j.logger.ros.moveit_simple_controller_manager=INFO
 log4j.logger.ros.moveit_ros_planning.kinematics_plugin_loader=INFO
 log4j.logger.ros.moveit_ros_planning.planning_scene=INFO
 log4j.logger.ros.moveit_ros_perception.message_filter=INFO
-log4j.logger.ros.moveit_ros_move_group.actionlib=INFO
 #log4j.logger.ros.moveit_ros_perception=INFO
-log4j.logger.ros.moveit_ros_benchmarks.pluginlib=INFO
 log4j.logger.ros.moveit_ros_planning.collision=INFO
 log4j.logger.ros.moveit_ros_planning.rdf=INFO
 log4j.logger.ros.moveit_ros_planning.robot_model_loader=INFO
-log4j.logger.ros.moveit_ros_planning.kinematics_loader=INFO
-log4j.logger.ros.moveit_ros_planning.robot_model_loader=INFO
-log4j.logger.ros.moveit_ros_planning.kdl=INFO
+#log4j.logger.ros.moveit_ros_planning.kinematics_loader=INFO
+#log4j.logger.ros.moveit_ros_planning.kdl=INFO
 log4j.logger.ros.moveit_ros_planning.planning_scene_monitor=INFO
 log4j.logger.ros.moveit_ros_planning.message_filter=INFO
 log4j.logger.ros.moveit_ros_planning.traj_execution=INFO
@@ -41,6 +38,7 @@ log4j.logger.ros.moveit_ros_planning_interface.actionlib=INFO
 log4j.logger.ros.moveit_ros_manipulation.actionlib=INFO
 log4j.logger.ros.moveit_simple_controller_manager.actionlib=INFO
 log4j.logger.ros.hrp2jsknt_moveit_demos.actionlib=INFO
+log4j.logger.ros.moveit_ros_move_group.actionlib=INFO
 
 # MoveIt ClassLoader
 log4j.logger.ros.moveit_ros_move_group.pluginlib.ClassLoader=INFO
@@ -75,21 +73,9 @@ log4j.logger.ros.control_toolbox.pid=INFO
 log4j.logger.ros.ros_control_boilerplate.joint_positions=INFO
 log4j.logger.ros.ros_control_boilerplate.actionlib=INFO
 
-# KDL
-log4j.logger.ros.hrl_kinematics=INFO
-
 # Visuals Tools Code
 log4j.logger.ros.moveit_visual_tools.visual_tools=INFO
 log4j.logger.ros.rviz_visual_tools.visual_tools=INFO
-
-# Humanoid
-log4j.logger.ros.moveit_humanoid_stability.bounding_box=INFO
-#log4j.logger.ros.moveit_humanoid_stability.stability=INFO
-
-
-
-
-
 
 
 # PickNik Amazon Challenge -------------------------------------------------------------
@@ -97,12 +83,14 @@ log4j.logger.ros.rviz_visual_tools.shelf=INFO
 log4j.logger.ros.rviz_visual_tools.apc_manager=INFO
 log4j.logger.ros.rviz_visual_tools.manipulation_data=INFO
 log4j.logger.ros.rviz_visual_tools.grasps=INFO
+log4j.logger.ros.rviz_visual_tools.grasp_data=INFO
 log4j.logger.ros.picknik_main.main=INFO
 log4j.logger.ros.picknik_main.parser=INFO
 log4j.logger.ros.picknik_main.shelf=INFO
 log4j.logger.ros.picknik_main.collision_object=INFO
 log4j.logger.ros.picknik_main.manipulation_data=INFO
 log4j.logger.ros.picknik_main.product_simulator=INFO
+log4j.logger.ros.picknik_main.planning_scene_manager=INFO
 #log4j.logger.ros.picknik_main.apc_manager.perception=INFO
 #log4j.logger.ros.picknik_main.apc_manager=INFO
 log4j.logger.ros.picknik_main.grasps=INFO
@@ -119,8 +107,9 @@ log4j.logger.ros.moveit_grasps.cuboid=INFO
 log4j.logger.ros.moveit_grasps.bbox=INFO
 log4j.logger.ros.moveit_grasps.cuboid_axis_grasps=INFO
 
-# Manipulation - Execution
-log4j.logger.ros.picknik_main.manipulation.trajectory=INFO
+# Execution
+log4j.logger.ros.picknik_main.execution_interface.trajectory=INFO
+log4j.logger.ros.picknik_main.execution_interface.file_path=INFO
 log4j.logger.ros.picknik_main.manipulation.collision_matrix=INFO
 log4j.logger.ros.picknik_main.actionlib=INFO
 

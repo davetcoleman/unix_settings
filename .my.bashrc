@@ -176,6 +176,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     # Exports
     #export ROS_IP=$ROS_MONSTER_IP
     export ROS_IP=`hostname -I`
+    #export ROS_IP='127.0.0.1'
 
     echo -ne "Computer: ros_monster"
 fi

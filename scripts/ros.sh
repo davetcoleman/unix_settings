@@ -7,9 +7,11 @@
 
     alias catbuild="catkin b" # catkin build
     alias catbuilddebug="catkin bd" #catkin build cmake-args -DCMAKE_BUILD_TYPE=Debug
+    alias catbuildrelease="catkin br" #catkin build cmake-args -DCMAKE_BUILD_TYPE=Release
     alias catclean="catkin clean -a"
     alias catcleanbuild="catclean && catbuild"
     alias catcleanbuilddebug="catclean && catbuilddebug"
+    alias catcleanbuildrelease="catclean && catbuildrelease"
 
     alias rosreindex="rm ~/.ros/rospack_cache && rospack profile"
 
