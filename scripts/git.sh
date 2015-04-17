@@ -53,11 +53,11 @@ function git_ssh_to_https() {
 	return
     fi
 
-    USE_BITBUCKET=0
+    USE_BITBUCKET=false
     USER=`echo $REPO_URL | sed -Ene's#git@github.com:([^/]*)/(.*).git#\1#p'`
     if [ -z "$USER" ]; then
 	USER=`echo $REPO_URL | sed -Ene's#git@bitbucket.org:([^/]*)/(.*).git#\1#p'`
-	USE_BITBUCKET=1
+	USE_BITBUCKET=true
 	if [ -z "$USER" ]; then
 	    echo "-- ERROR:  Could not identify User."
 	    return
@@ -73,8 +73,11 @@ function git_ssh_to_https() {
 	fi
     fi
 
-    NEW_URL="https://github.com/$USER/$REPO.git"
-
+    if [ "$USE_BITBUCKET" = true ]; then
+	NEW_URL="https://bitbucket.org/$USER/$REPO.git"
+    else
+	NEW_URL="https://github.com/$USER/$REPO.git"
+    fi
     echo "Changing repo url from "
     echo "  '$REPO_URL'"
     echo "      to "
@@ -98,19 +101,31 @@ function git_https_to_ssh() {
 	return
     fi
 
+    USE_BITBUCKET=false
     USER=`echo $REPO_URL | sed -Ene's#https://github.com/([^/]*)/(.*).git#\1#p'`
     if [ -z "$USER" ]; then
-	echo "-- ERROR:  Could not identify User."
-	return
+	USER=`echo $REPO_URL | sed -Ene's#https://bitbucket.org/([^/]*)/(.*).git#\1#p'`
+	USE_BITBUCKET=true
+	if [ -z "$USER" ]; then
+	    echo "-- ERROR:  Could not identify User."
+	    return
+	fi
     fi
 
     REPO=`echo $REPO_URL | sed -Ene's#https://github.com/([^/]*)/(.*).git#\2#p'`
     if [ -z "$REPO" ]; then
-	echo "-- ERROR:  Could not identify Repo."
-	return
+	REPO=`echo $REPO_URL | sed -Ene's#https://bitbucket.org/([^/]*)/(.*).git#\2#p'`
+	if [ -z "$REPO" ]; then
+	    echo "-- ERROR:  Could not identify Repo."
+	    return
+	fi
     fi
 
-    NEW_URL="git@github.com:$USER/$REPO.git"
+    if [ "$USE_BITBUCKET" = true ]; then
+	NEW_URL="git@bitbucket.org:$USER/$REPO.git"
+    else
+	NEW_URL="git@github.com:$USER/$REPO.git"
+    fi
     echo "Changing repo url from "
     echo "  '$REPO_URL'"
     echo "      to "
