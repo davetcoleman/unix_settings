@@ -45,8 +45,56 @@ function git_pull_all()
 }
 
 
+# change git ssh to https
+function git_ssh_to_https() {
+    #-- Script to automate https://help.github.com/articles/why-is-git-always-asking-for-my-password
+
+    REPO_URL=`git remote -v | grep -m1 '^origin' | sed -Ene's#.*(git@[^[:space:]]*).*#\1#p'`
+    if [ -z "$REPO_URL" ]; then
+	echo "-- ERROR:  Could not identify Repo url."
+	echo "   It is possible this repo is already using SSH instead of HTTPS."
+	return
+    fi
+
+    USE_BITBUCKET=false
+    USER=`echo $REPO_URL | sed -Ene's#git@github.com:([^/]*)/(.*).git#\1#p'`
+    if [ -z "$USER" ]; then
+	USER=`echo $REPO_URL | sed -Ene's#git@bitbucket.org:([^/]*)/(.*).git#\1#p'`
+	USE_BITBUCKET=true
+	if [ -z "$USER" ]; then
+	    echo "-- ERROR:  Could not identify User."
+	    return
+	fi
+    fi
+
+    REPO=`echo $REPO_URL | sed -Ene's#git@github.com:([^/]*)/(.*).git#\2#p'`
+    if [ -z "$REPO" ]; then
+	REPO=`echo $REPO_URL | sed -Ene's#git@bitbucket.org:([^/]*)/(.*).git#\2#p'`
+	if [ -z "$REPO" ]; then
+	    echo "-- ERROR:  Could not identify Repo."
+	    return
+	fi
+    fi
+
+    if [ "$USE_BITBUCKET" = true ]; then
+	NEW_URL="https://bitbucket.org/$USER/$REPO.git"
+    else
+	NEW_URL="https://github.com/$USER/$REPO.git"
+    fi
+    echo "Changing repo url from "
+    echo "  '$REPO_URL'"
+    echo "      to "
+    echo "  '$NEW_URL'"
+    echo ""
+
+    CHANGE_CMD="git remote set-url origin $NEW_URL"
+    `$CHANGE_CMD`
+
+    echo "Success"
+}
+
 # change git https to ssh
-function gitsshfix() {
+function git_https_to_ssh() {
     #-- Script to automate https://help.github.com/articles/why-is-git-always-asking-for-my-password
 
     REPO_URL=`git remote -v | grep -m1 '^origin' | sed -Ene's#.*(https://[^[:space:]]*).*#\1#p'`
@@ -56,19 +104,31 @@ function gitsshfix() {
 	return
     fi
 
+    USE_BITBUCKET=false
     USER=`echo $REPO_URL | sed -Ene's#https://github.com/([^/]*)/(.*).git#\1#p'`
     if [ -z "$USER" ]; then
-	echo "-- ERROR:  Could not identify User."
-	return
+	USER=`echo $REPO_URL | sed -Ene's#https://bitbucket.org/([^/]*)/(.*).git#\1#p'`
+	USE_BITBUCKET=true
+	if [ -z "$USER" ]; then
+	    echo "-- ERROR:  Could not identify User."
+	    return
+	fi
     fi
 
     REPO=`echo $REPO_URL | sed -Ene's#https://github.com/([^/]*)/(.*).git#\2#p'`
     if [ -z "$REPO" ]; then
-	echo "-- ERROR:  Could not identify Repo."
-	return
+	REPO=`echo $REPO_URL | sed -Ene's#https://bitbucket.org/([^/]*)/(.*).git#\2#p'`
+	if [ -z "$REPO" ]; then
+	    echo "-- ERROR:  Could not identify Repo."
+	    return
+	fi
     fi
 
-    NEW_URL="git@github.com:$USER/$REPO.git"
+    if [ "$USE_BITBUCKET" = true ]; then
+	NEW_URL="git@bitbucket.org:$USER/$REPO.git"
+    else
+	NEW_URL="git@github.com:$USER/$REPO.git"
+    fi
     echo "Changing repo url from "
     echo "  '$REPO_URL'"
     echo "      to "
