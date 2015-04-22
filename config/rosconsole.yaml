@@ -10,6 +10,7 @@ log4j.logger.ros.kdl_parser=INFO
 log4j.logger.ros.urdf=INFO
 log4j.logger.ros.robot_state_publisher=INFO
 log4j.logger.ros.rqt_gui_cpp.pluginlib.ClassLoader=INFO
+log4j.logger.ros.image_transport.pluginlib.ClassLoader=INFO
 
 # CONSOLE BRIDGE
 #log4j.logger.ros.rosconsole_bridge=INFO
@@ -120,7 +121,7 @@ log4j.logger.ros.moveit_grasps.bbox=INFO
 log4j.logger.ros.moveit_grasps.cuboid_axis_grasps=INFO
 
 # Manipulation - Execution
-log4j.logger.ros.picknik_main.manipulation.trajectory=INFO
+log4j.logger.ros.picknik_main.execution_interface.trajectory=INFO
 log4j.logger.ros.picknik_main.manipulation.collision_matrix=INFO
 log4j.logger.ros.picknik_main.actionlib=INFO
 
