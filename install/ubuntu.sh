@@ -147,7 +147,7 @@
 
       # setup catkin_tools config
       mkdir -p ~/.config/catkin/verb_aliases
-      ln -s ~/unix_settings/config/01-dave-aliases.yaml ~/.config/catkin/verb_aliases/01-dave-aliases.yaml
+      ln -s ~/unix_settings/config/01-custom-aliases.yaml ~/.config/catkin/verb_aliases/01-custom-aliases.yaml
   }
 
   #Install Gazebo for ubuntu 12.04 - FIRST INSTALL ROS

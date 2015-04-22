@@ -410,8 +410,8 @@
       (shell-command "play -q ~/unix_settings/emacs/failure.wav"))
   )
 
-;(add-to-list 'compilation-finish-functions
-;	     'notify-compilation-result)
+(add-to-list 'compilation-finish-functions
+	     'notify-compilation-result)
 
 ;;; DOXYGEN ---------------------------------------------------------------------
 ;(add-hook 'c-mode-common-hook
