@@ -428,8 +428,8 @@ fi
 if [ $BASHRC_ENV == "ros_vm" ]; then
 
     #In-Use Workspaces
-    source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_ros_control/devel/setup.bash
+    #source /opt/ros/hydro/setup.bash
+    source /home/$USER/ros/ws_picknik/devel/setup.bash
 
 
     # Change display method for VM graphics card
