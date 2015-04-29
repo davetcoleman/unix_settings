@@ -1,3 +1,5 @@
+# Ubuntu Apt-Get Commands
+
 ## Fix broken apt-get
 
      sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
@@ -12,10 +14,10 @@ Delete older ones from:
 
     ls -lah /boot
      
-# See where files are installed from debian
+## See where files are installed from debian
 
     dpkg -L DEBIAN_PKG_NAME
 
-# Fix Broken Dependencies
+## Fix Broken Dependencies
 
     http://askubuntu.com/questions/140246/how-do-i-resolve-unmet-dependencies-after-adding-a-ppa

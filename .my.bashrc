@@ -150,10 +150,16 @@ fi
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
     #ROS_MASTER="baxter"
-    ROS_MASTER="localhost"
-    #ROS_MASTER="localhost2"
+    #ROS_MASTER="localhost"
+    ROS_MASTER="localhost2"    
+    #ROS_MASTER="rosbrick"
+    #ROS_MASTER="rosstudent"
     source ~/unix_settings/scripts/baxter.sh
     source ~/unix_settings/scripts/amazon.sh
+
+    # For da cuda
+    export PATH=/usr/local/cuda-7.0/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
@@ -442,13 +448,21 @@ if [ $ROS_SEGMENT == "ros" ]; then
 	export ROS_MASTER_URI=$ROS_BAXTER_IP
 
 	echo -ne " | ROS Master: i_am_baxter"
-    elif [ $ROS_MASTER == "davecore" ]; then  # Internal Baxter
+    elif [ $ROS_MASTER == "davecore" ]; then 
 	export ROS_MASTER_URI=232323
 
 	echo -ne " | ROS Master: Dave's computer"
-    elif [ $ROS_MASTER == "localhost2" ]; then  # Internal Baxter
-	export ROS_MASTER_URI=http://localhost:11312
+    elif [ $ROS_MASTER == "rosbrick" ]; then
+	export ROS_MASTER_URI=http://128.138.224.198:11311
 
+	echo -ne " | ROS Master: ROS Brick"
+    elif [ $ROS_MASTER == "rosstudent" ]; then
+	export ROS_MASTER_URI=http://128.138.224.186:11311
+
+	echo -ne " | ROS Master: ROS Student"
+    elif [ $ROS_MASTER == "localhost2" ]; then
+	export ROS_MASTER_URI=http://localhost:11312
+	alias roscore2="roscore -p 11312 &"
 	echo -ne " | ROS Master: localhost2"
     else # Localhost
 	export ROS_MASTER_URI=http://localhost:11311
