@@ -1,9 +1,10 @@
+b: build
 bd: build --cmake-args -DCMAKE_BUILD_TYPE=Debug
 br: build --cmake-args -DCMAKE_BUILD_TYPE=Release
 bo: build --no-deps
-bow: build --cmake-args -Wall -g -W -Wno-unused-parameter -fno-strict-aliasing --no-deps 
-bw: build --cmake-args -DEXTRA_C_FLAGS=-Wall\ -g\ -W\ -Wno-unused-parameter
+bw: build -v --cmake-args -DEXTRA_C_FLAGS="-Wall -g -W -Wno-unused-parameter"
 bot: build --no-deps --this
+botw: build --no-deps --this -v --cmake-args -DEXTRA_C_FLAGS="-Wall -g -W -Wno-unused-parameter"
 botd: build --no-deps --this --cmake-args -DCMAKE_BUILD_TYPE=Debug
 botr: build --no-deps --this --cmake-args -DCMAKE_BUILD_TYPE=Release
 tot: run_tests --no-deps --this
