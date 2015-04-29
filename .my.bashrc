@@ -213,7 +213,7 @@ fi
 
 if [ $BASHRC_ENV == "ros_student" ]; then
 
-    ROS_MASTER="baxter"
+    ROS_MASTER="davecore"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
@@ -443,7 +443,7 @@ if [ $ROS_SEGMENT == "ros" ]; then
 
 	echo -ne " | ROS Master: i_am_baxter"
     elif [ $ROS_MASTER == "davecore" ]; then  # Internal Baxter
-	export ROS_MASTER_URI=232323
+	export ROS_MASTER_URI=http://128.138.224.226:11311
 
 	echo -ne " | ROS Master: Dave's computer"
     elif [ $ROS_MASTER == "localhost2" ]; then  # Internal Baxter
