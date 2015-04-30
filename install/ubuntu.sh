@@ -405,7 +405,7 @@ read -p "Install Matlab? (y/n)" resp21
 read -p "Install Wine? (y/n)" resp23
 read -p "Install and run Benchmarking? (y/n)" resp24
 read -p "Install Workrave break reminder and flux? (y/n)" resp25
-read -p "Install python tools? (y/n)" resp26
+read -p "Install useful/common python tools? (y/n)" resp26
 
 if [ "$resp1" = "y" ]; then
     coreinstall

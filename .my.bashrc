@@ -150,8 +150,8 @@ fi
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
     #ROS_MASTER="baxter"
-    #ROS_MASTER="localhost"
-    ROS_MASTER="localhost2"    
+    ROS_MASTER="localhost"
+    #ROS_MASTER="localhost2"    
     #ROS_MASTER="rosbrick"
     #ROS_MASTER="rosstudent"
     source ~/unix_settings/scripts/baxter.sh
