@@ -219,20 +219,12 @@ fi
 
 if [ $BASHRC_ENV == "ros_student" ]; then
 
-    ROS_MASTER="baxter"
+    ROS_MASTER="davecore"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
     source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_base/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    #source /home/$USER/ros/ws_baxter/devel/setup.bash
-    source /home/$USER/ros/ws_nasa/devel/setup.bash
-    #source /home/$USER/ros/ws_vision/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    #source /home/$USER/ros/ws_baxter/devel/setup.bash
+    #source /home/$USER/ros/ws_picknik/devel/setup.bash
 
     echo -ne "ROS: indigo | "
 
@@ -481,8 +473,8 @@ if [ $ROS_SEGMENT == "ros" ]; then
 	export ROS_MASTER_URI=$ROS_BAXTER_IP
 
 	echo -ne " | ROS Master: i_am_baxter"
-    elif [ $ROS_MASTER == "davecore" ]; then 
-	export ROS_MASTER_URI=232323
+    elif [ $ROS_MASTER == "davecore" ]; then  # Internal Baxter
+	export ROS_MASTER_URI=http://128.138.224.226:11311
 
 	echo -ne " | ROS Master: Dave's computer"
     elif [ $ROS_MASTER == "rosbrick" ]; then
