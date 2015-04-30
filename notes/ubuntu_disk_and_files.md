@@ -1,3 +1,15 @@
+### See Disk Free Space of Filesystem
+
+    df -h
+
+### Get folder sizes
+
+	du -hs /path/to/directory
+
+### Get all file sizes
+
+    du -a -h --max-depth=2 | sort -hr 
+
 ### Command to mount disks at startup
 
     Find the disk name:
@@ -31,26 +43,17 @@
 ### Mount USB Drive while in Recovery Mode
 
 See list of mountable names
+
     sudo fdisk -l
 
 Make the mount point
+
     mkdir /media/usb_drive
 
 Mount it
+
     mount -t vfat /dev/sdc /media/usb_drive
 
-
-### See Disk Free Space of Filesystem
-
-    df -h
-
-### Get folder sizes
-
-	du -hs /path/to/directory
-
-### Get all file sizes
-
-    du -a -h --max-depth=2 | sort -hr 
 
 ### Show all files in directory with no details
 
