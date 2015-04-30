@@ -97,7 +97,7 @@
 
       # Install 
       sudo apt-get -y install nautilus-dropbox
-
+      nautilus --quit
       # Make dropbox auto start
       #mkdir -p ~/.config/autostart      
       #cp ~/unix_settings/install/ubuntu/autostart/dropbox.desktop ~/.config/autostart/dropbox.desktop
