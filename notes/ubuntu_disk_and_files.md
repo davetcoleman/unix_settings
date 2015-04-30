@@ -75,7 +75,7 @@ Remove ``-vn`` to actually use (this is test mode)
 Two options:
 
     sudo swapon -s
-    free -m
+    free -M's
 	
 ### Make a swap file
 
@@ -84,9 +84,14 @@ See https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-1
     sudo fallocate -l 4G /swapfile
     sudo chmod 600 /swapfile
     sudo mkswap /swapfile
-    sudo swapon /swapfile
+bottom's    sudo swapon /swapfile
 
 ### Make swap partition permanent:
 
-    sudo nano /etc/fstab
+    sudo emacs /etc/fstab
+
+And add the line to the :
+
+	/swapfile   none    swap    sw    0   0
+	
 	

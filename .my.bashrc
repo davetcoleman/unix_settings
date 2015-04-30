@@ -154,7 +154,6 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     #ROS_MASTER="localhost2"    
     #ROS_MASTER="rosbrick"
     #ROS_MASTER="rosstudent"
-    source ~/unix_settings/scripts/baxter.sh
     source ~/unix_settings/scripts/amazon.sh
 
     # For da cuda
@@ -162,11 +161,11 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
 
     # In-Use Workspaces
-    #source /opt/ros/indigo/setup.bash
+    source /opt/ros/indigo/setup.bash
     #source /home/$USER/ros/ws_base/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    source /home/$USER/ros/ws_amazon/devel/setup.bash
+    #source /home/$USER/ros/ws_amazon/devel/setup.bash
 
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
@@ -175,12 +174,10 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     alias sync_ros_monster_to_student="source /home/$USER/unix_settings/scripts/rsync/ros_monster_to_student.sh"
 
     # PCL hack
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/include
+    #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/include
 
     # Exports
-    #export ROS_IP=$ROS_MONSTER_IP
     export ROS_IP=`hostname -I`
-    #export ROS_IP='127.0.0.1'
 
     echo -ne "ROS: indigo | "
     echo -ne "Computer: ros_monster"
@@ -331,8 +328,8 @@ if [ $BASHRC_ENV == "ros_brick" ]; then
     source ~/unix_settings/scripts/amazon.sh
 
     # In-Use Workspaces
-    #source /opt/ros/indigo/setup.bash
-    source /home/$USER/ros/ws_picknik/devel/setup.bash
+    source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_picknik/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
     #source /home/$USER/ros/ws_robots/devel/setup.bash
@@ -355,32 +352,29 @@ if [ $BASHRC_ENV == "ros_picknik2" ]; then
 
     #ROS_MASTER="baxter"
     ROS_MASTER="localhost"
-    #ROS_MASTER="davecore"
+    #ROS_MASTER="localhost2"    
+    #ROS_MASTER="rosbrick"
+    #ROS_MASTER="rosstudent"
+    source ~/unix_settings/scripts/amazon.sh
 
+    # For da cuda
     export PATH=/usr/local/cuda-7.0/bin:$PATH
     export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
 
-    source ~/unix_settings/scripts/baxter.sh
-    source ~/unix_settings/scripts/amazon.sh
-
     # In-Use Workspaces
-    source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_picknik/devel/setup.bash
+    #source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_base/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    #source /home/$USER/ros/ws_robots/devel/setup.bash
-    #source /home/$USER/ros/ws_amazon/devel/setup.bash
-
-    echo -ne "ROS: indigo | "
+    source /home/$USER/ros/ws_amazon/devel/setup.bash
 
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
-    alias startcamera="roslaunch realsense_camera realsense_camera.launch"
-
     # Exports
     export ROS_IP=`hostname -I`
 
+    echo -ne "ROS: indigo | "
     echo -ne "Computer: ros_picknik2"
 fi
 
@@ -393,7 +387,6 @@ if [ $BASHRC_ENV == "ros_luma" ]; then
     #export PATH=/usr/local/cuda-7.0/bin:$PATH
     #export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
 
-    source ~/unix_settings/scripts/baxter.sh
     source ~/unix_settings/scripts/amazon.sh
 
     # In-Use Workspaces
@@ -596,6 +589,14 @@ alias sagu="sudo apt-get update && sudo apt-get dist-upgrade -y"
 alias sagi="sudo apt-get install "
 
 # Quick cmake
+function cmaker()
+{
+    rm -rf build
+    mkdir build
+    cd build
+    cmake ..
+    make -j
+}
 alias maker="sudo clear && cmake ../ && make -j8 && sudo make install"
 alias maker_local="cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/local && make -j8 && make install"
 alias dmaker="sudo clear && cmake ../ -DCMAKE_BUILD_TYPE=debug && make -j8 && sudo make install"

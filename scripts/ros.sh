@@ -21,9 +21,10 @@
     alias rosdepinstall_indigo="rosdep install -y --from-paths src --ignore-src --rosdistro indigo"
 
     # Commit to MoveIt!
-    alias roscommit=". ~/unix_settings/scripts/ros_commit.sh"
-    alias roscompile=". ~/unix_settings/scripts/ros_compile.sh"
-    alias rospull=". ~/unix_settings/scripts/ros_pull.sh"
+    alias roscommitall=". ~/unix_settings/scripts/ros_commit.sh"
+    alias roscompileall=". ~/unix_settings/scripts/ros_compile.sh"
+    alias roscleanall=". ~/unix_settings/scripts/ros_clean.sh"
+    alias rospullall=". ~/unix_settings/scripts/ros_pull.sh"
     alias roscheckbranch=". ~/unix_settings/scripts/ros_check_branch.sh"
 
     # ROSCD
