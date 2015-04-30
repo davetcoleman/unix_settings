@@ -168,8 +168,6 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
     source /home/$USER/ros/ws_amazon/devel/setup.bash
 
-    echo -ne "ROS: indigo | "
-
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
@@ -184,6 +182,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     export ROS_IP=`hostname -I`
     #export ROS_IP='127.0.0.1'
 
+    echo -ne "ROS: indigo | "
     echo -ne "Computer: ros_monster"
 fi
 

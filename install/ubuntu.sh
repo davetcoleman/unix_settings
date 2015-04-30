@@ -178,6 +178,7 @@
       cd ~/
       wget https://github.com/github/hub/archive/v1.12.3.tar.gz hub
       untargz v1.12.3.tar.gz
+      rm v1.12.3.tar.gz
       cd hub-1.12.3
       sudo rake install
   }
