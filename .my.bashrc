@@ -150,10 +150,10 @@ fi
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
     #ROS_MASTER="baxter"
-    ROS_MASTER="localhost"
+    #ROS_MASTER="localhost"
     #ROS_MASTER="localhost2"    
     #ROS_MASTER="rosbrick"
-    #ROS_MASTER="rosstudent"
+    ROS_MASTER="rosstudent" # andy's computer
     source ~/unix_settings/scripts/amazon.sh
 
     # For da cuda
@@ -161,7 +161,9 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
 
     # In-Use Workspaces
-    source /opt/ros/indigo/setup.bash
+    #source /opt/ros/indigo/setup.bash
+    source /home/$USER/ros/ws_picknik/devel/setup.bash
+    
     #source /home/$USER/ros/ws_base/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
@@ -595,7 +597,7 @@ function cmaker()
     mkdir build
     cd build
     cmake ..
-    make -j
+    make -j6
 }
 alias maker="sudo clear && cmake ../ && make -j8 && sudo make install"
 alias maker_local="cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/local && make -j8 && make install"

@@ -21,11 +21,12 @@
     alias rosdepinstall_indigo="rosdep install -y --from-paths src --ignore-src --rosdistro indigo"
 
     # Commit to MoveIt!
-    alias roscommitall=". ~/unix_settings/scripts/ros_commit.sh"
-    alias roscompileall=". ~/unix_settings/scripts/ros_compile.sh"
-    alias roscleanall=". ~/unix_settings/scripts/ros_clean.sh"
-    alias rospullall=". ~/unix_settings/scripts/ros_pull.sh"
-    alias roscheckbranch=". ~/unix_settings/scripts/ros_check_branch.sh"
+    alias eachws=". ~/unix_settings/scripts/eachws.sh"
+    # alias roscommitall=". ~/unix_settings/scripts/ros_commit.sh"
+    # alias roscompileall=". ~/unix_settings/scripts/ros_compile.sh"
+    # alias roscleanall=". ~/unix_settings/scripts/ros_clean.sh"
+    # alias rospullall=". ~/unix_settings/scripts/ros_pull.sh"
+    # alias roscheckbranch=". ~/unix_settings/scripts/ros_check_branch.sh"
 
     # ROSCD
     alias roscdbase="cd ~/ros/ws_base/src && ll"
@@ -187,8 +188,8 @@
     alias roseus="rosrun roseus roseus "
 
     # Testing
-    alias rostestpub="rostopic pub /dave_test -r 1 std_msgs/Float32 99.9"
-    alias rostestecho="rostopic echo /dave_test"
+    alias rostestpub="rostopic pub /basic_test -r 1 std_msgs/Float32 99.9"
+    alias rostestecho="rostopic echo /basic_test"
 
     # ROS STUFF
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole

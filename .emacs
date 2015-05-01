@@ -194,6 +194,7 @@
 
  ; In order to get namespace indentation correct, .h files must be opened in C++ mode
  (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode)) 
+ (add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode)) 
 )
 ;(add-hook 'c-mode-common-hook 'vs-c-mode-common-hook)
 
