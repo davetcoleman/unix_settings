@@ -174,13 +174,22 @@
       git config --global color.ui auto
       
       # Setup Hub for Github
-      sudo apt-get install -y rake
-      cd ~/
-      wget https://github.com/github/hub/archive/v1.12.3.tar.gz hub
-      untargz v1.12.3.tar.gz
-      rm v1.12.3.tar.gz
-      cd hub-1.12.3
-      sudo rake install
+      # sudo apt-get install -y rake
+      # cd ~/
+      # wget https://github.com/github/hub/archive/v1.12.3.tar.gz hub
+      # untargz v1.12.3.tar.gz
+      # rm v1.12.3.tar.gz
+      # cd hub-1.12.3
+      # sudo rake install
+
+      # Install Linux Brew
+      git clone https://github.com/Homebrew/linuxbrew.git ~/.linuxbrew
+      export PATH="$HOME/.linuxbrew/bin:$PATH"
+      export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+      export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+      # Setup Hub for Github
+      brew install hub
   }
   
   # Matlab - Documentation: https://help.ubuntu.com/community/MATLAB

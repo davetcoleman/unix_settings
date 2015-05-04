@@ -178,6 +178,11 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     # PCL hack
     #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/include
 
+    # Linux Brew
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
     # Exports
     export ROS_IP=`hostname -I`
 

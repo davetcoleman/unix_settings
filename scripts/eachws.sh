@@ -1,4 +1,4 @@
-function gitHasChanges() 
+function commitGit() 
 {
     if git diff-index --quiet HEAD --; then
 	echo "No changes detected in git repo"
@@ -26,19 +26,8 @@ function gitHasChanges()
     fi
 }
 
-function scanThisDirectoryForGit()
+function compileWS()
 {
-    for x in `find \`pwd\` -name .git -type d -prune`; do
-	cd $x
-	cd ../
-	gitHasChanges
-    done
-}
-
-function buildWorkspace()
-{
-
-    #if catkin build --parallel-jobs 1 --cmake-args -DCMAKE_BUILD_TYPE=Debug; then  # -j1
     if catkin build --cmake-args -DCMAKE_BUILD_TYPE=Debug; then  # -j1
 	echo ""
 	echo "------------------------------------------------------"
@@ -55,77 +44,72 @@ function buildWorkspace()
     fi
 }
 
-function pullEachRepo()
+function pullGit()
 {
-    for x in `find \`pwd\` -name .git -type d -prune`; do
-	cd $x
-	cd ../
-	pwd
-	git pull
-    done
+    pwd
+    git pull
 }
 
 function checkBranch()
 {
-    for x in `find \`pwd\` -name .git -type d -prune`; do
-	cd $x
-	cd ../
-	gitbranch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'`
+    gitbranch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'`
 
-	result=${PWD##*/}          # to assign to a variable
-	echo -n $gitbranch
-	echo -e -n "  \e[00;1;34m"
-	printf '%s' "${PWD##*/}" 
-	echo -e "\e[00m"
+    result=${PWD##*/}          # to assign to a variable
+    echo -n $gitbranch
+    echo -e -n "  \e[00;1;34m"
+    printf '%s' "${PWD##*/}" 
+    echo -e "\e[00m"
+}
+
+# ---------------------------------------------------------------------
+# ---------------------------------------------------------------------
+# ---------------------------------------------------------------------
+# ---------------------------------------------------------------------
+
+function eachws
+{
+    workspaces=( "/home/dave/ros/ws_picknik/src" )
+
+    for i in "${workspaces[@]}"
+    do :
+	cd "$i"
+	if eval "$1 $2"; then
+	    echo ""
+	    echo "------------------------------------------------------"
+	    echo "Command succeeded in workspace"
+	    echo ""
+	else
+	    echo ""
+	    echo "------------------------------------------------------"
+	    echo "Command failed in workspace"
+	    echo ""
+	    play -q ~/unix_settings/emacs/failure.wav
+	    return 0
+	fi
     done
 }
 
-function cleanWorkspace()
+function eachgit
 {
-    if catclean; then
-	echo ""
-	echo "------------------------------------------------------"
-	echo "Command succeeded"
-	echo ""
-	return 1
-    else
-	echo ""
-	echo "------------------------------------------------------"
-	echo "Command failed"
-	echo ""
-	play -q ~/unix_settings/emacs/failure.wav
-	return 0
-    fi
+    for x in `find \`pwd\` -name .git -type d -prune`; do
+	cd $x
+	cd ../
+	if eval "$1"; then
+	    echo ""
+	else
+	    echo ""
+	    echo "------------------------------------------------------"
+	    echo "Command failed in git"
+	    echo ""
+	    play -q ~/unix_settings/emacs/failure.wav
+	    return 0
+	fi
+    done
 }
 
-# ---------------------------------------------------------------------
-# ---------------------------------------------------------------------
-# ---------------------------------------------------------------------
-# ---------------------------------------------------------------------
-
-
-files=( "/home/dave/ros/ws_picknik/src" )
-
-for i in "${files[@]}"
-do :
-    if [ "$1" = "commit" ]; then
-	cd $i
-	scanThisDirectoryForGit
-    fi
-    if [ "$1" = "compile" ]; then
-	cd $i
-	buildWorkspace
-    fi
-    if [ "$1" = "pull" ]; then
-	cd $i
-	pullEachRepo
-    fi
-    if [ "$1" = "branch" ]; then
-	cd $i
-	checkBranch
-    fi
-    if [ "$1" = "clean" ]; then
-	cd $i
-	cleanWorkspace
-    fi
-done
+# Shortcuts
+alias eachws_commit="eachws eachgit commitGit"
+alias eachws_pull="eachws eachgit pullGit"
+alias eachws_branch="eachws eachgit checkBranch"
+alias eachws_compile="eachws compileWS"
+alias eachws_clean="eachws catclean"
