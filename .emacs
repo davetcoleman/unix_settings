@@ -33,6 +33,7 @@
 (global-set-key [f5] 'compile)
 (global-set-key [f6] `ros-pkg-compile-command)
 ; kill emacs server
+(setq confirm-kill-emacs 'yes-or-no-p)
 (global-set-key [f7] 'save-buffers-kill-emacs)
 ; make switch bufferer reversible with SHIFT key
 (global-set-key (kbd "C-x O") 'previous-multiframe-window)
@@ -44,6 +45,8 @@
   (setq truncate-lines nil) ;; automatically becomes buffer local
   (set (make-local-variable 'truncate-partial-width-windows) nil))
 (add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
+; word wrap for all text documents
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 ; use system copy and paste
 ;(setq x-select-enable-clipboard t) 
 ;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
@@ -191,6 +194,7 @@
 
  ; In order to get namespace indentation correct, .h files must be opened in C++ mode
  (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode)) 
+ (add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode)) 
 )
 ;(add-hook 'c-mode-common-hook 'vs-c-mode-common-hook)
 
@@ -333,7 +337,7 @@
 
 ;;; ROS EMACS --------------------------------------------------------------------
 ; Only load it if on appropriate machine
-(cond ( (string= (getenv "BASHRC_ENV") "ros_monster")
+(cond ( (string= (getenv "BASHRC_ENV") "ros_monsterz")
 
 	(add-to-list 'load-path "/opt/ros/indigo/share/emacs/site-lisp")
 	;; or whatever your install space is + "/share/emacs/site-lisp"
@@ -398,12 +402,12 @@
 )
 
 ;;; COMPILE NOTIFICATION WHEN DONE ------------------------------------------------------
+;;; keywords: bell door bell horn compile
 (defun notify-compilation-result(buffer msg)
   "Notify that the compilation is finished"
   (if (string-match "^finished" msg)
       (progn 
 	(shell-command "play -q ~/unix_settings/emacs/success.wav"))
-;	(shell-command "source ~/unix_settings/scripts/backup_rsync_ros_gateway.sh &"))
       (shell-command "play -q ~/unix_settings/emacs/failure.wav"))
   )
 
@@ -469,6 +473,15 @@
 
 (global-set-key (kbd "M-2") 'set-c-basic-offset-2-command)
 (global-set-key (kbd "M-4") 'set-c-basic-offset-4-command)
+
+;;; Create direcotry if necessary when creating new file --------------------------------------------------------------
+
+(defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
+  "Create parent directory if not exists while visiting file."
+  (unless (file-exists-p filename)
+    (let ((dir (file-name-directory filename)))
+      (unless (file-exists-p dir)
+        (make-directory dir)))))
 
 ;;; EMACS Handling --------------------------------------------------------------
 

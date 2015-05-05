@@ -3,11 +3,15 @@ ROS Notes
 
 ## Build catkin with tests
 
-New catkin tools
+Run test for just 1 package
 
-    catkin build --no-deps PACKAGE_NAME -i --catkin-make-args run_tests
+    catkin runs_tests --no-deps --this -i
+	
+Run test for all packages
 
-OLD catkin
+    catkin run_tests -i
+
+Run test for 1 package, old catkin_make version
 
     catkin_make run_tests_control_toolbox
     #catkin_make run_tests_packageName_gtest_testTarget
@@ -39,5 +43,17 @@ Or during build time
 
     tfpdf
 
+## Kill all ROS nodes
 
+    killall rosout 
+    killall rosout -9
+
+# Catkin Tools - Build A Workspace With Different Debug/Release Levels
+
+    catkin profile add debug
+	catkin profile set debug
+	catkin config -b build_debug
+	catkin config -d devel_debug
+	catbuilddebug
+	
 

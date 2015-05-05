@@ -23,7 +23,7 @@
     alias bgazebo="roslaunch baxter_gazebo baxter_gazebo.launch"
     # Visualize Baxter
     alias bvisualize="roslaunch baxter_control baxter_visualization.launch"
-
+    
     # Baxter move_group
     alias bm="roslaunch baxter_moveit_config baxter_moveit.launch"
     # Baxter pick place
@@ -77,10 +77,10 @@
 
 ## SSH Access to Baxter   -  http://sdk.rethinkrobotics.com/wiki/SSH
 
-    alias bstop="sudo rc-service fsm-rsdk stop"  # stop baxter software
-    alias bstart="sudo rc-service fsm-rsdk start"  # start baxter software
+    alias bstop="sudo rc-service rethink stop"  # stop baxter software
+    alias bstart="sudo rc-service rethink start"  # start baxter software
     alias bshutdown="sudo shutdown -h now"
-    alias breboot="sudo reboot"
+    alias breboot="sudo reboot" #restart
 
 ## Baxter Time
 
@@ -91,6 +91,3 @@
 
     # Get the latest baxter IP address
     # baxter_ip_address
-    
-    ## Sync My Dev machine to Baxter's syncing server
-    alias syncmytime="sudo ntpdate pool.ntp.org"

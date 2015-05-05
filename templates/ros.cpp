@@ -1,7 +1,7 @@
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
- *  Copyright (c) 2014, University of Colorado, Boulder
+ *  Copyright (c) 2015, University of Colorado, Boulder
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,11 @@
     SHORT_NAME - verticle_test
     CLASS_NAME - VerticleApproachTest
     PACKAGE_NAME - baxter_experimental
+    THEN make ifndef all caps with Alt-U  (and Alt-F to skip the #define)
  */
+
+#ifndef PACKAGE_NAME__SHORT_NAME
+#define PACKAGE_NAME__SHORT_NAME
 
 // ROS
 #include <ros/ros.h>
@@ -50,14 +54,6 @@ namespace PACKAGE_NAME
 
 class CLASS_NAME
 {
-private:
-
-  // A shared node handle
-  ros::NodeHandle nh_;
-
-  // Show more visual and console output, with general slower run time.
-  bool verbose_;
-
 public:
 
   /**
@@ -71,13 +67,13 @@ public:
     ROS_INFO_STREAM_NAMED("SHORT_NAME","CLASS_NAME Ready.");
   }
 
-  /**
-   * \brief Destructor
-   */
-  ~CLASS_NAME()
-  {
+private:
 
-  }
+  // A shared node handle
+  ros::NodeHandle nh_;
+
+  // Show more visual and console output, with general slower run time.
+  bool verbose_;
 
 }; // end class
 
@@ -100,12 +96,13 @@ int main(int argc, char** argv)
   bool verbose = false;
   if (argc > 1)
   {
-    for (std::size_t i = 0; i < argc; ++i)
+    for (int i = 0; i < argc; ++i)
     {
       if (strcmp(argv[i], "--verbose") == 0)
       {
         ROS_INFO_STREAM_NAMED("main","Running in VERBOSE mode (slower)");
         verbose = true;
+        continue;
       }
     }
   }
@@ -118,3 +115,4 @@ int main(int argc, char** argv)
   return 0;
 }
 
+#endif

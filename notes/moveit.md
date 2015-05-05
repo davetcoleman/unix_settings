@@ -7,17 +7,9 @@ Include:
 ```
 #include <moveit/macros/deprecation.h>
 ````
+
 Then add ``MOVEIT_DEPRECATED`` in front of header function
 
-## Print backtrace without gdb
-
-See [moveit_visual_tools/README.md](https://github.com/davetcoleman/moveit_visual_tools) at bottom.
-
-## Build a test
-
-```
-catkin_make run_tests
-```
 
 ## Clear octomap
 

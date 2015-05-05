@@ -1,4 +1,4 @@
 # name: error output to screen with argument
 # key: couta
 # --
-std::cout << "${1:debug} " << ${2:} << std::endl;
+std::cout << "${1:debug}: " << ${2:} << std::endl;

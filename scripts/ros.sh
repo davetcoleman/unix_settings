@@ -3,36 +3,40 @@
     alias rviz="rosrun rviz rviz"
     alias rqt="rosrun rqt_gui rqt_gui"
 
-    alias myrosconsole="e ~/unix_settings/.my.rosconsole"
+    alias myrosconsole="e ~/unix_settings/config/rosconsole.yaml"
 
     alias catbuild="catkin b" # catkin build
     alias catbuilddebug="catkin bd" #catkin build cmake-args -DCMAKE_BUILD_TYPE=Debug
+    alias catbuildrelease="catkin br" #catkin build cmake-args -DCMAKE_BUILD_TYPE=Release
     alias catclean="catkin clean -a"
     alias catcleanbuild="catclean && catbuild"
     alias catcleanbuilddebug="catclean && catbuilddebug"
+    alias catcleanbuildrelease="catclean && catbuildrelease"
 
     alias rosreindex="rm ~/.ros/rospack_cache && rospack profile"
 
     alias disablepkg="mv package.xml package.xml.disabled"
     alias enablepkg="mv package.xml.disabled package.xml"
 
-    alias rosdepinstall_hydro="rosdep install -y --from-paths src --ignore-src --rosdistro hydro"
     alias rosdepinstall_indigo="rosdep install -y --from-paths src --ignore-src --rosdistro indigo"
 
-    # Commit to MoveIt!
-    alias commitmoveit=". ~/unix_settings/scripts/commit_moveit.sh"
+    # Maintain workspaces
+    source ~/unix_settings/scripts/eachws.sh
 
     # ROSCD
+    alias roscdbase="cd ~/ros/ws_base/src && ll"
     alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
+    alias roscdmoveitother="cd ~/ros/ws_moveit_other/src && ll"
     alias roscdclam="cd ~/ros/ws_clam/src && ll"
+    alias roscdnasa="cd ~/ros/ws_nasa/src && ll"
     alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
     alias roscdmisc="cd ~/ros/ws_misc/src && ll"
     alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
+    alias roscdamazon="cd ~/ros/ws_amazon/src && ll"
+    alias roscdpicknik="cd ~/ros/ws_picknik/src && ll"
     alias roscdros="cd ~/ros/ws_ros/src && ll"
-    alias roscdhrp2="cd ~/ros/ws_hrp2/src && ll"
     alias roscdompl="cd ~/ros/ws_moveit/src/ompl/src/ompl && ll"
-    alias roscdompl_interface="cd ~/ros/ws_moveit/src/moveit_planners/ompl/ompl_interface && ll"
-    alias roscdh="cd /home/dave/ros/ws_moveit/src/moveit_hrp2/hrp2jsknt_moveit_demos && ll"
+
 
     alias moveitplanningscene="rosrun moveit_ros_planning moveit_print_planning_model_info"
     alias iscore="ps aux | grep roscore"
@@ -40,6 +44,9 @@
 
     # Time
     alias rossimtime="rosparam set /use_sim_time true"
+
+    ## Sync My Dev machine time to Baxter's syncing server
+    alias syncmytime="sudo ntpdate pool.ntp.org"
 
     # TF
     alias tfpdf='cd /var/tmp && rosrun tf view_frames && open frames.pdf &'
@@ -49,6 +56,31 @@
 
     # Bloom shortcuts
     alias bloom_alias_load="source ~/unix_settings/scripts/bloom.sh"
+
+    # Testing communication
+    #rostopic pub /test std_msgs/Bool true -r 10
+    #rostopic echo /test
+
+    function roscleanworkspace()
+    {
+	# make sure the ordering of the ROS sources do not get mixed up
+	unset CMAKE_PREFIX_PATH
+	unset ROS_PACKAGE_PATH
+
+	echo "Displaying ros package path:"
+	rosPackagePath
+    }
+    
+    # Source public moveit workspace
+    function source_moveit_public()
+    {	
+	clear_ros
+
+	source ~/ros/ws_moveit_public/devel/setup.bash
+
+	# Display the package path if this is a ROS computer
+	rosPackagePath
+    }
 
     # Building ROS from source shortcuts
     function install_ros_hydro_source()
@@ -154,8 +186,8 @@
     alias roseus="rosrun roseus roseus "
 
     # Testing
-    alias rostestpub="rostopic pub /dave_test -r 1 std_msgs/Float32 99.9"
-    alias rostestecho="rostopic echo /dave_test"
+    alias rostestpub="rostopic pub /basic_test -r 1 std_msgs/Float32 99.9"
+    alias rostestecho="rostopic echo /basic_test"
 
     # ROS STUFF
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
@@ -186,70 +218,6 @@
 	sudo ntpdate pool.ntp.org
 	ntpdate -q 128.138.244.56
 	sudo service ntp start
-    }
-
-    function cleanWorkspaces()
-    {	
-	i="/home/dave/ros/ws_ros"
-	cd "$i"
-	echo "Cleaning $i"
-	catclean
-
-	for i in "${ROS_WORKSPACES[@]}"
-	do
-	    :
-	    echo "Cleaning $i"
-	    cd "$i"
-	    catclean
-	done    
-    }
-
-    # ENTRY POINT
-    function buildWorkspaces()
-    {
-	echo "Build multiple Catkin workspaces version 1.1"
-
-	unset CMAKE_PREFIX_PATH
-	unset ROS_PACKAGE_PATH
-
-	helper_buildWorkspace "/home/dave/ros/ws_ros"          "catbuild --install" "/install/setup.bash"
-	helper_buildWorkspace "/home/dave/ros/ws_ompl"         "catbuild"           "/devel/setup.bash"
-	helper_buildWorkspace "/home/dave/ros/ws_moveit"       "catbuild"           "/devel/setup.bash"
-	helper_buildWorkspace "/home/dave/ros/ws_moveit_other" "catbuild"           "/devel/setup.bash"
-
-	# REST OF WORKSPACES
-	#for i in "${ROS_WORKSPACES[@]}"
-	#do
-	#    :
-	#    helper_buildWorkspace "$i" "catbuild" "devel/setup.bash"
-	#done
-    }
-
-    function helper_buildWorkspace() #folder, buildCommand, sourceCommand
-    {
-	# parameters
-	folder=$1
-	buildCommand=$2
-	sourceCommand=$3
-
-	# Build
-	cd "$folder"
-	echo "BUILDING $buildCommand in folder $folder ======================"
-	eval "$buildCommand"
-	if [ "$?" = "0" ]; then
-	    echo "Build succeeded."
-	else
-	    echo "Build failed!!!!!"
-	    return
-	fi	
-
-	# Source
-	setupFile="${folder}${sourceCommand}"
-	echo "SOURCING $setupFile =========================================================="
-	if [ ! -f "$setupFile" ]; then
-	    echo "File $setupFile not found!!!!!!!!!!"
-	fi
-	source "$setupFile"
     }
 
     function gitpr() # davetcoleman_branch_name

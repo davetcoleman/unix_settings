@@ -92,18 +92,21 @@
   #Install Dropbox
   function dropboxinstall() {
       # download dropbox
-      cd ~ 
-      wget -O - 'https://www.dropbox.com/download?plat=lnx.x86_64' | tar xzf - 
+      #cd ~ 
+      #wget -O - 'https://www.dropbox.com/download?plat=lnx.x86_64' | tar xzf - 
 
+      # Install 
+      sudo apt-get -y install nautilus-dropbox
+      nautilus --quit
       # Make dropbox auto start
-      mkdir -p ~/.config/autostart      
-      cp ~/unix_settings/install/ubuntu/autostart/dropbox.desktop ~/.config/autostart/dropbox.desktop
+      #mkdir -p ~/.config/autostart      
+      #cp ~/unix_settings/install/ubuntu/autostart/dropbox.desktop ~/.config/autostart/dropbox.desktop
 
       # Start dropbox
-      ~/.dropbox-dist/dropboxd &
+      #~/.dropbox-dist/dropboxd &
 
       # The Linux version of the Dropbox desktop application is limited from monitoring more than 10000 folders by default. Anything over that is not watched and, therefore, ignored when syncing. There's an easy fix for this. Open a terminal and enter the following:
-      echo fs.inotify.max_user_watches=100000 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p
+      #echo fs.inotify.max_user_watches=100000 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p
 
       # Check if dropbox is running:
       #sudo service dropbox status
@@ -117,7 +120,7 @@
       sudo apt-get install fluxgui -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
   }
 
-  #Install good video & image stuff, Adobe Reader, and PDF Printer
+  #Install good video & image stuff, and PDF Printer
   function mediainstall() {
       #sudo apt-get install -y vlc vlc-plugin-pulse gimp cups-pdf
       sudo apt-get install -y gimp
@@ -136,15 +139,15 @@
       sudo apt-get update 
       sudo apt-get install -y ros-indigo-desktop-full || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       # seperate incase the pkg is not available yet
-      sudo apt-get install -y python-rosdep python-rosinstall python-bloom ros-indigo-rqt python-wstool python-bloom python-pip python-catkin-lint liburdfdom-tools || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      sudo apt-get install -y python-rosdep python-rosinstall python-bloom ros-indigo-rqt python-wstool python-bloom python-pip python-catkin-lint liburdfdom-tools python-catkin-tools || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
       sudo apt-get install -y ros-indigo-rosemacs
 
       sudo rosdep init
       rosdep update      
 
       # setup catkin_tools config
-      mkdir -p /home/dave/.config/catkin/verb_aliases
-      ln -s ~/unix_settings/config/01-dave-aliases.yaml /home/dave/.config/catkin/verb_aliases/01-dave-aliases.yaml
+      mkdir -p ~/.config/catkin/verb_aliases
+      ln -s ~/unix_settings/config/01-custom-aliases.yaml ~/.config/catkin/verb_aliases/01-custom-aliases.yaml
   }
 
   #Install Gazebo for ubuntu 12.04 - FIRST INSTALL ROS
@@ -160,6 +163,7 @@
 
   # Setup Github:
   function githubsetup() {
+      alias | grep hub
       unalias git  # git is an alias for hub in my config
 
       git config --global user.name 'Dave Coleman' 
@@ -170,11 +174,22 @@
       git config --global color.ui auto
       
       # Setup Hub for Github
-      sagi rake
-      cd ~/
-      git clone git://github.com/github/hub.git
-      cd hub
-      sudo rake install
+      # sudo apt-get install -y rake
+      # cd ~/
+      # wget https://github.com/github/hub/archive/v1.12.3.tar.gz hub
+      # untargz v1.12.3.tar.gz
+      # rm v1.12.3.tar.gz
+      # cd hub-1.12.3
+      # sudo rake install
+
+      # Install Linux Brew
+      git clone https://github.com/Homebrew/linuxbrew.git ~/.linuxbrew
+      export PATH="$HOME/.linuxbrew/bin:$PATH"
+      export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+      export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+      # Setup Hub for Github
+      brew install hub
   }
   
   # Matlab - Documentation: https://help.ubuntu.com/community/MATLAB
@@ -201,7 +216,7 @@
   # TrueCrypt
   function truecryptinstall()
   {
-      if [ ! -f "/home/dave/Dropbox/Documents/2014/truecrypt/truecrypt-7.1a-linux-x64.tar.gz" ]; then
+      if [ ! -f "~/Dropbox/Documents/2014/truecrypt/truecrypt-7.1a-linux-x64.tar.gz" ]; then
 	  zenity --info --text 'Is dropbox setup and 2014 files synced? Truecrypt will not install without those files and currently cannot find the tar.gz file. Skipping.'
       else
 	  chmod a+rx ~/unix_settings/install/truecrypt-install-local.sh 
@@ -220,8 +235,9 @@
 
   # Install Adobe Acrobat
   function acrobatinstall() {
-      sudo add-apt-repository -y "deb http://archive.canonical.com/ '$(lsb_release -cs)' partner"
-      sudo apt-get update && sudo apt-get install acroread -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+      echo 'follow these instructions: http://ubuntuhandbook.org/index.php/2014/04/install-adobe-reader-ubuntu-1404/'
+      #sudo add-apt-repository -y "deb http://archive.canonical.com/ '$(lsb_release -cs)' partner"
+      #sudo apt-get update && sudo apt-get install acroread -y || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
   }
 
   # Install workrave break manager
@@ -256,7 +272,7 @@
       cp ~/unix_settings/install/ubuntu/autostart/udisks.desktop ~/.config/autostart/udisks.desktop
       sed -i "s,MOUNTPOINT,$ubuntuMountName,g" ~/.config/autostart/udisks.desktop
 
-      echo "Attempting to symblink Dropbox folders:"
+      read -p "Attempt to symblink Dropbox folders? (Ctrl-C to cancel)"
       ln -s /media/dave/DataDrive/Dropbox ~/Dropbox
       ln -s /media/dave/DataDrive/Dropbox/Documents/2014 ~/2014
 
@@ -295,7 +311,9 @@
       ssh-keygen -t rsa -b 4096
 
       # copy public key to various websites
-      gedit ~/.ssh/id_rsa.pub
+      #cat ~/.ssh/id_rsa.pub | pbcopy  # OSX
+      xclip -sel clip < ~/.ssh/id_rsa.pub # Linux
+
       firefox 'https://my.hostmonster.com/web-hosting/cplogin' 
       firefox 'https://github.com/settings/ssh'
       firefox 'https://bitbucket.org/account/user/davetcoleman/ssh-keys/'
@@ -380,9 +398,8 @@ else
     return
 fi
 
-#read -p "Install chrome? (y/n)" resp3
+read -p "Install chrome? (y/n)" resp3
 read -p "Setup secondary hard drive and ROS workspace sync? (for Dropbox) (y/n)" resp27
-read -p "Install Flux? (y/n)" resp20
 read -p "Install spotify? (y/n)" resp4
 read -p "Install media stuff? (y/n)" resp6
 #read -p "Install Gazebo? (y/n)" resp16
@@ -397,8 +414,8 @@ read -p "Install truecrypt? (y/n)" resp15
 read -p "Install Matlab? (y/n)" resp21
 read -p "Install Wine? (y/n)" resp23
 read -p "Install and run Benchmarking? (y/n)" resp24
-read -p "Install Workrave break reminder? (y/n)" resp25
-read -p "Install python tools? (y/n)" resp26
+read -p "Install Workrave break reminder and flux? (y/n)" resp25
+read -p "Install useful/common python tools? (y/n)" resp26
 
 if [ "$resp1" = "y" ]; then
     coreinstall
@@ -417,9 +434,6 @@ if [ "$resp5" = "y" ]; then
 fi
 if [ "$resp19" = "y" ]; then
     acrobatinstall
-fi
-if [ "$resp20" = "y" ]; then
-    fluxinstall
 fi
 if [ "$resp4" = "y" ]; then
     spotifyinstall
@@ -468,6 +482,7 @@ if [ "$resp24" = "y" ]; then
 fi
 if [ "$resp25" = "y" ]; then
     workraveinstall
+    fluxinstall
 fi
 if [ "$resp26" = "y" ]; then
     pythoninstall

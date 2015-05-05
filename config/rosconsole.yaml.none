@@ -1,0 +1,3 @@
+# ROS ALL
+log4j.logger.ros=DEBUG
+

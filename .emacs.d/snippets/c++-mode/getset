@@ -2,17 +2,17 @@
 # key: getset
 # --
 /**
- * \brief Getter for NAMEIT
+ * \brief Getter for THING
  */ 
-TYPE getTHING()
+const TYPE& getTHING() const
 {
   return VAR_;
 }
 
 /**
- * \brief Setter for NAMEIT
+ * \brief Setter for THING
  */
-void setTHING(TYPE VAR)
+void setTHING(const TYPE& VAR)
 {
   VAR_ = VAR;
 }

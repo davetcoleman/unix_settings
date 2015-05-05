@@ -1,0 +1,4 @@
+# name: affine
+# key: affine
+# --
+Eigen::Affine3d ${1:};

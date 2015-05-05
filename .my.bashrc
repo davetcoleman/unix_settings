@@ -75,9 +75,9 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases for listing files and folders
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -alFh'
+alias la='ls -Ah'
+alias l='ls -CFh'
 alias listfolders='ls -AF | grep /'
 #alias listfiles='ls -AF | grep -v /'
 alias listfiles="find * -type f -print" # lists files in the current directory
@@ -119,14 +119,14 @@ function myip()
     ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
 }
 
+# all ip address are hidden for security reasons
+source ~/unix_settings_private/ip_addresses.sh
+
 # Generic ROS Stuff --------------------------------------------------------------------
 ROS_SEGMENT=`echo $BASHRC_ENV | cut -d'_' -f 1`
 if [ $ROS_SEGMENT == "ros" ]; then
     # Shortcuts, aliases and exports
     source ~/unix_settings/scripts/ros.sh
-
-    # all ip address are hidden for security reasons
-    source ~/unix_settings_private/ip_addresses.sh
 
     # shared settings
     ROS_MASTER="localhost" # to be over written
@@ -150,33 +150,43 @@ fi
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
     #ROS_MASTER="baxter"
-    ROS_MASTER="localhost"
-    source ~/unix_settings/scripts/baxter.sh
+    #ROS_MASTER="localhost"
+    #ROS_MASTER="localhost2"    
+    #ROS_MASTER="rosbrick"
+    ROS_MASTER="rosstudent" # andy's computer
+    source ~/unix_settings/scripts/amazon.sh
+
+    # For da cuda
+    export PATH=/usr/local/cuda-7.0/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
+    source /home/$USER/ros/ws_picknik/devel/setup.bash
+    
     #source /home/$USER/ros/ws_base/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
     #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    source /home/$USER/ros/ws_baxter/devel/setup.bash
-
-    #source /home/$USER/ros/ws_clam/devel/setup.bash
-    #source /home/$USER/ros/ws_hrp2/devel/setup.bash
-    #source /home/$USER/ros/ws_nasa/devel/setup.bash
-    #source /home/$USER/ros/ws_jsk/devel/setup.bash
-
-    echo -ne "ROS: indigo | "
+    #source /home/$USER/ros/ws_amazon/devel/setup.bash
 
     # overwrite the one from ws_ros/install/setup.bash
-    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
     # Syncing scripts
     alias sync_ros_monster_to_student="source /home/$USER/unix_settings/scripts/rsync/ros_monster_to_student.sh"
 
+    # PCL hack
+    #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/include
+
+    # Linux Brew
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
     # Exports
-    #export ROS_IP=$ROS_MONSTER_IP
     export ROS_IP=`hostname -I`
 
+    echo -ne "ROS: indigo | "
     echo -ne "Computer: ros_monster"
 fi
 
@@ -198,10 +208,10 @@ if [ $BASHRC_ENV == "ros_baxter" ]; then
     echo -ne "ROS: groovy | "
 
     # overwrite the one from ws_ros/install/setup.bash
-    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
     # Exports
-    # Use ROS_IP if you are specifying an IP address, and ROS_HOSTNAME if you are specifying a host name. 
+    # Use ROS_IP if you are specifying an IP address, and ROS_HOSTNAME if you are specifying a host name.
     export ROS_IP=$ROS_BAXTER_IP
     #export ROS_HOSTNAME=$ROS_BAXTER_IP  #http://localhost:11311
     #export ROS_MASTER_URI=http://localhost:11311
@@ -212,24 +222,17 @@ fi
 
 if [ $BASHRC_ENV == "ros_student" ]; then
 
-    ROS_MASTER="baxter"
+    ROS_MASTER="davecore"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
-    #source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_moveit/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    source /home/$USER/ros/ws_baxter/devel/setup.bash
-
-    #source /home/$USER/ros/ws_clam/devel/setup.bash
-    #source /home/$USER/ros/ws_hrp2/devel/setup.bash
-    #source /home/$USER/ros/ws_nasa/devel/setup.bash
-    #source /home/$USER/ros/ws_jsk/devel/setup.bash
+    source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_picknik/devel/setup.bash
 
     echo -ne "ROS: indigo | "
 
     # overwrite the one from ws_ros/install/setup.bash
-    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
     # Syncing scripts
     alias sync_ros_student_to_monster="source /home/$USER/unix_settings/scripts/rsync/ros_student_to_monster.sh"
@@ -241,131 +244,32 @@ if [ $BASHRC_ENV == "ros_student" ]; then
 fi
 
 if [ $BASHRC_ENV == "ros_mac" ]; then
-    # Settings
-    USE_HYDRO=1
-    GAZEBO_SOURCE=0
+
+    #ROS_MASTER="baxter"
     ROS_MASTER="localhost"
+    source ~/unix_settings/scripts/baxter.sh
 
-    # Hydro
-    if [ $USE_HYDRO == 1 ]; then
-	# In-Use Workspaces
-	source /home/$USER/ros/ws_ros_catkin/install_isolated/setup.bash
-	#source /home/$USER/ros/ws_moveit/devel/setup.bash
-	#source /home/$USER/ros/ws_moveit2/devel/setup.bash
-	#source /home/$USER/ros/ws_jsk3/devel/setup.bash
-	#source /home/$USER/ros/ws_jsk4/devel/setup.bash
-	#source /home/$USER/ros/ws_gazebo/devel/setup.bash
-	#source /home/$USER/ros/ws_jsk_hrp2/devel/setup.bash
+    # In-Use Workspaces
+    source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_base/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+    #source /home/$USER/ros/ws_baxter/devel/setup.bash
+    #source /home/$USER/ros/ws_nasa/devel/setup.bash
 
-	#source /home/$USER/ros/ws_jsk2/devel/setup.bash
-	#source /home/$USER/ros/ws_jsk/devel/setup.bash
-	#source /home/$USER/ros/ws_core/devel/setup.bash
-        #source /opt/ros/hydro/setup.bash
-	#source /home/$USER/ros/ws_baxter/devel/setup.bash
-	#source /home/$USER/ros/ws_misc/devel/setup.bash
-	#source /home/$USER/ros/ws_atlas/devel/setup.bash
+    echo -ne "ROS: indigo | "
 
-	##### UNUSED
-	#source /home/$USER/ros/ws_clam/devel/setup.bash
-
-	echo -ne "ROS: hydro | "
-    else # Groovy
-
-	source /opt/ros/groovy/setup.bash
-	#source /home/$USER/ros/ws_misc_groovy/devel/setup.bash
-	#source /home/$USER/ros/ws_groovy_baxter/devel/setup.bash
-        source /usr/share/drcsim/setup.sh
-
-	echo -ne "ROS: groovy | "
-    fi
-
-    export CVSDIR=$HOME/prog # add this line to .bashrc
-
-    #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
-    #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
-    #export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:`rospack find hrpsys_gazebo_tutorials`/..
-    #export GAZEBO_PLUGIN_PATH=`rospack find hrpsys_gazebo_general`/plugins:$GAZEBO_PLUGIN_PATH
-
-    # Backup before changing
-    export PKG_CONFIG_PATH_ORIGINAL=$PKG_CONFIG_PATH
-    export LIBRARY_PATH_ORIGINAL=$LIBRARY_PATH
-    export LD_LIBRARY_PATH_ORIGINAL=$LD_LIBRARY_PATH
-    export PATH_ORIGINAL=$PATH
-
-    # Gazebo from source
-    if [ $GAZEBO_SOURCE == 1 ]; then
-	# Set local path precendence
-	export MY_LOCAL=$HOME/local
-	export PKG_CONFIG_PATH=$MY_LOCAL/lib/pkgconfig:$PKG_CONFIG_PATH
-	export LIBRARY_PATH=$LIBRARY_PATH:$MY_LOCAL/lib
- 	export LD_LIBRARY_PATH=$MY_LOCAL/lib:$LD_LIBRARY_PATH
-	export PATH=$MY_LOCAL/bin:$PATH
-
-	#source $MY_LOCAL/share/gazebo/setup.sh # for source installs
-
-	echo -ne "Gazebo: source | "
-
-    else # Gazebo debian
-
-	# Restore default behavior
-	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH_ORIGINAL
-	export LIBRARY_PATH=$LIBRARY_PATH_ORIGINAL
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_ORIGINAL
-	export PATH=$PATH_ORIGINAL
-
-        #source /usr/share/gazebo/setup.sh   # for debian installs
-
-	echo -ne "Gazebo: debians | "
-    fi
+    # overwrite the one from ws_ros/install/setup.bash
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
     # Aliases
     alias runmatlab="/usr/local/MATLAB/R2013b/bin/matlab"
 
     # Exports
-    export ROS_IP=`myip`
-    export ROS_HOSTNAME=$ROS_IP
+    #export ROS_IP=$ROS_MONSTER_IP
+    export ROS_IP=`hostname -I`
 
     echo -ne "Computer: ros_mac"
-fi
-
-if [ $BASHRC_ENV == "ros_jsk" ]; then
-
-    # The workspaces being used on this computer
-    ROS_WORKSPACES=( "/home/$USER/ros/ws_ompl/"
-#	"/home/$USER/ros/ws_ros_control/"
-	"/home/$USER/ros/ws_moveit/"
-	"/home/$USER/ros/ws_moveit_other/")
-#        "/home/$USER/ros/ws_baxter/"
-#	"/home/$USER/ros/ws_clam/"
-#	"/home/$USER/ros/ws_nasa/"
-#	"/home/$USER/ros/ws_jsk/" )
-
-  	# In-Use Workspaces
-        #source /home/$USER/ros/ws_ros/install/setup.bash
-	#source /home/$USER/ros/ws_ompl/devel/setup.bash
-	#source /home/$USER/ros/ws_ros_control/devel/setup.bash
-	#source /home/$USER/ros/ws_moveit/devel/setup.bash
-	#source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-        #source /home/$USER/ros/ws_baxter/devel/setup.bash
-	#source /home/$USER/ros/ws_clam/devel/setup.bash
-	#source /home/$USER/ros/ws_hrp2/devel/setup.bash
-        source /home/$USER/ros/ws_nasa/devel/setup.bash
-	#source /home/$USER/ros/ws_jsk/devel/setup.bash
-
-    echo -ne "ROS: hydro | "
-
-    # overwrite the one from ws_ros/install/setup.bash
-    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
-
-    #export ROS_PACKAGE_PATH=~/ros/ws_jsk/src/robot_models/HRP2JSK:$ROS_PACKAGE_PATH
-    #export ROS_PACKAGE_PATH=/home/$USER/ros/ws_jsk/src/rtm-ros-robotics/rtmros_gazebo/hrpsys_gazebo_tutorials:$ROS_PACKAGE_PATH
-
-
-    # Exports
-    #export ROS_IP=$ROS_JSK_IP
-    #export ROS_HOSTNAME=http://localhost:11311 #		$ROS_JSK_IP
-
-    echo -ne "Computer: ros_jsk"
 fi
 
 if [ $BASHRC_ENV == "ros_gateway" ]; then
@@ -417,6 +321,102 @@ if [ $BASHRC_ENV == "ros_baxter_control" ]; then
     echo -ne "Computer: ros_baxter_control"
 fi
 
+# Custom environements per computer --------------------------------------------------------
+if [ $BASHRC_ENV == "ros_brick" ]; then
+
+    #ROS_MASTER="baxter"
+    ROS_MASTER="localhost"
+    #ROS_MASTER="davecore"
+
+    export PATH=/usr/local/cuda-7.0/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
+
+    source ~/unix_settings/scripts/baxter.sh
+    source ~/unix_settings/scripts/amazon.sh
+
+    # In-Use Workspaces
+    source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_picknik/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+    #source /home/$USER/ros/ws_robots/devel/setup.bash
+    #source /home/$USER/ros/ws_amazon/devel/setup.bash
+
+    echo -ne "ROS: indigo | "
+
+    # overwrite the one from ws_ros/install/setup.bash
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
+
+    alias startcamera="roslaunch realsense_camera realsense_camera.launch"
+
+    # Exports
+    export ROS_IP=`hostname -I`
+
+    echo -ne "Computer: ros_brick"
+fi
+
+if [ $BASHRC_ENV == "ros_picknik2" ]; then
+
+    #ROS_MASTER="baxter"
+    ROS_MASTER="localhost"
+    #ROS_MASTER="localhost2"    
+    #ROS_MASTER="rosbrick"
+    #ROS_MASTER="rosstudent"
+    source ~/unix_settings/scripts/amazon.sh
+
+    # For da cuda
+    export PATH=/usr/local/cuda-7.0/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
+
+    # In-Use Workspaces
+    #source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_base/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+    source /home/$USER/ros/ws_amazon/devel/setup.bash
+
+    # overwrite the one from ws_ros/install/setup.bash
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
+
+    # Exports
+    export ROS_IP=`hostname -I`
+
+    echo -ne "ROS: indigo | "
+    echo -ne "Computer: ros_picknik2"
+fi
+
+if [ $BASHRC_ENV == "ros_luma" ]; then
+
+    #ROS_MASTER="baxter"
+    ROS_MASTER="localhost"
+    #ROS_MASTER="davecore"
+
+    #export PATH=/usr/local/cuda-7.0/bin:$PATH
+    #export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
+
+    source ~/unix_settings/scripts/amazon.sh
+
+    # In-Use Workspaces
+    source /opt/ros/indigo/setup.bash
+    #source /home/$USER/ros/ws_picknik/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit/devel/setup.bash
+    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
+    #source /home/$USER/ros/ws_robots/devel/setup.bash
+    #source /home/$USER/ros/ws_amazon/devel/setup.bash
+
+    echo -ne "ROS: indigo | "
+
+    # overwrite the one from ws_ros/install/setup.bash
+    export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
+
+    alias startcamera="roslaunch realsense_camera realsense_camera.launch"
+
+    # Exports
+    export ROS_IP=`hostname -I`
+
+    echo -ne "Computer: ros_luma"
+fi
+
 if [ $BASHRC_ENV == "janus" ]; then
     use Moab
     use Torque
@@ -435,8 +435,7 @@ if [ $BASHRC_ENV == "mac" ]; then
     alias brewwork='cd /usr/local/Library/Formula'
 
     # For homebrew / ROS Mac
-    export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/lib/python2.7/site-packages:$PATH
-    export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+    export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
     # For gedit
     PATH=$PATH:/Applications/gedit.app/Contents/MacOS
@@ -445,13 +444,16 @@ if [ $BASHRC_ENV == "mac" ]; then
     export CLICOLOR=1
     export LSCOLORS=ExFxCxDxBxegedabagacad
 
+    # Chrome
+    alias google-chrome='open -a Google\ Chrome --args --allow-file-access-from-files'
+
     echo "Computer: MBP"
 fi
 if [ $BASHRC_ENV == "ros_vm" ]; then
 
     #In-Use Workspaces
-    source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_ros_control/devel/setup.bash
+    #source /opt/ros/hydro/setup.bash
+    source /home/$USER/ros/ws_picknik/devel/setup.bash
 
 
     # Change display method for VM graphics card
@@ -470,6 +472,22 @@ if [ $ROS_SEGMENT == "ros" ]; then
 	export ROS_MASTER_URI=$ROS_BAXTER_IP
 
 	echo -ne " | ROS Master: i_am_baxter"
+    elif [ $ROS_MASTER == "davecore" ]; then  # Internal Baxter
+	export ROS_MASTER_URI=http://128.138.224.226:11311
+
+	echo -ne " | ROS Master: Dave's computer"
+    elif [ $ROS_MASTER == "rosbrick" ]; then
+	export ROS_MASTER_URI=http://128.138.224.198:11311
+
+	echo -ne " | ROS Master: ROS Brick"
+    elif [ $ROS_MASTER == "rosstudent" ]; then
+	export ROS_MASTER_URI=http://128.138.224.186:11311
+
+	echo -ne " | ROS Master: ROS Student"
+    elif [ $ROS_MASTER == "localhost2" ]; then
+	export ROS_MASTER_URI=http://localhost:11312
+	alias roscore2="roscore -p 11312 &"
+	echo -ne " | ROS Master: localhost2"
     else # Localhost
 	export ROS_MASTER_URI=http://localhost:11311
 
@@ -518,7 +536,7 @@ grcase() { grep -I --color=always --line-number --recursive  "$1" . ;}
 
 # Exclude certain directories from grep. this doesn't work for osx
 if [[ $platform != 'osx' ]]; then
-    export GREP_OPTIONS="--exclude-dir=\build --exclude-dir=\.svn --exclude-dir=\.hg --exclude-dir=\.git --exclude=\.#*"
+    export GREP_OPTIONS="--exclude-dir=\build --exclude-dir=\.svn --exclude-dir=\.hg --exclude-dir=\.git --exclude=\.#* --exclude=*.dae"
 fi
 
 #grep -r -i "WORD" .     # search recursively in directory for case-insensitive word
@@ -540,10 +558,12 @@ findfile()
 # Find files recursively by file type and copy them to a directory
 #find . -name "*.rst" -type f -exec cp {} ~/Desktop/ \;
 
+# Find files and delete them
+#find -name *conflicted* -delete
+
 # Also:
 # find . -iname '*.so'
-#alias dfind="find . -iname "
-
+#
 # Find and replace string in all files in a directory
 #  param1 - old word
 #  param2 - new word
@@ -576,9 +596,20 @@ alias sagu="sudo apt-get update && sudo apt-get dist-upgrade -y"
 alias sagi="sudo apt-get install "
 
 # Quick cmake
+function cmaker()
+{
+    rm -rf build
+    mkdir build
+    cd build
+    cmake ..
+    make -j6
+}
 alias maker="sudo clear && cmake ../ && make -j8 && sudo make install"
 alias maker_local="cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/local && make -j8 && make install"
 alias dmaker="sudo clear && cmake ../ -DCMAKE_BUILD_TYPE=debug && make -j8 && sudo make install"
+
+# Build Latex document and open it
+alias quicktex="ls *.tex | pdflatex && open *.pdf"
 
 # Search running processes
 alias pp="ps aux | grep "

@@ -1,5 +1,0 @@
-bd: build --cmake-args -DCMAKE_BUILD_TYPE=Debug
-bo: build --no-deps
-bow: build --cmake-args -Wall -g -W -Wno-unused-parameter -fno-strict-aliasing --no-deps 
-bw: build --cmake-args -DEXTRA_C_FLAGS=-Wall\ -g\ -W\ -Wno-unused-parameter
-bot: build --no-deps --this

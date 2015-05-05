@@ -30,10 +30,14 @@ Indent Region in C-Mode
   C-x TAB
 
 Indent Region in Any Mode
-  C-u -2 C-x <TAB>  # indents backwards to spaces
-
+  C-u 2 C-x <TAB>   # indents forward 2 spaces
+  C-u -2 C-x <TAB>  # indents backwards 2 spaces
+  
 Do command X times:
   C-u X
+
+Toggle between two tab widths with hotkey
+  M-2, M-4
 
 Window Management --------------------------------------------------------
 
