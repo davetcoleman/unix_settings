@@ -146,7 +146,7 @@ if [ $BASHRC_ENV == "dtc" ]; then
 	. /etc/bashrc
     fi
     export PS1="\W$ "
-    echo -ne "Computer: DTC Server"
+    echo "Computer: DTC Server"
 fi
 
 # Custom environements per computer --------------------------------------------------------
