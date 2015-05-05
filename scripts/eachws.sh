@@ -12,7 +12,7 @@ function commitGit()
 	echo -e "\e[00m"
 	echo "--------------------------------------------------------"
 	echo ""
-	gitst
+	git status
 	read -p "View git diff? (y/n): " resp
 	if [ "$resp" = "y" ]; then
 	    echo ""

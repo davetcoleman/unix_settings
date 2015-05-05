@@ -119,6 +119,9 @@ function myip()
     ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
 }
 
+# git aliases and functions
+source ~/unix_settings/scripts/git.sh
+
 # all ip address are hidden for security reasons
 source ~/unix_settings_private/ip_addresses.sh
 
@@ -266,39 +269,9 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
     alias runmatlab="/usr/local/MATLAB/R2013b/bin/matlab"
 
     # Exports
-    #export ROS_IP=$ROS_MONSTER_IP
     export ROS_IP=`hostname -I`
 
     echo -ne "Computer: ros_mac"
-fi
-
-if [ $BASHRC_ENV == "ros_gateway" ]; then
-
-    # Settings
-    ROS_MASTER="baxter"
-
-    #In-Use Workspaces
-    #source /opt/ros/hydro/setup.bash
-    #source /home/$USER/ros/ws_baxter/devel/setup.bash
-    source /home/$USER/ros/ws_baxter/devel/setup.bash
-
-    source ~/unix_settings/scripts/baxter.sh
-
-    echo -ne "ROS: hydro | "
-
-    # Use external webcam
-    export GSCAM_CONFIG="v4l2src device=/dev/video0 ! video/x-raw-rgb,framerate=30/1 ! ffmpegcolorspace"
-
-    # you might need to first do: sudo chmod 777 /dev/video0
-    alias rungscam="sudo chmod 777 /dev/video0 & rosrun gscam gscam &"
-
-    # Pulse Audio
-    export PULSE_SERVER=$ROS_MONSTER_IP
-
-    # Exports
-    export ROS_HOSTNAME=$ROS_GATEWAY_IP
-
-    echo -ne "Computer: ros_gateway"
 fi
 
 if [ $BASHRC_ENV == "ros_baxter_control" ]; then
@@ -627,9 +600,6 @@ alias rosrungdb='gdb --ex run --args ' #/opt/ros/hydro/lib/rviz/rviz
 if [[ $platform != 'osx' ]]; then
     source /home/$USER/unix_settings/scripts/ubuntu.sh
 fi
-
-# git aliases and functions
-source ~/unix_settings/scripts/git.sh
 
 # Notes
 source ~/unix_settings/notes/aliases.sh
