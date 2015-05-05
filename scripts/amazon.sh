@@ -1,7 +1,11 @@
-# Baxter
-    alias baxter_pm1="roslaunch picknik_main rviz.launch jacob:=false"
-    alias baxter_pm2="roslaunch picknik_main rviz_display.launch jacob:=false"
+# Startup
 
-# Jacob Robot
-    alias jacob_pm1="roslaunch picknik_main rviz.launch"
-    alias jacob_pm2="roslaunch picknik_main rviz_display.launch"
+alias apc_hardware="roslaunch jacob_control jacob_hardware.launch"
+alias apc_rviz="roslaunch picknik_main rviz.launch"
+alias apc_camera="roslaunch picknik_perception multi_xtion.launch"
+alias apc_calibrate="roslaunch picknik_perception multi_xtion_calibrate.launch"
+alias apc_main="roslaunch picknik_main jacob_apc.launch mode:=1"
+alias apc_perception="~/ros/perception/DDTR/build/Application/Amazon/Amazon -wsp ~/ros/perception/DDTR/ -mode 3"
+
+# DDTR
+alias roscdddtr="cd ~/ros/perception/DDTR/DDTR/"

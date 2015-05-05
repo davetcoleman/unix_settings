@@ -1,4 +1,4 @@
-1;2802;0c# ROS ALL
+# ROS ALL
 log4j.logger.ros=DEBUG
 
 # ROS
@@ -139,7 +139,7 @@ log4j.logger.ros.moveit_simple_controller_manager=INFO
 log4j.logger.ros.moveit_simple_controller_manager.actionlib=INFO
 
 # Percetion
-log4j.logger.ros.bounding_box.bbox=INFO
+log4j.logger.ros.bounding_box.bounding_box=INFO
 
 # OMPL Planning Stuff
 # log4j.logger.ros.ompl=WARN

@@ -91,6 +91,3 @@
 
     # Get the latest baxter IP address
     # baxter_ip_address
-    
-    ## Sync My Dev machine to Baxter's syncing server
-    alias syncmytime="sudo ntpdate pool.ntp.org"
