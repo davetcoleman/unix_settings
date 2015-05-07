@@ -198,7 +198,7 @@
 	arr=$(echo $CMAKE_PREFIX_PATH | tr ":" "\n")
 	for x in $arr
 	do
-	    rootpath1="/home/dave/ros/"
+	    rootpath1="/home/$USER/ros/"
 	    rootpath2="/opt/ros/"
 	    x=${x#${rootpath1}}
 	    echo "  " ${x#${rootpath2}}

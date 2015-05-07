@@ -226,12 +226,13 @@ fi
 
 if [ $BASHRC_ENV == "ros_student" ]; then
 
-    ROS_MASTER="davecore"
+    #ROS_MASTER="davecore"
+    ROS_MASTER="localhost"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
-    source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_picknik/devel/setup.bash
+    #source /opt/ros/indigo/setup.bash
+    source /home/$USER/ros/ws_picknik/devel/setup.bash
 
     echo -ne "ROS: indigo | "
 
