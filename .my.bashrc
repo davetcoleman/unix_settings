@@ -166,6 +166,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
     source /home/$USER/ros/ws_picknik/devel/setup.bash
+    #source /home/$USER/ros/ws_picknik/devel_debug/setup.bash
     
     #source /home/$USER/ros/ws_base/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
@@ -334,10 +335,10 @@ fi
 if [ $BASHRC_ENV == "ros_picknik2" ]; then
 
     #ROS_MASTER="baxter"
-    ROS_MASTER="localhost"
+    #ROS_MASTER="localhost"
     #ROS_MASTER="localhost2"    
     #ROS_MASTER="rosbrick"
-    #ROS_MASTER="rosstudent"
+    ROS_MASTER="rosstudent"
     source ~/unix_settings/scripts/amazon.sh
 
     # For da cuda
@@ -346,10 +347,7 @@ if [ $BASHRC_ENV == "ros_picknik2" ]; then
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_base/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    source /home/$USER/ros/ws_amazon/devel/setup.bash
+    source /home/$USER/ros/ws_picknik/devel/setup.bash
 
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
