@@ -87,6 +87,7 @@ function eachws
 	    return 0
 	fi
     done
+    cd ~
 }
 
 function eachgit

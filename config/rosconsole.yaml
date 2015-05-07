@@ -111,6 +111,7 @@ log4j.logger.ros.moveit_grasps.bbox=INFO
 log4j.logger.ros.moveit_grasps.cuboid_axis_grasps=INFO
 
 # Execution
+log4j.logger.ros.picknik_main.execution_interface=INFO
 log4j.logger.ros.picknik_main.execution_interface.trajectory=INFO
 log4j.logger.ros.picknik_main.execution_interface.file_path=INFO
 log4j.logger.ros.picknik_main.manipulation.collision_matrix=INFO

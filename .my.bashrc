@@ -166,6 +166,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
     source /home/$USER/ros/ws_picknik/devel/setup.bash
+    #source /home/$USER/ros/ws_picknik/devel_debug/setup.bash
     
     #source /home/$USER/ros/ws_base/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash

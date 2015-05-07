@@ -95,3 +95,10 @@ And add the line to the bottom:
 	/swapfile   none    swap    sw    0   0
 	
 	
+# Change ownership
+
+    sudo chown robots:robots -R ros/
+
+# Change persmissions
+
+    sudo chmod +x file
