@@ -84,14 +84,21 @@ See https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-1
     sudo fallocate -l 4G /swapfile
     sudo chmod 600 /swapfile
     sudo mkswap /swapfile
-bottom's    sudo swapon /swapfile
+    sudo swapon /swapfile
 
 ### Make swap partition permanent:
 
     sudo emacs /etc/fstab
 
-And add the line to the :
+And add the line to the bottom:
 
 	/swapfile   none    swap    sw    0   0
 	
 	
+# Change ownership
+
+    sudo chown robots:robots -R ros/
+
+# Change persmissions
+
+    sudo chmod +x file

@@ -1,9 +1,10 @@
-# if [[ $BASHRC_ENV != "dtc" && $platform != "osx" && $BASHRC_ENV != "ros_baxter" ]]; then   #only for ubuntu
-#     alias git=hub
-# fi
+if [[ $BASHRC_ENV != "dtc" && $BASHRC_ENV != "ros_baxter" ]]; then   #only for ubuntu or mac
+    alias git=hub
+fi
+
 alias gitst='git status'
 alias gitlg='git log -p'
-alias gitall='git add -A :/ && git commit -a && git push origin --all'
+alias gitall='git diff && read -p "Continue?" && git add -A :/ && git commit -a && git push origin --all'
 alias gitreadme='git commit README.md -m "Updated README" && git push'
 alias gitb='git branch'
 alias gitorigin='git remote show -n origin'

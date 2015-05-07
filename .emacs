@@ -2,11 +2,12 @@
 ;;; Dave Coleman <dave@dav.ee>
 
 ; F2 - rename file and buffer
-; F4 - refresh file
+; F3 - start recording macro
+; F4 - save macro
 ; F5 - auto compile
 ; F6 - auto compile just current package
 ; F7 - kill emacs
-
+; F8 - reload file
 
 ;;; INCLUDES ---------------------------------------------------------------------
 ;; Tell emacs to look in our emacs directory for extensions
@@ -27,14 +28,14 @@
 (menu-bar-mode 0)
 ; Automatically update a file when it changes on disk (unless buffer has not been saved)
 (global-auto-revert-mode t)
-; Reload file
-(global-set-key [f4] 'refresh-file)
 ; compile command using F5 key
 (global-set-key [f5] 'compile)
 (global-set-key [f6] `ros-pkg-compile-command)
 ; kill emacs server
 (setq confirm-kill-emacs 'yes-or-no-p)
 (global-set-key [f7] 'save-buffers-kill-emacs)
+; Reload file
+(global-set-key [f8] 'refresh-file)
 ; make switch bufferer reversible with SHIFT key
 (global-set-key (kbd "C-x O") 'previous-multiframe-window)
 ; no word wrap
@@ -194,6 +195,7 @@
 
  ; In order to get namespace indentation correct, .h files must be opened in C++ mode
  (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode)) 
+ (add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode)) 
 )
 ;(add-hook 'c-mode-common-hook 'vs-c-mode-common-hook)
 

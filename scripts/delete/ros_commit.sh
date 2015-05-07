@@ -35,6 +35,12 @@ function scanThisDirectoryForGit()
     done
 }
 
+files=( "/home/dave/ros/ws_base/src" )
+
+for i in "${files[@]}"
+do :
+    
+done
 scanThisDirectoryForGit
 cd /home/dave/ros/ws_moveit/src
 scanThisDirectoryForGit
