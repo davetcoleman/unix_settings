@@ -115,6 +115,9 @@ log4j.logger.ros.picknik_main.execution_interface.file_path=INFO
 log4j.logger.ros.picknik_main.manipulation.collision_matrix=INFO
 log4j.logger.ros.picknik_main.actionlib=INFO
 
+# DDTR
+log4j.logger.ros.DDTR.bbox=INFO
+
 # Manipulation - General
 log4j.logger.ros.picknik_main.manipulation.superdebug=INFO
 
