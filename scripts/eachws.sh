@@ -68,7 +68,7 @@ function checkBranch()
 
 function eachws
 {
-    workspaces=( "/home/dave/ros/ws_picknik/src" )
+    workspaces=( "/home/$USER/ros/ws_picknik/src" )
 
     for i in "${workspaces[@]}"
     do :

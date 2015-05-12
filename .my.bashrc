@@ -242,6 +242,8 @@ if [ $BASHRC_ENV == "ros_student" ]; then
     # Syncing scripts
     alias sync_ros_student_to_monster="source /home/$USER/unix_settings/scripts/rsync/ros_student_to_monster.sh"
 
+    alias startcamera="roslaunch picknik_perception multi_xtion.launch "
+
     # Exports
     export ROS_IP=$ROS_STUDENT_IP
 
@@ -333,10 +335,10 @@ fi
 if [ $BASHRC_ENV == "ros_picknik2" ]; then
 
     #ROS_MASTER="baxter"
-    ROS_MASTER="localhost"
+    #ROS_MASTER="localhost"
     #ROS_MASTER="localhost2"    
     #ROS_MASTER="rosbrick"
-    #ROS_MASTER="rosstudent"
+    ROS_MASTER="rosstudent"
     source ~/unix_settings/scripts/amazon.sh
 
     # For da cuda
@@ -345,10 +347,7 @@ if [ $BASHRC_ENV == "ros_picknik2" ]; then
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_base/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    source /home/$USER/ros/ws_amazon/devel/setup.bash
+    source /home/$USER/ros/ws_picknik/devel/setup.bash
 
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
