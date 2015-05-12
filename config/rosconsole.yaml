@@ -87,6 +87,7 @@ log4j.logger.ros.rviz_visual_tools.grasps=INFO
 log4j.logger.ros.rviz_visual_tools.grasp_data=INFO
 log4j.logger.ros.rviz_visual_tools.visuals=INFO
 log4j.logger.ros.rviz_visual_tools.pcl_perception_server=INFO
+log4j.logger.ros.rviz_visual_tools.tf_visual_tools=INFO
 log4j.logger.ros.picknik_main.main=INFO
 log4j.logger.ros.picknik_main.parser=INFO
 log4j.logger.ros.picknik_main.shelf=INFO
@@ -96,19 +97,22 @@ log4j.logger.ros.picknik_main.product_simulator=INFO
 log4j.logger.ros.picknik_main.planning_scene_manager=INFO
 #log4j.logger.ros.picknik_main.apc_manager.perception=INFO
 #log4j.logger.ros.picknik_main.apc_manager=INFO
-log4j.logger.ros.picknik_main.grasps=INFO
+#log4j.logger.ros.picknik_main.grasps=INFO
+
+log4j.logger.ros.picknik_main.perception_interface.actionlib=INFO
+log4j.logger.ros.picknik_main.perception_interface=INFO
 
 # Perception
 log4j.logger.ros.picknik_perception.actionlib=INFO
 
-# GRASPING /////////////////////////////////////////////////////////////////
+# Grasping
 
-# Show lots out output
 log4j.logger.ros.moveit_grasps.grasp_filter.superdebug=INFO
 log4j.logger.ros.moveit_grasps.cuboid_grasp_points=INFO
 log4j.logger.ros.moveit_grasps.cuboid=INFO
-log4j.logger.ros.moveit_grasps.bbox=INFO
 log4j.logger.ros.moveit_grasps.cuboid_axis_grasps=INFO
+log4j.logger.ros.moveit_grasps.grasp_data=INFO
+log4j.logger.ros.moveit_grasps.grasp_planner.waypoints=INFO
 
 # Execution
 log4j.logger.ros.picknik_main.execution_interface=INFO
@@ -119,6 +123,7 @@ log4j.logger.ros.picknik_main.actionlib=INFO
 
 # Manipulation - General
 log4j.logger.ros.picknik_main.manipulation.superdebug=INFO
+log4j.logger.ros.picknik_main.manipulation.end_effector=INFO
 
 # JACO
 log4j.logger.ros.kinova_driver.actionlib=INFO
@@ -134,17 +139,17 @@ log4j.logger.ros.kinova_ros_control.commanded_position=INFO
 log4j.logger.ros.kinova_ros_control.commanded_velocity=INFO
 
 # Control Manager
+log4j.logger.ros.moveit_simple_controller_manager=WARN
 log4j.logger.ros.moveit_simple_controller_manager.manager=WARN
 log4j.logger.ros.moveit_ros_planning.traj_execution=WARN
-log4j.logger.ros.moveit_simple_controller_manager=INFO
 log4j.logger.ros.moveit_simple_controller_manager.actionlib=INFO
 
 # Percetion
 log4j.logger.ros.bounding_box.bounding_box=INFO
 
 # OMPL Planning Stuff
-# log4j.logger.ros.ompl=WARN
-# log4j.logger.ros.moveit_ros_planning=WARN
-# log4j.logger.ros.moveit_ompl=WARN
-# log4j.logger.ros.rosconsole_bridge.moveit_ompl=INFO
+log4j.logger.ros.ompl=WARN
+log4j.logger.ros.moveit_ros_planning=WARN
+log4j.logger.ros.moveit_ompl=WARN
+log4j.logger.ros.rosconsole_bridge.moveit_ompl=INFO
 log4j.logger.ros.moveit_ompl.parameters=INFO

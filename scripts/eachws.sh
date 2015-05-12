@@ -19,7 +19,7 @@ function commitGit()
 	    git diff
 	    read -p "Commit with gitall? (y/n): " resp
 	    if [ "$resp" = "y" ]; then
-		gitall
+		git add -A :/ && git commit -a && git push origin --all
 		read -p "Continue? " resp
 	    fi	
 	fi 
