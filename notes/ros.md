@@ -48,4 +48,16 @@ Or during build time
     killall rosout 
     killall rosout -9
 
+# Catkin Tools - Build A Workspace With Different Debug/Release Levels
 
+    catkin profile add debug
+	catkin profile set debug
+	catkin config -b build_debug
+	catkin config -d devel_debug
+	catkin build cmake-args -DCMAKE_BUILD_TYPE=Debug
+	# OR
+	catkin build cmake-args -DCMAKE_BUILD_TYPE=Release 
+	
+# Catkin Tools - build a specific workspace
+
+    catkin build --profile default

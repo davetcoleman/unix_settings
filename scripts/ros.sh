@@ -20,26 +20,22 @@
 
     alias rosdepinstall_indigo="rosdep install -y --from-paths src --ignore-src --rosdistro indigo"
 
-    # Commit to MoveIt!
-    alias roscommit=". ~/unix_settings/scripts/ros_commit.sh"
-    alias roscompile=". ~/unix_settings/scripts/ros_compile.sh"
-    alias rospull=". ~/unix_settings/scripts/ros_pull.sh"
-    alias roscheckbranch=". ~/unix_settings/scripts/ros_check_branch.sh"
+    # Maintain workspaces
+    source ~/unix_settings/scripts/eachws.sh
 
     # ROSCD
-    alias roscdbase="cd ~/ros/ws_base/src && ll"
-    alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
-    alias roscdmoveitother="cd ~/ros/ws_moveit_other/src && ll"
-    alias roscdclam="cd ~/ros/ws_clam/src && ll"
-    alias roscdnasa="cd ~/ros/ws_nasa/src && ll"
-    alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
-    alias roscdamazon="cd ~/ros/ws_baxter/src/cu_amazon/ && ll"
-    alias roscdmisc="cd ~/ros/ws_misc/src && ll"
-    alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
-    alias roscdamazon="cd ~/ros/ws_amazon/src && ll"
-    alias roscdros="cd ~/ros/ws_ros/src && ll"
-    alias roscdompl="cd ~/ros/ws_moveit/src/ompl/src/ompl && ll"
-
+    # alias roscdbase="cd ~/ros/ws_base/src && ll"
+    # alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
+    # alias roscdmoveitother="cd ~/ros/ws_moveit_other/src && ll"
+    # alias roscdclam="cd ~/ros/ws_clam/src && ll"
+    # alias roscdnasa="cd ~/ros/ws_nasa/src && ll"
+    # alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
+    # alias roscdmisc="cd ~/ros/ws_misc/src && ll"
+    # alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
+    # alias roscdamazon="cd ~/ros/ws_amazon/src && ll"
+    # alias roscdros="cd ~/ros/ws_ros/src && ll"
+    # alias roscdompl="cd ~/ros/ws_moveit/src/ompl/src/ompl && ll"
+    alias roscdpicknik="cd ~/ros/ws_picknik/src && ll"
 
     alias moveitplanningscene="rosrun moveit_ros_planning moveit_print_planning_model_info"
     alias iscore="ps aux | grep roscore"
@@ -47,6 +43,9 @@
 
     # Time
     alias rossimtime="rosparam set /use_sim_time true"
+
+    ## Sync My Dev machine time to Baxter's syncing server
+    alias syncmytime="sudo ntpdate pool.ntp.org"
 
     # TF
     alias tfpdf='cd /var/tmp && rosrun tf view_frames && open frames.pdf &'
@@ -186,8 +185,8 @@
     alias roseus="rosrun roseus roseus "
 
     # Testing
-    alias rostestpub="rostopic pub /dave_test -r 1 std_msgs/Float32 99.9"
-    alias rostestecho="rostopic echo /dave_test"
+    alias rostestpub="rostopic pub /basic_test -r 1 std_msgs/Float32 99.9"
+    alias rostestecho="rostopic echo /basic_test"
 
     # ROS STUFF
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/.my.rosconsole
@@ -199,7 +198,7 @@
 	arr=$(echo $CMAKE_PREFIX_PATH | tr ":" "\n")
 	for x in $arr
 	do
-	    rootpath1="/home/dave/ros/"
+	    rootpath1="/home/$USER/ros/"
 	    rootpath2="/opt/ros/"
 	    x=${x#${rootpath1}}
 	    echo "  " ${x#${rootpath2}}

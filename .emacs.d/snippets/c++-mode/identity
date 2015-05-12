@@ -1,0 +1,4 @@
+# name: identity
+# key: identity
+# --
+Eigen::Affine3d::Identity();

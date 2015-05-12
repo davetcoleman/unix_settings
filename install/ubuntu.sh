@@ -97,7 +97,7 @@
 
       # Install 
       sudo apt-get -y install nautilus-dropbox
-
+      nautilus --quit
       # Make dropbox auto start
       #mkdir -p ~/.config/autostart      
       #cp ~/unix_settings/install/ubuntu/autostart/dropbox.desktop ~/.config/autostart/dropbox.desktop
@@ -174,12 +174,22 @@
       git config --global color.ui auto
       
       # Setup Hub for Github
-      sudo apt-get install -y rake
-      cd ~/
-      wget https://github.com/github/hub/archive/v1.12.3.tar.gz hub
-      untargz v1.12.3.tar.gz
-      cd hub-1.12.3
-      sudo rake install
+      # sudo apt-get install -y rake
+      # cd ~/
+      # wget https://github.com/github/hub/archive/v1.12.3.tar.gz hub
+      # untargz v1.12.3.tar.gz
+      # rm v1.12.3.tar.gz
+      # cd hub-1.12.3
+      # sudo rake install
+
+      # Install Linux Brew
+      git clone https://github.com/Homebrew/linuxbrew.git ~/.linuxbrew
+      export PATH="$HOME/.linuxbrew/bin:$PATH"
+      export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+      export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+      # Setup Hub for Github
+      brew install hub
   }
   
   # Matlab - Documentation: https://help.ubuntu.com/community/MATLAB
@@ -405,7 +415,7 @@ read -p "Install Matlab? (y/n)" resp21
 read -p "Install Wine? (y/n)" resp23
 read -p "Install and run Benchmarking? (y/n)" resp24
 read -p "Install Workrave break reminder and flux? (y/n)" resp25
-read -p "Install python tools? (y/n)" resp26
+read -p "Install useful/common python tools? (y/n)" resp26
 
 if [ "$resp1" = "y" ]; then
     coreinstall
