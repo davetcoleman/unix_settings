@@ -19,7 +19,7 @@ function commitGit()
 	    git diff
 	    read -p "Commit with gitall? (y/n): " resp
 	    if [ "$resp" = "y" ]; then
-		gitall
+		git add -A :/ && git commit -a && git push origin --all
 		read -p "Continue? " resp
 	    fi	
 	fi 
@@ -68,7 +68,7 @@ function checkBranch()
 
 function eachws
 {
-    workspaces=( "/home/dave/ros/ws_picknik/src" )
+    workspaces=( "/home/$USER/ros/ws_picknik/src" )
 
     for i in "${workspaces[@]}"
     do :

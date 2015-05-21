@@ -242,6 +242,8 @@ if [ $BASHRC_ENV == "ros_student" ]; then
     # Syncing scripts
     alias sync_ros_student_to_monster="source /home/$USER/unix_settings/scripts/rsync/ros_student_to_monster.sh"
 
+    alias startcamera="roslaunch picknik_perception multi_xtion.launch "
+
     # Exports
     export ROS_IP=$ROS_STUDENT_IP
 
@@ -300,8 +302,9 @@ fi
 if [ $BASHRC_ENV == "ros_brick" ]; then
 
     #ROS_MASTER="baxter"
-    ROS_MASTER="localhost"
+    #ROS_MASTER="localhost"
     #ROS_MASTER="davecore"
+    ROS_MASTER="andycore"
 
     export PATH=/usr/local/cuda-7.0/bin:$PATH
     export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
@@ -453,6 +456,10 @@ if [ $ROS_SEGMENT == "ros" ]; then
 	export ROS_MASTER_URI=http://128.138.224.226:11311
 
 	echo -ne " | ROS Master: Dave's computer"
+    elif [ $ROS_MASTER == "andycore" ]; then  # Internal Baxter
+	export ROS_MASTER_URI=http://128.138.224.186:11311
+
+	echo -ne " | ROS Master: Andy's computer"
     elif [ $ROS_MASTER == "rosbrick" ]; then
 	export ROS_MASTER_URI=http://128.138.224.198:11311
 
@@ -625,3 +632,4 @@ function dired() {
 #   sagi libnotify-bin
 #   export DISPLAY=:0.0
 #   notify-send "Nikolaus Correll Says" "PUBLISH PUBLISH PUBLISH"
+
