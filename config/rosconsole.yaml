@@ -78,6 +78,7 @@ log4j.logger.ros.ros_control_boilerplate.actionlib=INFO
 # Visuals Tools Code
 log4j.logger.ros.moveit_visual_tools.visual_tools=INFO
 log4j.logger.ros.rviz_visual_tools.visual_tools=INFO
+log4j.logger.ros.rviz_visual_tools.tf_visual_tools=INFO
 
 # PickNik Amazon Challenge -------------------------------------------------------------
 log4j.logger.ros.rviz_visual_tools.shelf=INFO
@@ -100,6 +101,7 @@ log4j.logger.ros.picknik_main.grasps=INFO
 
 # Perception
 log4j.logger.ros.picknik_perception.actionlib=INFO
+log4j.logger.ros.picknik_main.perception_interface=INFO
 
 # GRASPING /////////////////////////////////////////////////////////////////
 
@@ -119,6 +121,7 @@ log4j.logger.ros.picknik_main.actionlib=INFO
 
 # Manipulation - General
 log4j.logger.ros.picknik_main.manipulation.superdebug=INFO
+log4j.logger.ros.picknik_main.manipulation.end_effector=INFO
 
 # JACO
 log4j.logger.ros.kinova_driver.actionlib=INFO
