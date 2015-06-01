@@ -424,6 +424,14 @@ if [ $BASHRC_ENV == "mac" ]; then
 
     echo "Computer: MBP"
 fi
+if [ $BASHRC_ENV == "sensor-bot" ]; then
+
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+    echo "Computer: Sensor"
+fi
 if [ $BASHRC_ENV == "ros_vm" ]; then
 
     #In-Use Workspaces
