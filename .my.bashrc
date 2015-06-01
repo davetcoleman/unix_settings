@@ -152,11 +152,11 @@ fi
 # Custom environements per computer --------------------------------------------------------
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
-    #ROS_MASTER="baxter"
+    ROS_MASTER="baxter"
     #ROS_MASTER="localhost"
     #ROS_MASTER="localhost2"    
     #ROS_MASTER="rosbrick"
-    ROS_MASTER="rosstudent" # andy's computer
+    #ROS_MASTER="rosstudent" # andy's computer
     source ~/unix_settings/scripts/amazon.sh
 
     # For da cuda
@@ -336,10 +336,10 @@ fi
 if [ $BASHRC_ENV == "ros_picknik2" ]; then
 
     #ROS_MASTER="baxter"
-    #ROS_MASTER="localhost"
+    ROS_MASTER="localhost"
     #ROS_MASTER="localhost2"    
     #ROS_MASTER="rosbrick"
-    ROS_MASTER="rosstudent"
+    #ROS_MASTER="rosstudent"
     source ~/unix_settings/scripts/amazon.sh
 
     # For da cuda
@@ -353,8 +353,13 @@ if [ $BASHRC_ENV == "ros_picknik2" ]; then
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
     # Exports
-    export ROS_IP=`hostname -I`
+    export ROS_IP=127.0.0.1
+    # export ROS_IP=`hostname -I`
 
     echo -ne "ROS: indigo | "
     echo -ne "Computer: ros_picknik2"
