@@ -12,7 +12,9 @@
       
       # for use with emacs 'play' command for finishing compiling
       sudo apt-get install -y sox || echo -e "\e[00;31mAPT-GET FAILED\e[00m"
+  }
 
+  function disableCapsLock() {
       # disable caps lock - works in xwindows
       echo "DISABLING CAPSLOCK"
       cp ~/unix_settings/install/ubuntu/.Xmodmap ~/
@@ -386,6 +388,7 @@ fi
 
 # Start the installs
 read -p "Install core terminal stuff? (y/n)" resp1
+read -p "Install caps lock hack? (y/n)" resp29
 
 # What version of ubuntu?
 if [ "$UBUNTU_VERSION" = "trusty" ]; then
@@ -400,7 +403,7 @@ fi
 
 read -p "Install chrome? (y/n)" resp3
 read -p "Setup secondary hard drive and ROS workspace sync? (for Dropbox) (y/n)" resp27
-read -p "Install spotify? (y/n)" resp4
+#read -p "Install spotify? (y/n)" resp4
 read -p "Install media stuff? (y/n)" resp6
 #read -p "Install Gazebo? (y/n)" resp16
 read -p "Setup github? (y/n)" resp8
@@ -409,16 +412,19 @@ read -p "Install VirtualBox? (y/n)" resp12
 read -p "Install dropbox? (y/n)" resp5
 read -p "Install recording software? (y/n)" resp13
 read -p "Install latex? (y/n)" resp14
-read -p "Install R? (y/n)" resp28
+#read -p "Install R? (y/n)" resp28
 read -p "Install truecrypt? (y/n)" resp15
 read -p "Install Matlab? (y/n)" resp21
-read -p "Install Wine? (y/n)" resp23
+#read -p "Install Wine? (y/n)" resp23
 read -p "Install and run Benchmarking? (y/n)" resp24
 read -p "Install Workrave break reminder and flux? (y/n)" resp25
 read -p "Install useful/common python tools? (y/n)" resp26
 
 if [ "$resp1" = "y" ]; then
     coreinstall
+fi
+if [ "$resp29" = "y" ]; then
+    disableCapsLock
 fi
 if [ "$resp3" = "y" ]; then
     chromeinstall
@@ -435,9 +441,9 @@ fi
 if [ "$resp19" = "y" ]; then
     acrobatinstall
 fi
-if [ "$resp4" = "y" ]; then
-    spotifyinstall
-fi
+# if [ "$resp4" = "y" ]; then
+#     spotifyinstall
+# fi
 if [ "$resp6" = "y" ]; then
     mediainstall
 fi
@@ -462,9 +468,9 @@ fi
 if [ "$resp14" = "y" ]; then
     latexinstall  
 fi
-if [ "$resp28" = "y" ]; then
-    rinstall  
-fi
+# if [ "$resp28" = "y" ]; then
+#     rinstall  
+# fi
 if [ "$resp15" = "y" ]; then
     truecryptinstall
 fi
@@ -474,9 +480,9 @@ fi
 if [ "$resp21" = "y" ]; then
     matlabinstall
 fi
-if [ "$resp23" = "y" ]; then
-    wineinstall
-fi
+# if [ "$resp23" = "y" ]; then
+#     wineinstall
+# fi
 if [ "$resp24" = "y" ]; then
     benchmarkinstall
 fi
