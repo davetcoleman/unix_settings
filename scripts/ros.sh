@@ -24,19 +24,18 @@
     source ~/unix_settings/scripts/eachws.sh
 
     # ROSCD
-    alias roscdbase="cd ~/ros/ws_base/src && ll"
-    alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
-    alias roscdmoveitother="cd ~/ros/ws_moveit_other/src && ll"
-    alias roscdclam="cd ~/ros/ws_clam/src && ll"
-    alias roscdnasa="cd ~/ros/ws_nasa/src && ll"
-    alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
-    alias roscdmisc="cd ~/ros/ws_misc/src && ll"
-    alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
-    alias roscdamazon="cd ~/ros/ws_amazon/src && ll"
+    # alias roscdbase="cd ~/ros/ws_base/src && ll"
+    # alias roscdmoveit="cd ~/ros/ws_moveit/src && ll"
+    # alias roscdmoveitother="cd ~/ros/ws_moveit_other/src && ll"
+    # alias roscdclam="cd ~/ros/ws_clam/src && ll"
+    # alias roscdnasa="cd ~/ros/ws_nasa/src && ll"
+    # alias roscdbaxter="cd ~/ros/ws_baxter/src && ll"
+    # alias roscdmisc="cd ~/ros/ws_misc/src && ll"
+    # alias roscdgazebo="cd ~/ros/ws_gazebo/src && ll"
+    # alias roscdamazon="cd ~/ros/ws_amazon/src && ll"
+    # alias roscdros="cd ~/ros/ws_ros/src && ll"
+    # alias roscdompl="cd ~/ros/ws_moveit/src/ompl/src/ompl && ll"
     alias roscdpicknik="cd ~/ros/ws_picknik/src && ll"
-    alias roscdros="cd ~/ros/ws_ros/src && ll"
-    alias roscdompl="cd ~/ros/ws_moveit/src/ompl/src/ompl && ll"
-
 
     alias moveitplanningscene="rosrun moveit_ros_planning moveit_print_planning_model_info"
     alias iscore="ps aux | grep roscore"
@@ -199,7 +198,7 @@
 	arr=$(echo $CMAKE_PREFIX_PATH | tr ":" "\n")
 	for x in $arr
 	do
-	    rootpath1="/home/dave/ros/"
+	    rootpath1="/home/$USER/ros/"
 	    rootpath2="/opt/ros/"
 	    x=${x#${rootpath1}}
 	    echo "  " ${x#${rootpath2}}

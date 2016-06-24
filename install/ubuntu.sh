@@ -166,7 +166,7 @@
   # Setup Github:
   function githubsetup() {
       alias | grep hub
-      unalias git  # git is an alias for hub in my config
+      #unalias git  # git is an alias for hub in my config
 
       git config --global user.name 'Dave Coleman' 
       git config --global user.email 'davetcoleman@gmail.com' 
@@ -186,6 +186,7 @@
 
       # Install Linux Brew
       git clone https://github.com/Homebrew/linuxbrew.git ~/.linuxbrew
+      sudo apt-get install -y ruby
       export PATH="$HOME/.linuxbrew/bin:$PATH"
       export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
       export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"

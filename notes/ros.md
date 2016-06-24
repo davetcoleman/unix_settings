@@ -54,6 +54,10 @@ Or during build time
 	catkin profile set debug
 	catkin config -b build_debug
 	catkin config -d devel_debug
-	catbuilddebug
+	catkin build cmake-args -DCMAKE_BUILD_TYPE=Debug
+	# OR
+	catkin build cmake-args -DCMAKE_BUILD_TYPE=Release 
 	
+# Catkin Tools - build a specific workspace
 
+    catkin build --profile default

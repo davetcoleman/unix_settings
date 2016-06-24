@@ -119,6 +119,9 @@ function myip()
     ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
 }
 
+# git aliases and functions
+source ~/unix_settings/scripts/git.sh
+
 # all ip address are hidden for security reasons
 source ~/unix_settings_private/ip_addresses.sh
 
@@ -149,11 +152,11 @@ fi
 # Custom environements per computer --------------------------------------------------------
 if [ $BASHRC_ENV == "ros_monster" ]; then
 
-    #ROS_MASTER="baxter"
+    ROS_MASTER="baxter"
     #ROS_MASTER="localhost"
     #ROS_MASTER="localhost2"    
     #ROS_MASTER="rosbrick"
-    ROS_MASTER="rosstudent" # andy's computer
+    #ROS_MASTER="rosstudent" # andy's computer
     source ~/unix_settings/scripts/amazon.sh
 
     # For da cuda
@@ -163,6 +166,7 @@ if [ $BASHRC_ENV == "ros_monster" ]; then
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
     source /home/$USER/ros/ws_picknik/devel/setup.bash
+    #source /home/$USER/ros/ws_picknik/devel_debug/setup.bash
     
     #source /home/$USER/ros/ws_base/devel/setup.bash
     #source /home/$USER/ros/ws_moveit/devel/setup.bash
@@ -222,12 +226,13 @@ fi
 
 if [ $BASHRC_ENV == "ros_student" ]; then
 
-    ROS_MASTER="davecore"
+    #ROS_MASTER="davecore"
+    ROS_MASTER="localhost"
     source ~/unix_settings/scripts/baxter.sh
 
     # In-Use Workspaces
-    source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_picknik/devel/setup.bash
+    #source /opt/ros/indigo/setup.bash
+    source /home/$USER/ros/ws_picknik/devel/setup.bash
 
     echo -ne "ROS: indigo | "
 
@@ -236,6 +241,8 @@ if [ $BASHRC_ENV == "ros_student" ]; then
 
     # Syncing scripts
     alias sync_ros_student_to_monster="source /home/$USER/unix_settings/scripts/rsync/ros_student_to_monster.sh"
+
+    alias startcamera="roslaunch picknik_perception multi_xtion.launch "
 
     # Exports
     export ROS_IP=$ROS_STUDENT_IP
@@ -266,39 +273,9 @@ if [ $BASHRC_ENV == "ros_mac" ]; then
     alias runmatlab="/usr/local/MATLAB/R2013b/bin/matlab"
 
     # Exports
-    #export ROS_IP=$ROS_MONSTER_IP
     export ROS_IP=`hostname -I`
 
     echo -ne "Computer: ros_mac"
-fi
-
-if [ $BASHRC_ENV == "ros_gateway" ]; then
-
-    # Settings
-    ROS_MASTER="baxter"
-
-    #In-Use Workspaces
-    #source /opt/ros/hydro/setup.bash
-    #source /home/$USER/ros/ws_baxter/devel/setup.bash
-    source /home/$USER/ros/ws_baxter/devel/setup.bash
-
-    source ~/unix_settings/scripts/baxter.sh
-
-    echo -ne "ROS: hydro | "
-
-    # Use external webcam
-    export GSCAM_CONFIG="v4l2src device=/dev/video0 ! video/x-raw-rgb,framerate=30/1 ! ffmpegcolorspace"
-
-    # you might need to first do: sudo chmod 777 /dev/video0
-    alias rungscam="sudo chmod 777 /dev/video0 & rosrun gscam gscam &"
-
-    # Pulse Audio
-    export PULSE_SERVER=$ROS_MONSTER_IP
-
-    # Exports
-    export ROS_HOSTNAME=$ROS_GATEWAY_IP
-
-    echo -ne "Computer: ros_gateway"
 fi
 
 if [ $BASHRC_ENV == "ros_baxter_control" ]; then
@@ -325,8 +302,9 @@ fi
 if [ $BASHRC_ENV == "ros_brick" ]; then
 
     #ROS_MASTER="baxter"
-    ROS_MASTER="localhost"
+    #ROS_MASTER="localhost"
     #ROS_MASTER="davecore"
+    ROS_MASTER="andycore"
 
     export PATH=/usr/local/cuda-7.0/bin:$PATH
     export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
@@ -370,16 +348,18 @@ if [ $BASHRC_ENV == "ros_picknik2" ]; then
 
     # In-Use Workspaces
     #source /opt/ros/indigo/setup.bash
-    #source /home/$USER/ros/ws_base/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit/devel/setup.bash
-    #source /home/$USER/ros/ws_moveit_other/devel/setup.bash
-    source /home/$USER/ros/ws_amazon/devel/setup.bash
+    source /home/$USER/ros/ws_picknik/devel/setup.bash
 
     # overwrite the one from ws_ros/install/setup.bash
     export ROSCONSOLE_CONFIG_FILE=~/unix_settings/config/rosconsole.yaml
 
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
     # Exports
-    export ROS_IP=`hostname -I`
+    export ROS_IP=127.0.0.1
+    # export ROS_IP=`hostname -I`
 
     echo -ne "ROS: indigo | "
     echo -ne "Computer: ros_picknik2"
@@ -449,6 +429,14 @@ if [ $BASHRC_ENV == "mac" ]; then
 
     echo "Computer: MBP"
 fi
+if [ $BASHRC_ENV == "sensor-bot" ]; then
+
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+    echo "Computer: Sensor"
+fi
 if [ $BASHRC_ENV == "ros_vm" ]; then
 
     #In-Use Workspaces
@@ -476,6 +464,10 @@ if [ $ROS_SEGMENT == "ros" ]; then
 	export ROS_MASTER_URI=http://128.138.224.226:11311
 
 	echo -ne " | ROS Master: Dave's computer"
+    elif [ $ROS_MASTER == "andycore" ]; then  # Internal Baxter
+	export ROS_MASTER_URI=http://128.138.224.186:11311
+
+	echo -ne " | ROS Master: Andy's computer"
     elif [ $ROS_MASTER == "rosbrick" ]; then
 	export ROS_MASTER_URI=http://128.138.224.198:11311
 
@@ -628,9 +620,6 @@ if [[ $platform != 'osx' ]]; then
     source /home/$USER/unix_settings/scripts/ubuntu.sh
 fi
 
-# git aliases and functions
-source ~/unix_settings/scripts/git.sh
-
 # Notes
 source ~/unix_settings/notes/aliases.sh
 
@@ -651,3 +640,4 @@ function dired() {
 #   sagi libnotify-bin
 #   export DISPLAY=:0.0
 #   notify-send "Nikolaus Correll Says" "PUBLISH PUBLISH PUBLISH"
+

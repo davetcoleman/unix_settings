@@ -58,10 +58,8 @@ public:
 
   /**
    * \brief Constructor
-   * \param verbose - run in debug mode
    */
-  CLASS_NAME(bool verbose)
-    : verbose_(verbose)
+  CLASS_NAME()
   {
 
     ROS_INFO_STREAM_NAMED("SHORT_NAME","CLASS_NAME Ready.");
@@ -71,9 +69,6 @@ private:
 
   // A shared node handle
   ros::NodeHandle nh_;
-
-  // Show more visual and console output, with general slower run time.
-  bool verbose_;
 
 }; // end class
 
@@ -107,7 +102,7 @@ int main(int argc, char** argv)
     }
   }
 
-  PACKAGE_NAME::CLASS_NAME server(verbose);
+  PACKAGE_NAME::CLASS_NAME server();
 
   ROS_INFO_STREAM_NAMED("main", "Shutting down.");
   ros::shutdown();
